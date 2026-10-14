@@ -3,3 +3,4 @@ mypy
 pytest
 ruff
 types-requests
+boto3-stubs[sesv2]
