@@ -2,7 +2,7 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
-## Unreleased
+## 0.3.0 - 2026-10-14
 
 ### Added
 
@@ -11,6 +11,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 - Hosted mode, off unless configured: rate limits per client IP and per API key, shared through Redis, with `X-RateLimit-*` headers and JSON 429s.
 - API keys stored only as hashes, sent in `X-API-Key` or as a Bearer token, with self-service sign-up proved by email through Amazon SES, `GET /api/keys/me`, and `python -m src.keys_admin` to list, issue and revoke keys.
 - A Docker image, a Docker Compose deployment with Redis, a Caddy block for banks.globbapay.com, and a deployment guide for AWS.
+- `deploy/aws/provision.sh`, which sets up a dedicated EC2 instance from AWS CloudShell, and `deploy/docker-compose.standalone.yml`, which runs Caddy alongside the API on a server without one.
 
 ### Changed
 
