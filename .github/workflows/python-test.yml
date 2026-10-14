@@ -130,6 +130,11 @@ jobs:
         grep -i '^x-ratelimit-remaining: 2' caddy-headers.txt
         grep -i '^strict-transport-security' caddy-headers.txt
 
+    - name: Check the Coolify Compose file
+      run: |
+        PUBLIC_BASE_URL=https://banks.example.test SIGNUP_EMAIL_FROM=no-reply@example.test AWS_REGION=eu-central-1 \
+          docker compose -f deploy/coolify/docker-compose.yml config --quiet
+
     - name: Show the container logs
       if: failure()
       run: docker compose -f deploy/docker-compose.yml logs
