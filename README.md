@@ -160,7 +160,8 @@ Rate limits and API keys are off unless configured with environment variables:
 | `SIGNUP_RATE_LIMIT` | Limits per client IP on the sign-up endpoints. Default `10 per hour;30 per day`. |
 | `API_KEY_DATABASE` | Turns on API keys, stored only as SHA-256 hashes in this SQLite file. |
 | `PUBLIC_BASE_URL` | The API's public address, used in sign-up emails. |
-| `SIGNUP_EMAIL_FROM` | Turns on self-service sign-up, with emails sent from this address through Amazon SES. Needs `API_KEY_DATABASE` and `PUBLIC_BASE_URL`; AWS credentials and region come from the usual sources, such as an EC2 instance role and `AWS_REGION`. |
+| `SIGNUP_EMAIL_FROM` | Turns on self-service sign-up, with emails sent from this address through Amazon SES. Needs `API_KEY_DATABASE` and `PUBLIC_BASE_URL`; AWS credentials come from the usual sources, such as an EC2 instance role. |
+| `AWS_REGION` | The Amazon SES region the sender is verified in. Without it, the region comes from boto3's own sources, such as `AWS_DEFAULT_REGION`. |
 | `TRUSTED_PROXIES` | How many reverse proxies sit in front of the app, so the client address comes from `X-Forwarded-For`. |
 
 With limits on, responses under `/api/` carry `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset`, and a request over the limit gets `429` with `Retry-After`:
