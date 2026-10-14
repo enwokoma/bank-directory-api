@@ -2,7 +2,8 @@
 
 The CBN website's Financial Institutions pages load their tables from a small
 JSON API with one list endpoint per licence category. This module reads those
-lists and returns records in the shared dataset shape.
+lists, adds the mobile money operators from the CBN's payments pages, and
+returns records in the shared dataset shape.
 
 The site also has a per-institution detail endpoint with licence tier and
 website, but it answers HTTP 500 for many institutions and its websites are
@@ -18,6 +19,7 @@ from typing import Any
 
 from src.core.cleaning import clean_text
 from src.core.source_client import SourceClient
+from src.countries.nigeria import mobile_money
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +58,12 @@ def fetch_dataset(client: SourceClient) -> dict[str, Any]:
                 )
                 continue
             banks[institution_id] = bank
-    return {"sources": [SOURCE], "banks": drop_duplicate_names(list(banks.values()))}
+    operators = mobile_money.fetch_mobile_money_operators(client)
+    logger.info("CBN lists %d mobile money operators", len(operators))
+    return {
+        "sources": [SOURCE, mobile_money.SOURCE],
+        "banks": drop_duplicate_names(list(banks.values())) + operators,
+    }
 
 
 def drop_duplicate_names(banks: list[dict[str, Any]]) -> list[dict[str, Any]]:

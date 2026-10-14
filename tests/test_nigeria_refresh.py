@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+from src.countries.nigeria import mobile_money
 from src.countries.nigeria import refresh as nigeria_refresh
 
 FIXTURES = Path(__file__).parent / "fixtures" / "nigeria"
@@ -22,6 +23,10 @@ class FixtureClient:
             return self.overrides[endpoint]
         return json.loads((FIXTURES / f"{endpoint}.json").read_text(encoding="utf-8"))
 
+    def get_text(self, url, params=None, headers=None):
+        assert url == mobile_money.PSP_PAGE_URL
+        return self.overrides.get("PSPs.html") or (FIXTURES / "PSPs.html").read_text(encoding="utf-8")
+
 
 def by_name(banks):
     return {bank["name"]: bank for bank in banks}
@@ -30,7 +35,6 @@ def by_name(banks):
 def test_builds_records_from_every_category():
     dataset = nigeria_refresh.fetch_dataset(FixtureClient())
     banks = by_name(dataset["banks"])
-    assert dataset["sources"] == [nigeria_refresh.SOURCE]
     assert banks["Access Bank Plc"] == {
         "name": "Access Bank Plc",
         "type": "commercial",
@@ -43,7 +47,9 @@ def test_builds_records_from_every_category():
         "payment_service",
         "microfinance",
         "mortgage",
+        "mobile_money",
     }
+    assert dataset["sources"] == [nigeria_refresh.SOURCE, mobile_money.SOURCE]
 
 
 def test_cleans_spacing_without_changing_capitalization():
@@ -74,3 +80,26 @@ def test_empty_category_stops_the_refresh():
 def test_row_without_a_name_stops_the_refresh():
     with pytest.raises(ValueError, match="missing an id or name"):
         nigeria_refresh.fetch_dataset(FixtureClient({"GetPSBs": [{"id": 5, "name": "  "}]}))
+
+
+def test_adds_licensed_mobile_money_operators():
+    banks = by_name(nigeria_refresh.fetch_dataset(FixtureClient())["banks"])
+    assert banks["Opay Digital Services Limited (Formerly Paycom Nigeria Limited)"] == {
+        "name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
+        "type": "mobile_money",
+        "identifiers": {},
+    }
+    assert sum(1 for bank in banks.values() if bank["type"] == "mobile_money") == 17
+
+
+def test_reads_only_the_mobile_money_table():
+    names = mobile_money.parse_mobile_money_operators((FIXTURES / "PSPs.html").read_text(encoding="utf-8"))
+    assert names[0] == "Abeg Technologies Limited"
+    assert names[-1] == "Xpress MTS Limited"
+    assert "Visa International Service Association" not in names
+    assert "Interswitch Limited" not in names
+
+
+def test_page_without_mobile_money_operators_stops_the_refresh():
+    with pytest.raises(ValueError, match="no mobile money operators"):
+        nigeria_refresh.fetch_dataset(FixtureClient({"PSPs.html": "<html><h3>A. CARD SCHEMES</h3></html>"}))
