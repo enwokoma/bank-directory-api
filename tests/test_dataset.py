@@ -67,6 +67,13 @@ def test_rejects_an_identifier_value_held_by_two_banks():
     ]
 
 
+def test_nigerian_nibss_codes_must_have_six_digits():
+    raw = with_changes(lambda raw: raw["banks"][0]["identifiers"].update(nibss_code="044"))
+    assert validate_dataset(raw, NIGERIA_PROFILE) == [
+        "banks[0]: identifier 'nibss_code' value '044' does not match '[0-9]{6}'."
+    ]
+
+
 def test_rejects_non_object():
     assert validate_dataset([], NIGERIA_PROFILE) == ["The file must contain a JSON object."]
 

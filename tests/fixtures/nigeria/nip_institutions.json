@@ -1,0 +1,20 @@
+{
+  "data": [
+    {"code": "000014", "name": "ACCESS BANK"},
+    {"code": "000005", "name": "ACCESS(DIAMOND) BANK"},
+    {"code": "000011", "name": "UNITY BANK"},
+    {"code": "000015", "name": "ZENITH BANK"},
+    {"code": "000024", "name": "RAND MERCHANT BANK"},
+    {"code": "000006", "name": "JAIZ BANK"},
+    {"code": "000026", "name": "TAJ BANK"},
+    {"code": "060001", "name": "CORONATION MERCHANT BANK"},
+    {"code": "070010", "name": "ABBEY MORTGAGE BANK"},
+    {"code": "090267", "name": "KUDA MICROFINANCE BANK"},
+    {"code": "100002", "name": "PAGA"},
+    {"code": "100004", "name": "OPAY"},
+    {"code": "100033", "name": "PALMPAY"},
+    {"code": "110002", "name": "A PAYMENT PROCESSOR"},
+    {"code": "120001", "name": "9 PAYMENT SERVICE BANK"},
+    {"code": "120003", "name": "MOMO PAYMENT SERVICE BANK"}
+  ]
+}

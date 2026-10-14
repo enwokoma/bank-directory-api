@@ -19,7 +19,7 @@ from typing import Any
 
 from src.core.cleaning import clean_text
 from src.core.source_client import SourceClient
-from src.countries.nigeria import mobile_money
+from src.countries.nigeria import mobile_money, nibss_codes, nip
 
 logger = logging.getLogger(__name__)
 
@@ -60,10 +60,66 @@ def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | N
             banks[institution_id] = bank
     operators = mobile_money.fetch_mobile_money_operators(client)
     logger.info("CBN lists %d mobile money operators", len(operators))
-    return {
-        "sources": [SOURCE, mobile_money.SOURCE],
-        "banks": drop_duplicate_names(list(banks.values())) + operators,
-    }
+    records = drop_duplicate_names(list(banks.values())) + operators
+    sources = [SOURCE, mobile_money.SOURCE]
+
+    settings = nip.settings_from_env()
+    if settings is None:
+        kept = keep_previous_nibss_codes(records, previous_banks or [])
+        logger.warning("%s is not set, so the %d NIBSS codes already in the file were kept.", nip.ENV_URL, kept)
+        if kept:
+            sources.append(nip.SOURCE)
+    else:
+        institutions = nip.fetch_nip_institutions(client, settings)
+        logger.info("The NIP institution list has %d institutions", len(institutions))
+        report = nibss_codes.assign_nibss_codes(
+            records, institutions, nibss_codes.load_reviewed_matches(nibss_codes.MATCHES_FILE)
+        )
+        log_match_report(report, records)
+        sources.append(nip.SOURCE)
+    return {"sources": sources, "banks": records}
+
+
+def keep_previous_nibss_codes(records: list[dict[str, Any]], previous_banks: list[dict[str, Any]]) -> int:
+    """Copy each bank's NIBSS code from the previous file, matched by CBN record id or else by name."""
+    by_cbn_id: dict[str, str] = {}
+    by_name: dict[str, str] = {}
+    for bank in previous_banks:
+        code = bank.get("identifiers", {}).get(nibss_codes.SCHEME)
+        if not code:
+            continue
+        cbn_id = bank["identifiers"].get("cbn_institution_id")
+        if cbn_id:
+            by_cbn_id[cbn_id] = code
+        else:
+            by_name[bank["name"]] = code
+    kept = 0
+    for record in records:
+        cbn_id = record["identifiers"].get("cbn_institution_id")
+        code = by_cbn_id.get(cbn_id) if cbn_id else by_name.get(record["name"])
+        if code:
+            record["identifiers"][nibss_codes.SCHEME] = code
+            kept += 1
+    return kept
+
+
+def log_match_report(report: nibss_codes.MatchReport, records: list[dict[str, Any]]) -> None:
+    """Print what still needs a reviewed match, so the matches file can be extended."""
+    logger.info("NIBSS codes: %d matched automatically, %d from reviewed matches.", report.automatic, report.reviewed)
+    for problem in report.problems:
+        logger.warning(problem)
+    types = {record["name"]: record["type"] for record in records}
+    unmatched = [name for name in report.unmatched_banks if types[name] != "microfinance"]
+    logger.info(
+        "%d banks have no NIBSS code (%d microfinance banks, most of which are not on NIP).",
+        len(report.unmatched_banks),
+        len(report.unmatched_banks) - len(unmatched),
+    )
+    for name in unmatched:
+        logger.info("  no code: %s (%s)", name, types[name])
+    logger.info("%d NIP institutions of these types matched no bank:", len(report.unused_institutions))
+    for institution in report.unused_institutions:
+        logger.info("  unused: %s %s", institution.code, institution.name)
 
 
 def drop_duplicate_names(banks: list[dict[str, Any]]) -> list[dict[str, Any]]:

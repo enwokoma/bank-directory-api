@@ -23,6 +23,8 @@ NIGERIA_PROFILE = CountryProfile(
     ),
     identifier_schemes={
         "cbn_institution_id": "Record ID in the Central Bank of Nigeria's financial institutions register",
+        "nibss_code": "6-digit NIBSS Instant Payment (NIP) institution code, used to send bank transfers",
     },
+    identifier_patterns={"cbn_institution_id": r"[0-9]+", "nibss_code": r"[0-9]{6}"},
     refresh_module="src.countries.nigeria.refresh",
 )
