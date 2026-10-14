@@ -25,7 +25,7 @@ class TestServiceEndpoints:
     def test_swagger_ui_and_spec_are_served(self, client):
         assert client.get("/api-docs").status_code == 200
         spec = get_json(client, "/apispec_1.json")
-        assert "/api/countries/{country_code}" in spec["paths"]
+        assert "/api/countries/{country_code}/banks" in spec["paths"]
 
 
 class TestCountries:
@@ -52,3 +52,53 @@ class TestCountries:
             "success": False,
             "message": "Unsupported country code: XX. GET /api/countries lists the supported countries.",
         }
+        assert get_json(client, "/api/countries/XX/banks", status=404)["success"] is False
+
+
+class TestBankList:
+    def test_returns_every_bank_sorted_by_name(self, client):
+        country = get_json(client, "/api/countries/NG")["country"]
+        data = get_json(client, "/api/countries/NG/banks")
+        assert data["country"] == {"alpha2": "NG", "alpha3": "NGA", "name": "Nigeria"}
+        assert data["total"] == len(data["banks"]) == country["bank_count"]
+        assert data["offset"] == 0
+        assert data["limit"] is None
+        assert list(data["banks"][0]) == ["id", "name", "type", "identifiers"]
+
+    def test_filters_by_one_or_more_types(self, client):
+        counts = {item["code"]: item["bank_count"] for item in get_json(client, "/api/countries/NG")["country"]["bank_types"]}
+        commercial = get_json(client, "/api/countries/NG/banks?type=commercial")
+        assert commercial["total"] == counts["commercial"]
+        assert {bank["type"] for bank in commercial["banks"]} == {"commercial"}
+
+        both = get_json(client, "/api/countries/NG/banks?type=Commercial, merchant")
+        assert both["total"] == counts["commercial"] + counts["merchant"]
+
+    def test_rejects_unknown_type(self, client):
+        message = get_json(client, "/api/countries/NG/banks?type=savings", status=400)["message"]
+        assert "savings" in message
+        assert "commercial" in message
+
+    @pytest.mark.parametrize("query", ["zenith", "ZENITH", "  Zenith   bank ", "zenith-bank"])
+    def test_searches_names_and_ids(self, client, query):
+        banks = get_json(client, f"/api/countries/NG/banks?q={query}")["banks"]
+        assert "zenith-bank" in [bank["id"] for bank in banks]
+
+    def test_search_and_type_combine(self, client):
+        banks = get_json(client, "/api/countries/NG/banks?q=bank&type=merchant")["banks"]
+        assert banks
+        assert all(bank["type"] == "merchant" for bank in banks)
+
+    def test_pages_with_limit_and_offset(self, client):
+        everything = get_json(client, "/api/countries/NG/banks")["banks"]
+        page = get_json(client, "/api/countries/NG/banks?limit=5&offset=5")
+        assert page["banks"] == everything[5:10]
+        assert page["total"] == len(everything)
+        assert (page["limit"], page["offset"]) == (5, 5)
+
+    @pytest.mark.parametrize(
+        "query",
+        ["limit=0", "limit=1001", "limit=ten", "offset=-1", "offset=1.5"],
+    )
+    def test_rejects_bad_paging(self, client, query):
+        assert get_json(client, f"/api/countries/NG/banks?{query}", status=400)["success"] is False
