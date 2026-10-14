@@ -53,6 +53,7 @@ class TestCountries:
             "message": "Unsupported country code: XX. GET /api/countries lists the supported countries.",
         }
         assert get_json(client, "/api/countries/XX/banks", status=404)["success"] is False
+        assert get_json(client, "/api/countries/XX/banks/access-bank", status=404)["success"] is False
 
 
 class TestBankList:
@@ -102,3 +103,17 @@ class TestBankList:
     )
     def test_rejects_bad_paging(self, client, query):
         assert get_json(client, f"/api/countries/NG/banks?{query}", status=400)["success"] is False
+
+
+class TestBankDetail:
+    def test_returns_one_bank(self, client):
+        data = get_json(client, "/api/countries/NGA/banks/access-bank")
+        assert data["bank"]["name"] == "Access Bank Plc"
+        assert data["bank"]["type"] == "commercial"
+        assert data["country"]["alpha2"] == "NG"
+
+    def test_ids_ignore_case(self, client):
+        assert get_json(client, "/api/countries/NG/banks/ACCESS-BANK")["bank"]["id"] == "access-bank"
+
+    def test_unknown_bank_is_404(self, client):
+        assert get_json(client, "/api/countries/NG/banks/no-such-bank", status=404)["success"] is False

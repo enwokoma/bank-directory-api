@@ -129,6 +129,38 @@ def list_banks(country_code: str):
     ), 200
 
 
+@banks_bp.route("/countries/<country_code>/banks/<bank_id>", methods=["GET"])
+def get_bank(country_code: str, bank_id: str):
+    """
+    Get one bank
+    ---
+    tags: [Banks]
+    parameters:
+      - name: country_code
+        in: path
+        type: string
+        required: true
+        description: ISO 3166-1 alpha-2 or alpha-3 code, for example NG or NGA
+      - name: bank_id
+        in: path
+        type: string
+        required: true
+        description: The bank's id from the bank list, for example access-bank
+    responses:
+      200:
+        description: The bank
+      404:
+        description: The country is not supported, or it has no bank with this id
+    """
+    dataset = _find_dataset(country_code)
+    if dataset is None:
+        return _unsupported_country(country_code)
+    bank = dataset.banks_by_id.get(bank_id.lower())
+    if bank is None:
+        return jsonify({"success": False, "message": f"No bank with id {bank_id!r} in {dataset.profile.name}."}), 404
+    return jsonify({"success": True, "country": _country_reference(dataset.profile), "bank": bank}), 200
+
+
 def _datasets() -> dict[str, CountryDataset]:
     return current_app.extensions["bank_datasets"]
 
