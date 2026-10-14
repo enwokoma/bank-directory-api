@@ -103,7 +103,7 @@ def build_dataset(
     retrieved_on: datetime.date,
 ) -> dict[str, Any]:
     """Assemble a data file from fetched records, keeping existing ids stable."""
-    banks = assign_ids(fetched["banks"], previous_banks, next(iter(profile.identifier_schemes)))
+    banks = assign_ids(fetched["banks"], previous_banks, list(profile.identifier_schemes))
     return {
         "country": profile.alpha3,
         "retrieved_on": retrieved_on.isoformat(),
@@ -112,25 +112,38 @@ def build_dataset(
     }
 
 
-def assign_ids(records: list[dict[str, Any]], previous_banks: list[dict[str, Any]], key_scheme: str) -> list[dict[str, Any]]:
+def assign_ids(
+    records: list[dict[str, Any]], previous_banks: list[dict[str, Any]], key_schemes: list[str]
+) -> list[dict[str, Any]]:
     """Give each record an id: its previous id when the bank was already listed, else a new slug.
 
-    Reused ids are claimed first so a newly licensed bank can never take over
-    the id of an existing one, even when the two names slug the same way.
+    A record is the same bank as an earlier one when they share an identifier
+    (tried in the profile's order), or failing that, the exact same name.
+    Reused ids are claimed first, and every earlier id stays reserved, so a
+    newly listed bank never takes over an existing one's id.
     """
-    previous_ids = {
-        bank["identifiers"][key_scheme]: bank["id"] for bank in previous_banks if key_scheme in bank.get("identifiers", {})
-    }
+    previous_ids: dict[tuple[str, str], str] = {}
+    previous_by_name: dict[str, dict[str, Any]] = {}
+    for bank in previous_banks:
+        for scheme in key_schemes:
+            if scheme in bank.get("identifiers", {}):
+                previous_ids.setdefault((scheme, bank["identifiers"][scheme]), bank["id"])
+        previous_by_name.setdefault(bank["name"], bank)
+
     taken: set[str] = set()
     ids: list[str | None] = []
     for record in records:
-        reused = previous_ids.get(record["identifiers"].get(key_scheme))
+        keys = [(scheme, record["identifiers"][scheme]) for scheme in key_schemes if scheme in record["identifiers"]]
+        reused = next((previous_ids[key] for key in keys if key in previous_ids), None)
+        namesake = previous_by_name.get(record["name"])
+        if reused is None and namesake is not None and not _conflicting_identifiers(record, namesake, key_schemes):
+            reused = namesake["id"]
         if reused in taken:
             reused = None
         ids.append(reused)
         if reused:
             taken.add(reused)
-    taken.update(previous_ids.values())
+    taken.update(bank["id"] for bank in previous_banks)
 
     banks = []
     for record, bank_id in zip(records, ids, strict=True):
@@ -142,6 +155,17 @@ def assign_ids(records: list[dict[str, Any]], previous_banks: list[dict[str, Any
             taken.add(bank_id)
         banks.append({"id": bank_id, **record})
     return banks
+
+
+def _conflicting_identifiers(record: dict[str, Any], previous: dict[str, Any], key_schemes: list[str]) -> bool:
+    """True when both banks have a value for the same scheme and the values differ."""
+    previous_identifiers = previous.get("identifiers", {})
+    return any(
+        scheme in record["identifiers"]
+        and scheme in previous_identifiers
+        and record["identifiers"][scheme] != previous_identifiers[scheme]
+        for scheme in key_schemes
+    )
 
 
 def summarize_changes(previous_banks: list[dict[str, Any]], banks: list[dict[str, Any]]) -> list[str]:

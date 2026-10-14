@@ -19,14 +19,14 @@ def record(name, cbn_id, bank_type="commercial"):
 
 class TestAssignIds:
     def test_new_banks_get_slugs_and_collisions_get_a_suffix(self):
-        banks = refresh.assign_ids([record("Paragon Bank", "1"), record("Paragon Bank Ltd", "2")], [], "cbn_institution_id")
+        banks = refresh.assign_ids([record("Paragon Bank", "1"), record("Paragon Bank Ltd", "2")], [], ["cbn_institution_id"])
         assert [bank["id"] for bank in banks] == ["paragon-bank", "paragon-bank-2"]
 
     def test_existing_banks_keep_their_id_after_a_rename(self):
         previous = [
             {"id": "diamond-bank", "name": "Diamond Bank", "type": "commercial", "identifiers": {"cbn_institution_id": "9"}}
         ]
-        banks = refresh.assign_ids([record("Access Bank (Diamond)", "9")], previous, "cbn_institution_id")
+        banks = refresh.assign_ids([record("Access Bank (Diamond)", "9")], previous, ["cbn_institution_id"])
         assert banks[0]["id"] == "diamond-bank"
 
     def test_new_bank_cannot_take_an_existing_id(self):
@@ -35,7 +35,7 @@ class TestAssignIds:
         ]
         # The new bank comes first in source order but must not claim zenith-bank.
         banks = refresh.assign_ids(
-            [record("Zenith Bank", "99"), record("Zenith Bank Plc", "24")], previous, "cbn_institution_id"
+            [record("Zenith Bank", "99"), record("Zenith Bank Plc", "24")], previous, ["cbn_institution_id"]
         )
         assert [bank["id"] for bank in banks] == ["zenith-bank-2", "zenith-bank"]
 
@@ -43,8 +43,28 @@ class TestAssignIds:
         previous = [
             {"id": "heritage-bank", "name": "Heritage Bank", "type": "commercial", "identifiers": {"cbn_institution_id": "9"}}
         ]
-        banks = refresh.assign_ids([record("Heritage Bank", "77")], previous, "cbn_institution_id")
+        banks = refresh.assign_ids([record("Heritage Bank", "77")], previous, ["cbn_institution_id"])
         assert banks[0]["id"] == "heritage-bank-2"
+
+    def test_a_bank_without_the_first_identifier_keeps_its_id_through_another_one(self):
+        previous = [
+            {"id": "opay-digital-services", "name": "OPay Digital Services Limited", "identifiers": {"nibss_code": "100004"}}
+        ]
+        renamed = {"name": "OPay Limited", "type": "mobile_money", "identifiers": {"nibss_code": "100004"}}
+        banks = refresh.assign_ids([renamed], previous, ["cbn_institution_id", "nibss_code"])
+        assert banks[0]["id"] == "opay-digital-services"
+
+    def test_a_bank_without_identifiers_keeps_its_id_by_name(self):
+        previous = [{"id": "visual-ict", "name": "Visual ICT Limited", "identifiers": {}}]
+        operator = {"name": "Visual ICT Limited", "type": "mobile_money", "identifiers": {}}
+        banks = refresh.assign_ids([operator], previous, ["cbn_institution_id", "nibss_code"])
+        assert banks[0]["id"] == "visual-ict"
+
+    def test_ids_of_renamed_banks_without_identifiers_stay_reserved(self):
+        previous = [{"id": "visual-ict", "name": "Visual ICT Limited", "identifiers": {}}]
+        newcomer = {"name": "Visual ICT", "type": "mobile_money", "identifiers": {}}
+        banks = refresh.assign_ids([newcomer], previous, ["cbn_institution_id"])
+        assert banks[0]["id"] == "visual-ict-2"
 
 
 def test_build_dataset_sorts_banks_and_validates():
