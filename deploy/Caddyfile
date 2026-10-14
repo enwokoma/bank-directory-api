@@ -1,0 +1,12 @@
+# Add this block to the server's Caddyfile (usually /etc/caddy/Caddyfile),
+# then reload Caddy. Caddy gets and renews the HTTPS certificate itself, and
+# sets X-Forwarded-For to the real client address. See docs/deploy.md.
+banks.example.com {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:5106
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		-Server
+	}
+}

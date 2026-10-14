@@ -1,0 +1,43 @@
+# The hosted API and the Redis that holds its rate limit counters.
+# The API listens only on the host's loopback address; Caddy on the host
+# serves it publicly. See docs/deploy.md.
+name: bank-directory-api
+
+services:
+  api:
+    build:
+      context: ..
+    image: bank-directory-api:latest
+    env_file: .env.production
+    environment:
+      RATE_LIMIT_STORAGE_URI: redis://redis:6379/0
+      API_KEY_DATABASE: /var/lib/bank-directory/keys.sqlite3
+      TRUSTED_PROXIES: "1"
+    ports:
+      - "127.0.0.1:5106:5006"
+    volumes:
+      - keys:/var/lib/bank-directory
+    depends_on:
+      redis:
+        condition: service_healthy
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4-alpine
+    # Counters expire on their own and are fine to lose on a restart, so nothing is saved to disk.
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "64mb", "--maxmemory-policy", "volatile-ttl"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    read_only: true
+    tmpfs: [/data]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+
+volumes:
+  keys:
