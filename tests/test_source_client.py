@@ -59,9 +59,10 @@ class TestSourceClient:
 
     def test_does_not_retry_client_errors(self):
         client, session = make_client(FakeResponse(404))
-        with pytest.raises(SourceError, match="answered 404"):
+        with pytest.raises(SourceError, match="answered 404") as raised:
             client.get_json("https://example.test/")
         assert session.calls == 1
+        assert raised.value.status == 404
 
     def test_reads_text_pages_and_sends_extra_headers(self):
         client, session = make_client(FakeResponse(200, text="<html>banks</html>"))

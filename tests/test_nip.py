@@ -2,6 +2,7 @@
 
 import pytest
 
+from src.core.source_client import SourceError
 from src.countries.nigeria import nip
 
 ROWS = [
@@ -17,12 +18,15 @@ EXPECTED = [
 
 
 class RecordingClient:
-    def __init__(self, body):
+    def __init__(self, body, error=None):
         self.body = body
+        self.error = error
         self.calls = []
 
     def get_json(self, url, params=None, headers=None):
         self.calls.append((url, headers))
+        if self.error:
+            raise self.error
         return self.body
 
 
@@ -101,8 +105,8 @@ class TestSettings:
         )
         assert settings == [
             nip.NipSettings("https://one.example.test/", None, "X-API-Key"),
-            nip.NipSettings("https://two.example.test/", "Bearer two", "Authorization"),
-            nip.NipSettings("https://four.example.test/", None, "X-API-Key"),
+            nip.NipSettings("https://two.example.test/", "Bearer two", "Authorization", "NIP_INSTITUTIONS_URL_2"),
+            nip.NipSettings("https://four.example.test/", None, "X-API-Key", "NIP_INSTITUTIONS_URL_4"),
         ]
 
 
@@ -117,3 +121,31 @@ def test_fetch_without_a_key_sends_no_header():
     client = RecordingClient(ROWS)
     nip.fetch_nip_institutions(client, nip.NipSettings("https://example.test/banks", None, "X-API-Key"))
     assert client.calls == [("https://example.test/banks", None)]
+
+
+@pytest.mark.parametrize(
+    ("error", "message"),
+    [
+        (
+            SourceError("https://secret.example.test/banks answered 401", 401),
+            "set in NIP_INSTITUTIONS_URL_2 answered HTTP 401.",
+        ),
+        (
+            SourceError("https://secret.example.test/banks failed after 4 attempts: host secret.example.test"),
+            "could not be reached.",
+        ),
+    ],
+)
+def test_errors_name_the_setting_not_the_endpoint(error, message):
+    settings = nip.NipSettings("https://secret.example.test/banks", "key", "X-API-Key", "NIP_INSTITUTIONS_URL_2")
+    with pytest.raises(SourceError) as raised:
+        nip.fetch_nip_institutions(RecordingClient(None, error=error), settings)
+    assert str(raised.value).endswith(message)
+    assert "secret.example.test" not in str(raised.value)
+    assert raised.value.__suppress_context__
+
+
+def test_an_unreadable_list_names_the_setting():
+    settings = nip.NipSettings("https://secret.example.test/banks", None, "X-API-Key", "NIP_INSTITUTIONS_URL_2")
+    with pytest.raises(ValueError, match="set in NIP_INSTITUTIONS_URL_2: The NIP institution list response has no"):
+        nip.fetch_nip_institutions(RecordingClient({"message": "Unauthorized"}), settings)

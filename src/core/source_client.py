@@ -21,7 +21,15 @@ _RETRY_STATUSES = frozenset({429, 500, 502, 503, 504})
 
 
 class SourceError(Exception):
-    """Raised when a source keeps failing after every retry."""
+    """Raised when a source keeps failing after every retry.
+
+    `status` is the HTTP status of a rejected request, or None when the source
+    could not be reached or kept failing in a way that is retried.
+    """
+
+    def __init__(self, message: str, status: int | None = None) -> None:
+        super().__init__(message)
+        self.status = status
 
 
 class _TransientResponse(Exception):
@@ -74,7 +82,7 @@ class SourceClient:
                 response.raise_for_status()
                 return read(response)
             except requests.HTTPError as exc:
-                raise SourceError(f"{url} answered {exc.response.status_code}") from exc
+                raise SourceError(f"{url} answered {exc.response.status_code}", exc.response.status_code) from exc
             except (requests.ConnectionError, requests.Timeout, _TransientResponse, ValueError) as exc:
                 last_error = exc
                 if attempt < self.attempts:
