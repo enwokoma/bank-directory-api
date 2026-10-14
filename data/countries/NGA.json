@@ -1,0 +1,6916 @@
+{
+  "country": "NGA",
+  "retrieved_on": "2026-10-14",
+  "sources": [
+    {
+      "name": "Central Bank of Nigeria: Financial Institutions",
+      "url": "https://www.cbn.gov.ng/supervision/finstitutions.html"
+    }
+  ],
+  "banks": [
+    {
+      "id": "1trust-microfinance-bank",
+      "name": "1Trust Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10008"
+      }
+    },
+    {
+      "id": "5tt-microfinance-bank",
+      "name": "5TT Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10016"
+      }
+    },
+    {
+      "id": "9-psb",
+      "name": "9 PSB Ltd",
+      "type": "payment_service",
+      "identifiers": {
+        "cbn_institution_id": "4117"
+      }
+    },
+    {
+      "id": "aacb-microfinance-bank",
+      "name": "AACB Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3187"
+      }
+    },
+    {
+      "id": "ab-microfinance-bank",
+      "name": "AB Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3188"
+      }
+    },
+    {
+      "id": "abbey-mortgage-bank",
+      "name": "ABBEY MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4079"
+      }
+    },
+    {
+      "id": "abia-state-university-microfinance-bank",
+      "name": "Abia State University Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3193"
+      }
+    },
+    {
+      "id": "abigi-microfinance-bank",
+      "name": "Abigi Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3194"
+      }
+    },
+    {
+      "id": "above-only-microfinance-bank",
+      "name": "Above Only Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3195"
+      }
+    },
+    {
+      "id": "abubakar-tafawa-balewa-university-atbu-microfinance-bank",
+      "name": "Abubakar Tafawa Balewa University (ATBU) Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3196"
+      }
+    },
+    {
+      "id": "abucoop-microfinance-bank",
+      "name": "Abucoop Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3197"
+      }
+    },
+    {
+      "id": "abulesoro-microfinance-bank",
+      "name": "Abulesoro Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3198"
+      }
+    },
+    {
+      "id": "access-bank",
+      "name": "Access Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "1"
+      }
+    },
+    {
+      "id": "accion-microfinance-bank",
+      "name": "Accion Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3199"
+      }
+    },
+    {
+      "id": "ace-microfinance-bank",
+      "name": "ACE Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3200"
+      }
+    },
+    {
+      "id": "achina-microfinance-bank",
+      "name": "Achina Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3201"
+      }
+    },
+    {
+      "id": "ada-microfinance-bank",
+      "name": "ADA Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3203"
+      }
+    },
+    {
+      "id": "adamawa-mortgage-bank",
+      "name": "Adamawa Mortgage Bank Limited",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "9882"
+      }
+    },
+    {
+      "id": "adazi-enu-microfinance-bank",
+      "name": "Adazi-Enu Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3204"
+      }
+    },
+    {
+      "id": "adazi-nnukwu-microfinance-bank",
+      "name": "Adazi-Nnukwu Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3206"
+      }
+    },
+    {
+      "id": "addosser-microfinance-bank",
+      "name": "Addosser Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3207"
+      }
+    },
+    {
+      "id": "adeyemi-college-staff-microfinance-bank",
+      "name": "Adeyemi College Staff Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3208"
+      }
+    },
+    {
+      "id": "adike-microfinance-bank",
+      "name": "Adike Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10017"
+      }
+    },
+    {
+      "id": "advancly-microfinance-bank",
+      "name": "Advancly Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10018"
+      }
+    },
+    {
+      "id": "afekhafe-microfinance-bank",
+      "name": "Afekhafe Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3209"
+      }
+    },
+    {
+      "id": "afemai-microfinance-bank",
+      "name": "Afemai Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3210"
+      }
+    },
+    {
+      "id": "afole-microfinance-bank",
+      "name": "Afole Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10019"
+      }
+    },
+    {
+      "id": "ag-homes",
+      "name": "AG HOMES",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4080"
+      }
+    },
+    {
+      "id": "agosasa-microfinance-bank",
+      "name": "Agosasa Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3211"
+      }
+    },
+    {
+      "id": "ahmadu-bello-university-microfinance-bank",
+      "name": "Ahmadu Bello University Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3213"
+      }
+    },
+    {
+      "id": "aibio-microfinance-bank",
+      "name": "Aibio Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3214"
+      }
+    },
+    {
+      "id": "ajewole-microfinance-bank",
+      "name": "Ajewole Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3216"
+      }
+    },
+    {
+      "id": "ajose-microfinance-bank",
+      "name": "Ajose Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3218"
+      }
+    },
+    {
+      "id": "ajuta-microfinance-bank",
+      "name": "Ajuta Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3219"
+      }
+    },
+    {
+      "id": "akalabo-microfinance-bank",
+      "name": "Akalabo Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3220"
+      }
+    },
+    {
+      "id": "akata-microfinance-bank",
+      "name": "Akata Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10020"
+      }
+    },
+    {
+      "id": "akokwa-microfinance-bank",
+      "name": "Akokwa Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3221"
+      }
+    },
+    {
+      "id": "akpo-microfinance-bank",
+      "name": "Akpo Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3222"
+      }
+    },
+    {
+      "id": "aku-diewa-microfinance-bank",
+      "name": "Aku Diewa Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3223"
+      }
+    },
+    {
+      "id": "akuchukwu-microfinance-bank",
+      "name": "Akuchukwu Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3224"
+      }
+    },
+    {
+      "id": "akwa-savings",
+      "name": "AKWA SAVINGS",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4081"
+      }
+    },
+    {
+      "id": "al-hikma-microfinance-bank",
+      "name": "Al'Hikma Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10021"
+      }
+    },
+    {
+      "id": "al-barakah-microfinance-bank",
+      "name": "Al-Barakah Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3226"
+      }
+    },
+    {
+      "id": "al-hayat-microfinance-bank",
+      "name": "Al-Hayat Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3230"
+      }
+    },
+    {
+      "id": "albasu-microfinance-bank",
+      "name": "Albasu Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3227"
+      }
+    },
+    {
+      "id": "alekun-microfinance-bank",
+      "name": "Alekun Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3228"
+      }
+    },
+    {
+      "id": "alert-microfinance-bank",
+      "name": "Alert Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3192"
+      }
+    },
+    {
+      "id": "algreb-microfinance-bank",
+      "name": "Algreb Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3229"
+      }
+    },
+    {
+      "id": "aliero-microfinance-bank",
+      "name": "Aliero Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3231"
+      }
+    },
+    {
+      "id": "all-workers-microfinance-bank",
+      "name": "All Workers Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3233"
+      }
+    },
+    {
+      "id": "alor-microfinance-bank",
+      "name": "Alor Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3235"
+      }
+    },
+    {
+      "id": "alpha-kapital-microfinance-bank",
+      "name": "Alpha Kapital Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3236"
+      }
+    },
+    {
+      "id": "alpha-morgan-bank",
+      "name": "Alpha Morgan Bank Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "9894"
+      }
+    },
+    {
+      "id": "alternative-bank",
+      "name": "Alternative Bank Limited",
+      "type": "non_interest",
+      "identifiers": {
+        "cbn_institution_id": "9845"
+      }
+    },
+    {
+      "id": "alvana-microfinance-bank",
+      "name": "Alvana Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3237"
+      }
+    },
+    {
+      "id": "amac-microfinance-bank",
+      "name": "AMAC Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3238"
+      }
+    },
+    {
+      "id": "amazu-microfinance-bank",
+      "name": "Amazu Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3239"
+      }
+    },
+    {
+      "id": "amegy-microfinance-bank",
+      "name": "Amegy Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3241"
+      }
+    },
+    {
+      "id": "amju-unique-microfinance-bank",
+      "name": "AMJU-Unique Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3242"
+      }
+    },
+    {
+      "id": "amml-microfinance-bank-limited-abuja-markets-management",
+      "name": "AMML Microfinance Bank Limited (Abuja Markets Management Ltd)",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3243"
+      }
+    },
+    {
+      "id": "ampersand-microfinance-bank",
+      "name": "Ampersand Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3245"
+      }
+    },
+    {
+      "id": "ample-microfinance-bank",
+      "name": "Ample Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9874"
+      }
+    },
+    {
+      "id": "amucha-microfinance-bank",
+      "name": "Amucha Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3246"
+      }
+    },
+    {
+      "id": "anchorage-microfinance-bank",
+      "name": "Anchorage Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3247"
+      }
+    },
+    {
+      "id": "aniocha-microfinance-bank",
+      "name": "Aniocha Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3248"
+      }
+    },
+    {
+      "id": "annointed-microfinance-bank",
+      "name": "Annointed Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3249"
+      }
+    },
+    {
+      "id": "aogo-microfinance-bank",
+      "name": "Aogo Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3251"
+      }
+    },
+    {
+      "id": "apa-microfinance-bank",
+      "name": "Apa Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3252"
+      }
+    },
+    {
+      "id": "apex-trust-microfinance-bank",
+      "name": "Apex Trust Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3254"
+      }
+    },
+    {
+      "id": "aramoko-microfinance-bank",
+      "name": "Aramoko Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3256"
+      }
+    },
+    {
+      "id": "aris-microfinance-bank",
+      "name": "Aris Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3257"
+      }
+    },
+    {
+      "id": "asha-microfinance-bank",
+      "name": "Asha Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3259"
+      }
+    },
+    {
+      "id": "aso-savings-loans",
+      "name": "ASO SAVINGS & LOANS",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4082"
+      }
+    },
+    {
+      "id": "aspire-microfinance-bank",
+      "name": "Aspire Microfinance Bank LImited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3260"
+      }
+    },
+    {
+      "id": "asset-matrix-microfinance-bank",
+      "name": "Asset Matrix Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3261"
+      }
+    },
+    {
+      "id": "assets-microfinance-bank",
+      "name": "Assets Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3262"
+      }
+    },
+    {
+      "id": "astra-polaris-microfinance-bank",
+      "name": "Astra Polaris Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3264"
+      }
+    },
+    {
+      "id": "auchi-microfinance-bank",
+      "name": "Auchi Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3266"
+      }
+    },
+    {
+      "id": "auchi-polytechnic-microfinance-bank",
+      "name": "Auchi Polytechnic Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9873"
+      }
+    },
+    {
+      "id": "ave-maria-mfb",
+      "name": "AVE MARIA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4135"
+      }
+    },
+    {
+      "id": "avest-microfinance-bank",
+      "name": "Avest Microfinance bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10023"
+      }
+    },
+    {
+      "id": "avunegbe-microfinance-bank",
+      "name": "Avunegbe Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3267"
+      }
+    },
+    {
+      "id": "avvic-microfinance-bank",
+      "name": "AVVIC MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9902"
+      }
+    },
+    {
+      "id": "awe-microfinance-bank",
+      "name": "Awe Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3268"
+      }
+    },
+    {
+      "id": "awesome-mfb",
+      "name": "AWESOME MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4137"
+      }
+    },
+    {
+      "id": "awka-etiti-microfinance-bank",
+      "name": "Awka-Etiti Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3271"
+      }
+    },
+    {
+      "id": "awkuzu-microfinance-bank",
+      "name": "Awkuzu Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3272"
+      }
+    },
+    {
+      "id": "azsa-microfinance-bank",
+      "name": "AZSA Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3274"
+      }
+    },
+    {
+      "id": "b-c-kash-microfinance-bank",
+      "name": "B C Kash Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3275"
+      }
+    },
+    {
+      "id": "babba-microfinance-bank",
+      "name": "Babba Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3276"
+      }
+    },
+    {
+      "id": "babcock-microfinance-bank",
+      "name": "Babcock Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3277"
+      }
+    },
+    {
+      "id": "babura-microfinance-bank",
+      "name": "Babura Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3278"
+      }
+    },
+    {
+      "id": "baige-microfinance-bank",
+      "name": "BAIGE MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9907"
+      }
+    },
+    {
+      "id": "baines-credit-microfinance-bank",
+      "name": "Baines Credit Microfinance bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3279"
+      }
+    },
+    {
+      "id": "balera-microfinance-bank",
+      "name": "Balera Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3280"
+      }
+    },
+    {
+      "id": "balogun-fulani-microfinance-bank",
+      "name": "Balogun Fulani Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3281"
+      }
+    },
+    {
+      "id": "balogun-gambari-microfinance-bank",
+      "name": "Balogun Gambari Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3282"
+      }
+    },
+    {
+      "id": "bam-microfinance-bank",
+      "name": "Bam Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3283"
+      }
+    },
+    {
+      "id": "banex-microfinance-bank",
+      "name": "Banex Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3286"
+      }
+    },
+    {
+      "id": "bankeasy-microfinance-bank",
+      "name": "Bankeasy Microfinance bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10024"
+      }
+    },
+    {
+      "id": "baobab-microfinance-bank",
+      "name": "Baobab Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3287"
+      }
+    },
+    {
+      "id": "barnawa-microfinance-bank",
+      "name": "Barnawa Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3288"
+      }
+    },
+    {
+      "id": "batagwara-mfb",
+      "name": "BATAGWARA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4077"
+      }
+    },
+    {
+      "id": "bauchi-cfa-mirofinance-bank",
+      "name": "Bauchi CFA Mirofinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3290"
+      }
+    },
+    {
+      "id": "bauchi-investment-corporation-mfb-limited-bic",
+      "name": "Bauchi Investment Corporation MFB Limited (BIC)",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3291"
+      }
+    },
+    {
+      "id": "baure-mfb",
+      "name": "BAURE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4078"
+      }
+    },
+    {
+      "id": "bawyi-microfinance-bank",
+      "name": "Bawyi Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3292"
+      }
+    },
+    {
+      "id": "bayajidda-microfinance-bank",
+      "name": "Bayajidda Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3293"
+      }
+    },
+    {
+      "id": "bayero-university-microfinance-bank",
+      "name": "Bayero University Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3294"
+      }
+    },
+    {
+      "id": "bayetin-microfinance-bank",
+      "name": "Bayetin Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3295"
+      }
+    },
+    {
+      "id": "benue-microfinance-bank",
+      "name": "Benue Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3297"
+      }
+    },
+    {
+      "id": "benysta-microfinance-bank",
+      "name": "Benysta Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3298"
+      }
+    },
+    {
+      "id": "berachah-microfinance-bank",
+      "name": "Berachah Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3299"
+      }
+    },
+    {
+      "id": "best-star-microfinance-bank",
+      "name": "Best Star Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3300"
+      }
+    },
+    {
+      "id": "bethel-microfinance-bank",
+      "name": "Bethel Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3302"
+      }
+    },
+    {
+      "id": "better-life-microfinace-bank",
+      "name": "Better Life Microfinace Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3303"
+      }
+    },
+    {
+      "id": "bichi-microfinance-bank",
+      "name": "Bichi Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3306"
+      }
+    },
+    {
+      "id": "bida-polytechnic-microfinance-bank",
+      "name": "Bida Polytechnic Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3307"
+      }
+    },
+    {
+      "id": "bkd-new-microfinance-bank",
+      "name": "BKD NEW Microfinance bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10026"
+      }
+    },
+    {
+      "id": "bloc-microfinance-bank",
+      "name": "Bloc Microfinance bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10027"
+      }
+    },
+    {
+      "id": "blooms-microfinance-bank",
+      "name": "Blooms Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9881"
+      }
+    },
+    {
+      "id": "blucon-mfb",
+      "name": "BLUCON MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3311"
+      }
+    },
+    {
+      "id": "blue-ridge-mfb",
+      "name": "BLUE RIDGE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3312"
+      }
+    },
+    {
+      "id": "blueprint-investments-mfb",
+      "name": "BLUEPRINT INVESTMENTS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3313"
+      }
+    },
+    {
+      "id": "boctrust-mfb",
+      "name": "BOCTRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3316"
+      }
+    },
+    {
+      "id": "boi-mfb",
+      "name": "BOI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3317"
+      }
+    },
+    {
+      "id": "boji-boji-mfb",
+      "name": "BOJI BOJI MFB LTD.",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3318"
+      }
+    },
+    {
+      "id": "bokkos-mfb",
+      "name": "BOKKOS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3319"
+      }
+    },
+    {
+      "id": "bold-microfinance-bank",
+      "name": "Bold Microfinance bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10028"
+      }
+    },
+    {
+      "id": "bonghe-mfb",
+      "name": "BONGHE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3322"
+      }
+    },
+    {
+      "id": "boost-microfinance-bank",
+      "name": "Boost Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9878"
+      }
+    },
+    {
+      "id": "borgu-mfb",
+      "name": "BORGU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3323"
+      }
+    },
+    {
+      "id": "borno-renaissance-mfb",
+      "name": "BORNO RENAISSANCE MFB LTD.",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3324"
+      }
+    },
+    {
+      "id": "boromu-mfb",
+      "name": "BOROMU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3325"
+      }
+    },
+    {
+      "id": "borstal-mfb",
+      "name": "BORSTAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3326"
+      }
+    },
+    {
+      "id": "bosak-mfb",
+      "name": "BOSAK MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3327"
+      }
+    },
+    {
+      "id": "bowen-mfb",
+      "name": "BOWEN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3328"
+      }
+    },
+    {
+      "id": "bowman-mfb",
+      "name": "BOWMAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3329"
+      }
+    },
+    {
+      "id": "brent-skyfield-savings",
+      "name": "BRENT (SKYFIELD) SAVINGS",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4083"
+      }
+    },
+    {
+      "id": "brethren-mfb",
+      "name": "BRETHREN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3331"
+      }
+    },
+    {
+      "id": "brightway-mfb",
+      "name": "BRIGHTWAY MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3334"
+      }
+    },
+    {
+      "id": "broadview-mfb",
+      "name": "BROADVIEW MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3336"
+      }
+    },
+    {
+      "id": "brooks-mfb",
+      "name": "BROOKS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3337"
+      }
+    },
+    {
+      "id": "bubayero-mfb",
+      "name": "BUBAYERO MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3338"
+      }
+    },
+    {
+      "id": "bundi-mfb",
+      "name": "BUNDI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3339"
+      }
+    },
+    {
+      "id": "bungudu-mfb",
+      "name": "BUNGUDU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3340"
+      }
+    },
+    {
+      "id": "bunkasa-mfb",
+      "name": "BUNKASA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3341"
+      }
+    },
+    {
+      "id": "bunkure-mfb",
+      "name": "BUNKURE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3342"
+      }
+    },
+    {
+      "id": "bway-microfinance-bank",
+      "name": "BWAY Microfinance bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10029"
+      }
+    },
+    {
+      "id": "canaan-mfb",
+      "name": "CANAAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3346"
+      }
+    },
+    {
+      "id": "capitalmetriq-swift-mfb",
+      "name": "CAPITALMETRIQ SWIFT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3347"
+      }
+    },
+    {
+      "id": "capstone-mfb",
+      "name": "CAPSTONE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3348"
+      }
+    },
+    {
+      "id": "carbon-mfb",
+      "name": "CARBON MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3349"
+      }
+    },
+    {
+      "id": "caretaker-mfb",
+      "name": "CARETAKER MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3350"
+      }
+    },
+    {
+      "id": "casa-microfinance-bank",
+      "name": "Casa Microfinance bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10031"
+      }
+    },
+    {
+      "id": "cash-rite-mfb",
+      "name": "CASH RITE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3351"
+      }
+    },
+    {
+      "id": "cashconnect-mfb",
+      "name": "CASHCONNECT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3352"
+      }
+    },
+    {
+      "id": "cashwise-microfinance-bank",
+      "name": "CASHWISE MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9909"
+      }
+    },
+    {
+      "id": "castle-mfb",
+      "name": "CASTLE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3353"
+      }
+    },
+    {
+      "id": "catland-mfb",
+      "name": "CATLAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3354"
+      }
+    },
+    {
+      "id": "cedar-mfb",
+      "name": "CEDAR MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3355"
+      }
+    },
+    {
+      "id": "cedrus-microfinance-bank",
+      "name": "Cedrus Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10032"
+      }
+    },
+    {
+      "id": "centage-savings-loans",
+      "name": "CENTAGE SAVINGS & LOANS",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4084"
+      }
+    },
+    {
+      "id": "challenge-mfb",
+      "name": "CHALLENGE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3356"
+      }
+    },
+    {
+      "id": "changan-rts-mfb",
+      "name": "CHANGAN RTS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3358"
+      }
+    },
+    {
+      "id": "charis-microfinance-bank",
+      "name": "Charis Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10033"
+      }
+    },
+    {
+      "id": "chase-mfb",
+      "name": "CHASE MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3359"
+      }
+    },
+    {
+      "id": "chevron-employee-co-operative-mfb-cemcs",
+      "name": "CHEVRON EMPLOYEE CO-OPERATIVE MFB (CEMCS)",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3361"
+      }
+    },
+    {
+      "id": "chibueze-mfb",
+      "name": "CHIBUEZE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3362"
+      }
+    },
+    {
+      "id": "chikum-mfb",
+      "name": "CHIKUM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3364"
+      }
+    },
+    {
+      "id": "chrisore-mfb",
+      "name": "CHRISORE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3365"
+      }
+    },
+    {
+      "id": "chronicles-mfb",
+      "name": "CHRONICLES MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3366"
+      }
+    },
+    {
+      "id": "chukwunenye-mfb",
+      "name": "CHUKWUNENYE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3367"
+      }
+    },
+    {
+      "id": "cintrust-mfb",
+      "name": "CINTRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3368"
+      }
+    },
+    {
+      "id": "cit-mfb",
+      "name": "CIT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3369"
+      }
+    },
+    {
+      "id": "citibank-nigeria",
+      "name": "Citibank Nigeria Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "2"
+      }
+    },
+    {
+      "id": "citizen-trust-mfb",
+      "name": "CITIZEN TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3370"
+      }
+    },
+    {
+      "id": "city-code",
+      "name": "CITY CODE",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4085"
+      }
+    },
+    {
+      "id": "city-mission-methodist-mfb",
+      "name": "CITY MISSION METHODIST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3371"
+      }
+    },
+    {
+      "id": "civic-mfb",
+      "name": "CIVIC MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3372"
+      }
+    },
+    {
+      "id": "cloverleaf-mfb",
+      "name": "CLOVERLEAF MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3373"
+      }
+    },
+    {
+      "id": "coal-camp-mfb",
+      "name": "COAL CAMP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3374"
+      }
+    },
+    {
+      "id": "coastline-mfb",
+      "name": "COASTLINE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3375"
+      }
+    },
+    {
+      "id": "coeminna-mfb",
+      "name": "COEMINNA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3376"
+      }
+    },
+    {
+      "id": "confidence-mfb",
+      "name": "CONFIDENCE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3377"
+      }
+    },
+    {
+      "id": "consistent-trust-mfb",
+      "name": "CONSISTENT TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3379"
+      }
+    },
+    {
+      "id": "consumer-mfb",
+      "name": "CONSUMER MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3380"
+      }
+    },
+    {
+      "id": "cool-microfinance-bank",
+      "name": "Cool Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10034"
+      }
+    },
+    {
+      "id": "coop-savings-loans",
+      "name": "COOP SAVINGS & LOANS",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4086"
+      }
+    },
+    {
+      "id": "corestep-mfb",
+      "name": "CORESTEP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3381"
+      }
+    },
+    {
+      "id": "coronation-merchant-bank",
+      "name": "CORONATION MERCHANT BANK",
+      "type": "merchant",
+      "identifiers": {
+        "cbn_institution_id": "3181"
+      }
+    },
+    {
+      "id": "covenant-mfb",
+      "name": "COVENANT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3383"
+      }
+    },
+    {
+      "id": "crescent-mfb",
+      "name": "CRESCENT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3387"
+      }
+    },
+    {
+      "id": "crest-mfb",
+      "name": "CREST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3388"
+      }
+    },
+    {
+      "id": "crossriver-mfb",
+      "name": "CROSSRIVER MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3390"
+      }
+    },
+    {
+      "id": "crutech-mfb",
+      "name": "CRUTECH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3392"
+      }
+    },
+    {
+      "id": "csd-mfb",
+      "name": "CSD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3394"
+      }
+    },
+    {
+      "id": "custodian-mfb",
+      "name": "CUSTODIAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3396"
+      }
+    },
+    {
+      "id": "dabtikir-microfinance-bank",
+      "name": "Dabtikir Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10035"
+      }
+    },
+    {
+      "id": "daily-trust-mfb",
+      "name": "DAILY-TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3398"
+      }
+    },
+    {
+      "id": "dal-mfb",
+      "name": "DAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3399"
+      }
+    },
+    {
+      "id": "dambatta-makoda-mfb",
+      "name": "DAMBATTA- MAKODA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3400"
+      }
+    },
+    {
+      "id": "dash-microfinance-bank",
+      "name": "Dash Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10036"
+      }
+    },
+    {
+      "id": "davenport-microfinance-bank",
+      "name": "Davenport Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10010"
+      }
+    },
+    {
+      "id": "davodani-mfb",
+      "name": "DAVODANI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3404"
+      }
+    },
+    {
+      "id": "dawakin-kudu-mfb",
+      "name": "DAWAKIN KUDU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3405"
+      }
+    },
+    {
+      "id": "daylight-mfb",
+      "name": "DAYLIGHT MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3407"
+      }
+    },
+    {
+      "id": "dec-enugu-mfb",
+      "name": "DEC-ENUGU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3408"
+      }
+    },
+    {
+      "id": "delta-mortgage-finance",
+      "name": "DELTA MORTGAGE FINANCE",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4087"
+      }
+    },
+    {
+      "id": "destiny-mfb",
+      "name": "DESTINY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3409"
+      }
+    },
+    {
+      "id": "diobu-mfb",
+      "name": "DIOBU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3410"
+      }
+    },
+    {
+      "id": "doguwa-mfb",
+      "name": "DOGUWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3411"
+      }
+    },
+    {
+      "id": "dolphin-mfb",
+      "name": "DOLPHIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3412"
+      }
+    },
+    {
+      "id": "dorben-mfb",
+      "name": "DORBEN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3414"
+      }
+    },
+    {
+      "id": "dsc-microfinance-bank",
+      "name": "DSC Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10037"
+      }
+    },
+    {
+      "id": "dutse-mfb",
+      "name": "DUTSE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3415"
+      }
+    },
+    {
+      "id": "dutsin-ma-mfb",
+      "name": "DUTSIN-MA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4076"
+      }
+    },
+    {
+      "id": "duxbank-microfinance-bank",
+      "name": "Duxbank Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10038"
+      }
+    },
+    {
+      "id": "e-barcs-mfb",
+      "name": "e-BARCS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3421"
+      }
+    },
+    {
+      "id": "eagle-flight-mfb",
+      "name": "EAGLE FLIGHT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3416"
+      }
+    },
+    {
+      "id": "earnwell-mfb",
+      "name": "EARNWELL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3417"
+      }
+    },
+    {
+      "id": "east-gate-mfb",
+      "name": "EAST GATE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3418"
+      }
+    },
+    {
+      "id": "eastman-mfb",
+      "name": "EASTMAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3419"
+      }
+    },
+    {
+      "id": "easy-access-mfb",
+      "name": "EASY ACCESS MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3420"
+      }
+    },
+    {
+      "id": "ebedi-mfb",
+      "name": "EBEDI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3422"
+      }
+    },
+    {
+      "id": "ebonyi-state-university-mfb-ebsu",
+      "name": "EBONYI STATE UNIVERSITY MFB (EBSU)",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3423"
+      }
+    },
+    {
+      "id": "ecobank-nigeria",
+      "name": "Ecobank Nigeria Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "3"
+      }
+    },
+    {
+      "id": "edfin-mfb",
+      "name": "EDFIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3425"
+      }
+    },
+    {
+      "id": "edo-mfb",
+      "name": "EDO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3426"
+      }
+    },
+    {
+      "id": "edusoko-microfinance-bank",
+      "name": "Edusoko Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10039"
+      }
+    },
+    {
+      "id": "egbe-mfb",
+      "name": "EGBE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3429"
+      }
+    },
+    {
+      "id": "egbemoha-mfb",
+      "name": "EGBEMOHA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3430"
+      }
+    },
+    {
+      "id": "egwafin-mfb",
+      "name": "EGWAFIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3431"
+      }
+    },
+    {
+      "id": "ehinoma-microfinance-bank",
+      "name": "Ehinoma Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10040"
+      }
+    },
+    {
+      "id": "ejindu-mfb",
+      "name": "EJINDU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3434"
+      }
+    },
+    {
+      "id": "ek-reliable-mfb",
+      "name": "EK-RELIABLE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3437"
+      }
+    },
+    {
+      "id": "ekimogun-mfb",
+      "name": "EKIMOGUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3435"
+      }
+    },
+    {
+      "id": "ekondo-mfb",
+      "name": "EKONDO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3436"
+      }
+    },
+    {
+      "id": "ekwulobia-mfb",
+      "name": "EKWULOBIA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3440"
+      }
+    },
+    {
+      "id": "ellington-microfinance-bank",
+      "name": "Ellington Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10041"
+      }
+    },
+    {
+      "id": "elo-emede-mfb",
+      "name": "ELO-EMEDE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3441"
+      }
+    },
+    {
+      "id": "emerald-mfb",
+      "name": "EMERALD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3442"
+      }
+    },
+    {
+      "id": "empire-trust-mfb",
+      "name": "EMPIRE TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3443"
+      }
+    },
+    {
+      "id": "endwell-mfb",
+      "name": "ENDWELL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3444"
+      }
+    },
+    {
+      "id": "enede-mfb",
+      "name": "ENEDE MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3445"
+      }
+    },
+    {
+      "id": "enrich-mfb",
+      "name": "ENRICH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3446"
+      }
+    },
+    {
+      "id": "equator-mfb",
+      "name": "EQUATOR MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3448"
+      }
+    },
+    {
+      "id": "equinox-mfb",
+      "name": "EQUINOX MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3449"
+      }
+    },
+    {
+      "id": "eso-e-mfb",
+      "name": "ESO-E MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3451"
+      }
+    },
+    {
+      "id": "evergreen-mfb",
+      "name": "EVERGREEN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3454"
+      }
+    },
+    {
+      "id": "ewt-mfb",
+      "name": "EWT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3455"
+      }
+    },
+    {
+      "id": "excel-mfb",
+      "name": "EXCEL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3456"
+      }
+    },
+    {
+      "id": "ezebo-mfb",
+      "name": "EZEBO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3459"
+      }
+    },
+    {
+      "id": "faida-mfb",
+      "name": "FAIDA MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3462"
+      }
+    },
+    {
+      "id": "fairmoney-mfb",
+      "name": "FAIRMONEY MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3463"
+      }
+    },
+    {
+      "id": "fame-mfb",
+      "name": "FAME MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3464"
+      }
+    },
+    {
+      "id": "fast-mfb",
+      "name": "FAST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3466"
+      }
+    },
+    {
+      "id": "fbn-mortgages",
+      "name": "FBN MORTGAGES",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4088"
+      }
+    },
+    {
+      "id": "fcmb-mfb",
+      "name": "FCMB MFB LTD.",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3467"
+      }
+    },
+    {
+      "id": "fecetu-mfb",
+      "name": "FECETU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3469"
+      }
+    },
+    {
+      "id": "federal-polytechnic-nekede-mfb",
+      "name": "FEDERAL POLYTECHNIC, NEKEDE MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3470"
+      }
+    },
+    {
+      "id": "fedeth-co-op-mfb",
+      "name": "FEDETH CO-OP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3471"
+      }
+    },
+    {
+      "id": "fedpoly-nasarawa-mfb",
+      "name": "FEDPOLY NASARAWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3472"
+      }
+    },
+    {
+      "id": "ffs-mfb",
+      "name": "FFS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3473"
+      }
+    },
+    {
+      "id": "fha-homes",
+      "name": "FHA HOMES LTD.",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4089"
+      }
+    },
+    {
+      "id": "fidelity-bank",
+      "name": "Fidelity Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "4"
+      }
+    },
+    {
+      "id": "fidfund-mfb",
+      "name": "FIDFUND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3474"
+      }
+    },
+    {
+      "id": "fims-mfb",
+      "name": "FIMS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3475"
+      }
+    },
+    {
+      "id": "finatrust-mfb",
+      "name": "FINATRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3476"
+      }
+    },
+    {
+      "id": "finca-mfb",
+      "name": "FINCA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3477"
+      }
+    },
+    {
+      "id": "finex-mfb",
+      "name": "FINEX MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3478"
+      }
+    },
+    {
+      "id": "firmus-mfb",
+      "name": "FIRMUS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3479"
+      }
+    },
+    {
+      "id": "first-access-mfb",
+      "name": "FIRST ACCESS MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3480"
+      }
+    },
+    {
+      "id": "first-bank-nigeria",
+      "name": "First Bank Nigeria Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "5"
+      }
+    },
+    {
+      "id": "first-city-monument-bank",
+      "name": "First City Monument Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "6"
+      }
+    },
+    {
+      "id": "first-generation-homes",
+      "name": "FIRST GENERATION HOMES",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4090"
+      }
+    },
+    {
+      "id": "first-heritage-mfb",
+      "name": "FIRST HERITAGE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3481"
+      }
+    },
+    {
+      "id": "first-low-land-mfb",
+      "name": "FIRST LOW-LAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3483"
+      }
+    },
+    {
+      "id": "first-mutual-mfb",
+      "name": "FIRST MUTUAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3485"
+      }
+    },
+    {
+      "id": "first-option-mfb",
+      "name": "FIRST OPTION MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3486"
+      }
+    },
+    {
+      "id": "first-royal-mfb",
+      "name": "FIRST ROYAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3487"
+      }
+    },
+    {
+      "id": "flexi-microfinance-bank",
+      "name": "Flexi Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9875"
+      }
+    },
+    {
+      "id": "flourish-mfb",
+      "name": "FLOURISH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3489"
+      }
+    },
+    {
+      "id": "foresight-mfb",
+      "name": "FORESIGHT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3490"
+      }
+    },
+    {
+      "id": "fortress-mfb",
+      "name": "FORTRESS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3491"
+      }
+    },
+    {
+      "id": "forward-mfb",
+      "name": "FORWARD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3492"
+      }
+    },
+    {
+      "id": "fsdh-merchant-bank",
+      "name": "FSDH MERCHANT BANK",
+      "type": "merchant",
+      "identifiers": {
+        "cbn_institution_id": "3183"
+      }
+    },
+    {
+      "id": "fta-funtua-mfb",
+      "name": "FTA FUNTUA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4075"
+      }
+    },
+    {
+      "id": "fud-mfb",
+      "name": "FUD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3494"
+      }
+    },
+    {
+      "id": "fullrange-microfinance-bank",
+      "name": "Fullrange Microfinance Bank Ltd",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3495"
+      }
+    },
+    {
+      "id": "fut-minna",
+      "name": "FUT MINNA",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3496"
+      }
+    },
+    {
+      "id": "futo-mfb",
+      "name": "FUTO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3497"
+      }
+    },
+    {
+      "id": "gaa-akanbi-mfb",
+      "name": "GAA AKANBI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3498"
+      }
+    },
+    {
+      "id": "gabasawa-mfb",
+      "name": "GABASAWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3499"
+      }
+    },
+    {
+      "id": "gamawa-mfb",
+      "name": "GAMAWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3500"
+      }
+    },
+    {
+      "id": "garewa-mfb",
+      "name": "GAREWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3501"
+      }
+    },
+    {
+      "id": "garki-mfb",
+      "name": "GARKI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3502"
+      }
+    },
+    {
+      "id": "garu-mallam-mfb",
+      "name": "GARU MALLAM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3503"
+      }
+    },
+    {
+      "id": "gashua-mfb",
+      "name": "GASHUA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3504"
+      }
+    },
+    {
+      "id": "gateway-savings",
+      "name": "GATEWAY SAVINGS",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4091"
+      }
+    },
+    {
+      "id": "gaya-mfb",
+      "name": "GAYA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3505"
+      }
+    },
+    {
+      "id": "gbede-mfb",
+      "name": "GBEDE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3506"
+      }
+    },
+    {
+      "id": "giant-stride-mfb",
+      "name": "GIANT STRIDE MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3508"
+      }
+    },
+    {
+      "id": "gidauniya-alheri-mfb",
+      "name": "Gidauniya Alheri MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3509"
+      }
+    },
+    {
+      "id": "giginya-mfb",
+      "name": "GIGINYA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3510"
+      }
+    },
+    {
+      "id": "girei-mfb",
+      "name": "GIREI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3511"
+      }
+    },
+    {
+      "id": "giwa-mfb",
+      "name": "GIWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3512"
+      }
+    },
+    {
+      "id": "global-initiative-mfb",
+      "name": "GLOBAL INITIATIVE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3513"
+      }
+    },
+    {
+      "id": "global-trust",
+      "name": "GLOBAL TRUST",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4092"
+      }
+    },
+    {
+      "id": "globus-bank",
+      "name": "Globus Bank Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "7"
+      }
+    },
+    {
+      "id": "glory-mfb",
+      "name": "GLORY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3514"
+      }
+    },
+    {
+      "id": "gmb-mfb",
+      "name": "GMB MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3515"
+      }
+    },
+    {
+      "id": "gobarau-mfb",
+      "name": "GOBARAU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3516"
+      }
+    },
+    {
+      "id": "golden-choice-mfb",
+      "name": "GOLDEN CHOICE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3518"
+      }
+    },
+    {
+      "id": "goldman-mfb",
+      "name": "GOLDMAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3520"
+      }
+    },
+    {
+      "id": "gombe-mfb",
+      "name": "GOMBE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3521"
+      }
+    },
+    {
+      "id": "good-neighbours-mfb",
+      "name": "GOOD NEIGHBOURS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3522"
+      }
+    },
+    {
+      "id": "good-news-mfb",
+      "name": "GOOD NEWS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3523"
+      }
+    },
+    {
+      "id": "good-shepherd-mfb",
+      "name": "GOOD SHEPHERD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3524"
+      }
+    },
+    {
+      "id": "gowans-mfb",
+      "name": "GOWANS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3525"
+      }
+    },
+    {
+      "id": "grants-mfb",
+      "name": "GRANTS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3526"
+      }
+    },
+    {
+      "id": "granule-microfinance-bank",
+      "name": "GRANULE MICROFINANCE BANK",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9905"
+      }
+    },
+    {
+      "id": "green-acres-mfb",
+      "name": "GREEN ACRES MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3528"
+      }
+    },
+    {
+      "id": "green-energy-mfb",
+      "name": "GREEN ENERGY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3529"
+      }
+    },
+    {
+      "id": "green-bank-mfb",
+      "name": "GREEN-BANK MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3530"
+      }
+    },
+    {
+      "id": "greenville-mfb",
+      "name": "GREENVILLE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3532"
+      }
+    },
+    {
+      "id": "greenwich-merchant-bank",
+      "name": "GREENWICH MERCHANT BANK",
+      "type": "merchant",
+      "identifiers": {
+        "cbn_institution_id": "3184"
+      }
+    },
+    {
+      "id": "grooming-mfb",
+      "name": "GROOMING MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3533"
+      }
+    },
+    {
+      "id": "gti-mfb",
+      "name": "GTI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3534"
+      }
+    },
+    {
+      "id": "guaranty-trust-bank",
+      "name": "Guaranty Trust Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "8"
+      }
+    },
+    {
+      "id": "gudusisa-mfb",
+      "name": "GUDUSISA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3535"
+      }
+    },
+    {
+      "id": "gulfare-mfb",
+      "name": "GULFARE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3536"
+      }
+    },
+    {
+      "id": "gwong-mfb",
+      "name": "GWONG MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3538"
+      }
+    },
+    {
+      "id": "hadeija-mfb",
+      "name": "HADEIJA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3540"
+      }
+    },
+    {
+      "id": "haggai-mortgage-bank",
+      "name": "HAGGAI MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4093"
+      }
+    },
+    {
+      "id": "halal-credit-mfb",
+      "name": "HALAL CREDIT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3541"
+      }
+    },
+    {
+      "id": "hallowed-mfb",
+      "name": "HALLOWED MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3542"
+      }
+    },
+    {
+      "id": "hamada-mfb",
+      "name": "HAMADA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3544"
+      }
+    },
+    {
+      "id": "hamda-mfb",
+      "name": "HAMDA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3545"
+      }
+    },
+    {
+      "id": "hasal-mfb",
+      "name": "HASAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3546"
+      }
+    },
+    {
+      "id": "headway-mfb",
+      "name": "HEADWAY MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3547"
+      }
+    },
+    {
+      "id": "hedge-microfinance-bank",
+      "name": "HEDGE MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9913"
+      }
+    },
+    {
+      "id": "highland-mfb",
+      "name": "HIGHLAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3548"
+      }
+    },
+    {
+      "id": "hinache-mfb",
+      "name": "HINACHE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3549"
+      }
+    },
+    {
+      "id": "home-base-mortgage",
+      "name": "HOME-BASE MORTGAGE",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4094"
+      }
+    },
+    {
+      "id": "honey-mfb",
+      "name": "HONEY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3550"
+      }
+    },
+    {
+      "id": "hope-alive-mfb",
+      "name": "HOPE ALIVE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3551"
+      }
+    },
+    {
+      "id": "hope-psb",
+      "name": "Hope PSB Ltd",
+      "type": "payment_service",
+      "identifiers": {
+        "cbn_institution_id": "4113"
+      }
+    },
+    {
+      "id": "i-care-microfinance-bank",
+      "name": "I-Care Microfinance Bank Ltd",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3559"
+      }
+    },
+    {
+      "id": "ibeto-mfb",
+      "name": "IBETO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3553"
+      }
+    },
+    {
+      "id": "ibile-mfb",
+      "name": "IBILE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3554"
+      }
+    },
+    {
+      "id": "ibolo-mfb",
+      "name": "IBOLO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3556"
+      }
+    },
+    {
+      "id": "ibom-fadama-mfb",
+      "name": "IBOM FADAMA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3555"
+      }
+    },
+    {
+      "id": "ibrahim-badamasi-babangida-university-mfb",
+      "name": "IBRAHIM BADAMASI BABANGIDA UNIVERSITY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3557"
+      }
+    },
+    {
+      "id": "ibu-aje-mfb",
+      "name": "IBU-AJE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3558"
+      }
+    },
+    {
+      "id": "ichi-mfb",
+      "name": "ICHI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3561"
+      }
+    },
+    {
+      "id": "ideato-mfb",
+      "name": "IDEATO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3562"
+      }
+    },
+    {
+      "id": "idemili-mfb",
+      "name": "IDEMILI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3563"
+      }
+    },
+    {
+      "id": "ifedapo-mfb",
+      "name": "IFEDAPO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3566"
+      }
+    },
+    {
+      "id": "ifelodun-mfb",
+      "name": "IFELODUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3567"
+      }
+    },
+    {
+      "id": "igbo-ukwu-mfb",
+      "name": "IGBO-UKWU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3571"
+      }
+    },
+    {
+      "id": "igboora-mfb",
+      "name": "IGBOORA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3570"
+      }
+    },
+    {
+      "id": "ihiala-mfb",
+      "name": "IHIALA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3573"
+      }
+    },
+    {
+      "id": "ijare-mfb",
+      "name": "IJARE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3575"
+      }
+    },
+    {
+      "id": "ijebu-ife-mfb",
+      "name": "IJEBU IFE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3576"
+      }
+    },
+    {
+      "id": "ikenne-mfb",
+      "name": "IKENNE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3577"
+      }
+    },
+    {
+      "id": "ikere-microfinance-bank",
+      "name": "Ikere Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10045"
+      }
+    },
+    {
+      "id": "ikire-mfb",
+      "name": "IKIRE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3578"
+      }
+    },
+    {
+      "id": "ikorodu-division-mfb",
+      "name": "IKORODU DIVISION MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3579"
+      }
+    },
+    {
+      "id": "ikoyi-ile-mfb",
+      "name": "IKOYI-ILE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3580"
+      }
+    },
+    {
+      "id": "ikoyi-osun-mfb",
+      "name": "IKOYI-OSUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3581"
+      }
+    },
+    {
+      "id": "ilaro-polytechnic-mfb",
+      "name": "ILARO POLYTECHNIC MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3582"
+      }
+    },
+    {
+      "id": "ile-oluji-mfb",
+      "name": "ILE-OLUJI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3583"
+      }
+    },
+    {
+      "id": "ilisan-mfb",
+      "name": "ILISAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3584"
+      }
+    },
+    {
+      "id": "ilobu-mfb",
+      "name": "ILOBU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3585"
+      }
+    },
+    {
+      "id": "iloffa-mfb",
+      "name": "ILOFFA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3586"
+      }
+    },
+    {
+      "id": "ilora-mfb",
+      "name": "ILORA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3587"
+      }
+    },
+    {
+      "id": "ilorin-mfb",
+      "name": "ILORIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3588"
+      }
+    },
+    {
+      "id": "iludun-oro-mfb",
+      "name": "ILUDUN ORO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3589"
+      }
+    },
+    {
+      "id": "ilutuntun-osoro-mfb",
+      "name": "ILUTUNTUN-OSORO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3590"
+      }
+    },
+    {
+      "id": "imo-state-microfinance-bank",
+      "name": "IMO STATE MICROFINANCE BANK",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3591"
+      }
+    },
+    {
+      "id": "imodi-imosan-mfb",
+      "name": "IMODI-IMOSAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3592"
+      }
+    },
+    {
+      "id": "imopoly-mfb",
+      "name": "IMOPOLY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3593"
+      }
+    },
+    {
+      "id": "imowo-mfb",
+      "name": "IMOWO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3594"
+      }
+    },
+    {
+      "id": "imperial-homes",
+      "name": "IMPERIAL HOMES",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4095"
+      }
+    },
+    {
+      "id": "imsu-mfb",
+      "name": "IMSU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3595"
+      }
+    },
+    {
+      "id": "imt-mfb",
+      "name": "IMT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3596"
+      }
+    },
+    {
+      "id": "indulge-microfinance-bank",
+      "name": "Indulge Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10044"
+      }
+    },
+    {
+      "id": "infinity-mfb",
+      "name": "INFINITY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3597"
+      }
+    },
+    {
+      "id": "infinity-trust",
+      "name": "INFINITY TRUST",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4096"
+      }
+    },
+    {
+      "id": "insight-mfb",
+      "name": "INSIGHT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3599"
+      }
+    },
+    {
+      "id": "ipapo-mfb",
+      "name": "IPAPO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3601"
+      }
+    },
+    {
+      "id": "iperu-mfb",
+      "name": "IPERU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3602"
+      }
+    },
+    {
+      "id": "irl-mfb",
+      "name": "IRL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3603"
+      }
+    },
+    {
+      "id": "isale-oyo-mfb",
+      "name": "ISALE OYO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3604"
+      }
+    },
+    {
+      "id": "ishiagu-mfb",
+      "name": "ISHIAGU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3605"
+      }
+    },
+    {
+      "id": "ishie-mfb",
+      "name": "ISHIE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3606"
+      }
+    },
+    {
+      "id": "isi-ego-microfinance-bank",
+      "name": "Isi-Ego Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10046"
+      }
+    },
+    {
+      "id": "isi-uzo-mfb",
+      "name": "ISI-UZO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3608"
+      }
+    },
+    {
+      "id": "island-mfb",
+      "name": "ISLAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3609"
+      }
+    },
+    {
+      "id": "isua-mfb",
+      "name": "ISUA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3611"
+      }
+    },
+    {
+      "id": "isuofia-mfb",
+      "name": "ISUOFIA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3610"
+      }
+    },
+    {
+      "id": "iwa-mfb",
+      "name": "IWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3612"
+      }
+    },
+    {
+      "id": "iwoye-ijesa-mfb",
+      "name": "IWOYE-IJESA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3615"
+      }
+    },
+    {
+      "id": "iya-zakari-mashi-mfb",
+      "name": "IYA-ZAKARI (MASHI) MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4074"
+      }
+    },
+    {
+      "id": "iyamoye-mfb",
+      "name": "IYAMOYE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3616"
+      }
+    },
+    {
+      "id": "iyeru-okin-mfb",
+      "name": "IYERU OKIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3618"
+      }
+    },
+    {
+      "id": "iyin-ekiti-mfb",
+      "name": "IYIN EKITI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3619"
+      }
+    },
+    {
+      "id": "izon-mfb",
+      "name": "IZON MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3620"
+      }
+    },
+    {
+      "id": "jaiz-bank",
+      "name": "JAIZ BANK PLC",
+      "type": "non_interest",
+      "identifiers": {
+        "cbn_institution_id": "4119"
+      }
+    },
+    {
+      "id": "janzama-mfb",
+      "name": "JANZAMA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3623"
+      }
+    },
+    {
+      "id": "jen-mfb",
+      "name": "JEN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3624"
+      }
+    },
+    {
+      "id": "jessefield-mfb",
+      "name": "JESSEFIELD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3625"
+      }
+    },
+    {
+      "id": "jewel-coop-mfb",
+      "name": "JEWEL COOP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3626"
+      }
+    },
+    {
+      "id": "jigawa-savings-loans",
+      "name": "JIGAWA SAVINGS & LOANS",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4097"
+      }
+    },
+    {
+      "id": "jubilee-life-mortgage-bank",
+      "name": "JUBILEE-LIFE MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4098"
+      }
+    },
+    {
+      "id": "kabo-mfb",
+      "name": "KABO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3629"
+      }
+    },
+    {
+      "id": "kadpoly-mfb",
+      "name": "KADPOLY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3631"
+      }
+    },
+    {
+      "id": "kadupe-mfb",
+      "name": "KADUPE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3632"
+      }
+    },
+    {
+      "id": "kaizen-microfinance-bank",
+      "name": "Kaizen Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10047"
+      }
+    },
+    {
+      "id": "kankara-mfb",
+      "name": "KANKARA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4073"
+      }
+    },
+    {
+      "id": "kankia-mfb",
+      "name": "KANKIA MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3634"
+      }
+    },
+    {
+      "id": "kano-west-mfb",
+      "name": "KANO-WEST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3636"
+      }
+    },
+    {
+      "id": "katagum-mfb",
+      "name": "KATAGUM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3637"
+      }
+    },
+    {
+      "id": "katsu-microfinance-bank",
+      "name": "Katsu Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10009"
+      }
+    },
+    {
+      "id": "kayvee-mfb",
+      "name": "KAYVEE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3638"
+      }
+    },
+    {
+      "id": "kc-mfb",
+      "name": "KC MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3639"
+      }
+    },
+    {
+      "id": "kcmb-mfb",
+      "name": "KCMB MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3640"
+      }
+    },
+    {
+      "id": "kebbi-state-homes",
+      "name": "KEBBI STATE HOMES",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4099"
+      }
+    },
+    {
+      "id": "kenechukwu-mfb",
+      "name": "KENECHUKWU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3642"
+      }
+    },
+    {
+      "id": "keystone-bank",
+      "name": "Keystone Bank Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "10"
+      }
+    },
+    {
+      "id": "khb-mfb",
+      "name": "KHB MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3643"
+      }
+    },
+    {
+      "id": "kingdom-college-mfb",
+      "name": "KINGDOM COLLEGE MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3644"
+      }
+    },
+    {
+      "id": "kisi-mfb",
+      "name": "KISI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3645"
+      }
+    },
+    {
+      "id": "kku-microfinance",
+      "name": "KKU Microfinance",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3647"
+      }
+    },
+    {
+      "id": "kmc-mfb",
+      "name": "KMC MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3648"
+      }
+    },
+    {
+      "id": "koboweb-microfinance-bank",
+      "name": "Koboweb Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10049"
+      }
+    },
+    {
+      "id": "koins-microfinance-bank",
+      "name": "Koins Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10050"
+      }
+    },
+    {
+      "id": "kolisa-microfinance-bank",
+      "name": "Kolisa Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10051"
+      }
+    },
+    {
+      "id": "kontagora-mfb",
+      "name": "KONTAGORA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3650"
+      }
+    },
+    {
+      "id": "kopo-kope-mfb",
+      "name": "KOPO-KOPE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3651"
+      }
+    },
+    {
+      "id": "kredi-money-mfb-formerly-conpro-mfb",
+      "name": "KREDI MONEY MFB (Formerly CONPRO MFB)",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3378"
+      }
+    },
+    {
+      "id": "kuda-mfb",
+      "name": "KUDA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3652"
+      }
+    },
+    {
+      "id": "kumbotso-mfb",
+      "name": "KUMBOTSO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3653"
+      }
+    },
+    {
+      "id": "kunagaba-mfb",
+      "name": "KUNAGABA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3654"
+      }
+    },
+    {
+      "id": "kunchi-mfb",
+      "name": "KUNCHI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3655"
+      }
+    },
+    {
+      "id": "kura-mfb",
+      "name": "KURA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3656"
+      }
+    },
+    {
+      "id": "kusalla-mfb",
+      "name": "KUSALLA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3657"
+      }
+    },
+    {
+      "id": "kwacofocus-mfb",
+      "name": "KWACOFOCUS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3658"
+      }
+    },
+    {
+      "id": "kwara-polytechnic-microfinance-bank",
+      "name": "KWARA POLYTECHNIC MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9914"
+      }
+    },
+    {
+      "id": "kwasu-mfb",
+      "name": "KWASU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3659"
+      }
+    },
+    {
+      "id": "kwatashi-mfb",
+      "name": "KWATASHI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3660"
+      }
+    },
+    {
+      "id": "la-fayette-mfb",
+      "name": "LA FAYETTE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3661"
+      }
+    },
+    {
+      "id": "ladder-microfinance-bank",
+      "name": "Ladder Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9876"
+      }
+    },
+    {
+      "id": "lagos-building-investment",
+      "name": "LAGOS BUILDING & INVESTMENT",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4100"
+      }
+    },
+    {
+      "id": "landgold-mfb",
+      "name": "LANDGOLD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3662"
+      }
+    },
+    {
+      "id": "lapo-mfb",
+      "name": "LAPO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3663"
+      }
+    },
+    {
+      "id": "lavender",
+      "name": "LAVENDER",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3664"
+      }
+    },
+    {
+      "id": "lawyers-mfb",
+      "name": "LAWYERS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3666"
+      }
+    },
+    {
+      "id": "layelu-mfb",
+      "name": "LAYELU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3667"
+      }
+    },
+    {
+      "id": "leadcity-mfb",
+      "name": "LEADCITY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3668"
+      }
+    },
+    {
+      "id": "legacy-mfb",
+      "name": "LEGACY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3669"
+      }
+    },
+    {
+      "id": "legend-mfb",
+      "name": "LEGEND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3670"
+      }
+    },
+    {
+      "id": "letshego-mfb",
+      "name": "LETSHEGO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3671"
+      }
+    },
+    {
+      "id": "levite-mfb",
+      "name": "LEVITE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3672"
+      }
+    },
+    {
+      "id": "lifegate-mfb",
+      "name": "LIFEGATE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3673"
+      }
+    },
+    {
+      "id": "light-mfb",
+      "name": "LIGHT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3674"
+      }
+    },
+    {
+      "id": "lightway-microfinance-bank",
+      "name": "Lightway Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10052"
+      }
+    },
+    {
+      "id": "links-mfb",
+      "name": "LINKS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3675"
+      }
+    },
+    {
+      "id": "living-spring-mfb",
+      "name": "LIVING SPRING MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3676"
+      }
+    },
+    {
+      "id": "lobrem-mfb",
+      "name": "LOBREM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3677"
+      }
+    },
+    {
+      "id": "lotus-bank",
+      "name": "LOTUS BANK LTD",
+      "type": "non_interest",
+      "identifiers": {
+        "cbn_institution_id": "4120"
+      }
+    },
+    {
+      "id": "lovonus-mfb",
+      "name": "LOVONUS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3678"
+      }
+    },
+    {
+      "id": "m-m-mfb",
+      "name": "M & M MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3679"
+      }
+    },
+    {
+      "id": "mab-allianz-mfb",
+      "name": "MAB ALLIANZ MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3680"
+      }
+    },
+    {
+      "id": "macrod-mfb",
+      "name": "MACROD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3682"
+      }
+    },
+    {
+      "id": "madelyn-mfb",
+      "name": "MADELYN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3683"
+      }
+    },
+    {
+      "id": "madobi-mfb",
+      "name": "MADOBI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3684"
+      }
+    },
+    {
+      "id": "magajin-giri-mfb",
+      "name": "MAGAJIN-GIRI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3685"
+      }
+    },
+    {
+      "id": "magnet-mfb",
+      "name": "MAGNET MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3686"
+      }
+    },
+    {
+      "id": "maigatari-mfb",
+      "name": "MAIGATARI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3687"
+      }
+    },
+    {
+      "id": "main-trust-mfb",
+      "name": "MAIN TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3688"
+      }
+    },
+    {
+      "id": "mainland-mfb",
+      "name": "MAINLAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3689"
+      }
+    },
+    {
+      "id": "mainstreet-mfb",
+      "name": "MAINSTREET MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3691"
+      }
+    },
+    {
+      "id": "malachy-mfb",
+      "name": "MALACHY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3692"
+      }
+    },
+    {
+      "id": "mapoly-mfb",
+      "name": "MAPOLY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3695"
+      }
+    },
+    {
+      "id": "maritime-mfb",
+      "name": "MARITIME MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3696"
+      }
+    },
+    {
+      "id": "matazu-mfb",
+      "name": "MATAZU MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3697"
+      }
+    },
+    {
+      "id": "maxitrust-mfb",
+      "name": "MAXITRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3699"
+      }
+    },
+    {
+      "id": "mayden-microfinance-bank",
+      "name": "MAYDEN MICROFINANCE BANK",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9903"
+      }
+    },
+    {
+      "id": "mayfresh-mortgage-bank",
+      "name": "MAYFRESH MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4101"
+      }
+    },
+    {
+      "id": "mbaitoli-mfb",
+      "name": "MBAITOLI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3701"
+      }
+    },
+    {
+      "id": "mbawulu-mfb",
+      "name": "MBAWULU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3702"
+      }
+    },
+    {
+      "id": "mega-mfb",
+      "name": "MEGA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3703"
+      }
+    },
+    {
+      "id": "megapraise-mfb",
+      "name": "MEGAPRAISE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3704"
+      }
+    },
+    {
+      "id": "memento-mfb",
+      "name": "MEMENTO MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3705"
+      }
+    },
+    {
+      "id": "memphis-microfinance-bank",
+      "name": "MEMPHIS MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3706"
+      }
+    },
+    {
+      "id": "meridian-mfb",
+      "name": "MERIDIAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3709"
+      }
+    },
+    {
+      "id": "mgbidi-mfb",
+      "name": "MGBIDI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3711"
+      }
+    },
+    {
+      "id": "mgsl-mortgage-bank",
+      "name": "MGSL MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4102"
+      }
+    },
+    {
+      "id": "mia-microfinance-bank",
+      "name": "Mia Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10054"
+      }
+    },
+    {
+      "id": "micheal-okpara-university-mfb",
+      "name": "MICHEAL OKPARA UNIVERSITY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3712"
+      }
+    },
+    {
+      "id": "microvis-mfb",
+      "name": "MICROVIS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3714"
+      }
+    },
+    {
+      "id": "midland-mfb",
+      "name": "MIDLAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3715"
+      }
+    },
+    {
+      "id": "mint-microfinance-bank",
+      "name": "Mint Microfinance Bank Limited",
+      "type": "non_interest",
+      "identifiers": {
+        "cbn_institution_id": "10055"
+      }
+    },
+    {
+      "id": "mkobo-mfb",
+      "name": "MKOBO MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3719"
+      }
+    },
+    {
+      "id": "moddibo-adama-university-microfinance-bank",
+      "name": "Moddibo Adama University Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10056"
+      }
+    },
+    {
+      "id": "model-mfb",
+      "name": "MODEL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3720"
+      }
+    },
+    {
+      "id": "modiya-yekokpe-mfb",
+      "name": "MODIYA YEKOKPE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3721"
+      }
+    },
+    {
+      "id": "molusi-mfb",
+      "name": "MOLUSI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3722"
+      }
+    },
+    {
+      "id": "momo-payment-service-bank",
+      "name": "MOMO PAYMENT SERVICE BANK",
+      "type": "payment_service",
+      "identifiers": {
+        "cbn_institution_id": "9846"
+      }
+    },
+    {
+      "id": "monarch-mfb",
+      "name": "MONARCH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3723"
+      }
+    },
+    {
+      "id": "moneymaster-psb",
+      "name": "Moneymaster PSB Ltd",
+      "type": "payment_service",
+      "identifiers": {
+        "cbn_institution_id": "4115"
+      }
+    },
+    {
+      "id": "moneytronics-mfb-formerly-ipodo-ikeja-mfb",
+      "name": "MONEYTRONICS MFB (Formerly Ipodo-Ikeja MFB)",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3724"
+      }
+    },
+    {
+      "id": "moneytrust-mfb",
+      "name": "Moneytrust MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3725"
+      }
+    },
+    {
+      "id": "moniepoint-mfb",
+      "name": "Moniepoint MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3916"
+      }
+    },
+    {
+      "id": "movasco-op-microfinance-bank",
+      "name": "Movasco-Op Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10057"
+      }
+    },
+    {
+      "id": "moyofade-mfb",
+      "name": "MOYOFADE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3729"
+      }
+    },
+    {
+      "id": "mozfin-mfb",
+      "name": "MOZFIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3730"
+      }
+    },
+    {
+      "id": "muamala-microfinance-bank",
+      "name": "Muamala Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10058"
+      }
+    },
+    {
+      "id": "multivest-mfb",
+      "name": "MULTIVEST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3731"
+      }
+    },
+    {
+      "id": "mutual-alliance",
+      "name": "MUTUAL ALLIANCE",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4103"
+      }
+    },
+    {
+      "id": "mutual-benefit-mfb",
+      "name": "MUTUAL BENEFIT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3733"
+      }
+    },
+    {
+      "id": "mutual-trust-mfb",
+      "name": "MUTUAL TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3734"
+      }
+    },
+    {
+      "id": "nagarta-mfb",
+      "name": "NAGARTA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3736"
+      }
+    },
+    {
+      "id": "naisa-mfb",
+      "name": "NAISA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3737"
+      }
+    },
+    {
+      "id": "nakowa-mfb",
+      "name": "NAKOWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3738"
+      }
+    },
+    {
+      "id": "namoda-mfb",
+      "name": "NAMODA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3739"
+      }
+    },
+    {
+      "id": "nasarawa-mfb",
+      "name": "NASARAWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3742"
+      }
+    },
+    {
+      "id": "ndiolu-mfb",
+      "name": "NDIOLU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3744"
+      }
+    },
+    {
+      "id": "ndiorah-mfb",
+      "name": "NDIORAH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3745"
+      }
+    },
+    {
+      "id": "nenzit-mfb",
+      "name": "NENZIT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3746"
+      }
+    },
+    {
+      "id": "neptune-mfb",
+      "name": "NEPTUNE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3747"
+      }
+    },
+    {
+      "id": "new-dawn-mfb",
+      "name": "NEW DAWN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3750"
+      }
+    },
+    {
+      "id": "new-era-mfb",
+      "name": "NEW ERA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3751"
+      }
+    },
+    {
+      "id": "new-golden-pastures-mfb",
+      "name": "NEW GOLDEN PASTURES MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3752"
+      }
+    },
+    {
+      "id": "new-prudential",
+      "name": "NEW PRUDENTIAL",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4104"
+      }
+    },
+    {
+      "id": "new-women-s-mfb",
+      "name": "NEW WOMEN'S MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3753"
+      }
+    },
+    {
+      "id": "nexton-microfinance-bank",
+      "name": "Nexton Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10059"
+      }
+    },
+    {
+      "id": "ngbo-mfb",
+      "name": "NGBO MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3756"
+      }
+    },
+    {
+      "id": "nice-mfb",
+      "name": "NICE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3758"
+      }
+    },
+    {
+      "id": "nigeria-police-mortgage-bank",
+      "name": "NIGERIA POLICE MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4105"
+      }
+    },
+    {
+      "id": "nigerian-navy-mfb",
+      "name": "NIGERIAN NAVY MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3759"
+      }
+    },
+    {
+      "id": "nigerian-prisons-mfb",
+      "name": "NIGERIAN PRISONS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3760"
+      }
+    },
+    {
+      "id": "ningi-mfb",
+      "name": "NINGI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3761"
+      }
+    },
+    {
+      "id": "nirsal-mfb",
+      "name": "NIRSAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3762"
+      }
+    },
+    {
+      "id": "nkpa-mfb",
+      "name": "NKPA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3763"
+      }
+    },
+    {
+      "id": "nkpologwu-mfb",
+      "name": "NKPOLOGWU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3764"
+      }
+    },
+    {
+      "id": "nkpolu-ust-mfb",
+      "name": "NKPOLU-UST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3765"
+      }
+    },
+    {
+      "id": "nnokwa-mfb",
+      "name": "NNOKWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3766"
+      }
+    },
+    {
+      "id": "noble-mfb",
+      "name": "NOBLE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3767"
+      }
+    },
+    {
+      "id": "nomase-microfinance-bank",
+      "name": "NOMASE MICROFINANCE BANK LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3768"
+      }
+    },
+    {
+      "id": "noun-mfb",
+      "name": "NOUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3772"
+      }
+    },
+    {
+      "id": "nova-commercial-bank",
+      "name": "Nova Commercial Bank Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "9870"
+      }
+    },
+    {
+      "id": "novel-mfb",
+      "name": "NOVEL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3773"
+      }
+    },
+    {
+      "id": "novus-microfinance-bank",
+      "name": "Novus Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10060"
+      }
+    },
+    {
+      "id": "npf-mfb",
+      "name": "NPF MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3774"
+      }
+    },
+    {
+      "id": "nri-mfb",
+      "name": "NRI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3775"
+      }
+    },
+    {
+      "id": "nsu-mfb",
+      "name": "NSU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3777"
+      }
+    },
+    {
+      "id": "nsuk-mfb",
+      "name": "NSUK MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3778"
+      }
+    },
+    {
+      "id": "nsukka-township-mfb",
+      "name": "NSUKKA TOWNSHIP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3779"
+      }
+    },
+    {
+      "id": "nuggets-mfb",
+      "name": "NUGGETS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4133"
+      }
+    },
+    {
+      "id": "numo-mfb",
+      "name": "NUMO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3780"
+      }
+    },
+    {
+      "id": "nun-mfb",
+      "name": "NUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3781"
+      }
+    },
+    {
+      "id": "nut-okebola-mfb",
+      "name": "NUT OKEBOLA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3783"
+      }
+    },
+    {
+      "id": "nwannegadi-mfb",
+      "name": "NWANNEGADI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3786"
+      }
+    },
+    {
+      "id": "oakland-mfb",
+      "name": "OAKLAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3788"
+      }
+    },
+    {
+      "id": "oba-mfb",
+      "name": "OBA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3789"
+      }
+    },
+    {
+      "id": "obafemi-awolowo-university-mfb",
+      "name": "OBAFEMI AWOLOWO UNIVERSITY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3790"
+      }
+    },
+    {
+      "id": "obeledu-mfb",
+      "name": "OBELEDU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3791"
+      }
+    },
+    {
+      "id": "obodoukwu-mfb",
+      "name": "OBODOUKWU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3792"
+      }
+    },
+    {
+      "id": "obokun-mfb",
+      "name": "OBOKUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3793"
+      }
+    },
+    {
+      "id": "obollo-mfb",
+      "name": "OBOLLO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3794"
+      }
+    },
+    {
+      "id": "oche-mfb",
+      "name": "OCHE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3796"
+      }
+    },
+    {
+      "id": "ocon-success-mfb",
+      "name": "OCON SUCCESS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3797"
+      }
+    },
+    {
+      "id": "octopus-mfb",
+      "name": "OCTOPUS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3798"
+      }
+    },
+    {
+      "id": "odoakpu-mfb",
+      "name": "ODOAKPU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3799"
+      }
+    },
+    {
+      "id": "odu-mfb",
+      "name": "ODU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3800"
+      }
+    },
+    {
+      "id": "oganiru-microfinance-bank",
+      "name": "Oganiru Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10061"
+      }
+    },
+    {
+      "id": "ogberuru-mfb",
+      "name": "OGBERURU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3804"
+      }
+    },
+    {
+      "id": "ogbete-mfb",
+      "name": "OGBETE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3805"
+      }
+    },
+    {
+      "id": "ogboefere-mfb",
+      "name": "OGBOEFERE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3806"
+      }
+    },
+    {
+      "id": "ogige-mfb",
+      "name": "OGIGE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3807"
+      }
+    },
+    {
+      "id": "ogiyan-mfb",
+      "name": "OGIYAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3808"
+      }
+    },
+    {
+      "id": "ohafia-mfb",
+      "name": "OHAFIA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3810"
+      }
+    },
+    {
+      "id": "ohha-mfb",
+      "name": "OHHA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3811"
+      }
+    },
+    {
+      "id": "ojokoro-mfb",
+      "name": "OJOKORO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3813"
+      }
+    },
+    {
+      "id": "okada-microfinance-bank",
+      "name": "Okada Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10062"
+      }
+    },
+    {
+      "id": "oke-aro-oredegbe-mfb",
+      "name": "OKE- ARO OREDEGBE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3839"
+      }
+    },
+    {
+      "id": "okeagbe-mfb",
+      "name": "OKEAGBE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3814"
+      }
+    },
+    {
+      "id": "okengwe-mfb",
+      "name": "OKENGWE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3815"
+      }
+    },
+    {
+      "id": "oko-mfb",
+      "name": "OKO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3816"
+      }
+    },
+    {
+      "id": "okpe-mfb",
+      "name": "OKPE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3817"
+      }
+    },
+    {
+      "id": "okpofe-mfb",
+      "name": "OKPOFE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3818"
+      }
+    },
+    {
+      "id": "okpoga-mfb",
+      "name": "OKPOGA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3819"
+      }
+    },
+    {
+      "id": "okuku-mfb",
+      "name": "OKUKU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3820"
+      }
+    },
+    {
+      "id": "okuta-mfb",
+      "name": "OKUTA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3821"
+      }
+    },
+    {
+      "id": "okwo-oha-mfb",
+      "name": "OKWO-OHA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3822"
+      }
+    },
+    {
+      "id": "olabisi-onabanjo-university-mfb",
+      "name": "OLABISI ONABANJO UNIVERSITY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3824"
+      }
+    },
+    {
+      "id": "olive-mfb",
+      "name": "OLIVE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3825"
+      }
+    },
+    {
+      "id": "olomu-aperan-microfinance-bank",
+      "name": "Olomu Aperan Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10063"
+      }
+    },
+    {
+      "id": "olowolagba-mfb",
+      "name": "OLOWOLAGBA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3829"
+      }
+    },
+    {
+      "id": "olu-basiri-mfb",
+      "name": "OLU-BASIRI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3830"
+      }
+    },
+    {
+      "id": "oluchukwu-mfb",
+      "name": "OLUCHUKWU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3831"
+      }
+    },
+    {
+      "id": "omak-mfb",
+      "name": "OMAK MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3832"
+      }
+    },
+    {
+      "id": "omiye-mfb",
+      "name": "OMIYE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3833"
+      }
+    },
+    {
+      "id": "omoluabi-livingspring",
+      "name": "OMOLUABI (LIVINGSPRING)",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4106"
+      }
+    },
+    {
+      "id": "omuma-mfb",
+      "name": "OMUMA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3835"
+      }
+    },
+    {
+      "id": "onewallet-microfinance-bank",
+      "name": "Onewallet Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10013"
+      }
+    },
+    {
+      "id": "onibu-ore-mfb",
+      "name": "ONIBU-ORE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3836"
+      }
+    },
+    {
+      "id": "opay-mfb",
+      "name": "OPAY MFB LIMITEd",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9857"
+      }
+    },
+    {
+      "id": "optimum-global-microfinance-bank",
+      "name": "Optimum Global Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10064"
+      }
+    },
+    {
+      "id": "optimus-bank",
+      "name": "Optimus Bank",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "9865"
+      }
+    },
+    {
+      "id": "oraukwu-mfb",
+      "name": "ORAUKWU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3838"
+      }
+    },
+    {
+      "id": "orilonise-mfb",
+      "name": "ORILONISE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3840"
+      }
+    },
+    {
+      "id": "orisun-mfb",
+      "name": "ORISUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3841"
+      }
+    },
+    {
+      "id": "orita-basorun-mfb",
+      "name": "ORITA BASORUN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3842"
+      }
+    },
+    {
+      "id": "orokam-mfb",
+      "name": "OROKAM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3843"
+      }
+    },
+    {
+      "id": "orsu-mfb",
+      "name": "ORSU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3846"
+      }
+    },
+    {
+      "id": "osanta-mfb",
+      "name": "OSANTA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3847"
+      }
+    },
+    {
+      "id": "osct-mfb",
+      "name": "OSCT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3848"
+      }
+    },
+    {
+      "id": "osi-mfb",
+      "name": "OSI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3849"
+      }
+    },
+    {
+      "id": "osomhe-mfb",
+      "name": "OSOMHE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3852"
+      }
+    },
+    {
+      "id": "ospoly-mfb",
+      "name": "OSPOLY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3853"
+      }
+    },
+    {
+      "id": "osumenyi-mfb",
+      "name": "OSUMENYI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3854"
+      }
+    },
+    {
+      "id": "otuo-mfb",
+      "name": "OTUO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3856"
+      }
+    },
+    {
+      "id": "ours-mfb",
+      "name": "OURS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3857"
+      }
+    },
+    {
+      "id": "owotutu-mfb",
+      "name": "OWOTUTU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3858"
+      }
+    },
+    {
+      "id": "oyan-mfb",
+      "name": "OYAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3859"
+      }
+    },
+    {
+      "id": "oye-versity-microfinance-bank",
+      "name": "OYE VERSITY MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9910"
+      }
+    },
+    {
+      "id": "pact-microfinance-bank",
+      "name": "PACT MICROFINANCE BANK",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9906"
+      }
+    },
+    {
+      "id": "palmcoast-mfb",
+      "name": "PALMCOAST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3861"
+      }
+    },
+    {
+      "id": "palmera-mfb",
+      "name": "PALMERA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3862"
+      }
+    },
+    {
+      "id": "pana-mfb",
+      "name": "PANA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3863"
+      }
+    },
+    {
+      "id": "paragon-microfinance-bank",
+      "name": "Paragon Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10011"
+      }
+    },
+    {
+      "id": "parallex-bank",
+      "name": "Parallex Bank Ltd",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "11"
+      }
+    },
+    {
+      "id": "parkway-mfb",
+      "name": "PARKWAY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3864"
+      }
+    },
+    {
+      "id": "pathfinder-mfb",
+      "name": "PATHFINDER MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3865"
+      }
+    },
+    {
+      "id": "patrickgold-mfb",
+      "name": "PATRICKGOLD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3866"
+      }
+    },
+    {
+      "id": "payrep-microfinance-bank",
+      "name": "Payrep Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10066"
+      }
+    },
+    {
+      "id": "peace-mfb",
+      "name": "PEACE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3867"
+      }
+    },
+    {
+      "id": "pecan-trust-mfb",
+      "name": "PECAN TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3869"
+      }
+    },
+    {
+      "id": "peninsula-mfb",
+      "name": "PENINSULA MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3871"
+      }
+    },
+    {
+      "id": "pennywise-mfb",
+      "name": "PENNYWISE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3872"
+      }
+    },
+    {
+      "id": "pentecost-mfb",
+      "name": "PENTECOST MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3873"
+      }
+    },
+    {
+      "id": "personal-trust-mfb",
+      "name": "PERSONAL TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3874"
+      }
+    },
+    {
+      "id": "petra-mfb",
+      "name": "PETRA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3875"
+      }
+    },
+    {
+      "id": "phoenix-mfb",
+      "name": "PHOENIX MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3876"
+      }
+    },
+    {
+      "id": "pillar-mfb",
+      "name": "PILLAR MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3877"
+      }
+    },
+    {
+      "id": "pioneer-microfinance-bank",
+      "name": "Pioneer Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10097"
+      }
+    },
+    {
+      "id": "platinum-microfinance-bank",
+      "name": "Platinum Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10067"
+      }
+    },
+    {
+      "id": "platinum-mortgage-bank",
+      "name": "PLATINUM MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4107"
+      }
+    },
+    {
+      "id": "plusone-microfinance-bank",
+      "name": "Plusone Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10068"
+      }
+    },
+    {
+      "id": "pointone-microfinance-bank",
+      "name": "Pointone Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9872"
+      }
+    },
+    {
+      "id": "polaris-bank",
+      "name": "Polaris Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "12"
+      }
+    },
+    {
+      "id": "polybadan-mfb",
+      "name": "POLYBADAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3878"
+      }
+    },
+    {
+      "id": "polyunwanna-mfb",
+      "name": "POLYUNWANNA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3879"
+      }
+    },
+    {
+      "id": "preeminent-mfb",
+      "name": "PREEMINENT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3880"
+      }
+    },
+    {
+      "id": "premier-microfinance-bank",
+      "name": "Premier Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10069"
+      }
+    },
+    {
+      "id": "premium-trust-bank",
+      "name": "Premium Trust Bank",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "13"
+      }
+    },
+    {
+      "id": "prestige-mfb",
+      "name": "PRESTIGE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3882"
+      }
+    },
+    {
+      "id": "prisco-mfb",
+      "name": "PRISCO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3884"
+      }
+    },
+    {
+      "id": "pristine-divitis-mfb",
+      "name": "PRISTINE DIVITIS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3885"
+      }
+    },
+    {
+      "id": "projects-mfb",
+      "name": "PROJECTS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3887"
+      }
+    },
+    {
+      "id": "prospects-mfb",
+      "name": "PROSPECTS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3889"
+      }
+    },
+    {
+      "id": "prosperity-mfb",
+      "name": "PROSPERITY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3890"
+      }
+    },
+    {
+      "id": "providus-bank",
+      "name": "Providus Bank",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "14"
+      }
+    },
+    {
+      "id": "prudent-mfb",
+      "name": "PRUDENT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4136"
+      }
+    },
+    {
+      "id": "pyramid-mfb",
+      "name": "PYRAMID MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3893"
+      }
+    },
+    {
+      "id": "qube-mfb",
+      "name": "QUBE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3894"
+      }
+    },
+    {
+      "id": "quest-merchant-bank",
+      "name": "QUEST MERCHANT BANK",
+      "type": "merchant",
+      "identifiers": {
+        "cbn_institution_id": "3182"
+      }
+    },
+    {
+      "id": "quickfund-mfb",
+      "name": "QUICKFUND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3895"
+      }
+    },
+    {
+      "id": "rahama-mfb",
+      "name": "RAHAMA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3896"
+      }
+    },
+    {
+      "id": "rakib-mfb",
+      "name": "RAKIB MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3897"
+      }
+    },
+    {
+      "id": "ramilowo-mfb",
+      "name": "RAMILOWO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3898"
+      }
+    },
+    {
+      "id": "rand-merchant-bank",
+      "name": "RAND MERCHANT BANK",
+      "type": "merchant",
+      "identifiers": {
+        "cbn_institution_id": "3186"
+      }
+    },
+    {
+      "id": "randalpha",
+      "name": "RANDALPHA",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3899"
+      }
+    },
+    {
+      "id": "rano-mfb",
+      "name": "RANO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3900"
+      }
+    },
+    {
+      "id": "refined-benefits-mfb",
+      "name": "REFINED BENEFITS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3902"
+      }
+    },
+    {
+      "id": "refuge-homes",
+      "name": "REFUGE HOMES",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4108"
+      }
+    },
+    {
+      "id": "regent-mfb",
+      "name": "REGENT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3903"
+      }
+    },
+    {
+      "id": "rehoboth-mfb",
+      "name": "REHOBOTH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3904"
+      }
+    },
+    {
+      "id": "reliance-mfb",
+      "name": "RELIANCE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3905"
+      }
+    },
+    {
+      "id": "renmoney-mfb",
+      "name": "RENMONEY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3906"
+      }
+    },
+    {
+      "id": "rephidim-mfb",
+      "name": "REPHIDIM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3907"
+      }
+    },
+    {
+      "id": "ric-mfb",
+      "name": "RIC MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3908"
+      }
+    },
+    {
+      "id": "richway-mfb",
+      "name": "RICHWAY MFB LTD.",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3909"
+      }
+    },
+    {
+      "id": "ricia-capital-microfinance-bank",
+      "name": "Ricia Capital Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10098"
+      }
+    },
+    {
+      "id": "rigo-mfb",
+      "name": "RIGO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3910"
+      }
+    },
+    {
+      "id": "rima-growth-pathway-mfb",
+      "name": "RIMA GROWTH PATHWAY MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3911"
+      }
+    },
+    {
+      "id": "rima-mfb",
+      "name": "RIMA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3912"
+      }
+    },
+    {
+      "id": "riverside-mfb",
+      "name": "RIVERSIDE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3914"
+      }
+    },
+    {
+      "id": "rockshield-mfb",
+      "name": "ROCKSHIELD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3915"
+      }
+    },
+    {
+      "id": "royal-blue-mfb",
+      "name": "ROYAL BLUE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3917"
+      }
+    },
+    {
+      "id": "royal-excellent-microfinance-bank",
+      "name": "Royal Excellent Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10070"
+      }
+    },
+    {
+      "id": "royal-exchange-mfb",
+      "name": "ROYAL EXCHANGE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3918"
+      }
+    },
+    {
+      "id": "royal-life-key-mfb",
+      "name": "ROYAL LIFE KEY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3919"
+      }
+    },
+    {
+      "id": "royal-mfb",
+      "name": "ROYAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3920"
+      }
+    },
+    {
+      "id": "rubies-mfb",
+      "name": "RUBIES MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3921"
+      }
+    },
+    {
+      "id": "run-microfinance-bank",
+      "name": "Run Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10071"
+      }
+    },
+    {
+      "id": "sabi-mfb",
+      "name": "SABI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3922"
+      }
+    },
+    {
+      "id": "sabon-yelwa-mfb",
+      "name": "SABON YELWA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3923"
+      }
+    },
+    {
+      "id": "sabuwa-mfb",
+      "name": "SABUWA MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3924"
+      }
+    },
+    {
+      "id": "safana-mfb",
+      "name": "SAFANA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3925"
+      }
+    },
+    {
+      "id": "safe-haven-mfb",
+      "name": "SAFE HAVEN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3926"
+      }
+    },
+    {
+      "id": "safeline-mfb",
+      "name": "SAFELINE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3928"
+      }
+    },
+    {
+      "id": "sagamu-mfb",
+      "name": "SAGAMU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3929"
+      }
+    },
+    {
+      "id": "sandamu-mfb",
+      "name": "SANDAMU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3931"
+      }
+    },
+    {
+      "id": "sapida-mfb",
+      "name": "SAPIDA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3932"
+      }
+    },
+    {
+      "id": "sarkin-kudu-mfb",
+      "name": "SARKIN KUDU MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3933"
+      }
+    },
+    {
+      "id": "savesimple-microfinance-bank",
+      "name": "Savesimple Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10072"
+      }
+    },
+    {
+      "id": "seal-microfinance-bank",
+      "name": "SEAL MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9912"
+      }
+    },
+    {
+      "id": "seap-mfb",
+      "name": "SEAP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3935"
+      }
+    },
+    {
+      "id": "seedvest-mfb",
+      "name": "SEEDVEST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3937"
+      }
+    },
+    {
+      "id": "senchi-mfb",
+      "name": "SENCHI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3938"
+      }
+    },
+    {
+      "id": "shalom-mfb",
+      "name": "Shalom MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3939"
+      }
+    },
+    {
+      "id": "shepherd-trust-mfb",
+      "name": "SHEPHERD TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3941"
+      }
+    },
+    {
+      "id": "shield-mfb",
+      "name": "SHIELD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3942"
+      }
+    },
+    {
+      "id": "shine-microfinance-bank",
+      "name": "Shine Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10073"
+      }
+    },
+    {
+      "id": "shongom-mfb",
+      "name": "SHONGOM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3943"
+      }
+    },
+    {
+      "id": "signature-bank",
+      "name": "Signature Bank Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "9866"
+      }
+    },
+    {
+      "id": "silverend-microfinance-bank",
+      "name": "Silverend Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10074"
+      }
+    },
+    {
+      "id": "sincere-mfb",
+      "name": "SINCERE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3944"
+      }
+    },
+    {
+      "id": "sls-mfb",
+      "name": "SLS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3945"
+      }
+    },
+    {
+      "id": "smartcash-psb",
+      "name": "SMARTCASH PSB LIMITED",
+      "type": "payment_service",
+      "identifiers": {
+        "cbn_institution_id": "9883"
+      }
+    },
+    {
+      "id": "smartmicro-mfb",
+      "name": "SMARTMICRO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3946"
+      }
+    },
+    {
+      "id": "snow-mfb",
+      "name": "SNOW MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3947"
+      }
+    },
+    {
+      "id": "solid-allianz-mfb",
+      "name": "SOLID ALLIANZ MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3948"
+      }
+    },
+    {
+      "id": "solid-rock-mfb",
+      "name": "SOLID ROCK MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3949"
+      }
+    },
+    {
+      "id": "solid-trust-mfb",
+      "name": "Solid Trust MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3950"
+      }
+    },
+    {
+      "id": "soroman-mfb",
+      "name": "SOROMAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3951"
+      }
+    },
+    {
+      "id": "sosa-microfinance-bank",
+      "name": "Sosa Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10075"
+      }
+    },
+    {
+      "id": "source-microfinance-bank",
+      "name": "SOURCE MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9869"
+      }
+    },
+    {
+      "id": "sparkle-mfb",
+      "name": "SPARKLE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3952"
+      }
+    },
+    {
+      "id": "spectrum-mfb",
+      "name": "SPECTRUM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3953"
+      }
+    },
+    {
+      "id": "springfield-microfinance-bank",
+      "name": "Springfield Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10076"
+      }
+    },
+    {
+      "id": "springville-microfinance-bank",
+      "name": "Springville Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10077"
+      }
+    },
+    {
+      "id": "stanbic-ibtc-bank",
+      "name": "Stanbic IBTC Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "15"
+      }
+    },
+    {
+      "id": "standard-chartered-bank-nigeria",
+      "name": "Standard Chartered Bank Nigeria Ltd.",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "16"
+      }
+    },
+    {
+      "id": "standard-mfb",
+      "name": "STANDARD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3955"
+      }
+    },
+    {
+      "id": "stateside-mfb",
+      "name": "STATESIDE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3958"
+      }
+    },
+    {
+      "id": "stb-building-society",
+      "name": "STB BUILDING SOCIETY",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4111"
+      }
+    },
+    {
+      "id": "stellas-mfb",
+      "name": "STELLAS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3960"
+      }
+    },
+    {
+      "id": "step-by-step-mfb",
+      "name": "STEP BY STEP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3961"
+      }
+    },
+    {
+      "id": "sterling-bank",
+      "name": "Sterling Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "17"
+      }
+    },
+    {
+      "id": "stillwaters-mfb",
+      "name": "STILLWATERS MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3962"
+      }
+    },
+    {
+      "id": "stockcorp-mfb",
+      "name": "STOCKCORP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3963"
+      }
+    },
+    {
+      "id": "sulspap-mfb",
+      "name": "SULSPAP MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3965"
+      }
+    },
+    {
+      "id": "summit-bank",
+      "name": "SUMMIT BANK LIMITED",
+      "type": "non_interest",
+      "identifiers": {
+        "cbn_institution_id": "9917"
+      }
+    },
+    {
+      "id": "sunbeam-mfb",
+      "name": "SUNBEAM MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3967"
+      }
+    },
+    {
+      "id": "suntop-microfinance-bank",
+      "name": "Suntop Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3273"
+      }
+    },
+    {
+      "id": "suntrust-bank-nigeria",
+      "name": "SunTrust Bank Nigeria Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "18"
+      }
+    },
+    {
+      "id": "support-mfb",
+      "name": "SUPPORT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3969"
+      }
+    },
+    {
+      "id": "sure-anchor-mfb",
+      "name": "SURE ANCHOR MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3972"
+      }
+    },
+    {
+      "id": "swifttrust-microfinance-bank",
+      "name": "Swifttrust Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10080"
+      }
+    },
+    {
+      "id": "taj",
+      "name": "TAJ",
+      "type": "non_interest",
+      "identifiers": {
+        "cbn_institution_id": "4121"
+      }
+    },
+    {
+      "id": "tanadi-mfb",
+      "name": "TANADI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3974"
+      }
+    },
+    {
+      "id": "tangale-mfb",
+      "name": "TANGALE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3975"
+      }
+    },
+    {
+      "id": "tangerine-money-microfinance-bank",
+      "name": "Tangerine Money Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3263"
+      }
+    },
+    {
+      "id": "tasued-mfb",
+      "name": "TASUED MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3977"
+      }
+    },
+    {
+      "id": "tatum-bank",
+      "name": "Tatum Bank Limited",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "9895"
+      }
+    },
+    {
+      "id": "tcf-mfb",
+      "name": "TCF MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3978"
+      }
+    },
+    {
+      "id": "teerus-microfinance-bank",
+      "name": "TEERUS MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9908"
+      }
+    },
+    {
+      "id": "tellerone-fi-microfinance-bank",
+      "name": "Tellerone FI Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10082"
+      }
+    },
+    {
+      "id": "tenn-microfinance-bank",
+      "name": "Tenn Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10083"
+      }
+    },
+    {
+      "id": "tf-mfb",
+      "name": "TF MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3979"
+      }
+    },
+    {
+      "id": "the-millennium-mfb",
+      "name": "The Millennium MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3980"
+      }
+    },
+    {
+      "id": "titan-trust-bank",
+      "name": "Titan Trust Bank Ltd",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "19"
+      }
+    },
+    {
+      "id": "top-rate-mfb",
+      "name": "TOP RATE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3984"
+      }
+    },
+    {
+      "id": "topclass-mfb",
+      "name": "TOPCLASS MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3983"
+      }
+    },
+    {
+      "id": "total-trust-mfb",
+      "name": "TOTAL TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3985"
+      }
+    },
+    {
+      "id": "touchgold-mfb",
+      "name": "TOUCHGOLD MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3986"
+      }
+    },
+    {
+      "id": "townserve-mfb",
+      "name": "TOWNSERVE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3987"
+      }
+    },
+    {
+      "id": "transpay-microfinance-bank",
+      "name": "Transpay Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10084"
+      }
+    },
+    {
+      "id": "treasures-mfb",
+      "name": "TREASURES MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3988"
+      }
+    },
+    {
+      "id": "trident-mfb",
+      "name": "TRIDENT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3989"
+      }
+    },
+    {
+      "id": "tripple-a-mfb",
+      "name": "TRIPPLE A MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3990"
+      }
+    },
+    {
+      "id": "triumphant-microfinance-bank",
+      "name": "TRIUMPHANT MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9868"
+      }
+    },
+    {
+      "id": "trust-mfb",
+      "name": "TRUST MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3991"
+      }
+    },
+    {
+      "id": "trustbanc-j6",
+      "name": "TRUSTBANC J6",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3992"
+      }
+    },
+    {
+      "id": "trustbond-mortgage-bank",
+      "name": "TRUSTBOND MORTGAGE BANK",
+      "type": "mortgage",
+      "identifiers": {
+        "cbn_institution_id": "4112"
+      }
+    },
+    {
+      "id": "trustfund-mfb",
+      "name": "TRUSTFUND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3993"
+      }
+    },
+    {
+      "id": "tudunwada-mfb",
+      "name": "TUDUNWADA MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3996"
+      }
+    },
+    {
+      "id": "u-c-mfb",
+      "name": "U & C MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3997"
+      }
+    },
+    {
+      "id": "ubj-microfinance-bank",
+      "name": "UBJ Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10085"
+      }
+    },
+    {
+      "id": "ucb-mfb",
+      "name": "UCB MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3998"
+      }
+    },
+    {
+      "id": "uda-mfb",
+      "name": "UDA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "3999"
+      }
+    },
+    {
+      "id": "udoka-mfb",
+      "name": "UDOKA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4000"
+      }
+    },
+    {
+      "id": "uforo-microfinance-bank",
+      "name": "Uforo Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10086"
+      }
+    },
+    {
+      "id": "uga-mfb",
+      "name": "UGA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4001"
+      }
+    },
+    {
+      "id": "ugborimili-mfb",
+      "name": "UGBORIMILI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4002"
+      }
+    },
+    {
+      "id": "uhuru-mfb",
+      "name": "UHURU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4003"
+      }
+    },
+    {
+      "id": "ukpor-mfb",
+      "name": "UKPOR MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4004"
+      }
+    },
+    {
+      "id": "ukwala-mfb",
+      "name": "UKWALA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4005"
+      }
+    },
+    {
+      "id": "ultimate-mfb",
+      "name": "ULTIMATE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4007"
+      }
+    },
+    {
+      "id": "ultraviolet-microfinance-bank",
+      "name": "Ultraviolet Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10087"
+      }
+    },
+    {
+      "id": "ummah-mfb",
+      "name": "UMMAH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4009"
+      }
+    },
+    {
+      "id": "umuawulu-mfb",
+      "name": "UMUAWULU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4010"
+      }
+    },
+    {
+      "id": "umuchinemere-procredit-mfb",
+      "name": "UMUCHINEMERE PROCREDIT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4011"
+      }
+    },
+    {
+      "id": "umuchukwu-mfb",
+      "name": "UMUCHUKWU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4012"
+      }
+    },
+    {
+      "id": "umunnachi-mfb",
+      "name": "UMUNNACHI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4013"
+      }
+    },
+    {
+      "id": "umunri-microfinance-bank",
+      "name": "Umunri Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10088"
+      }
+    },
+    {
+      "id": "umuoji-mfb",
+      "name": "UMUOJI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4015"
+      }
+    },
+    {
+      "id": "umyu-microfinance-bank",
+      "name": "UMYU Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4016"
+      }
+    },
+    {
+      "id": "unaab-mfb",
+      "name": "UNAAB MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4017"
+      }
+    },
+    {
+      "id": "ungogo-mfb",
+      "name": "UNGOGO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4018"
+      }
+    },
+    {
+      "id": "unibadan-mfb",
+      "name": "UNIBADAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4019"
+      }
+    },
+    {
+      "id": "unical-mfb",
+      "name": "UNICAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4020"
+      }
+    },
+    {
+      "id": "unicorn-microfinance-bank",
+      "name": "Unicorn Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10089"
+      }
+    },
+    {
+      "id": "unifund-mfb",
+      "name": "UNIFUND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4022"
+      }
+    },
+    {
+      "id": "unilag-mfb",
+      "name": "UNILAG MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4023"
+      }
+    },
+    {
+      "id": "unilorin-mfb",
+      "name": "UNILORIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4024"
+      }
+    },
+    {
+      "id": "unimaid-mfb",
+      "name": "UNIMAID MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4025"
+      }
+    },
+    {
+      "id": "union-bank-of-nigeria",
+      "name": "Union Bank of Nigeria Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "20"
+      }
+    },
+    {
+      "id": "united-bank-for-africa",
+      "name": "United Bank For Africa Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "21"
+      }
+    },
+    {
+      "id": "united-capital-mfb",
+      "name": "UNITED CAPITAL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4132"
+      }
+    },
+    {
+      "id": "unity-bank",
+      "name": "Unity Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "22"
+      }
+    },
+    {
+      "id": "uniuyo-mfb",
+      "name": "UNIUYO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4026"
+      }
+    },
+    {
+      "id": "university-of-benin-mfb",
+      "name": "UNIVERSITY OF BENIN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4027"
+      }
+    },
+    {
+      "id": "unn-mfb",
+      "name": "UNN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4028"
+      }
+    },
+    {
+      "id": "unubi-mfb",
+      "name": "UNUBI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4029"
+      }
+    },
+    {
+      "id": "urban-mfb",
+      "name": "URBAN MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4030"
+      }
+    },
+    {
+      "id": "ure-mfb",
+      "name": "URE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4031"
+      }
+    },
+    {
+      "id": "utako-mfb",
+      "name": "UTAKO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4032"
+      }
+    },
+    {
+      "id": "utuh-mfb",
+      "name": "UTUH MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4033"
+      }
+    },
+    {
+      "id": "uvuoma-mfb",
+      "name": "UVUOMA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4034"
+      }
+    },
+    {
+      "id": "uvuru-mfb",
+      "name": "UVURU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4035"
+      }
+    },
+    {
+      "id": "uzondu-mfb",
+      "name": "UZONDU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4036"
+      }
+    },
+    {
+      "id": "vangel-microfinance-bank",
+      "name": "Vangel Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10090"
+      }
+    },
+    {
+      "id": "vcl-mfb",
+      "name": "VCL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4037"
+      }
+    },
+    {
+      "id": "vfd-mfb",
+      "name": "VFD MFB LTD",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4039"
+      }
+    },
+    {
+      "id": "victory-mfb",
+      "name": "VICTORY MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4041"
+      }
+    },
+    {
+      "id": "visa-mfb",
+      "name": "VISA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4043"
+      }
+    },
+    {
+      "id": "viscount-mfb",
+      "name": "VISCOUNT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4044"
+      }
+    },
+    {
+      "id": "vista-microfinance-bank",
+      "name": "Vista Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10092"
+      }
+    },
+    {
+      "id": "waila-mfb",
+      "name": "WAILA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4045"
+      }
+    },
+    {
+      "id": "wallet-microfinance-bank",
+      "name": "Wallet Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9879"
+      }
+    },
+    {
+      "id": "waya-mfb",
+      "name": "WAYA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4138"
+      }
+    },
+    {
+      "id": "we-microfinance-bank",
+      "name": "WE MICROFINANCE BANK LIMITED",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "9911"
+      }
+    },
+    {
+      "id": "welfare-mfb",
+      "name": "WELFARE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4047"
+      }
+    },
+    {
+      "id": "wema-bank",
+      "name": "Wema Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "23"
+      }
+    },
+    {
+      "id": "weston-charis-microfinance-bank",
+      "name": "Weston-Charis Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10093"
+      }
+    },
+    {
+      "id": "wetland-mfb",
+      "name": "WETLAND MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4049"
+      }
+    },
+    {
+      "id": "willows-microfinance-bank",
+      "name": "Willows Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10094"
+      }
+    },
+    {
+      "id": "woliwo-mfb",
+      "name": "WOLIWO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4050"
+      }
+    },
+    {
+      "id": "women-development-mfb",
+      "name": "WOMEN DEVELOPMENT MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4051"
+      }
+    },
+    {
+      "id": "wra-mfb",
+      "name": "WRA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4052"
+      }
+    },
+    {
+      "id": "wudil-mfb",
+      "name": "WUDIL MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4053"
+      }
+    },
+    {
+      "id": "xslnce-mfb",
+      "name": "XSLNCE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4054"
+      }
+    },
+    {
+      "id": "yabo-mfb",
+      "name": "YABO MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4055"
+      }
+    },
+    {
+      "id": "yankari-mfb",
+      "name": "Yankari MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4056"
+      }
+    },
+    {
+      "id": "yauri-emirates-mfb",
+      "name": "YAURI EMIRATES MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4057"
+      }
+    },
+    {
+      "id": "yct-microfinance-bank",
+      "name": "YCT Microfinance Bank",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4058"
+      }
+    },
+    {
+      "id": "yes-mfb",
+      "name": "YES MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4060"
+      }
+    },
+    {
+      "id": "yobe-state-mfb",
+      "name": "YOBE STATE MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4061"
+      }
+    },
+    {
+      "id": "zazzau-mfb",
+      "name": "ZAZZAU MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4065"
+      }
+    },
+    {
+      "id": "zefa-mfb",
+      "name": "ZEFA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4066"
+      }
+    },
+    {
+      "id": "zenith-bank",
+      "name": "Zenith Bank Plc",
+      "type": "commercial",
+      "identifiers": {
+        "cbn_institution_id": "24"
+      }
+    },
+    {
+      "id": "zikora-mfb",
+      "name": "ZIKORA MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4069"
+      }
+    },
+    {
+      "id": "zion-mfb",
+      "name": "ZION MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4070"
+      }
+    },
+    {
+      "id": "zircon-microfinance-bank",
+      "name": "Zircon Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10095"
+      }
+    },
+    {
+      "id": "zitra-microfinance-bank",
+      "name": "Zitra Microfinance Bank Limited",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "10096"
+      }
+    },
+    {
+      "id": "zurmi-mfb",
+      "name": "ZURMI MFB",
+      "type": "microfinance",
+      "identifiers": {
+        "cbn_institution_id": "4071"
+      }
+    }
+  ]
+}
