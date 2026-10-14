@@ -29,4 +29,10 @@ jobs:
         pip install -r requirements.txt
 
     - name: Compare data files with their sources
+      env:
+        # Optional repository secrets for the NIP institution list. Without
+        # them, NIBSS codes are not checked and the CBN lists still are.
+        NIP_INSTITUTIONS_URL: ${{ secrets.NIP_INSTITUTIONS_URL }}
+        NIP_INSTITUTIONS_API_KEY: ${{ secrets.NIP_INSTITUTIONS_API_KEY }}
+        NIP_INSTITUTIONS_KEY_HEADER: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER }}
       run: python -m src.refresh all --check
