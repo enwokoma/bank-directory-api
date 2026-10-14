@@ -23,6 +23,7 @@ def test_reads_the_hosted_settings():
             "API_KEY_DATABASE": "/data/keys.sqlite3",
             "PUBLIC_BASE_URL": "https://banks.example.test/",
             "SIGNUP_EMAIL_FROM": "Bank Directory API <no-reply@example.test>",
+            "AWS_REGION": "eu-central-1",
             "TRUSTED_PROXIES": "1",
         }
     )
@@ -34,6 +35,7 @@ def test_reads_the_hosted_settings():
         api_key_database="/data/keys.sqlite3",
         public_base_url="https://banks.example.test",
         signup_email_from="Bank Directory API <no-reply@example.test>",
+        aws_region="eu-central-1",
         trusted_proxies=1,
     )
     assert settings.rate_limits_enabled and settings.api_keys_enabled and settings.signup_enabled

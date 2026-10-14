@@ -1,7 +1,8 @@
 """Sending sign-up emails through Amazon SES.
 
-Credentials and region come from boto3's standard sources: on the hosted
-server, the EC2 instance role and AWS_REGION. Nothing AWS-specific is stored
+Credentials come from boto3's standard sources: on the hosted server, the EC2
+instance role. The region is passed in from the AWS_REGION setting, because
+boto3 reads only AWS_DEFAULT_REGION by itself. Nothing AWS-specific is stored
 in this project. Errors are left to the caller, which decides what to tell the
 person signing up.
 """
@@ -26,8 +27,9 @@ class EmailSender(Protocol):
 class SesEmailSender:
     """Send plain-text email from one sender address with the SES v2 API."""
 
-    def __init__(self, sender: str, client: SESV2Client | None = None) -> None:
+    def __init__(self, sender: str, client: SESV2Client | None = None, region: str | None = None) -> None:
         self.sender = sender
+        self.region = region
         self._client = client
 
     def send(self, to: str, subject: str, text: str) -> None:
@@ -45,5 +47,5 @@ class SesEmailSender:
     def _ses(self) -> SESV2Client:
         # Created on first use, so the app starts without AWS settings until an email is needed.
         if self._client is None:
-            self._client = boto3.client("sesv2", config=_SES_CONFIG)
+            self._client = boto3.client("sesv2", region_name=self.region, config=_SES_CONFIG)
         return self._client

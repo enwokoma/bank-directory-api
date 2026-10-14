@@ -11,12 +11,14 @@ hosted service turns these on:
     API_KEY_DATABASE        SQLite file that holds API keys, stored only as hashes
     PUBLIC_BASE_URL         the API's public address, used in sign-up emails
     SIGNUP_EMAIL_FROM       sender of sign-up emails, sent through Amazon SES
+    AWS_REGION              the Amazon SES region the sender is verified in
     TRUSTED_PROXIES         how many reverse proxies sit in front of the app
 
 Limits use the `limits` library's notation, separated by semicolons, such as
 "60 per hour;300 per day". Sign-up needs API_KEY_DATABASE, PUBLIC_BASE_URL and
-SIGNUP_EMAIL_FROM; Amazon SES credentials and region come from the standard AWS
-sources, such as an EC2 instance role and AWS_REGION.
+SIGNUP_EMAIL_FROM. Amazon SES credentials come from the standard AWS sources,
+such as an EC2 instance role. boto3 reads only AWS_DEFAULT_REGION by itself,
+so AWS_REGION is read here and passed on; without it, boto3's own sources apply.
 """
 
 from __future__ import annotations
@@ -37,6 +39,7 @@ class Settings:
     api_key_database: str | None = None
     public_base_url: str | None = None
     signup_email_from: str | None = None
+    aws_region: str | None = None
     trusted_proxies: int = 0
 
     @property
@@ -82,5 +85,6 @@ class Settings:
             api_key_database=text("API_KEY_DATABASE"),
             public_base_url=base_url.rstrip("/") if base_url else None,
             signup_email_from=text("SIGNUP_EMAIL_FROM"),
+            aws_region=text("AWS_REGION"),
             trusted_proxies=int(proxies),
         )
