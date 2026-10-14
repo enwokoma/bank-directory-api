@@ -2,7 +2,7 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
-## 0.3.2 - 2026-10-14
+## 0.3.2 - 2026-10-15
 
 ### Fixed
 
