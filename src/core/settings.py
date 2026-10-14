@@ -33,7 +33,7 @@ class Settings:
     rate_limit_storage_uri: str | None = None
     anonymous_rate_limit: str = "60 per hour;300 per day"
     key_rate_limit: str = "120 per minute;20000 per day"
-    signup_rate_limit: str = "5 per hour;20 per day"
+    signup_rate_limit: str = "10 per hour;30 per day"
     api_key_database: str | None = None
     public_base_url: str | None = None
     signup_email_from: str | None = None

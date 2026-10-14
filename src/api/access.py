@@ -40,8 +40,10 @@ class Caller:
     problem: tuple[int, str] | None = None
 
 
-def install_access_control(app: Flask, settings: Settings, limited: list[Blueprint]) -> Limiter:
-    """Add rate limits to the given blueprints, check API keys, and trust the configured proxies."""
+def install_access_control(
+    app: Flask, settings: Settings, limited: list[Blueprint], signup: list[Blueprint] | None = None
+) -> Limiter:
+    """Rate limit the API and sign-up blueprints, check API keys, and trust the configured proxies."""
     if settings.trusted_proxies:
         # Caddy and other proxies pass the client address in X-Forwarded-For.
         app.wsgi_app = ProxyFix(app.wsgi_app, x_for=settings.trusted_proxies, x_proto=settings.trusted_proxies)  # type: ignore[method-assign]
@@ -60,6 +62,9 @@ def install_access_control(app: Flask, settings: Settings, limited: list[Bluepri
     )
     for blueprint in limited:
         limiter.limit(api_rate_limit, exempt_when=is_preflight)(blueprint)
+    for blueprint in signup or []:
+        # Sign-up is always counted per IP, with its own tighter limits.
+        limiter.limit(signup_rate_limit, key_func=client_ip_key, exempt_when=is_preflight)(blueprint)
     # Registered after the limiter, so a request with a bad key is counted before it is refused.
     app.before_request(refuse_bad_credentials)
     app.register_error_handler(RateLimitExceeded, rate_limited)
@@ -76,6 +81,14 @@ def current_caller() -> Caller:
 def rate_limit_key() -> str:
     caller = current_caller()
     return f"key:{caller.key.id}" if caller.key else f"ip:{get_remote_address()}"
+
+
+def client_ip_key() -> str:
+    return f"signup-ip:{get_remote_address()}"
+
+
+def signup_rate_limit() -> str:
+    return _settings().signup_rate_limit
 
 
 def api_rate_limit() -> str:

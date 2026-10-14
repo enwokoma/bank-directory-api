@@ -15,7 +15,9 @@ from src import __version__
 from src.api.access import install_access_control
 from src.api.keys import keys_bp
 from src.api.routes import banks_bp
+from src.api.signup import signup_bp
 from src.core.dataset import load_datasets
+from src.core.email import SesEmailSender
 from src.core.settings import Settings
 
 # Bank data only changes when a new version is deployed, so clients and CDNs
@@ -63,9 +65,11 @@ def create_app(settings: Settings | None = None) -> Flask:
     }
     Swagger(app, config=SWAGGER_CONFIG)
 
-    install_access_control(app, settings, limited=[banks_bp, keys_bp])
+    install_access_control(app, settings, limited=[banks_bp, keys_bp], signup=[signup_bp])
+    app.extensions["bank_email_sender"] = SesEmailSender(settings.signup_email_from) if settings.signup_email_from else None
     app.register_blueprint(banks_bp, url_prefix="/api")
     app.register_blueprint(keys_bp, url_prefix="/api")
+    app.register_blueprint(signup_bp, url_prefix="/api")
     app.after_request(add_public_api_headers)
     app.register_error_handler(HTTPException, http_error)
     app.add_url_rule("/", "health_check", health_check)
