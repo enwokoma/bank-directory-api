@@ -102,10 +102,12 @@ def assign_nibss_codes(
 ) -> MatchReport:
     """Set `identifiers.nibss_code` on the banks that can be matched, and report the rest."""
     report = MatchReport()
-    by_code = {institution.code: institution for institution in institutions}
-    by_key: dict[str, list[NipInstitution]] = {}
+    # Merged lists can carry one code under several names; any of them may match.
+    by_code: dict[str, NipInstitution] = {}
+    by_key: dict[str, dict[str, NipInstitution]] = {}
     for institution in institutions:
-        by_key.setdefault(match_key(institution.name), []).append(institution)
+        by_code.setdefault(institution.code, institution)
+        by_key.setdefault(match_key(institution.name), {}).setdefault(institution.code, institution)
 
     bank_names = {bank["name"] for bank in banks}
     for name in sorted(set(reviewed) - bank_names):
@@ -117,7 +119,7 @@ def assign_nibss_codes(
         if bank["name"] in reviewed:
             continue
         key = match_key(bank["name"])
-        candidates = [institution for institution in by_key.get(key, []) if key and _plausible(bank, institution)]
+        candidates = [institution for institution in by_key.get(key, {}).values() if key and _plausible(bank, institution)]
         if len(candidates) == 1 and candidates[0].code not in reviewed_codes:
             claims.setdefault(candidates[0].code, []).append(bank)
 
@@ -150,6 +152,8 @@ def assign_nibss_codes(
 
     in_scope = tuple({prefix for prefixes in CODE_PREFIXES.values() for prefix in prefixes})
     report.unused_institutions = [
-        institution for institution in institutions if institution.code not in used and institution.code.startswith(in_scope)
+        institution
+        for institution in by_code.values()
+        if institution.code not in used and institution.code.startswith(in_scope)
     ]
     return report

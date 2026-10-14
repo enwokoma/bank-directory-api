@@ -10,6 +10,7 @@ from src.countries.nigeria import refresh as nigeria_refresh
 
 FIXTURES = Path(__file__).parent / "fixtures" / "nigeria"
 NIP_URL = "https://nip.example.test/institutions"
+NIP_URL_2 = "https://other.example.test/banks"
 
 
 class FixtureClient:
@@ -23,6 +24,8 @@ class FixtureClient:
         if url == NIP_URL:
             self.nip_headers = headers
             return json.loads((FIXTURES / "nip_institutions.json").read_text(encoding="utf-8"))
+        if url == NIP_URL_2:
+            return json.loads((FIXTURES / "nip_institutions_2.json").read_text(encoding="utf-8"))
         endpoint = url.removeprefix(nigeria_refresh.CBN_BASE_URL + "/api/")
         if endpoint in self.overrides:
             return self.overrides[endpoint]
@@ -135,6 +138,16 @@ class TestNibssCodes:
         assert found["1Trust Microfinance Bank Limited"] is None
         assert dataset["sources"][-1] == nip.SOURCE
         assert client.nip_headers == {"X-API-Key": "test-key"}
+
+    def test_merges_a_second_list(self, nip_list, monkeypatch, caplog):
+        caplog.set_level("INFO")
+        monkeypatch.setenv(nip.ENV_URL + "_2", NIP_URL_2)
+        client = FixtureClient({"GetDMBs": [{"id": 1, "name": "Access Bank Plc"}, {"id": 9865, "name": "Optimus Bank"}]})
+        found = codes(nigeria_refresh.fetch_dataset(client, []))
+        assert found["Optimus Bank"] == "000036"
+        assert found["Access Bank Plc"] == "000014"
+        assert "NIP institution list 1 has 16 institutions" in caplog.text
+        assert "NIP institution list 2 has 3 institutions" in caplog.text
 
     def test_reports_what_still_needs_review(self, nip_list, caplog):
         caplog.set_level("INFO")

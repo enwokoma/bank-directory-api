@@ -64,14 +64,17 @@ def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | N
     sources = [SOURCE, mobile_money.SOURCE]
 
     settings = nip.settings_from_env()
-    if settings is None:
+    if not settings:
         kept = keep_previous_nibss_codes(records, previous_banks or [])
         logger.warning("%s is not set, so the %d NIBSS codes already in the file were kept.", nip.ENV_URL, kept)
         if kept:
             sources.append(nip.SOURCE)
     else:
-        institutions = nip.fetch_nip_institutions(client, settings)
-        logger.info("The NIP institution list has %d institutions", len(institutions))
+        institutions = []
+        for number, list_settings in enumerate(settings, start=1):
+            listed = nip.fetch_nip_institutions(client, list_settings)
+            logger.info("NIP institution list %d has %d institutions", number, len(listed))
+            institutions += listed
         report = nibss_codes.assign_nibss_codes(
             records, institutions, nibss_codes.load_reviewed_matches(nibss_codes.MATCHES_FILE)
         )

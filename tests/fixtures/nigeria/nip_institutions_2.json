@@ -1,0 +1,8 @@
+{
+  "status": "00",
+  "banks": [
+    {"bankCode": "000014", "bankName": "Access Bank Nigeria"},
+    {"bankCode": "000036", "bankName": "Optimus Bank"},
+    {"bankCode": "090267", "bankName": "Kuda Micro-finance Bank"}
+  ]
+}

@@ -3,14 +3,17 @@
 NIBSS gives every institution that can receive NIP transfers a 6-digit code
 and serves the current list to connected institutions through NIP's
 `financialinstitutionlist` operation. NIBSS does not publish the list openly,
-so the refresh reads it from an API that relays it, set on the maintainer's
+so the refresh reads it from APIs that relay it, set on the maintainer's
 machine (in `.env`, which git ignores) or as CI secrets:
 
     NIP_INSTITUTIONS_URL         full URL of the endpoint
     NIP_INSTITUTIONS_API_KEY     key sent with the request, if the endpoint needs one
     NIP_INSTITUTIONS_KEY_HEADER  header that carries the key (default: X-API-Key)
 
-When the URL is not set, the refresh keeps the codes already in the data file.
+Relayed copies can be incomplete, so up to five can be combined: the same
+names ending in _2, _3, _4 and _5 configure more endpoints, and the lists are
+merged by code. When no URL is set, the refresh keeps the codes already in
+the data file.
 """
 
 from __future__ import annotations
@@ -28,6 +31,7 @@ ENV_URL = "NIP_INSTITUTIONS_URL"
 ENV_API_KEY = "NIP_INSTITUTIONS_API_KEY"
 ENV_KEY_HEADER = "NIP_INSTITUTIONS_KEY_HEADER"
 DEFAULT_KEY_HEADER = "X-API-Key"
+MAX_LISTS = 5
 
 SOURCE = {"name": "NIBSS Instant Payment (NIP) institution list", "url": "https://nibss-plc.com.ng/nibss-instant-payment/"}
 CODE_PATTERN = r"[0-9]{6}"
@@ -54,16 +58,20 @@ class NipInstitution:
     name: str
 
 
-def settings_from_env(environ: Mapping[str, str] = os.environ) -> NipSettings | None:
-    """Return the configured endpoint, or None when no URL is set."""
-    url = (environ.get(ENV_URL) or "").strip()
-    if not url:
-        return None
-    return NipSettings(
-        url=url,
-        api_key=(environ.get(ENV_API_KEY) or "").strip() or None,
-        key_header=(environ.get(ENV_KEY_HEADER) or "").strip() or DEFAULT_KEY_HEADER,
-    )
+def settings_from_env(environ: Mapping[str, str] = os.environ) -> list[NipSettings]:
+    """Return every configured endpoint, in order, or an empty list when no URL is set."""
+    found = []
+    for suffix in ["", *(f"_{number}" for number in range(2, MAX_LISTS + 1))]:
+        url = (environ.get(ENV_URL + suffix) or "").strip()
+        if url:
+            found.append(
+                NipSettings(
+                    url=url,
+                    api_key=(environ.get(ENV_API_KEY + suffix) or "").strip() or None,
+                    key_header=(environ.get(ENV_KEY_HEADER + suffix) or "").strip() or DEFAULT_KEY_HEADER,
+                )
+            )
+    return found
 
 
 def fetch_nip_institutions(client: SourceClient, settings: NipSettings) -> list[NipInstitution]:

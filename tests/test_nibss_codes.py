@@ -64,6 +64,19 @@ def test_type_tells_apart_institutions_that_share_a_name():
     assert codes(banks) == {"FCMB MFB LTD.": "090409", "First City Monument Bank Plc": None}
 
 
+def test_merged_lists_can_name_one_code_differently():
+    banks = [bank("First City Monument Bank Plc", "commercial"), bank("FCMB MFB LTD.")]
+    institutions = [Nip("000003", "FCMB"), Nip("000003", "FIRST CITY MONUMENT BANK"), Nip("090409", "FCMB MFB")]
+    report = assign_nibss_codes(banks, institutions, {})
+    assert codes(banks) == {"First City Monument Bank Plc": "000003", "FCMB MFB LTD.": "090409"}
+    assert report.unused_institutions == []
+
+
+def test_merged_lists_report_an_unused_code_once():
+    report = assign_nibss_codes([], [Nip("090300", "AN MFB"), Nip("090300", "AN MICROFINANCE BANK")], {})
+    assert report.unused_institutions == [Nip("090300", "AN MFB")]
+
+
 def test_leaves_a_bank_unmatched_when_two_institutions_share_its_name():
     banks = [bank("Unity MFB")]
     report = assign_nibss_codes(banks, [Nip("090100", "UNITY MFB"), Nip("090200", "UNITY MICROFINANCE BANK")], {})

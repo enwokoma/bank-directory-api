@@ -75,18 +75,35 @@ def test_empty_or_unexpected_responses_stop_the_refresh(body):
 
 class TestSettings:
     def test_not_configured_without_a_url(self):
-        assert nip.settings_from_env({}) is None
-        assert nip.settings_from_env({nip.ENV_URL: "  ", nip.ENV_API_KEY: "secret"}) is None
+        assert nip.settings_from_env({}) == []
+        assert nip.settings_from_env({nip.ENV_URL: "  ", nip.ENV_API_KEY: "secret"}) == []
 
     def test_reads_url_key_and_default_header(self):
         settings = nip.settings_from_env({nip.ENV_URL: "https://example.test/banks", nip.ENV_API_KEY: "secret"})
-        assert settings == nip.NipSettings("https://example.test/banks", "secret", "X-API-Key")
+        assert settings == [nip.NipSettings("https://example.test/banks", "secret", "X-API-Key")]
 
     def test_header_can_be_changed(self):
         settings = nip.settings_from_env(
             {nip.ENV_URL: "https://example.test/banks", nip.ENV_API_KEY: "secret", nip.ENV_KEY_HEADER: "Authorization"}
         )
-        assert settings.key_header == "Authorization"
+        assert settings[0].key_header == "Authorization"
+
+    def test_reads_more_lists_from_numbered_settings(self):
+        settings = nip.settings_from_env(
+            {
+                nip.ENV_URL: "https://one.example.test/",
+                nip.ENV_URL + "_2": "https://two.example.test/",
+                nip.ENV_API_KEY + "_2": "Bearer two",
+                nip.ENV_KEY_HEADER + "_2": "Authorization",
+                nip.ENV_URL + "_4": "https://four.example.test/",
+                nip.ENV_URL + "_6": "https://ignored.example.test/",
+            }
+        )
+        assert settings == [
+            nip.NipSettings("https://one.example.test/", None, "X-API-Key"),
+            nip.NipSettings("https://two.example.test/", "Bearer two", "Authorization"),
+            nip.NipSettings("https://four.example.test/", None, "X-API-Key"),
+        ]
 
 
 def test_fetch_sends_the_key_in_the_configured_header():
