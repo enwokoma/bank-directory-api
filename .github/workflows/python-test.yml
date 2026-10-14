@@ -114,6 +114,9 @@ jobs:
         # Query strings never reach the access log.
         if $compose logs api | grep -q SECRET; then echo "A query string reached the access log."; exit 1; fi
 
+        # Nothing went wrong along the way, such as gunicorn writing to the read-only filesystem.
+        if $compose logs api | grep -F '[ERROR]'; then echo "The API logged an error."; exit 1; fi
+
     - name: Put Caddy in front, as on a dedicated server
       run: |
         set -euo pipefail
