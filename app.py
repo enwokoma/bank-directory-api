@@ -13,6 +13,7 @@ from werkzeug.exceptions import HTTPException
 
 from src import __version__
 from src.api.access import install_access_control
+from src.api.keys import keys_bp
 from src.api.routes import banks_bp
 from src.core.dataset import load_datasets
 from src.core.settings import Settings
@@ -62,8 +63,9 @@ def create_app(settings: Settings | None = None) -> Flask:
     }
     Swagger(app, config=SWAGGER_CONFIG)
 
-    install_access_control(app, settings, limited=[banks_bp])
+    install_access_control(app, settings, limited=[banks_bp, keys_bp])
     app.register_blueprint(banks_bp, url_prefix="/api")
+    app.register_blueprint(keys_bp, url_prefix="/api")
     app.after_request(add_public_api_headers)
     app.register_error_handler(HTTPException, http_error)
     app.add_url_rule("/", "health_check", health_check)
