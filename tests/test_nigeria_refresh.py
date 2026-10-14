@@ -53,6 +53,13 @@ def test_cleans_spacing_without_changing_capitalization():
     assert "TAJ" in banks
 
 
+def test_keeps_one_record_per_duplicated_name():
+    banks = [bank for bank in nigeria_refresh.fetch_dataset(FixtureClient())["banks"] if bank["name"].startswith("Katsu")]
+    assert banks == [
+        {"name": "Katsu Microfinance Bank Limited", "type": "microfinance", "identifiers": {"cbn_institution_id": "10009"}}
+    ]
+
+
 def test_first_category_wins_when_an_institution_is_listed_twice():
     client = FixtureClient({"GetMBs": [{"id": 1, "name": "Access Bank Plc"}]})
     banks = [bank for bank in nigeria_refresh.fetch_dataset(client)["banks"] if bank["name"] == "Access Bank Plc"]

@@ -56,7 +56,30 @@ def fetch_dataset(client: SourceClient) -> dict[str, Any]:
                 )
                 continue
             banks[institution_id] = bank
-    return {"sources": [SOURCE], "banks": list(banks.values())}
+    return {"sources": [SOURCE], "banks": drop_duplicate_names(list(banks.values()))}
+
+
+def drop_duplicate_names(banks: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Keep one record per name, the one with the lowest CBN id.
+
+    The register has entered some microfinance banks twice under two record
+    ids, with the same name, town and licence date. Company names are unique
+    in Nigeria, so records that share a name are the same bank.
+    """
+    kept: dict[str, dict[str, Any]] = {}
+    for bank in sorted(banks, key=lambda bank: int(bank["identifiers"]["cbn_institution_id"])):
+        key = bank["name"].casefold()
+        if key in kept:
+            logger.warning(
+                "CBN lists %s twice (ids %s and %s); keeping %s",
+                bank["name"],
+                kept[key]["identifiers"]["cbn_institution_id"],
+                bank["identifiers"]["cbn_institution_id"],
+                kept[key]["identifiers"]["cbn_institution_id"],
+            )
+            continue
+        kept[key] = bank
+    return list(kept.values())
 
 
 def build_bank(bank_type: str, row: dict[str, Any]) -> dict[str, Any]:
