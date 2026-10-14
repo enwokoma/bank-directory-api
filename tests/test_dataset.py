@@ -1,10 +1,11 @@
 """Dataset validation tests."""
 
 import copy
+import json
 
 import pytest
 
-from src.core.dataset import search_text, validate_dataset
+from src.core.dataset import DatasetError, load_datasets, search_text, validate_dataset
 from src.countries.nigeria.profile import NIGERIA_PROFILE
 
 VALID = {
@@ -54,6 +55,37 @@ def test_reports_each_problem(change, expected):
 
 def test_rejects_non_object():
     assert validate_dataset([], NIGERIA_PROFILE) == ["The file must contain a JSON object."]
+
+
+def test_missing_data_file_stops_loading(tmp_path):
+    with pytest.raises(DatasetError, match="Missing data file for Nigeria"):
+        load_datasets(tmp_path)
+
+
+def test_data_file_without_profile_stops_loading(tmp_path):
+    (tmp_path / "NGA.json").write_text(json.dumps(VALID), encoding="utf-8")
+    (tmp_path / "XYZ.json").write_text("{}", encoding="utf-8")
+    with pytest.raises(DatasetError, match="XYZ.json"):
+        load_datasets(tmp_path)
+
+
+def test_invalid_json_stops_loading(tmp_path):
+    (tmp_path / "NGA.json").write_text("{", encoding="utf-8")
+    with pytest.raises(DatasetError, match="not valid JSON"):
+        load_datasets(tmp_path)
+
+
+def test_invalid_data_stops_loading(tmp_path):
+    (tmp_path / "NGA.json").write_text(json.dumps(with_changes(lambda raw: raw.update(country="GHA"))), encoding="utf-8")
+    with pytest.raises(DatasetError, match="failed validation"):
+        load_datasets(tmp_path)
+
+
+def test_loaded_dataset_indexes_banks_by_id(tmp_path):
+    (tmp_path / "NGA.json").write_text(json.dumps(VALID), encoding="utf-8")
+    dataset = load_datasets(tmp_path)["NGA"]
+    assert dataset.banks_by_id["zenith-bank"]["name"] == "Zenith Bank Plc"
+    assert dataset.retrieved_on == "2026-10-14"
 
 
 def test_search_text_folds_case_accents_and_spacing():
