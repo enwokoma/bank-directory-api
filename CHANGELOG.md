@@ -2,6 +2,13 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## Unreleased
+
+### Added
+
+- Release downloads: every country's data file is attached to each GitHub release with a `SHA256SUMS` file, starting with v0.2.0, and `scripts/upload-release-assets.sh` attaches them.
+- A "Use it in your project" section in the README, with download links and code to fetch the data.
+
 ## 0.2.0 - 2026-10-14
 
 ### Added
