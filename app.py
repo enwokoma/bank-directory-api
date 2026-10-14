@@ -7,11 +7,15 @@ validation live in `src/core/dataset.py`; country details live under
 """
 
 from flasgger import Swagger
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from werkzeug.exceptions import HTTPException
 
 from src.api.routes import banks_bp
 from src.core.dataset import load_datasets
+
+# Bank data only changes when a new version is deployed, so clients and CDNs
+# may cache responses for an hour and revalidate with the ETag after that.
+CACHE_CONTROL = "public, max-age=3600"
 
 app = Flask(__name__)
 app.json.compact = False  # type: ignore[attr-defined]
@@ -45,6 +49,18 @@ app.config["SWAGGER"] = {
 Swagger(app, config=swagger_config)
 
 app.register_blueprint(banks_bp, url_prefix="/api")
+
+
+@app.after_request
+def add_public_api_headers(response):
+    """Let browsers call the read-only API from any site, and let clients cache it."""
+    if request.path.startswith("/api/"):
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        if request.method == "GET" and response.status_code == 200:
+            response.headers["Cache-Control"] = CACHE_CONTROL
+            response.add_etag()
+            response.make_conditional(request)
+    return response
 
 
 @app.errorhandler(HTTPException)

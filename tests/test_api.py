@@ -126,3 +126,20 @@ class TestBankDetail:
 
     def test_unknown_bank_is_404(self, client):
         assert get_json(client, "/api/countries/NG/banks/no-such-bank", status=404)["success"] is False
+
+
+class TestCachingAndCors:
+    def test_api_responses_can_be_cached_and_revalidated(self, client):
+        first = client.get("/api/countries/NG/banks?type=merchant")
+        assert first.headers["Cache-Control"] == "public, max-age=3600"
+        assert first.headers["Access-Control-Allow-Origin"] == "*"
+        etag = first.headers["ETag"]
+
+        again = client.get("/api/countries/NG/banks?type=merchant", headers={"If-None-Match": etag})
+        assert again.status_code == 304
+        assert again.get_data() == b""
+
+    def test_errors_are_not_cached(self, client):
+        response = client.get("/api/countries/XX")
+        assert "Cache-Control" not in response.headers
+        assert "ETag" not in response.headers
