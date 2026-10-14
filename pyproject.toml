@@ -1,0 +1,23 @@
+[tool.ruff]
+line-length = 127
+target-version = "py311"
+extend-exclude = [".git", ".idea", ".mypy_cache", ".pytest_cache", ".ruff_cache", ".venv"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.11"
+files = ["app.py", "src"]
+ignore_missing_imports = true
+check_untyped_defs = true
+warn_unused_ignores = true
+show_error_codes = true
+pretty = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

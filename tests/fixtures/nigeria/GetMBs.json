@@ -1,0 +1,42 @@
+[
+  {
+    "id": 3181,
+    "name": "CORONATION MERCHANT BANK",
+    "institutetype": null,
+    "categorization": null,
+    "oldname": null,
+    "newnamedate": null,
+    "streetAddress": null,
+    "area": null,
+    "state": null,
+    "telephoneNo": null,
+    "website": null,
+    "email": null,
+    "faxNo": null,
+    "postalAddress": null,
+    "country": null,
+    "ownershiptype": null,
+    "otherinformation": null,
+    "datelicensed": null
+  },
+  {
+    "id": 3186,
+    "name": "RAND MERCHANT BANK",
+    "institutetype": null,
+    "categorization": null,
+    "oldname": null,
+    "newnamedate": null,
+    "streetAddress": null,
+    "area": null,
+    "state": null,
+    "telephoneNo": null,
+    "website": null,
+    "email": null,
+    "faxNo": null,
+    "postalAddress": null,
+    "country": null,
+    "ownershiptype": null,
+    "otherinformation": null,
+    "datelicensed": null
+  }
+]
