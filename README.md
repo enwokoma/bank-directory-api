@@ -215,7 +215,9 @@ The command prints which banks were added, removed or changed. Existing banks ke
 
 ### Nigeria's NIBSS codes
 
-NIBSS does not publish its institution list openly; it serves it to connected institutions, and payment providers relay it to their API customers. To refresh the codes, copy `.env.example` to `.env` and set the URL of an API that returns the list, with its key. `.env` is ignored by git, so the endpoint and key never reach the repository.
+NIBSS does not publish its institution list openly; it serves it to connected institutions, and payment providers relay it to their API customers. To refresh the codes, copy `.env.example` to `.env` and set the URL of an API that returns the list, with its key. `.env` is ignored by git, so the endpoints and keys never reach the repository.
+
+A relayed copy can leave institutions out, so up to five can be combined: the same setting names ending in `_2` to `_5` configure more endpoints, and the lists are merged by code.
 
 ```bash
 cp .env.example .env
@@ -224,9 +226,9 @@ python -m src.refresh NGA
 
 Without these settings, the refresh keeps the codes already in the file and updates everything else.
 
-With them, the command also prints the review report: banks still without a code, and NIP institutions that matched no bank. A bank gets a code automatically only when its name matches exactly one NIP institution of the same type. When the two lists spell a name differently, add the bank's name exactly as the CBN publishes it, with its code, to `src/countries/nigeria/nibss_code_matches.json`, check that the code really belongs to that bank, and run the refresh again. A name mapped to `null` stays without a code.
+With them, the command also prints the review report: banks still without a code, and NIP institutions that matched no bank. Add `--verbose` to also list every match with the institution's name in the NIP list, to confirm each code belongs to its bank. A bank gets a code automatically only when its name matches exactly one NIP institution of the same type. When the two lists spell a name differently, add the bank's name exactly as the CBN publishes it, with its code, to `src/countries/nigeria/nibss_code_matches.json`, check that the code really belongs to that bank, and run the refresh again. A name mapped to `null` stays without a code.
 
-The scheduled check compares the codes too when the repository has the secrets `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`).
+The scheduled check compares the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` versions for a second list.
 
 To check every country without writing anything, as the scheduled workflow does:
 
