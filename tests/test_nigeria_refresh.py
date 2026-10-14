@@ -143,6 +143,12 @@ class TestNibssCodes:
         assert "A PAYMENT PROCESSOR" not in caplog.text
         assert "no code: Adamawa Mortgage Bank Limited (mortgage)" in caplog.text
 
+    def test_lists_every_match_when_verbose(self, nip_list, caplog):
+        caplog.set_level("DEBUG")
+        nigeria_refresh.fetch_dataset(FixtureClient(), [])
+        assert "matched (automatic): Access Bank Plc -> 000014 ACCESS BANK" in caplog.text
+        assert "matched (reviewed): Pagatech Limited -> 100002 PAGA" in caplog.text
+
     def test_without_a_list_keeps_the_codes_already_in_the_file(self):
         previous = [
             {

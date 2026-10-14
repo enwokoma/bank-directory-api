@@ -106,6 +106,8 @@ def keep_previous_nibss_codes(records: list[dict[str, Any]], previous_banks: lis
 def log_match_report(report: nibss_codes.MatchReport, records: list[dict[str, Any]]) -> None:
     """Print what still needs a reviewed match, so the matches file can be extended."""
     logger.info("NIBSS codes: %d matched automatically, %d from reviewed matches.", report.automatic, report.reviewed)
+    for name, code, nip_name, how in report.matches:
+        logger.debug("  matched (%s): %s -> %s %s", how, name, code, nip_name)
     for problem in report.problems:
         logger.warning(problem)
     types = {record["name"]: record["type"] for record in records}

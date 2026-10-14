@@ -43,8 +43,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("countries", nargs="+", metavar="country", help="ISO 3166-1 code such as NG or NGA, or 'all'")
     parser.add_argument("--data-dir", type=Path, default=DATA_DIR, help="Folder that holds the country data files")
     parser.add_argument("--check", action="store_true", help="Report whether the sources changed without writing files")
+    parser.add_argument("--verbose", action="store_true", help="Also print details for reviewing, such as every code match")
     args = parser.parse_args(argv)
-    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(message)s")
+    # Keep library chatter, such as connection details, out of the report.
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
     load_dotenv(ENV_FILE)
 
     if [code.lower() for code in args.countries] == ["all"]:

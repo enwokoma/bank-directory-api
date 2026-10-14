@@ -61,6 +61,8 @@ class MatchReport:
     unmatched_banks: list[str] = field(default_factory=list)
     unused_institutions: list[NipInstitution] = field(default_factory=list)
     problems: list[str] = field(default_factory=list)
+    # (bank name, code, NIP name, "automatic" or "reviewed") for every match made.
+    matches: list[tuple[str, str, str, str]] = field(default_factory=list)
 
 
 def load_reviewed_matches(path: Path = MATCHES_FILE) -> dict[str, str | None]:
@@ -138,6 +140,8 @@ def assign_nibss_codes(
             continue
         used.add(code)
         bank["identifiers"][SCHEME] = code
+        how = "reviewed" if bank["name"] in reviewed else "automatic"
+        report.matches.append((bank["name"], code, by_code[code].name, how))
 
     in_scope = tuple({prefix for prefixes in CODE_PREFIXES.values() for prefix in prefixes})
     report.unused_institutions = [

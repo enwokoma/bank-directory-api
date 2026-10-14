@@ -45,6 +45,16 @@ def test_matches_names_that_reduce_to_the_same_words():
     assert report.unused_institutions == [Nip("000005", "ACCESS(DIAMOND) BANK")]
 
 
+def test_records_every_match_with_the_nip_name_for_review():
+    banks = [bank("KUDA MFB"), bank("Pagatech Limited", "mobile_money")]
+    institutions = [Nip("090267", "KUDA MICROFINANCE BANK"), Nip("100002", "PAGA")]
+    report = assign_nibss_codes(banks, institutions, {"Pagatech Limited": "100002"})
+    assert report.matches == [
+        ("KUDA MFB", "090267", "KUDA MICROFINANCE BANK", "automatic"),
+        ("Pagatech Limited", "100002", "PAGA", "reviewed"),
+    ]
+
+
 def test_leaves_a_bank_unmatched_when_two_institutions_share_its_name():
     banks = [bank("Unity MFB")]
     report = assign_nibss_codes(banks, [Nip("090100", "UNITY MFB"), Nip("090200", "UNITY MICROFINANCE BANK")], {})
