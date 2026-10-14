@@ -5,6 +5,10 @@
     {
       "name": "Central Bank of Nigeria: Financial Institutions",
       "url": "https://www.cbn.gov.ng/supervision/finstitutions.html"
+    },
+    {
+      "name": "Central Bank of Nigeria: Payment Service Providers",
+      "url": "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html"
     }
   ],
   "banks": [
@@ -55,6 +59,12 @@
       "identifiers": {
         "cbn_institution_id": "4079"
       }
+    },
+    {
+      "id": "abeg-technologies",
+      "name": "Abeg Technologies Limited",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "abia-state-university-microfinance-bank",
@@ -1321,6 +1331,12 @@
       }
     },
     {
+      "id": "chams-mobile",
+      "name": "Chams Mobile",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "changan-rts-mfb",
       "name": "CHANGAN RTS MFB",
       "type": "microfinance",
@@ -2001,6 +2017,12 @@
       }
     },
     {
+      "id": "etranzact-international",
+      "name": "eTranzact International Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "evergreen-mfb",
       "name": "EVERGREEN MFB",
       "type": "microfinance",
@@ -2281,6 +2303,12 @@
       }
     },
     {
+      "id": "fortis-mobile-money",
+      "name": "Fortis Mobile Money Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "fortress-mfb",
       "name": "FORTRESS MFB",
       "type": "microfinance",
@@ -2327,6 +2355,12 @@
       "identifiers": {
         "cbn_institution_id": "3495"
       }
+    },
+    {
+      "id": "funds-and-electronic-transfer-fets",
+      "name": "Funds And Electronic Transfer (FETS) Limited",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "fut-minna",
@@ -2743,6 +2777,12 @@
       "identifiers": {
         "cbn_institution_id": "9913"
       }
+    },
+    {
+      "id": "hedonmark-management-services",
+      "name": "Hedonmark Management Services Limited",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "highland-mfb",
@@ -3521,6 +3561,12 @@
       }
     },
     {
+      "id": "kongapay-technologies",
+      "name": "KongaPay Technologies Limited (Formerly Zinternet Limited )",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "kontagora-mfb",
       "name": "KONTAGORA MFB",
       "type": "microfinance",
@@ -4057,6 +4103,12 @@
       }
     },
     {
+      "id": "mkudi",
+      "name": "Mkudi Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "moddibo-adama-university-microfinance-bank",
       "name": "Moddibo Adama University Microfinance Bank Limited",
       "type": "microfinance",
@@ -4455,6 +4507,12 @@
       "identifiers": {
         "cbn_institution_id": "10060"
       }
+    },
+    {
+      "id": "nownow-digital-systems",
+      "name": "NowNow Digital Systems Limited (Formerly Contec Global Infotech Limited)",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "npf-mfb",
@@ -4889,6 +4947,12 @@
       }
     },
     {
+      "id": "opay-digital-services",
+      "name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "opay-mfb",
       "name": "OPAY MFB LIMITEd",
       "type": "microfinance",
@@ -5057,6 +5121,12 @@
       }
     },
     {
+      "id": "pagatech",
+      "name": "Pagatech Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "palmcoast-mfb",
       "name": "PALMCOAST MFB",
       "type": "microfinance",
@@ -5071,6 +5141,12 @@
       "identifiers": {
         "cbn_institution_id": "3862"
       }
+    },
+    {
+      "id": "palmpay",
+      "name": "PalmPay Limited",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "pana-mfb",
@@ -5103,6 +5179,12 @@
       "identifiers": {
         "cbn_institution_id": "3864"
       }
+    },
+    {
+      "id": "parkway-projects",
+      "name": "Parkway Projects Limited.",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "pathfinder-mfb",
@@ -6105,6 +6187,12 @@
       }
     },
     {
+      "id": "teasy-international-company",
+      "name": "Teasy International Company Ltd",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "teerus-microfinance-bank",
       "name": "TEERUS MICROFINANCE BANK LIMITED",
       "type": "microfinance",
@@ -6689,6 +6777,18 @@
       }
     },
     {
+      "id": "visual-ict",
+      "name": "Visual ICT Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
+      "id": "vtnetwork",
+      "name": "VTNetwork Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "waila-mfb",
       "name": "WAILA MFB",
       "type": "microfinance",
@@ -6791,6 +6891,12 @@
       "identifiers": {
         "cbn_institution_id": "4053"
       }
+    },
+    {
+      "id": "xpress-mts",
+      "name": "Xpress MTS Limited",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "xslnce-mfb",
