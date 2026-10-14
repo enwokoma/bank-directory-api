@@ -1,9 +1,10 @@
 """Flask application entrypoint.
 
-This file creates the web server, loads every country's bank data, wires the
-route blueprint into Flask, and enables Swagger UI. Bank data loading and
-validation live in `src/core/dataset.py`; country details live under
-`src/countries/`.
+`create_app()` builds the web server: it loads every country's bank data,
+wires the route blueprint into Flask, and enables Swagger UI. Settings come
+from environment variables (see `src/core/settings.py`); with none set, the
+API serves its data openly. Bank data loading and validation live in
+`src/core/dataset.py`; country details live under `src/countries/`.
 """
 
 from flasgger import Swagger
@@ -13,17 +14,13 @@ from werkzeug.exceptions import HTTPException
 from src import __version__
 from src.api.routes import banks_bp
 from src.core.dataset import load_datasets
+from src.core.settings import Settings
 
 # Bank data only changes when a new version is deployed, so clients and CDNs
 # may cache responses for an hour and revalidate with the ETag after that.
 CACHE_CONTROL = "public, max-age=3600"
 
-app = Flask(__name__)
-app.json.compact = False  # type: ignore[attr-defined]
-app.json.sort_keys = False  # type: ignore[attr-defined]
-app.extensions["bank_datasets"] = load_datasets()
-
-swagger_config = {
+SWAGGER_CONFIG = {
     "headers": [],
     "specs": [
         {
@@ -37,43 +34,58 @@ swagger_config = {
     "swagger_ui": True,
     "specs_route": "/api-docs",
 }
-app.config["SWAGGER"] = {
-    "title": "Bank Directory API",
-    "version": __version__,
-    "termsOfService": "",
-    "uiversion": 3,
-    "description": (
-        "Lists of licensed banks by country, compiled from each country's official register. "
-        "Countries are added gradually; GET /api/countries lists the ones available."
-    ),
-}
-Swagger(app, config=swagger_config)
-
-app.register_blueprint(banks_bp, url_prefix="/api")
 
 
-@app.after_request
+def create_app(settings: Settings | None = None) -> Flask:
+    """Build the app. Without settings, they are read from the environment."""
+    settings = settings or Settings.from_env()
+    app = Flask(__name__)
+    app.json.compact = False  # type: ignore[attr-defined]
+    app.json.sort_keys = False  # type: ignore[attr-defined]
+    app.extensions["bank_datasets"] = load_datasets()
+    app.extensions["bank_settings"] = settings
+
+    app.config["SWAGGER"] = {
+        "title": "Bank Directory API",
+        "version": __version__,
+        "termsOfService": "",
+        "uiversion": 3,
+        "description": (
+            "Lists of licensed banks by country, compiled from each country's official register. "
+            "Countries are added gradually; GET /api/countries lists the ones available."
+        ),
+    }
+    Swagger(app, config=SWAGGER_CONFIG)
+
+    app.register_blueprint(banks_bp, url_prefix="/api")
+    app.after_request(add_public_api_headers)
+    app.register_error_handler(HTTPException, http_error)
+    app.add_url_rule("/", "health_check", health_check)
+    return app
+
+
 def add_public_api_headers(response):
     """Let browsers call the read-only API from any site, and let clients cache it."""
     if request.path.startswith("/api/"):
         response.headers["Access-Control-Allow-Origin"] = "*"
-        if request.method == "GET" and response.status_code == 200:
+        if request.method == "GET" and response.status_code == 200 and "Cache-Control" not in response.headers:
             response.headers["Cache-Control"] = CACHE_CONTROL
             response.add_etag()
             response.make_conditional(request)
     return response
 
 
-@app.errorhandler(HTTPException)
 def http_error(error: HTTPException):
     """Return JSON rather than Flask's HTML page for unknown routes and methods."""
     return jsonify({"success": False, "message": error.description}), error.code
 
 
-@app.route("/")
 def health_check():
     """Return a small JSON response that load balancers can use as a health check."""
     return {"status": "healthy", "message": "Bank Directory API is live"}, 200
+
+
+app = create_app()
 
 
 if __name__ == "__main__":
