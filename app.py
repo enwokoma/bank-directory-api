@@ -12,6 +12,7 @@ from flask import Flask, jsonify, request
 from werkzeug.exceptions import HTTPException
 
 from src import __version__
+from src.api.access import install_access_control
 from src.api.routes import banks_bp
 from src.core.dataset import load_datasets
 from src.core.settings import Settings
@@ -19,6 +20,10 @@ from src.core.settings import Settings
 # Bank data only changes when a new version is deployed, so clients and CDNs
 # may cache responses for an hour and revalidate with the ETag after that.
 CACHE_CONTROL = "public, max-age=3600"
+
+# Headers a cross-site browser request may send, and response headers it may read.
+CORS_ALLOWED_HEADERS = "X-API-Key, Authorization, Content-Type"
+CORS_EXPOSED_HEADERS = "X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After"
 
 SWAGGER_CONFIG = {
     "headers": [],
@@ -57,6 +62,7 @@ def create_app(settings: Settings | None = None) -> Flask:
     }
     Swagger(app, config=SWAGGER_CONFIG)
 
+    install_access_control(app, settings, limited=[banks_bp])
     app.register_blueprint(banks_bp, url_prefix="/api")
     app.after_request(add_public_api_headers)
     app.register_error_handler(HTTPException, http_error)
@@ -65,9 +71,14 @@ def create_app(settings: Settings | None = None) -> Flask:
 
 
 def add_public_api_headers(response):
-    """Let browsers call the read-only API from any site, and let clients cache it."""
+    """Let browsers call the API from any site, and let clients cache its data."""
     if request.path.startswith("/api/"):
         response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Access-Control-Expose-Headers"] = CORS_EXPOSED_HEADERS
+        if request.method == "OPTIONS":
+            response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+            response.headers["Access-Control-Allow-Headers"] = CORS_ALLOWED_HEADERS
+            response.headers["Access-Control-Max-Age"] = "86400"
         if request.method == "GET" and response.status_code == 200 and "Cache-Control" not in response.headers:
             response.headers["Cache-Control"] = CACHE_CONTROL
             response.add_etag()
