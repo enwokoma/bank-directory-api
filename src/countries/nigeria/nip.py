@@ -32,9 +32,11 @@ DEFAULT_KEY_HEADER = "X-API-Key"
 SOURCE = {"name": "NIBSS Instant Payment (NIP) institution list", "url": "https://nibss-plc.com.ng/nibss-instant-payment/"}
 CODE_PATTERN = r"[0-9]{6}"
 
-# Relaying APIs name their fields differently. Keys that say NIBSS come first,
-# because some APIs also return a code of their own under a generic name.
-_CODE_KEYS = ("nibss_code", "nibss_bank_code", "nip_code", "institution_code", "institutionCode", "bankCode", "code")
+# Relaying APIs name their fields differently. Some also return a code of their
+# own under a generic name, so when a row has a field that says NIBSS, only
+# that field is used, even when it is empty.
+_NIBSS_CODE_KEYS = ("nibss_code", "nibss_bank_code", "nip_code")
+_CODE_KEYS = ("institution_code", "institutionCode", "bankCode", "code")
 _NAME_KEYS = ("name", "bankName", "institution_name", "institutionName")
 _LIST_KEYS = ("data", "banks", "institutions")
 
@@ -77,7 +79,8 @@ def parse_nip_institutions(body: Any) -> list[NipInstitution]:
     for row in rows if isinstance(rows, list) else []:
         if not isinstance(row, dict):
             continue
-        code = next((str(row[key]).strip() for key in _CODE_KEYS if row.get(key)), "")
+        keys = [key for key in _NIBSS_CODE_KEYS if key in row] or list(_CODE_KEYS)
+        code = next((str(row[key]).strip() for key in keys if row.get(key)), "")
         name = next((clean_text(row[key]) for key in _NAME_KEYS if clean_text(row.get(key))), None)
         if name and re.fullmatch(CODE_PATTERN, code):
             institutions.append(NipInstitution(code=code, name=name))

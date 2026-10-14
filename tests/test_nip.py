@@ -52,6 +52,11 @@ def test_prefers_a_nibss_code_over_an_api_specific_code():
     assert nip.parse_nip_institutions(body) == [nip.NipInstitution("090267", "Kuda Microfinance Bank")]
 
 
+def test_an_empty_nibss_code_is_not_replaced_by_an_api_specific_code():
+    body = [{"code": "100036", "nibss_bank_code": None, "name": "Some Wallet"}, {"code": "000014", "name": "ACCESS BANK"}]
+    assert nip.parse_nip_institutions(body) == [nip.NipInstitution("000014", "ACCESS BANK")]
+
+
 def test_skips_rows_without_a_six_digit_code_or_a_name():
     body = [
         {"code": "044", "name": "ACCESS"},
