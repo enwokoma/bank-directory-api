@@ -1,0 +1,11 @@
+# Used by docker-compose.standalone.yml, where Caddy runs in a container next
+# to the API. SITE_ADDRESS is the public host name.
+{$SITE_ADDRESS} {
+	encode zstd gzip
+	reverse_proxy api:5006
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		-Server
+	}
+}

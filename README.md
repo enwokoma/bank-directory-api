@@ -101,7 +101,8 @@ bank-directory-api/
     refresh.py            `python -m src.refresh` command
     keys_admin.py         `python -m src.keys_admin`: list, issue and revoke API keys
   Dockerfile              The API's image, served by gunicorn (gunicorn.conf.py)
-  deploy/                 Docker Compose with Redis, Caddy block and settings for banks.example.com
+  deploy/                 Docker Compose with Redis (and optionally Caddy), Caddy blocks and settings for banks.example.com
+    aws/provision.sh      Sets up a dedicated EC2 instance from AWS CloudShell
   docs/deploy.md          How to deploy the hosted API on AWS
   scripts/
     upload-release-assets.sh  Attaches each country's data file to a GitHub release

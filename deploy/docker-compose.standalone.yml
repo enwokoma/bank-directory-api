@@ -1,0 +1,27 @@
+# Adds Caddy to the deployment, for a server with no web server of its own.
+# Caddy serves ports 80 and 443, gets and renews the HTTPS certificate, and
+# forwards requests to the API container. Use it with the main file:
+#
+#   SITE_ADDRESS=banks.example.com docker compose \
+#     -f deploy/docker-compose.yml -f deploy/docker-compose.standalone.yml up --detach
+services:
+  caddy:
+    image: caddy:2.11.7-alpine
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-banks.example.com}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile.standalone:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - api
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+
+volumes:
+  caddy-data:
+  caddy-config:

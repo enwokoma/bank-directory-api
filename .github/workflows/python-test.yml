@@ -114,6 +114,22 @@ jobs:
         # Query strings never reach the access log.
         if $compose logs api | grep -q SECRET; then echo "A query string reached the access log."; exit 1; fi
 
+    - name: Put Caddy in front, as on a dedicated server
+      run: |
+        set -euo pipefail
+        standalone="docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.standalone.yml"
+        # Plain HTTP on port 80, since CI cannot get a certificate.
+        SITE_ADDRESS=:80 $standalone up --detach --wait
+        # Earlier checks used up this address's allowance; start counting afresh.
+        $standalone restart redis
+        for attempt in 1 2 3 4 5 6 7 8 9 10; do
+          curl --silent --fail http://127.0.0.1/ && break
+          sleep 2
+        done
+        curl --silent --fail --dump-header caddy-headers.txt "http://127.0.0.1/api/countries/NG/banks?limit=1" | grep '"total"'
+        grep -i '^x-ratelimit-remaining: 2' caddy-headers.txt
+        grep -i '^strict-transport-security' caddy-headers.txt
+
     - name: Show the container logs
       if: failure()
       run: docker compose -f deploy/docker-compose.yml logs
