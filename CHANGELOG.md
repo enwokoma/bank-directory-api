@@ -10,6 +10,8 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 - Nigeria: the 17 licensed mobile money operators, such as OPay, PalmPay and Paga, as the `mobile_money` bank type.
 - `has` filter, such as `?has=nibss_code`, to list only banks that have an identifier, and filters by any identifier, such as `?nibss_code=000014`.
 - Refresh settings for sources that need a key, read from a local `.env` file or CI secrets.
+- Up to five relayed copies of the NIP institution list can be combined, since a single copy can leave institutions out.
+- `python -m src.refresh NGA --verbose` lists every code match with its name in the NIP list, for review.
 
 ### Changed
 
