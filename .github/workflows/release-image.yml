@@ -1,0 +1,122 @@
+name: Release image
+
+# Publishes the API's image to the GitHub Container Registry when a signed
+# release tag vX.Y.Z is pushed. The tag must be signed, as GitHub verifies it,
+# and match the version in src/__init__.py. Each architecture is built natively
+# on its own runner, so nothing is emulated and no third-party action runs;
+# the two are then joined under the version, its minor version and latest.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-image-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/enwokoma/bank-directory-api
+
+jobs:
+  check:
+    name: Check the tag
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Check that the tag is signed and matches the version
+        id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="${TAG#v}"
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::$TAG is not vX.Y.Z"
+            exit 1
+          fi
+          expected=$(python3 -c 'import re; print(re.search(r"__version__ = \"(.+)\"", open("src/__init__.py").read()).group(1))')
+          if [ "$version" != "$expected" ]; then
+            echo "::error::$TAG does not match src/__init__.py, which says $expected"
+            exit 1
+          fi
+          read -r type sha < <(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" --jq '.object.type + " " + .object.sha')
+          if [ "$type" != tag ]; then
+            echo "::error::$TAG is a lightweight tag; push an annotated, signed one (git tag -s)"
+            exit 1
+          fi
+          if [ "$(gh api "repos/$GITHUB_REPOSITORY/git/tags/$sha" --jq '.verification.verified')" != true ]; then
+            echo "::error::GitHub could not verify the signature on $TAG"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  build:
+    name: Build ${{ matrix.arch }}
+    needs: check
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    env:
+      TAG: ${{ needs.check.outputs.version }}-${{ matrix.arch }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Build and push the ${{ matrix.arch }} image
+        env:
+          TOKEN: ${{ github.token }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          printf '%s' "$TOKEN" | docker login ghcr.io --username "$ACTOR" --password-stdin
+          docker build --tag "$IMAGE:$TAG" .
+          docker push "$IMAGE:$TAG"
+
+  publish:
+    name: Publish
+    needs: [check, build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      packages: write
+    env:
+      VERSION: ${{ needs.check.outputs.version }}
+    steps:
+      - name: Join both architectures under the version, its minor version and latest
+        env:
+          TOKEN: ${{ github.token }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          printf '%s' "$TOKEN" | docker login ghcr.io --username "$ACTOR" --password-stdin
+          # Right after a push, the registry can take a few seconds to serve the new manifests by
+          # digest ("not found"), so the join is tried a few times before giving up.
+          for attempt in 1 2 3 4 5; do
+            if docker buildx imagetools create \
+                --tag "$IMAGE:$VERSION" --tag "$IMAGE:${VERSION%.*}" --tag "$IMAGE:latest" \
+                "$IMAGE:$VERSION-amd64" "$IMAGE:$VERSION-arm64"; then
+              break
+            fi
+            if [ "$attempt" = 5 ]; then
+              exit 1
+            fi
+            sleep $((attempt * 10))
+          done
+          docker buildx imagetools inspect "$IMAGE:$VERSION"
