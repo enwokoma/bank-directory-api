@@ -4,19 +4,21 @@ A Flask API that lists the licensed banks of each country, compiled from that co
 
 ## Coverage
 
-| Country | Codes | Banks | Bank types | Transfer codes | Sources |
+| Country | Codes | Institutions | Bank types | Transfer codes | Sources |
 | --- | --- | --- | --- | --- | --- |
-| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
+| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 369 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
 
-`GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved.
+`GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes.
 
 ## How the data works
 
-Bank data is not fetched when a request comes in. Each country has a JSON file in `data/countries/` (for example `data/countries/NGA.json`) that is generated from the official source, reviewed as an ordinary git diff, and committed. The API loads every file at startup and refuses to start if one fails validation.
+Bank data is not fetched when a request comes in. Each country has a JSON file in `data/countries/` (for example `data/countries/NGA.json`) that is generated from its sources, reviewed as an ordinary git diff, and committed. The API loads every file at startup and refuses to start if one fails validation: unknown bank types, malformed or duplicated codes, and unsorted banks are all rejected.
 
-This keeps the API fast and free of API keys, keeps it working when a regulator's website is down, and makes every change to a country's bank list visible in the git history. The files can also be used directly without running the API.
+Serving the API needs no API keys, keeps working when a regulator's website is down, and makes every change to a country's bank list visible in the git history. The files can also be used directly without running the API.
 
-A scheduled workflow compares the committed files with their sources every Monday. When it fails, a regulator's list has changed and the country needs a refresh (see [Refreshing data](#refreshing-data)).
+Most sources are public web pages. Nigeria's transfer codes are the exception: NIBSS serves its institution list only to connected institutions, so refreshing the codes needs access to an API that relays it (see [Nigeria's NIBSS codes](#nigerias-nibss-codes)).
+
+A scheduled workflow compares the committed files with their sources every Monday. When it fails, a source has changed and the country needs a refresh (see [Refreshing data](#refreshing-data)). It checks Nigeria's NIBSS codes only when the repository has the NIP list settings as secrets.
 
 ## Project structure
 
@@ -25,23 +27,30 @@ bank-directory-api/
   app.py                  Flask app, Swagger UI, caching and CORS headers
   data/countries/         One generated JSON file per country
   src/
+    __init__.py           The version, used by Swagger UI and the refresh's User-Agent
     api/routes.py         HTTP routes
     core/
       dataset.py          Loads and validates the country data files
       cleaning.py         Whitespace cleanup and id slugs used by refresh modules
-      source_client.py    Polite, retrying HTTP client for official sources
+      source_client.py    Polite, retrying HTTP client for sources
     countries/
       profile.py          Country profile shape
       registry.py         Registered countries, looked up by alpha-2 or alpha-3 code
       nigeria/
-        profile.py        Nigeria's bank types and identifier schemes
+        profile.py        Nigeria's bank types, identifier schemes and code formats
         refresh.py        Reads the CBN register and adds NIBSS codes
         mobile_money.py   Reads the CBN's licensed mobile money operators
         nip.py            Reads the NIBSS Instant Payment institution list
         nibss_codes.py    Matches banks to NIBSS codes
-        nibss_code_matches.json  Reviewed matches for names the lists spell differently
+        nibss_code_matches.json
+                          Reviewed matches for names the lists spell differently
     refresh.py            `python -m src.refresh` command
-  tests/
+  tests/                  Tests, with saved samples of real source responses in fixtures/
+  .env.example            Settings for refreshing NIBSS codes (copy to .env)
+  .github/workflows/
+    python-test.yml       Formatting, lint, types and tests on every push, then a gunicorn smoke test
+    data-check.yml        Monday check that the data files match their sources
+  CHANGELOG.md            What each release added or changed
 ```
 
 ## Setup
@@ -56,7 +65,7 @@ source .venv/bin/activate
 pip install -r requirements-dev.txt
 ```
 
-On Windows, activate the environment with `.venv\Scripts\activate`.
+On Windows, activate the environment with `.venv\Scripts\activate`. To only serve the API, `requirements.txt` is enough.
 
 ## Running
 
@@ -78,7 +87,14 @@ The API is read-only and needs no configuration or secrets. If you expose it pub
 
 Country codes are ISO 3166-1 alpha-2 or alpha-3 codes in any case: `NG`, `ng`, `NGA` and `nga` all work.
 
-Successful responses have `"success": true`. Errors have `"success": false` and a `message`, with status 400 for a bad query parameter and 404 for an unknown country, bank or route.
+Successful responses have `"success": true`. Errors have `"success": false` and a `message`, with status 400 for a bad query parameter and 404 for an unknown country, bank or route:
+
+```json
+{
+  "success": false,
+  "message": "Unknown identifier scheme swift for Nigeria. Use one of: cbn_institution_id, nibss_code."
+}
+```
 
 `GET` responses under `/api/` carry `Cache-Control: public, max-age=3600` and an `ETag`, so clients can revalidate with `If-None-Match` and get `304 Not Modified`. They also allow cross-origin requests from any site.
 
@@ -86,6 +102,13 @@ Successful responses have `"success": true`. Errors have `"success": false` and 
 
 ```http
 GET /
+```
+
+```json
+{
+  "status": "healthy",
+  "message": "Bank Directory API is live"
+}
 ```
 
 ### List countries
@@ -116,7 +139,54 @@ GET /api/countries
 GET /api/countries/{country_code}
 ```
 
-Adds the country's bank types with a count for each, the identifier schemes its banks carry, and the sources its data comes from.
+Adds the country's bank types with a count for each, the identifier schemes its banks carry, and the sources its data comes from:
+
+```json
+{
+  "success": true,
+  "country": {
+    "alpha2": "NG",
+    "alpha3": "NGA",
+    "name": "Nigeria",
+    "currency": "NGN",
+    "bank_count": 880,
+    "retrieved_on": "2026-10-14",
+    "bank_types": [
+      { "code": "commercial", "name": "Commercial bank", "bank_count": 28 },
+      { "code": "merchant", "name": "Merchant bank", "bank_count": 5 },
+      { "code": "non_interest", "name": "Non-interest bank", "bank_count": 6 },
+      { "code": "payment_service", "name": "Payment service bank", "bank_count": 5 },
+      { "code": "microfinance", "name": "Microfinance bank", "bank_count": 786 },
+      { "code": "mortgage", "name": "Primary mortgage bank", "bank_count": 33 },
+      { "code": "mobile_money", "name": "Mobile money operator", "bank_count": 17 }
+    ],
+    "identifier_schemes": [
+      {
+        "code": "cbn_institution_id",
+        "description": "Record ID in the Central Bank of Nigeria's financial institutions register"
+      },
+      {
+        "code": "nibss_code",
+        "description": "6-digit NIBSS Instant Payment (NIP) institution code, used to send bank transfers"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Central Bank of Nigeria: Financial Institutions",
+        "url": "https://www.cbn.gov.ng/supervision/finstitutions.html"
+      },
+      {
+        "name": "Central Bank of Nigeria: Payment Service Providers",
+        "url": "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html"
+      },
+      {
+        "name": "NIBSS Instant Payment (NIP) institution list",
+        "url": "https://nibss-plc.com.ng/nibss-instant-payment/"
+      }
+    ]
+  }
+}
+```
 
 ### List a country's banks
 
@@ -130,7 +200,7 @@ Query parameters, all optional:
 - `type`: one or more comma-separated bank type codes, for example `commercial,merchant`
 - `limit`: return at most this many banks (1 to 1000); omit it to get every match
 - `offset`: skip this many matching banks first
-- `has`: one or more comma-separated identifier schemes every bank must have, for example `has=nibss_code` to list only banks that can receive transfers
+- `has`: one or more comma-separated identifier schemes every bank must have, for example `has=nibss_code` to list only institutions on NIP
 - any identifier scheme of the country, for example `nibss_code=000014`, to find the bank with that code
 
 ```bash
@@ -164,7 +234,7 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
 
 `total` counts every match; `banks` holds the requested page. Banks are sorted by name.
 
-A bank transfer dropdown for Nigeria needs only the banks with a NIBSS code:
+A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (369 today), which includes mobile money operators such as OPay and PalmPay:
 
 ```bash
 curl "http://localhost:5006/api/countries/NG/banks?has=nibss_code"
@@ -186,6 +256,26 @@ GET /api/countries/{country_code}/banks/{bank_id}
 curl http://localhost:5006/api/countries/NG/banks/access-bank
 ```
 
+```json
+{
+  "success": true,
+  "country": {
+    "alpha2": "NG",
+    "alpha3": "NGA",
+    "name": "Nigeria"
+  },
+  "bank": {
+    "id": "access-bank",
+    "name": "Access Bank Plc",
+    "type": "commercial",
+    "identifiers": {
+      "cbn_institution_id": "1",
+      "nibss_code": "000014"
+    }
+  }
+}
+```
+
 ## Bank fields
 
 | Field | Description |
@@ -200,41 +290,45 @@ Nigeria's identifier schemes:
 | Scheme | Description |
 | --- | --- |
 | `cbn_institution_id` | The bank's record ID in the CBN register. Mobile money operators come from a different CBN page and have none. |
-| `nibss_code` | The 6-digit code NIBSS uses for the institution in NIBSS Instant Payment (NIP) transfers, for example `000014` for Access Bank and `100004` for OPay. Payment providers' transfer APIs either take this code or list it next to their own, so it can be matched to any provider. Banks that are not on NIP, which includes most small microfinance banks, have none. |
+| `nibss_code` | The 6-digit code NIBSS uses for the institution in NIBSS Instant Payment (NIP) transfers, for example `000014` for Access Bank and `100004` for OPay. Payment providers' transfer APIs either take this code or list it next to their own, so it can be matched to any provider. Institutions that are not on NIP, which includes most small microfinance banks, have none. |
 
 ## Refreshing data
 
-Rebuild one country's file from its source, then review and commit the diff:
+Rebuild a country's file from its sources, then review and commit the diff:
 
 ```bash
 python -m src.refresh NGA
 git diff data/countries/NGA.json
 ```
 
-The command prints which banks were added, removed or changed. Existing banks keep their ids. If the source fails or the new data does not pass validation, the file is left untouched.
+The command prints which banks were added, removed or changed. Existing banks keep their ids. If a source fails or the new data does not pass validation, the file is left untouched.
+
+| Option | Effect |
+| --- | --- |
+| `NGA` (or `NG`, or several codes) | Refresh those countries |
+| `all` | Refresh every registered country |
+| `--check` | Report whether the sources changed, without writing anything; exits with 1 if they did |
+| `--verbose` | Also print details for reviewing, such as every NIBSS code match |
+| `--data-dir PATH` | Read and write data files somewhere other than `data/countries/` |
+
+The scheduled workflow runs `python -m src.refresh all --check`.
 
 ### Nigeria's NIBSS codes
 
-NIBSS does not publish its institution list openly; it serves it to connected institutions, and payment providers relay it to their API customers. To refresh the codes, copy `.env.example` to `.env` and set the URL of an API that returns the list, with its key. `.env` is ignored by git, so the endpoints and keys never reach the repository.
+NIBSS does not publish its institution list openly; it serves it to connected institutions through NIP's `financialinstitutionlist` operation, and payment providers relay it to their API customers. To refresh the codes, copy `.env.example` to `.env` and set the URL of an API that returns the list, with its key and, if it is not `X-API-Key`, the header that carries the key. `.env` is ignored by git, and the refresh never prints the endpoints or keys, so they never reach the repository.
 
 A relayed copy can leave institutions out, so up to five can be combined: the same setting names ending in `_2` to `_5` configure more endpoints, and the lists are merged by code.
 
 ```bash
 cp .env.example .env
-python -m src.refresh NGA
+python -m src.refresh NGA --verbose
 ```
 
 Without these settings, the refresh keeps the codes already in the file and updates everything else.
 
-With them, the command also prints the review report: banks still without a code, and NIP institutions that matched no bank. Add `--verbose` to also list every match with the institution's name in the NIP list, to confirm each code belongs to its bank. A bank gets a code automatically only when its name matches exactly one NIP institution of the same type. When the two lists spell a name differently, add the bank's name exactly as the CBN publishes it, with its code, to `src/countries/nigeria/nibss_code_matches.json`, check that the code really belongs to that bank, and run the refresh again. A name mapped to `null` stays without a code.
+With them, the command also prints a review report: every match with the institution's name in the NIP list (with `--verbose`), banks still without a code, and NIP institutions that matched no bank. A bank gets a code automatically only when its name matches exactly one NIP institution of a plausible type, and no other bank claims it. When the lists spell a name differently, add the bank's name exactly as the CBN publishes it, with its code, to `src/countries/nigeria/nibss_code_matches.json`, check that the code really belongs to that bank, and run the refresh again. A name mapped to `null` stays without a code. No code may belong to two banks; a data file where one does fails validation.
 
-The scheduled check compares the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` versions for a second list.
-
-To check every country without writing anything, as the scheduled workflow does:
-
-```bash
-python -m src.refresh all --check
-```
+The scheduled check compares the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` versions for a second list. GitHub masks secret values in the logs.
 
 ## Adding a country
 
@@ -244,6 +338,7 @@ python -m src.refresh all --check
 4. Register the profile in `src/countries/registry.py`.
 5. Run `python -m src.refresh <CODE>` to generate the data file.
 6. Add tests for the refresh module using saved samples of the source's real responses in `tests/fixtures/<country>/`, then run the checks below.
+7. Add the country to the coverage table above and to the changelog.
 
 ## Development checks
 
@@ -254,16 +349,24 @@ mypy
 pytest
 ```
 
+CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it. Tests never read your `.env` or call a real NIP list.
+
 ## Notes on Nigeria's data
 
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
 - Mobile money operators come from the CBN's Payment Service Providers page, which lists 17. The register's own mobile money list is shorter and leaves out OPay. Each operator's NIBSS code is the one its wallets use on NIP.
+- 369 of the 880 institutions have a NIBSS code: 27 of 28 commercial banks, all 5 payment service banks, 4 of 6 non-interest banks, 4 of 5 merchant banks, 22 of 33 primary mortgage banks, 14 of 17 mobile money operators and 293 of 786 microfinance banks. Tatum Bank, Summit Bank and Quest Merchant Bank were not in any NIP list used, and most microfinance banks without a code are not on NIP at all.
+- Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
 - The register also has a per-bank detail endpoint with licence tier and website, but it fails for many banks and its websites are out of date, so it is not used.
 
+## Releases
+
+Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md). The version lives in `src/__init__.py`.
+
 ## Disclaimer
 
-The data is compiled from public registers and may lag behind them. It is not affiliated with or endorsed by any regulator. Check the regulator's own list before relying on a bank's licence status.
+The data is compiled from public registers and relayed copies of the NIBSS institution list, and may lag behind them. It is not affiliated with or endorsed by any regulator or by NIBSS. Check the regulator's own list before relying on a bank's licence status. A NIBSS code only identifies the receiving institution: before sending money, confirm the recipient's account name through your payment provider's name enquiry.
 
 ## License
 

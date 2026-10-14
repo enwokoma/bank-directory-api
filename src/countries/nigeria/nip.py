@@ -25,7 +25,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from src.core.cleaning import clean_text
-from src.core.source_client import SourceClient
+from src.core.source_client import SourceClient, SourceError
 
 ENV_URL = "NIP_INSTITUTIONS_URL"
 ENV_API_KEY = "NIP_INSTITUTIONS_API_KEY"
@@ -50,6 +50,8 @@ class NipSettings:
     url: str
     api_key: str | None
     key_header: str
+    # Name of the URL setting, used in error messages instead of the URL.
+    setting: str = ENV_URL
 
 
 @dataclass(frozen=True)
@@ -69,15 +71,28 @@ def settings_from_env(environ: Mapping[str, str] = os.environ) -> list[NipSettin
                     url=url,
                     api_key=(environ.get(ENV_API_KEY + suffix) or "").strip() or None,
                     key_header=(environ.get(ENV_KEY_HEADER + suffix) or "").strip() or DEFAULT_KEY_HEADER,
+                    setting=ENV_URL + suffix,
                 )
             )
     return found
 
 
 def fetch_nip_institutions(client: SourceClient, settings: NipSettings) -> list[NipInstitution]:
-    """Fetch and parse the institution list. The key is sent as a header and never logged."""
+    """Fetch and parse the institution list.
+
+    The key is sent as a header and never logged, and errors name the setting
+    rather than the endpoint, so neither ends up in a terminal or CI log.
+    """
     headers = {settings.key_header: settings.api_key} if settings.api_key else None
-    return parse_nip_institutions(client.get_json(settings.url, headers=headers))
+    try:
+        body = client.get_json(settings.url, headers=headers)
+    except SourceError as exc:
+        reason = f"answered HTTP {exc.status}" if exc.status else "could not be reached"
+        raise SourceError(f"The NIP institution list set in {settings.setting} {reason}.", exc.status) from None
+    try:
+        return parse_nip_institutions(body)
+    except ValueError as exc:
+        raise ValueError(f"The NIP institution list set in {settings.setting}: {exc}") from None
 
 
 def parse_nip_institutions(body: Any) -> list[NipInstitution]:

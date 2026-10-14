@@ -3,6 +3,7 @@
 import pytest
 import requests
 
+from src import __version__
 from src.core.source_client import SourceClient, SourceError
 
 
@@ -58,9 +59,10 @@ class TestSourceClient:
 
     def test_does_not_retry_client_errors(self):
         client, session = make_client(FakeResponse(404))
-        with pytest.raises(SourceError, match="answered 404"):
+        with pytest.raises(SourceError, match="answered 404") as raised:
             client.get_json("https://example.test/")
         assert session.calls == 1
+        assert raised.value.status == 404
 
     def test_reads_text_pages_and_sends_extra_headers(self):
         client, session = make_client(FakeResponse(200, text="<html>banks</html>"))
@@ -69,4 +71,4 @@ class TestSourceClient:
 
     def test_identifies_itself(self):
         client, session = make_client()
-        assert session.headers["User-Agent"].startswith("bank-directory-api/")
+        assert session.headers["User-Agent"].startswith(f"bank-directory-api/{__version__} ")

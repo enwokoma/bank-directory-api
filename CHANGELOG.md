@@ -2,7 +2,7 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
-## 0.2.0 - Unreleased
+## 0.2.0 - 2026-10-14
 
 ### Added
 
@@ -18,7 +18,9 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 - Bank ids now carry over between refreshes through any shared identifier, or the exact name, not only the first identifier scheme.
 - Identifier values are checked against a pattern per scheme, and no value may belong to two banks.
 
-## 0.1.0 - Unreleased
+## 0.1.0 - 2026-10-14
+
+Not tagged on its own; first released as part of 0.2.0.
 
 ### Added
 
