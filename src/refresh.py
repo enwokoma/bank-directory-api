@@ -5,8 +5,9 @@ Usage:
     python -m src.refresh NGA          # rewrite data/countries/NGA.json
     python -m src.refresh all --check  # only report which countries are out of date
 
-The command asks each country's refresh module for fresh records, keeps the id
-of every bank that was already in the file (matched by the profile's first
+The command asks each country's refresh module for fresh records (passing it
+the banks already in the file, for values a source cannot provide this time),
+keeps the id of every bank that was already in the file (matched by the profile's first
 identifier scheme), validates the result, and only then overwrites
 `data/countries/<ALPHA3>.json`. Review the diff before committing it.
 """
@@ -61,7 +62,7 @@ def refresh_country(profile: CountryProfile, data_dir: Path, *, check: bool = Fa
     module = importlib.import_module(profile.refresh_module)
     try:
         with SourceClient() as client:
-            fetched = module.fetch_dataset(client)
+            fetched = module.fetch_dataset(client, previous.get("banks", []))
     except (SourceError, ValueError) as exc:
         logger.error("%s: refresh failed, %s was not changed: %s", profile.name, path.name, exc)
         return 1

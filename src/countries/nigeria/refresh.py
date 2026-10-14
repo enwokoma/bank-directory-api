@@ -41,7 +41,7 @@ CATEGORY_ENDPOINTS = (
 )
 
 
-def fetch_dataset(client: SourceClient) -> dict[str, Any]:
+def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     """Return Nigeria's sources and bank records, without ids, from the live CBN API."""
     banks: dict[str, dict[str, Any]] = {}
     for bank_type, endpoint in CATEGORY_ENDPOINTS:
