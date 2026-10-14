@@ -9,6 +9,7 @@ refresh command can report cleanly. The API server never imports it.
 from __future__ import annotations
 
 import time
+from collections.abc import Callable
 from typing import Any
 
 import requests
@@ -45,20 +46,33 @@ class SourceClient:
         self.session.headers.setdefault("User-Agent", USER_AGENT)
         self._last_request_at = 0.0
 
-    def get_json(self, url: str, params: dict[str, str] | None = None) -> Any:
+    def get_json(self, url: str, params: dict[str, str] | None = None, headers: dict[str, str] | None = None) -> Any:
         """Return the decoded JSON body of a GET request, retrying transient failures."""
+        # An HTML challenge page instead of JSON makes response.json() raise a ValueError, which is retried.
+        return self._get(url, params, headers, lambda response: response.json())
+
+    def get_text(self, url: str, params: dict[str, str] | None = None, headers: dict[str, str] | None = None) -> str:
+        """Return the body of a GET request as text, such as an HTML page, retrying transient failures."""
+        return self._get(url, params, headers, lambda response: response.text)
+
+    def _get(
+        self,
+        url: str,
+        params: dict[str, str] | None,
+        headers: dict[str, str] | None,
+        read: Callable[[requests.Response], Any],
+    ) -> Any:
         last_error: Exception | None = None
         for attempt in range(1, self.attempts + 1):
             self._wait_turn()
             try:
-                response = self.session.get(url, params=params, timeout=self.timeout_seconds)
+                response = self.session.get(url, params=params, headers=headers, timeout=self.timeout_seconds)
                 if response.status_code in _RETRY_STATUSES:
                     raise _TransientResponse(f"HTTP {response.status_code}")
                 response.raise_for_status()
-                return response.json()
+                return read(response)
             except requests.HTTPError as exc:
                 raise SourceError(f"{url} answered {exc.response.status_code}") from exc
-            # An HTML challenge page instead of JSON is a ValueError from response.json().
             except (requests.ConnectionError, requests.Timeout, _TransientResponse, ValueError) as exc:
                 last_error = exc
                 if attempt < self.attempts:
