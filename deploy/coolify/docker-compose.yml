@@ -1,14 +1,14 @@
 # The hosted API as a Coolify "Docker Compose" service. Paste this into the
 # service's compose editor, then in Coolify:
-#   - Domains: set the api service to https://banks.globbapay.com:5006, so
-#     Coolify's proxy serves it over HTTPS and forwards to port 5006;
+#   - Domains: add banks.globbapay.com for the api service, https, port 5006,
+#     so Coolify's proxy serves it over HTTPS and forwards to the API;
 #   - Environment Variables: set PUBLIC_BASE_URL, SIGNUP_EMAIL_FROM and
 #     AWS_REGION; the limits are optional.
 # Pin the image to the release's digest when deploying, as Coolify shows it.
 # SES uses the server's instance role. See docs/deploy.md.
 services:
   api:
-    image: ghcr.io/enwokoma/bank-directory-api:0.3.1
+    image: ghcr.io/enwokoma/bank-directory-api:0.3.2
     environment:
       RATE_LIMIT_STORAGE_URI: redis://redis:6379/0
       API_KEY_DATABASE: /var/lib/bank-directory/keys.sqlite3
