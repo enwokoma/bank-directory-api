@@ -93,6 +93,7 @@ def validate_dataset(raw: Any, profile: CountryProfile) -> list[str]:
     seen_ids: set[str] = set()
     for index, bank in enumerate(banks):
         errors.extend(f"banks[{index}]: {error}" for error in _validate_bank(bank, profile, seen_ids))
+    errors.extend(_shared_identifiers(banks))
     if all(isinstance(bank, dict) for bank in banks):
         sort_keys = [bank_sort_key(bank) for bank in banks]
         if sort_keys != sorted(sort_keys):
@@ -160,7 +161,23 @@ def _validate_bank(bank: Any, profile: CountryProfile, seen_ids: set[str]) -> li
                 errors.append(f"identifier scheme {scheme!r} is not declared in the {profile.name} profile.")
             if not _is_clean_text(value):
                 errors.append(f"identifier {scheme!r} must be non-empty text.")
+            elif scheme in profile.identifier_patterns and not re.fullmatch(profile.identifier_patterns[scheme], value):
+                errors.append(f"identifier {scheme!r} value {value!r} does not match {profile.identifier_patterns[scheme]!r}.")
     return errors
+
+
+def _shared_identifiers(banks: list[Any]) -> list[str]:
+    """Report any identifier value that more than one bank claims, such as a code matched twice."""
+    holders: dict[tuple[str, str], list[str]] = {}
+    for bank in banks:
+        if isinstance(bank, dict) and isinstance(bank.get("identifiers"), dict):
+            for scheme, value in bank["identifiers"].items():
+                holders.setdefault((scheme, str(value)), []).append(str(bank.get("id")))
+    return [
+        f"identifier {scheme!r} value {value!r} is shared by {', '.join(ids)}."
+        for (scheme, value), ids in sorted(holders.items())
+        if len(ids) > 1
+    ]
 
 
 def _is_clean_text(value: Any) -> bool:

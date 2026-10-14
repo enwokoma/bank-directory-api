@@ -1,7 +1,8 @@
 """Nigeria's country profile.
 
 Bank categories follow the licence types the Central Bank of Nigeria lists under
-Supervision > Financial Institutions.
+Supervision > Financial Institutions, plus mobile money operators from its
+Payments System pages, which receive bank transfers like banks do.
 """
 
 from src.countries.profile import BankType, CountryProfile
@@ -18,9 +19,12 @@ NIGERIA_PROFILE = CountryProfile(
         BankType("payment_service", "Payment service bank"),
         BankType("microfinance", "Microfinance bank"),
         BankType("mortgage", "Primary mortgage bank"),
+        BankType("mobile_money", "Mobile money operator"),
     ),
     identifier_schemes={
         "cbn_institution_id": "Record ID in the Central Bank of Nigeria's financial institutions register",
+        "nibss_code": "6-digit NIBSS Instant Payment (NIP) institution code, used to send bank transfers",
     },
+    identifier_patterns={"cbn_institution_id": r"[0-9]+", "nibss_code": r"[0-9]{6}"},
     refresh_module="src.countries.nigeria.refresh",
 )

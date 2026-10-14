@@ -5,6 +5,14 @@
     {
       "name": "Central Bank of Nigeria: Financial Institutions",
       "url": "https://www.cbn.gov.ng/supervision/finstitutions.html"
+    },
+    {
+      "name": "Central Bank of Nigeria: Payment Service Providers",
+      "url": "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html"
+    },
+    {
+      "name": "NIBSS Instant Payment (NIP) institution list",
+      "url": "https://nibss-plc.com.ng/nibss-instant-payment/"
     }
   ],
   "banks": [
@@ -29,7 +37,8 @@
       "name": "9 PSB Ltd",
       "type": "payment_service",
       "identifiers": {
-        "cbn_institution_id": "4117"
+        "cbn_institution_id": "4117",
+        "nibss_code": "120001"
       }
     },
     {
@@ -45,7 +54,8 @@
       "name": "AB Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3188"
+        "cbn_institution_id": "3188",
+        "nibss_code": "090270"
       }
     },
     {
@@ -53,8 +63,15 @@
       "name": "ABBEY MORTGAGE BANK",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4079"
+        "cbn_institution_id": "4079",
+        "nibss_code": "070010"
       }
+    },
+    {
+      "id": "abeg-technologies",
+      "name": "Abeg Technologies Limited",
+      "type": "mobile_money",
+      "identifiers": {}
     },
     {
       "id": "abia-state-university-microfinance-bank",
@@ -77,7 +94,8 @@
       "name": "Above Only Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3195"
+        "cbn_institution_id": "3195",
+        "nibss_code": "090260"
       }
     },
     {
@@ -85,7 +103,8 @@
       "name": "Abubakar Tafawa Balewa University (ATBU) Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3196"
+        "cbn_institution_id": "3196",
+        "nibss_code": "090451"
       }
     },
     {
@@ -93,7 +112,8 @@
       "name": "Abucoop Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3197"
+        "cbn_institution_id": "3197",
+        "nibss_code": "090424"
       }
     },
     {
@@ -109,7 +129,8 @@
       "name": "Access Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "1"
+        "cbn_institution_id": "1",
+        "nibss_code": "000014"
       }
     },
     {
@@ -117,7 +138,8 @@
       "name": "Accion Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3199"
+        "cbn_institution_id": "3199",
+        "nibss_code": "090134"
       }
     },
     {
@@ -141,7 +163,8 @@
       "name": "ADA Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3203"
+        "cbn_institution_id": "3203",
+        "nibss_code": "090483"
       }
     },
     {
@@ -173,7 +196,8 @@
       "name": "Addosser Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3207"
+        "cbn_institution_id": "3207",
+        "nibss_code": "090160"
       }
     },
     {
@@ -181,7 +205,8 @@
       "name": "Adeyemi College Staff Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3208"
+        "cbn_institution_id": "3208",
+        "nibss_code": "090268"
       }
     },
     {
@@ -205,7 +230,8 @@
       "name": "Afekhafe Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3209"
+        "cbn_institution_id": "3209",
+        "nibss_code": "090292"
       }
     },
     {
@@ -213,7 +239,8 @@
       "name": "Afemai Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3210"
+        "cbn_institution_id": "3210",
+        "nibss_code": "090518"
       }
     },
     {
@@ -229,7 +256,8 @@
       "name": "AG HOMES",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4080"
+        "cbn_institution_id": "4080",
+        "nibss_code": "100028"
       }
     },
     {
@@ -237,7 +265,8 @@
       "name": "Agosasa Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3211"
+        "cbn_institution_id": "3211",
+        "nibss_code": "090371"
       }
     },
     {
@@ -245,7 +274,8 @@
       "name": "Ahmadu Bello University Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3213"
+        "cbn_institution_id": "3213",
+        "nibss_code": "090197"
       }
     },
     {
@@ -349,7 +379,8 @@
       "name": "Al-Barakah Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3226"
+        "cbn_institution_id": "3226",
+        "nibss_code": "090133"
       }
     },
     {
@@ -357,7 +388,8 @@
       "name": "Al-Hayat Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3230"
+        "cbn_institution_id": "3230",
+        "nibss_code": "090277"
       }
     },
     {
@@ -373,7 +405,8 @@
       "name": "Alekun Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3228"
+        "cbn_institution_id": "3228",
+        "nibss_code": "090259"
       }
     },
     {
@@ -381,7 +414,8 @@
       "name": "Alert Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3192"
+        "cbn_institution_id": "3192",
+        "nibss_code": "090297"
       }
     },
     {
@@ -405,7 +439,8 @@
       "name": "All Workers Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3233"
+        "cbn_institution_id": "3233",
+        "nibss_code": "090131"
       }
     },
     {
@@ -421,7 +456,8 @@
       "name": "Alpha Kapital Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3236"
+        "cbn_institution_id": "3236",
+        "nibss_code": "090169"
       }
     },
     {
@@ -429,7 +465,8 @@
       "name": "Alpha Morgan Bank Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "9894"
+        "cbn_institution_id": "9894",
+        "nibss_code": "000041"
       }
     },
     {
@@ -437,7 +474,8 @@
       "name": "Alternative Bank Limited",
       "type": "non_interest",
       "identifiers": {
-        "cbn_institution_id": "9845"
+        "cbn_institution_id": "9845",
+        "nibss_code": "000037"
       }
     },
     {
@@ -445,7 +483,8 @@
       "name": "Alvana Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3237"
+        "cbn_institution_id": "3237",
+        "nibss_code": "090489"
       }
     },
     {
@@ -453,7 +492,8 @@
       "name": "AMAC Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3238"
+        "cbn_institution_id": "3238",
+        "nibss_code": "090394"
       }
     },
     {
@@ -469,7 +509,8 @@
       "name": "Amegy Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3241"
+        "cbn_institution_id": "3241",
+        "nibss_code": "090629"
       }
     },
     {
@@ -477,7 +518,8 @@
       "name": "AMJU-Unique Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3242"
+        "cbn_institution_id": "3242",
+        "nibss_code": "090180"
       }
     },
     {
@@ -485,7 +527,8 @@
       "name": "AMML Microfinance Bank Limited (Abuja Markets Management Ltd)",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3243"
+        "cbn_institution_id": "3243",
+        "nibss_code": "090116"
       }
     },
     {
@@ -493,7 +536,8 @@
       "name": "Ampersand Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3245"
+        "cbn_institution_id": "3245",
+        "nibss_code": "090529"
       }
     },
     {
@@ -509,7 +553,8 @@
       "name": "Amucha Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3246"
+        "cbn_institution_id": "3246",
+        "nibss_code": "090645"
       }
     },
     {
@@ -517,7 +562,8 @@
       "name": "Anchorage Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3247"
+        "cbn_institution_id": "3247",
+        "nibss_code": "090476"
       }
     },
     {
@@ -525,7 +571,8 @@
       "name": "Aniocha Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3248"
+        "cbn_institution_id": "3248",
+        "nibss_code": "090469"
       }
     },
     {
@@ -573,7 +620,8 @@
       "name": "Aris Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3257"
+        "cbn_institution_id": "3257",
+        "nibss_code": "090282"
       }
     },
     {
@@ -589,7 +637,8 @@
       "name": "ASO SAVINGS & LOANS",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4082"
+        "cbn_institution_id": "4082",
+        "nibss_code": "090001"
       }
     },
     {
@@ -605,7 +654,8 @@
       "name": "Asset Matrix Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3261"
+        "cbn_institution_id": "3261",
+        "nibss_code": "090287"
       }
     },
     {
@@ -613,7 +663,8 @@
       "name": "Assets Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3262"
+        "cbn_institution_id": "3262",
+        "nibss_code": "090473"
       }
     },
     {
@@ -621,7 +672,8 @@
       "name": "Astra Polaris Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3264"
+        "cbn_institution_id": "3264",
+        "nibss_code": "090172"
       }
     },
     {
@@ -629,7 +681,8 @@
       "name": "Auchi Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3266"
+        "cbn_institution_id": "3266",
+        "nibss_code": "090264"
       }
     },
     {
@@ -661,7 +714,8 @@
       "name": "Avunegbe Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3267"
+        "cbn_institution_id": "3267",
+        "nibss_code": "090478"
       }
     },
     {
@@ -717,7 +771,8 @@
       "name": "B C Kash Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3275"
+        "cbn_institution_id": "3275",
+        "nibss_code": "090127"
       }
     },
     {
@@ -757,7 +812,8 @@
       "name": "Baines Credit Microfinance bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3279"
+        "cbn_institution_id": "3279",
+        "nibss_code": "090188"
       }
     },
     {
@@ -773,7 +829,8 @@
       "name": "Balogun Fulani Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3281"
+        "cbn_institution_id": "3281",
+        "nibss_code": "090181"
       }
     },
     {
@@ -781,7 +838,8 @@
       "name": "Balogun Gambari Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3282"
+        "cbn_institution_id": "3282",
+        "nibss_code": "090326"
       }
     },
     {
@@ -797,7 +855,8 @@
       "name": "Banex Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3286"
+        "cbn_institution_id": "3286",
+        "nibss_code": "090425"
       }
     },
     {
@@ -877,7 +936,8 @@
       "name": "Bayero University Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3294"
+        "cbn_institution_id": "3294",
+        "nibss_code": "090316"
       }
     },
     {
@@ -901,7 +961,8 @@
       "name": "Benysta Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3298"
+        "cbn_institution_id": "3298",
+        "nibss_code": "090413"
       }
     },
     {
@@ -917,7 +978,8 @@
       "name": "Best Star Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3300"
+        "cbn_institution_id": "3300",
+        "nibss_code": "090615"
       }
     },
     {
@@ -1005,7 +1067,8 @@
       "name": "BOCTRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3316"
+        "cbn_institution_id": "3316",
+        "nibss_code": "090117"
       }
     },
     {
@@ -1013,7 +1076,8 @@
       "name": "BOI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3317"
+        "cbn_institution_id": "3317",
+        "nibss_code": "090444"
       }
     },
     {
@@ -1021,7 +1085,8 @@
       "name": "BOJI BOJI MFB LTD.",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3318"
+        "cbn_institution_id": "3318",
+        "nibss_code": "090494"
       }
     },
     {
@@ -1037,7 +1102,8 @@
       "name": "Bold Microfinance bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "10028"
+        "cbn_institution_id": "10028",
+        "nibss_code": "090753"
       }
     },
     {
@@ -1045,7 +1111,8 @@
       "name": "BONGHE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3322"
+        "cbn_institution_id": "3322",
+        "nibss_code": "090319"
       }
     },
     {
@@ -1061,7 +1128,8 @@
       "name": "BORGU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3323"
+        "cbn_institution_id": "3323",
+        "nibss_code": "090395"
       }
     },
     {
@@ -1069,7 +1137,8 @@
       "name": "BORNO RENAISSANCE MFB LTD.",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3324"
+        "cbn_institution_id": "3324",
+        "nibss_code": "090508"
       }
     },
     {
@@ -1077,7 +1146,8 @@
       "name": "BOROMU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3325"
+        "cbn_institution_id": "3325",
+        "nibss_code": "090501"
       }
     },
     {
@@ -1085,7 +1155,8 @@
       "name": "BORSTAL MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3326"
+        "cbn_institution_id": "3326",
+        "nibss_code": "090454"
       }
     },
     {
@@ -1093,7 +1164,8 @@
       "name": "BOSAK MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3327"
+        "cbn_institution_id": "3327",
+        "nibss_code": "090176"
       }
     },
     {
@@ -1101,7 +1173,8 @@
       "name": "BOWEN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3328"
+        "cbn_institution_id": "3328",
+        "nibss_code": "090148"
       }
     },
     {
@@ -1117,7 +1190,8 @@
       "name": "BRENT (SKYFIELD) SAVINGS",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4083"
+        "cbn_institution_id": "4083",
+        "nibss_code": "070015"
       }
     },
     {
@@ -1125,7 +1199,8 @@
       "name": "BRETHREN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3331"
+        "cbn_institution_id": "3331",
+        "nibss_code": "090293"
       }
     },
     {
@@ -1133,7 +1208,8 @@
       "name": "BRIGHTWAY MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3334"
+        "cbn_institution_id": "3334",
+        "nibss_code": "090308"
       }
     },
     {
@@ -1157,7 +1233,8 @@
       "name": "BUBAYERO MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3338"
+        "cbn_institution_id": "3338",
+        "nibss_code": "090512"
       }
     },
     {
@@ -1213,7 +1290,8 @@
       "name": "CAPITALMETRIQ SWIFT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3347"
+        "cbn_institution_id": "3347",
+        "nibss_code": "090509"
       }
     },
     {
@@ -1221,7 +1299,8 @@
       "name": "CAPSTONE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3348"
+        "cbn_institution_id": "3348",
+        "nibss_code": "090445"
       }
     },
     {
@@ -1237,7 +1316,8 @@
       "name": "CARETAKER MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3350"
+        "cbn_institution_id": "3350",
+        "nibss_code": "090472"
       }
     },
     {
@@ -1261,7 +1341,8 @@
       "name": "CASHCONNECT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3352"
+        "cbn_institution_id": "3352",
+        "nibss_code": "090360"
       }
     },
     {
@@ -1285,7 +1366,8 @@
       "name": "CATLAND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3354"
+        "cbn_institution_id": "3354",
+        "nibss_code": "090498"
       }
     },
     {
@@ -1321,11 +1403,20 @@
       }
     },
     {
+      "id": "chams-mobile",
+      "name": "Chams Mobile",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100036"
+      }
+    },
+    {
       "id": "changan-rts-mfb",
       "name": "CHANGAN RTS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3358"
+        "cbn_institution_id": "3358",
+        "nibss_code": "090470"
       }
     },
     {
@@ -1341,7 +1432,8 @@
       "name": "CHASE MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3359"
+        "cbn_institution_id": "3359",
+        "nibss_code": "090523"
       }
     },
     {
@@ -1349,7 +1441,8 @@
       "name": "CHEVRON EMPLOYEE CO-OPERATIVE MFB (CEMCS)",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3361"
+        "cbn_institution_id": "3361",
+        "nibss_code": "090154"
       }
     },
     {
@@ -1357,7 +1450,8 @@
       "name": "CHIBUEZE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3362"
+        "cbn_institution_id": "3362",
+        "nibss_code": "090416"
       }
     },
     {
@@ -1365,7 +1459,8 @@
       "name": "CHIKUM MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3364"
+        "cbn_institution_id": "3364",
+        "nibss_code": "090141"
       }
     },
     {
@@ -1389,7 +1484,8 @@
       "name": "CHUKWUNENYE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3367"
+        "cbn_institution_id": "3367",
+        "nibss_code": "090490"
       }
     },
     {
@@ -1397,7 +1493,8 @@
       "name": "CINTRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3368"
+        "cbn_institution_id": "3368",
+        "nibss_code": "090480"
       }
     },
     {
@@ -1405,7 +1502,8 @@
       "name": "CIT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3369"
+        "cbn_institution_id": "3369",
+        "nibss_code": "090144"
       }
     },
     {
@@ -1413,7 +1511,8 @@
       "name": "Citibank Nigeria Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "2"
+        "cbn_institution_id": "2",
+        "nibss_code": "000009"
       }
     },
     {
@@ -1421,7 +1520,8 @@
       "name": "CITIZEN TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3370"
+        "cbn_institution_id": "3370",
+        "nibss_code": "090343"
       }
     },
     {
@@ -1453,7 +1553,8 @@
       "name": "CLOVERLEAF MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3373"
+        "cbn_institution_id": "3373",
+        "nibss_code": "090511"
       }
     },
     {
@@ -1461,7 +1562,8 @@
       "name": "COAL CAMP MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3374"
+        "cbn_institution_id": "3374",
+        "nibss_code": "090254"
       }
     },
     {
@@ -1469,7 +1571,8 @@
       "name": "COASTLINE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3375"
+        "cbn_institution_id": "3375",
+        "nibss_code": "090374"
       }
     },
     {
@@ -1501,7 +1604,8 @@
       "name": "CONSUMER MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3380"
+        "cbn_institution_id": "3380",
+        "nibss_code": "090130"
       }
     },
     {
@@ -1517,7 +1621,8 @@
       "name": "COOP SAVINGS & LOANS",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4086"
+        "cbn_institution_id": "4086",
+        "nibss_code": "070021"
       }
     },
     {
@@ -1525,7 +1630,8 @@
       "name": "CORESTEP MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3381"
+        "cbn_institution_id": "3381",
+        "nibss_code": "090365"
       }
     },
     {
@@ -1533,7 +1639,8 @@
       "name": "CORONATION MERCHANT BANK",
       "type": "merchant",
       "identifiers": {
-        "cbn_institution_id": "3181"
+        "cbn_institution_id": "3181",
+        "nibss_code": "060001"
       }
     },
     {
@@ -1541,7 +1648,8 @@
       "name": "COVENANT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3383"
+        "cbn_institution_id": "3383",
+        "nibss_code": "070006"
       }
     },
     {
@@ -1549,7 +1657,8 @@
       "name": "CRESCENT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3387"
+        "cbn_institution_id": "3387",
+        "nibss_code": "090526"
       }
     },
     {
@@ -1565,7 +1674,8 @@
       "name": "CROSSRIVER MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3390"
+        "cbn_institution_id": "3390",
+        "nibss_code": "090429"
       }
     },
     {
@@ -1573,7 +1683,8 @@
       "name": "CRUTECH MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3392"
+        "cbn_institution_id": "3392",
+        "nibss_code": "090414"
       }
     },
     {
@@ -1645,7 +1756,8 @@
       "name": "DAVODANI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3404"
+        "cbn_institution_id": "3404",
+        "nibss_code": "090391"
       }
     },
     {
@@ -1661,7 +1773,8 @@
       "name": "DAYLIGHT MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3407"
+        "cbn_institution_id": "3407",
+        "nibss_code": "090167"
       }
     },
     {
@@ -1677,7 +1790,8 @@
       "name": "DELTA MORTGAGE FINANCE",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4087"
+        "cbn_institution_id": "4087",
+        "nibss_code": "070023"
       }
     },
     {
@@ -1757,7 +1871,8 @@
       "name": "e-BARCS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3421"
+        "cbn_institution_id": "3421",
+        "nibss_code": "090156"
       }
     },
     {
@@ -1765,7 +1880,8 @@
       "name": "EAGLE FLIGHT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3416"
+        "cbn_institution_id": "3416",
+        "nibss_code": "090294"
       }
     },
     {
@@ -1813,7 +1929,8 @@
       "name": "EBONYI STATE UNIVERSITY MFB (EBSU)",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3423"
+        "cbn_institution_id": "3423",
+        "nibss_code": "090427"
       }
     },
     {
@@ -1821,7 +1938,8 @@
       "name": "Ecobank Nigeria Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "3"
+        "cbn_institution_id": "3",
+        "nibss_code": "000010"
       }
     },
     {
@@ -1829,7 +1947,8 @@
       "name": "EDFIN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3425"
+        "cbn_institution_id": "3425",
+        "nibss_code": "090310"
       }
     },
     {
@@ -1893,7 +2012,8 @@
       "name": "EK-RELIABLE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3437"
+        "cbn_institution_id": "3437",
+        "nibss_code": "090389"
       }
     },
     {
@@ -1909,7 +2029,8 @@
       "name": "EKONDO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3436"
+        "cbn_institution_id": "3436",
+        "nibss_code": "090097"
       }
     },
     {
@@ -1941,7 +2062,8 @@
       "name": "EMERALD MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3442"
+        "cbn_institution_id": "3442",
+        "nibss_code": "090273"
       }
     },
     {
@@ -1949,7 +2071,8 @@
       "name": "EMPIRE TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3443"
+        "cbn_institution_id": "3443",
+        "nibss_code": "090114"
       }
     },
     {
@@ -1997,7 +2120,16 @@
       "name": "ESO-E MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3451"
+        "cbn_institution_id": "3451",
+        "nibss_code": "090166"
+      }
+    },
+    {
+      "id": "etranzact-international",
+      "name": "eTranzact International Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100006"
       }
     },
     {
@@ -2005,7 +2137,8 @@
       "name": "EVERGREEN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3454"
+        "cbn_institution_id": "3454",
+        "nibss_code": "090332"
       }
     },
     {
@@ -2045,7 +2178,8 @@
       "name": "FAIRMONEY MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3463"
+        "cbn_institution_id": "3463",
+        "nibss_code": "090551"
       }
     },
     {
@@ -2053,7 +2187,8 @@
       "name": "FAME MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3464"
+        "cbn_institution_id": "3464",
+        "nibss_code": "090330"
       }
     },
     {
@@ -2061,7 +2196,8 @@
       "name": "FAST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3466"
+        "cbn_institution_id": "3466",
+        "nibss_code": "090179"
       }
     },
     {
@@ -2069,7 +2205,8 @@
       "name": "FBN MORTGAGES",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4088"
+        "cbn_institution_id": "4088",
+        "nibss_code": "090107"
       }
     },
     {
@@ -2077,7 +2214,8 @@
       "name": "FCMB MFB LTD.",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3467"
+        "cbn_institution_id": "3467",
+        "nibss_code": "090409"
       }
     },
     {
@@ -2093,7 +2231,8 @@
       "name": "FEDERAL POLYTECHNIC, NEKEDE MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3470"
+        "cbn_institution_id": "3470",
+        "nibss_code": "090398"
       }
     },
     {
@@ -2101,7 +2240,8 @@
       "name": "FEDETH CO-OP MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3471"
+        "cbn_institution_id": "3471",
+        "nibss_code": "090482"
       }
     },
     {
@@ -2109,7 +2249,8 @@
       "name": "FEDPOLY NASARAWA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3472"
+        "cbn_institution_id": "3472",
+        "nibss_code": "090298"
       }
     },
     {
@@ -2117,7 +2258,8 @@
       "name": "FFS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3473"
+        "cbn_institution_id": "3473",
+        "nibss_code": "090153"
       }
     },
     {
@@ -2133,7 +2275,8 @@
       "name": "Fidelity Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "4"
+        "cbn_institution_id": "4",
+        "nibss_code": "000007"
       }
     },
     {
@@ -2141,7 +2284,8 @@
       "name": "FIDFUND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3474"
+        "cbn_institution_id": "3474",
+        "nibss_code": "090126"
       }
     },
     {
@@ -2149,7 +2293,8 @@
       "name": "FIMS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3475"
+        "cbn_institution_id": "3475",
+        "nibss_code": "090507"
       }
     },
     {
@@ -2157,7 +2302,8 @@
       "name": "FINATRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3476"
+        "cbn_institution_id": "3476",
+        "nibss_code": "090111"
       }
     },
     {
@@ -2165,7 +2311,8 @@
       "name": "FINCA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3477"
+        "cbn_institution_id": "3477",
+        "nibss_code": "090400"
       }
     },
     {
@@ -2173,7 +2320,8 @@
       "name": "FINEX MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3478"
+        "cbn_institution_id": "3478",
+        "nibss_code": "090281"
       }
     },
     {
@@ -2181,7 +2329,8 @@
       "name": "FIRMUS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3479"
+        "cbn_institution_id": "3479",
+        "nibss_code": "090366"
       }
     },
     {
@@ -2197,7 +2346,8 @@
       "name": "First Bank Nigeria Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "5"
+        "cbn_institution_id": "5",
+        "nibss_code": "000016"
       }
     },
     {
@@ -2205,7 +2355,8 @@
       "name": "First City Monument Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "6"
+        "cbn_institution_id": "6",
+        "nibss_code": "000003"
       }
     },
     {
@@ -2213,7 +2364,8 @@
       "name": "FIRST GENERATION HOMES",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4090"
+        "cbn_institution_id": "4090",
+        "nibss_code": "070014"
       }
     },
     {
@@ -2221,7 +2373,8 @@
       "name": "FIRST HERITAGE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3481"
+        "cbn_institution_id": "3481",
+        "nibss_code": "090479"
       }
     },
     {
@@ -2245,7 +2398,8 @@
       "name": "FIRST OPTION MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3486"
+        "cbn_institution_id": "3486",
+        "nibss_code": "090285"
       }
     },
     {
@@ -2253,7 +2407,8 @@
       "name": "FIRST ROYAL MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3487"
+        "cbn_institution_id": "3487",
+        "nibss_code": "090164"
       }
     },
     {
@@ -2269,7 +2424,8 @@
       "name": "FLOURISH MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3489"
+        "cbn_institution_id": "3489",
+        "nibss_code": "090614"
       }
     },
     {
@@ -2277,7 +2433,16 @@
       "name": "FORESIGHT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3490"
+        "cbn_institution_id": "3490",
+        "nibss_code": "090521"
+      }
+    },
+    {
+      "id": "fortis-mobile-money",
+      "name": "Fortis Mobile Money Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100016"
       }
     },
     {
@@ -2285,7 +2450,8 @@
       "name": "FORTRESS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3491"
+        "cbn_institution_id": "3491",
+        "nibss_code": "090486"
       }
     },
     {
@@ -2301,7 +2467,8 @@
       "name": "FSDH MERCHANT BANK",
       "type": "merchant",
       "identifiers": {
-        "cbn_institution_id": "3183"
+        "cbn_institution_id": "3183",
+        "nibss_code": "400001"
       }
     },
     {
@@ -2317,7 +2484,8 @@
       "name": "FUD MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3494"
+        "cbn_institution_id": "3494",
+        "nibss_code": "090318"
       }
     },
     {
@@ -2325,7 +2493,16 @@
       "name": "Fullrange Microfinance Bank Ltd",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3495"
+        "cbn_institution_id": "3495",
+        "nibss_code": "090145"
+      }
+    },
+    {
+      "id": "funds-and-electronic-transfer-fets",
+      "name": "Funds And Electronic Transfer (FETS) Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100001"
       }
     },
     {
@@ -2333,7 +2510,8 @@
       "name": "FUT MINNA",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3496"
+        "cbn_institution_id": "3496",
+        "nibss_code": "090438"
       }
     },
     {
@@ -2341,7 +2519,8 @@
       "name": "FUTO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3497"
+        "cbn_institution_id": "3497",
+        "nibss_code": "090158"
       }
     },
     {
@@ -2381,7 +2560,8 @@
       "name": "GARKI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3502"
+        "cbn_institution_id": "3502",
+        "nibss_code": "090484"
       }
     },
     {
@@ -2397,7 +2577,8 @@
       "name": "GASHUA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3504"
+        "cbn_institution_id": "3504",
+        "nibss_code": "090168"
       }
     },
     {
@@ -2405,7 +2586,8 @@
       "name": "GATEWAY SAVINGS",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4091"
+        "cbn_institution_id": "4091",
+        "nibss_code": "070009"
       }
     },
     {
@@ -2429,7 +2611,8 @@
       "name": "GIANT STRIDE MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3508"
+        "cbn_institution_id": "3508",
+        "nibss_code": "090475"
       }
     },
     {
@@ -2445,7 +2628,8 @@
       "name": "GIGINYA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3510"
+        "cbn_institution_id": "3510",
+        "nibss_code": "090411"
       }
     },
     {
@@ -2453,7 +2637,8 @@
       "name": "GIREI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3511"
+        "cbn_institution_id": "3511",
+        "nibss_code": "090186"
       }
     },
     {
@@ -2461,7 +2646,8 @@
       "name": "GIWA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3512"
+        "cbn_institution_id": "3512",
+        "nibss_code": "090441"
       }
     },
     {
@@ -2485,7 +2671,8 @@
       "name": "Globus Bank Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "7"
+        "cbn_institution_id": "7",
+        "nibss_code": "000027"
       }
     },
     {
@@ -2493,7 +2680,8 @@
       "name": "GLORY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3514"
+        "cbn_institution_id": "3514",
+        "nibss_code": "090278"
       }
     },
     {
@@ -2501,7 +2689,8 @@
       "name": "GMB MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3515"
+        "cbn_institution_id": "3515",
+        "nibss_code": "090408"
       }
     },
     {
@@ -2541,7 +2730,8 @@
       "name": "GOOD NEIGHBOURS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3522"
+        "cbn_institution_id": "3522",
+        "nibss_code": "090467"
       }
     },
     {
@@ -2549,7 +2739,8 @@
       "name": "GOOD NEWS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3523"
+        "cbn_institution_id": "3523",
+        "nibss_code": "090495"
       }
     },
     {
@@ -2565,7 +2756,8 @@
       "name": "GOWANS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3525"
+        "cbn_institution_id": "3525",
+        "nibss_code": "090122"
       }
     },
     {
@@ -2573,7 +2765,8 @@
       "name": "GRANTS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3526"
+        "cbn_institution_id": "3526",
+        "nibss_code": "090335"
       }
     },
     {
@@ -2605,7 +2798,8 @@
       "name": "GREEN-BANK MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3530"
+        "cbn_institution_id": "3530",
+        "nibss_code": "090178"
       }
     },
     {
@@ -2613,7 +2807,8 @@
       "name": "GREENVILLE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3532"
+        "cbn_institution_id": "3532",
+        "nibss_code": "090269"
       }
     },
     {
@@ -2621,7 +2816,8 @@
       "name": "GREENWICH MERCHANT BANK",
       "type": "merchant",
       "identifiers": {
-        "cbn_institution_id": "3184"
+        "cbn_institution_id": "3184",
+        "nibss_code": "060004"
       }
     },
     {
@@ -2629,7 +2825,8 @@
       "name": "GROOMING MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3533"
+        "cbn_institution_id": "3533",
+        "nibss_code": "090195"
       }
     },
     {
@@ -2637,7 +2834,8 @@
       "name": "GTI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3534"
+        "cbn_institution_id": "3534",
+        "nibss_code": "090385"
       }
     },
     {
@@ -2645,7 +2843,8 @@
       "name": "Guaranty Trust Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "8"
+        "cbn_institution_id": "8",
+        "nibss_code": "000013"
       }
     },
     {
@@ -2669,7 +2868,8 @@
       "name": "GWONG MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3538"
+        "cbn_institution_id": "3538",
+        "nibss_code": "090500"
       }
     },
     {
@@ -2685,7 +2885,8 @@
       "name": "HAGGAI MORTGAGE BANK",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4093"
+        "cbn_institution_id": "4093",
+        "nibss_code": "070017"
       }
     },
     {
@@ -2693,7 +2894,8 @@
       "name": "HALAL CREDIT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3541"
+        "cbn_institution_id": "3541",
+        "nibss_code": "090291"
       }
     },
     {
@@ -2725,7 +2927,8 @@
       "name": "HASAL MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3546"
+        "cbn_institution_id": "3546",
+        "nibss_code": "090121"
       }
     },
     {
@@ -2733,7 +2936,8 @@
       "name": "HEADWAY MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3547"
+        "cbn_institution_id": "3547",
+        "nibss_code": "090363"
       }
     },
     {
@@ -2745,11 +2949,20 @@
       }
     },
     {
+      "id": "hedonmark-management-services",
+      "name": "Hedonmark Management Services Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100017"
+      }
+    },
+    {
       "id": "highland-mfb",
       "name": "HIGHLAND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3548"
+        "cbn_institution_id": "3548",
+        "nibss_code": "090418"
       }
     },
     {
@@ -2765,7 +2978,8 @@
       "name": "HOME-BASE MORTGAGE",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4094"
+        "cbn_institution_id": "4094",
+        "nibss_code": "070024"
       }
     },
     {
@@ -2789,7 +3003,8 @@
       "name": "Hope PSB Ltd",
       "type": "payment_service",
       "identifiers": {
-        "cbn_institution_id": "4113"
+        "cbn_institution_id": "4113",
+        "nibss_code": "120002"
       }
     },
     {
@@ -2805,7 +3020,8 @@
       "name": "IBETO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3553"
+        "cbn_institution_id": "3553",
+        "nibss_code": "090439"
       }
     },
     {
@@ -2813,7 +3029,8 @@
       "name": "IBILE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3554"
+        "cbn_institution_id": "3554",
+        "nibss_code": "090118"
       }
     },
     {
@@ -2829,7 +3046,8 @@
       "name": "IBOM FADAMA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3555"
+        "cbn_institution_id": "3555",
+        "nibss_code": "090519"
       }
     },
     {
@@ -2933,7 +3151,8 @@
       "name": "IKENNE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3577"
+        "cbn_institution_id": "3577",
+        "nibss_code": "090324"
       }
     },
     {
@@ -2949,7 +3168,8 @@
       "name": "IKIRE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3578"
+        "cbn_institution_id": "3578",
+        "nibss_code": "090279"
       }
     },
     {
@@ -2997,7 +3217,8 @@
       "name": "ILISAN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3584"
+        "cbn_institution_id": "3584",
+        "nibss_code": "090370"
       }
     },
     {
@@ -3021,7 +3242,8 @@
       "name": "ILORA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3587"
+        "cbn_institution_id": "3587",
+        "nibss_code": "090430"
       }
     },
     {
@@ -3029,7 +3251,8 @@
       "name": "ILORIN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3588"
+        "cbn_institution_id": "3588",
+        "nibss_code": "090350"
       }
     },
     {
@@ -3053,7 +3276,8 @@
       "name": "IMO STATE MICROFINANCE BANK",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3591"
+        "cbn_institution_id": "3591",
+        "nibss_code": "090258"
       }
     },
     {
@@ -3077,7 +3301,8 @@
       "name": "IMOWO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3594"
+        "cbn_institution_id": "3594",
+        "nibss_code": "090417"
       }
     },
     {
@@ -3085,7 +3310,8 @@
       "name": "IMPERIAL HOMES",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4095"
+        "cbn_institution_id": "4095",
+        "nibss_code": "100024"
       }
     },
     {
@@ -3117,7 +3343,8 @@
       "name": "INFINITY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3597"
+        "cbn_institution_id": "3597",
+        "nibss_code": "090157"
       }
     },
     {
@@ -3125,7 +3352,8 @@
       "name": "INFINITY TRUST",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4096"
+        "cbn_institution_id": "4096",
+        "nibss_code": "070016"
       }
     },
     {
@@ -3133,7 +3361,8 @@
       "name": "INSIGHT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3599"
+        "cbn_institution_id": "3599",
+        "nibss_code": "090434"
       }
     },
     {
@@ -3149,7 +3378,8 @@
       "name": "IPERU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3602"
+        "cbn_institution_id": "3602",
+        "nibss_code": "090493"
       }
     },
     {
@@ -3157,7 +3387,8 @@
       "name": "IRL MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3603"
+        "cbn_institution_id": "3603",
+        "nibss_code": "090149"
       }
     },
     {
@@ -3165,7 +3396,8 @@
       "name": "ISALE OYO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3604"
+        "cbn_institution_id": "3604",
+        "nibss_code": "090377"
       }
     },
     {
@@ -3181,7 +3413,8 @@
       "name": "ISHIE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3606"
+        "cbn_institution_id": "3606",
+        "nibss_code": "090428"
       }
     },
     {
@@ -3221,7 +3454,8 @@
       "name": "ISUOFIA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3610"
+        "cbn_institution_id": "3610",
+        "nibss_code": "090353"
       }
     },
     {
@@ -3277,7 +3511,8 @@
       "name": "IZON MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3620"
+        "cbn_institution_id": "3620",
+        "nibss_code": "090421"
       }
     },
     {
@@ -3285,7 +3520,8 @@
       "name": "JAIZ BANK PLC",
       "type": "non_interest",
       "identifiers": {
-        "cbn_institution_id": "4119"
+        "cbn_institution_id": "4119",
+        "nibss_code": "000006"
       }
     },
     {
@@ -3309,7 +3545,8 @@
       "name": "JESSEFIELD MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3625"
+        "cbn_institution_id": "3625",
+        "nibss_code": "090352"
       }
     },
     {
@@ -3333,7 +3570,8 @@
       "name": "JUBILEE-LIFE MORTGAGE BANK",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4098"
+        "cbn_institution_id": "4098",
+        "nibss_code": "090003"
       }
     },
     {
@@ -3349,7 +3587,8 @@
       "name": "KADPOLY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3631"
+        "cbn_institution_id": "3631",
+        "nibss_code": "090320"
       }
     },
     {
@@ -3429,7 +3668,8 @@
       "name": "KCMB MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3640"
+        "cbn_institution_id": "3640",
+        "nibss_code": "090191"
       }
     },
     {
@@ -3453,7 +3693,8 @@
       "name": "Keystone Bank Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "10"
+        "cbn_institution_id": "10",
+        "nibss_code": "000002"
       }
     },
     {
@@ -3469,7 +3710,8 @@
       "name": "KINGDOM COLLEGE MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3644"
+        "cbn_institution_id": "3644",
+        "nibss_code": "090487"
       }
     },
     {
@@ -3521,11 +3763,20 @@
       }
     },
     {
+      "id": "kongapay-technologies",
+      "name": "KongaPay Technologies Limited (Formerly Zinternet Limited )",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100025"
+      }
+    },
+    {
       "id": "kontagora-mfb",
       "name": "KONTAGORA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3650"
+        "cbn_institution_id": "3650",
+        "nibss_code": "090299"
       }
     },
     {
@@ -3541,7 +3792,8 @@
       "name": "KREDI MONEY MFB (Formerly CONPRO MFB)",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3378"
+        "cbn_institution_id": "3378",
+        "nibss_code": "090380"
       }
     },
     {
@@ -3549,7 +3801,8 @@
       "name": "KUDA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3652"
+        "cbn_institution_id": "3652",
+        "nibss_code": "090267"
       }
     },
     {
@@ -3613,7 +3866,8 @@
       "name": "KWASU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3659"
+        "cbn_institution_id": "3659",
+        "nibss_code": "090450"
       }
     },
     {
@@ -3629,7 +3883,8 @@
       "name": "LA FAYETTE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3661"
+        "cbn_institution_id": "3661",
+        "nibss_code": "090155"
       }
     },
     {
@@ -3637,7 +3892,8 @@
       "name": "Ladder Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "9876"
+        "cbn_institution_id": "9876",
+        "nibss_code": "090986"
       }
     },
     {
@@ -3645,7 +3901,8 @@
       "name": "LAGOS BUILDING & INVESTMENT",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4100"
+        "cbn_institution_id": "4100",
+        "nibss_code": "070012"
       }
     },
     {
@@ -3653,7 +3910,8 @@
       "name": "LANDGOLD MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3662"
+        "cbn_institution_id": "3662",
+        "nibss_code": "090422"
       }
     },
     {
@@ -3661,7 +3919,8 @@
       "name": "LAPO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3663"
+        "cbn_institution_id": "3663",
+        "nibss_code": "090177"
       }
     },
     {
@@ -3669,7 +3928,8 @@
       "name": "LAVENDER",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3664"
+        "cbn_institution_id": "3664",
+        "nibss_code": "090271"
       }
     },
     {
@@ -3709,7 +3969,8 @@
       "name": "LEGEND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3670"
+        "cbn_institution_id": "3670",
+        "nibss_code": "090372"
       }
     },
     {
@@ -3717,7 +3978,8 @@
       "name": "LETSHEGO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3671"
+        "cbn_institution_id": "3671",
+        "nibss_code": "090420"
       }
     },
     {
@@ -3741,7 +4003,8 @@
       "name": "LIGHT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3674"
+        "cbn_institution_id": "3674",
+        "nibss_code": "090477"
       }
     },
     {
@@ -3757,7 +4020,8 @@
       "name": "LINKS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3675"
+        "cbn_institution_id": "3675",
+        "nibss_code": "090435"
       }
     },
     {
@@ -3781,7 +4045,8 @@
       "name": "LOTUS BANK LTD",
       "type": "non_interest",
       "identifiers": {
-        "cbn_institution_id": "4120"
+        "cbn_institution_id": "4120",
+        "nibss_code": "000029"
       }
     },
     {
@@ -3789,7 +4054,8 @@
       "name": "LOVONUS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3678"
+        "cbn_institution_id": "3678",
+        "nibss_code": "090265"
       }
     },
     {
@@ -3861,7 +4127,8 @@
       "name": "MAIN TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3688"
+        "cbn_institution_id": "3688",
+        "nibss_code": "090465"
       }
     },
     {
@@ -3869,7 +4136,8 @@
       "name": "MAINLAND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3689"
+        "cbn_institution_id": "3689",
+        "nibss_code": "090323"
       }
     },
     {
@@ -3877,7 +4145,8 @@
       "name": "MAINSTREET MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3691"
+        "cbn_institution_id": "3691",
+        "nibss_code": "090171"
       }
     },
     {
@@ -3885,7 +4154,8 @@
       "name": "MALACHY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3692"
+        "cbn_institution_id": "3692",
+        "nibss_code": "090174"
       }
     },
     {
@@ -3901,7 +4171,8 @@
       "name": "MARITIME MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3696"
+        "cbn_institution_id": "3696",
+        "nibss_code": "090410"
       }
     },
     {
@@ -3933,7 +4204,8 @@
       "name": "MAYFRESH MORTGAGE BANK",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4101"
+        "cbn_institution_id": "4101",
+        "nibss_code": "070019"
       }
     },
     {
@@ -3965,7 +4237,8 @@
       "name": "MEGAPRAISE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3704"
+        "cbn_institution_id": "3704",
+        "nibss_code": "090280"
       }
     },
     {
@@ -3981,7 +4254,8 @@
       "name": "MEMPHIS MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3706"
+        "cbn_institution_id": "3706",
+        "nibss_code": "090432"
       }
     },
     {
@@ -3989,7 +4263,8 @@
       "name": "MERIDIAN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3709"
+        "cbn_institution_id": "3709",
+        "nibss_code": "090275"
       }
     },
     {
@@ -4029,7 +4304,8 @@
       "name": "MICROVIS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3714"
+        "cbn_institution_id": "3714",
+        "nibss_code": "090113"
       }
     },
     {
@@ -4037,7 +4313,8 @@
       "name": "MIDLAND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3715"
+        "cbn_institution_id": "3715",
+        "nibss_code": "090192"
       }
     },
     {
@@ -4057,11 +4334,20 @@
       }
     },
     {
+      "id": "mkudi",
+      "name": "Mkudi Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100011"
+      }
+    },
+    {
       "id": "moddibo-adama-university-microfinance-bank",
       "name": "Moddibo Adama University Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "10056"
+        "cbn_institution_id": "10056",
+        "nibss_code": "090423"
       }
     },
     {
@@ -4085,7 +4371,8 @@
       "name": "MOLUSI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3722"
+        "cbn_institution_id": "3722",
+        "nibss_code": "090362"
       }
     },
     {
@@ -4093,7 +4380,8 @@
       "name": "MOMO PAYMENT SERVICE BANK",
       "type": "payment_service",
       "identifiers": {
-        "cbn_institution_id": "9846"
+        "cbn_institution_id": "9846",
+        "nibss_code": "120003"
       }
     },
     {
@@ -4101,7 +4389,8 @@
       "name": "MONARCH MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3723"
+        "cbn_institution_id": "3723",
+        "nibss_code": "090462"
       }
     },
     {
@@ -4109,7 +4398,8 @@
       "name": "Moneymaster PSB Ltd",
       "type": "payment_service",
       "identifiers": {
-        "cbn_institution_id": "4115"
+        "cbn_institution_id": "4115",
+        "nibss_code": "120005"
       }
     },
     {
@@ -4125,7 +4415,8 @@
       "name": "Moneytrust MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3725"
+        "cbn_institution_id": "3725",
+        "nibss_code": "090129"
       }
     },
     {
@@ -4133,7 +4424,8 @@
       "name": "Moniepoint MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3916"
+        "cbn_institution_id": "3916",
+        "nibss_code": "090405"
       }
     },
     {
@@ -4149,7 +4441,8 @@
       "name": "MOYOFADE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3729"
+        "cbn_institution_id": "3729",
+        "nibss_code": "090448"
       }
     },
     {
@@ -4157,7 +4450,8 @@
       "name": "MOZFIN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3730"
+        "cbn_institution_id": "3730",
+        "nibss_code": "090392"
       }
     },
     {
@@ -4189,7 +4483,8 @@
       "name": "MUTUAL BENEFIT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3733"
+        "cbn_institution_id": "3733",
+        "nibss_code": "090190"
       }
     },
     {
@@ -4197,7 +4492,8 @@
       "name": "MUTUAL TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3734"
+        "cbn_institution_id": "3734",
+        "nibss_code": "090151"
       }
     },
     {
@@ -4205,7 +4501,8 @@
       "name": "NAGARTA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3736"
+        "cbn_institution_id": "3736",
+        "nibss_code": "090152"
       }
     },
     {
@@ -4237,7 +4534,8 @@
       "name": "NASARAWA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3742"
+        "cbn_institution_id": "3742",
+        "nibss_code": "090349"
       }
     },
     {
@@ -4253,7 +4551,8 @@
       "name": "NDIORAH MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3745"
+        "cbn_institution_id": "3745",
+        "nibss_code": "090128"
       }
     },
     {
@@ -4269,7 +4568,8 @@
       "name": "NEPTUNE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3747"
+        "cbn_institution_id": "3747",
+        "nibss_code": "090329"
       }
     },
     {
@@ -4277,7 +4577,8 @@
       "name": "NEW DAWN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3750"
+        "cbn_institution_id": "3750",
+        "nibss_code": "090205"
       }
     },
     {
@@ -4293,7 +4594,8 @@
       "name": "NEW GOLDEN PASTURES MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3752"
+        "cbn_institution_id": "3752",
+        "nibss_code": "090378"
       }
     },
     {
@@ -4301,7 +4603,8 @@
       "name": "NEW PRUDENTIAL",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4104"
+        "cbn_institution_id": "4104",
+        "nibss_code": "090108"
       }
     },
     {
@@ -4309,7 +4612,8 @@
       "name": "NEW WOMEN'S MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3753"
+        "cbn_institution_id": "3753",
+        "nibss_code": "090283"
       }
     },
     {
@@ -4333,7 +4637,8 @@
       "name": "NICE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3758"
+        "cbn_institution_id": "3758",
+        "nibss_code": "090459"
       }
     },
     {
@@ -4349,7 +4654,8 @@
       "name": "NIGERIAN NAVY MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3759"
+        "cbn_institution_id": "3759",
+        "nibss_code": "090263"
       }
     },
     {
@@ -4357,7 +4663,8 @@
       "name": "NIGERIAN PRISONS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3760"
+        "cbn_institution_id": "3760",
+        "nibss_code": "090505"
       }
     },
     {
@@ -4373,7 +4680,8 @@
       "name": "NIRSAL MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3762"
+        "cbn_institution_id": "3762",
+        "nibss_code": "090194"
       }
     },
     {
@@ -4437,7 +4745,8 @@
       "name": "Nova Commercial Bank Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "9870"
+        "cbn_institution_id": "9870",
+        "nibss_code": "060003"
       }
     },
     {
@@ -4457,11 +4766,20 @@
       }
     },
     {
+      "id": "nownow-digital-systems",
+      "name": "NowNow Digital Systems Limited (Formerly Contec Global Infotech Limited)",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100032"
+      }
+    },
+    {
       "id": "npf-mfb",
       "name": "NPF MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3774"
+        "cbn_institution_id": "3774",
+        "nibss_code": "070001"
       }
     },
     {
@@ -4485,7 +4803,8 @@
       "name": "NSUK MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3778"
+        "cbn_institution_id": "3778",
+        "nibss_code": "090491"
       }
     },
     {
@@ -4509,7 +4828,8 @@
       "name": "NUMO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3780"
+        "cbn_institution_id": "3780",
+        "nibss_code": "090516"
       }
     },
     {
@@ -4533,7 +4853,8 @@
       "name": "NWANNEGADI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3786"
+        "cbn_institution_id": "3786",
+        "nibss_code": "090399"
       }
     },
     {
@@ -4541,7 +4862,8 @@
       "name": "OAKLAND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3788"
+        "cbn_institution_id": "3788",
+        "nibss_code": "090437"
       }
     },
     {
@@ -4597,7 +4919,8 @@
       "name": "OCHE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3796"
+        "cbn_institution_id": "3796",
+        "nibss_code": "090333"
       }
     },
     {
@@ -4685,7 +5008,8 @@
       "name": "OHAFIA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3810"
+        "cbn_institution_id": "3810",
+        "nibss_code": "090119"
       }
     },
     {
@@ -4701,7 +5025,8 @@
       "name": "OJOKORO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3813"
+        "cbn_institution_id": "3813",
+        "nibss_code": "090527"
       }
     },
     {
@@ -4765,7 +5090,8 @@
       "name": "OKPOGA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3819"
+        "cbn_institution_id": "3819",
+        "nibss_code": "090161"
       }
     },
     {
@@ -4797,7 +5123,8 @@
       "name": "OLABISI ONABANJO UNIVERSITY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3824"
+        "cbn_institution_id": "3824",
+        "nibss_code": "090272"
       }
     },
     {
@@ -4821,7 +5148,8 @@
       "name": "OLOWOLAGBA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3829"
+        "cbn_institution_id": "3829",
+        "nibss_code": "090404"
       }
     },
     {
@@ -4837,7 +5165,8 @@
       "name": "OLUCHUKWU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3831"
+        "cbn_institution_id": "3831",
+        "nibss_code": "090471"
       }
     },
     {
@@ -4853,7 +5182,8 @@
       "name": "OMIYE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3833"
+        "cbn_institution_id": "3833",
+        "nibss_code": "090295"
       }
     },
     {
@@ -4861,7 +5191,8 @@
       "name": "OMOLUABI (LIVINGSPRING)",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4106"
+        "cbn_institution_id": "4106",
+        "nibss_code": "070007"
       }
     },
     {
@@ -4889,6 +5220,14 @@
       }
     },
     {
+      "id": "opay-digital-services",
+      "name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100004"
+      }
+    },
+    {
       "id": "opay-mfb",
       "name": "OPAY MFB LIMITEd",
       "type": "microfinance",
@@ -4909,7 +5248,8 @@
       "name": "Optimus Bank",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "9865"
+        "cbn_institution_id": "9865",
+        "nibss_code": "000036"
       }
     },
     {
@@ -4917,7 +5257,8 @@
       "name": "ORAUKWU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3838"
+        "cbn_institution_id": "3838",
+        "nibss_code": "090492"
       }
     },
     {
@@ -4997,7 +5338,8 @@
       "name": "OSPOLY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3853"
+        "cbn_institution_id": "3853",
+        "nibss_code": "090456"
       }
     },
     {
@@ -5057,11 +5399,20 @@
       }
     },
     {
+      "id": "pagatech",
+      "name": "Pagatech Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100002"
+      }
+    },
+    {
       "id": "palmcoast-mfb",
       "name": "PALMCOAST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3861"
+        "cbn_institution_id": "3861",
+        "nibss_code": "090497"
       }
     },
     {
@@ -5070,6 +5421,14 @@
       "type": "microfinance",
       "identifiers": {
         "cbn_institution_id": "3862"
+      }
+    },
+    {
+      "id": "palmpay",
+      "name": "PalmPay Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100033"
       }
     },
     {
@@ -5093,7 +5452,8 @@
       "name": "Parallex Bank Ltd",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "11"
+        "cbn_institution_id": "11",
+        "nibss_code": "000030"
       }
     },
     {
@@ -5101,7 +5461,16 @@
       "name": "PARKWAY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3864"
+        "cbn_institution_id": "3864",
+        "nibss_code": "090390"
+      }
+    },
+    {
+      "id": "parkway-projects",
+      "name": "Parkway Projects Limited.",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100003"
       }
     },
     {
@@ -5117,7 +5486,8 @@
       "name": "PATRICKGOLD MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3866"
+        "cbn_institution_id": "3866",
+        "nibss_code": "090317"
       }
     },
     {
@@ -5133,7 +5503,8 @@
       "name": "PEACE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3867"
+        "cbn_institution_id": "3867",
+        "nibss_code": "090402"
       }
     },
     {
@@ -5141,7 +5512,8 @@
       "name": "PECAN TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3869"
+        "cbn_institution_id": "3869",
+        "nibss_code": "090137"
       }
     },
     {
@@ -5157,7 +5529,8 @@
       "name": "PENNYWISE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3872"
+        "cbn_institution_id": "3872",
+        "nibss_code": "090196"
       }
     },
     {
@@ -5173,7 +5546,8 @@
       "name": "PERSONAL TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3874"
+        "cbn_institution_id": "3874",
+        "nibss_code": "090135"
       }
     },
     {
@@ -5181,7 +5555,8 @@
       "name": "PETRA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3875"
+        "cbn_institution_id": "3875",
+        "nibss_code": "090165"
       }
     },
     {
@@ -5197,7 +5572,8 @@
       "name": "PILLAR MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3877"
+        "cbn_institution_id": "3877",
+        "nibss_code": "090289"
       }
     },
     {
@@ -5221,7 +5597,8 @@
       "name": "PLATINUM MORTGAGE BANK",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4107"
+        "cbn_institution_id": "4107",
+        "nibss_code": "070013"
       }
     },
     {
@@ -5245,7 +5622,8 @@
       "name": "Polaris Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "12"
+        "cbn_institution_id": "12",
+        "nibss_code": "000008"
       }
     },
     {
@@ -5261,7 +5639,8 @@
       "name": "POLYUNWANNA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3879"
+        "cbn_institution_id": "3879",
+        "nibss_code": "090296"
       }
     },
     {
@@ -5269,7 +5648,8 @@
       "name": "PREEMINENT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3880"
+        "cbn_institution_id": "3880",
+        "nibss_code": "090412"
       }
     },
     {
@@ -5285,7 +5665,8 @@
       "name": "Premium Trust Bank",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "13"
+        "cbn_institution_id": "13",
+        "nibss_code": "000031"
       }
     },
     {
@@ -5293,7 +5674,8 @@
       "name": "PRESTIGE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3882"
+        "cbn_institution_id": "3882",
+        "nibss_code": "090274"
       }
     },
     {
@@ -5301,7 +5683,8 @@
       "name": "PRISCO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3884"
+        "cbn_institution_id": "3884",
+        "nibss_code": "090481"
       }
     },
     {
@@ -5309,7 +5692,8 @@
       "name": "PRISTINE DIVITIS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3885"
+        "cbn_institution_id": "3885",
+        "nibss_code": "090499"
       }
     },
     {
@@ -5317,7 +5701,8 @@
       "name": "PROJECTS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3887"
+        "cbn_institution_id": "3887",
+        "nibss_code": "090503"
       }
     },
     {
@@ -5341,7 +5726,8 @@
       "name": "Providus Bank",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "14"
+        "cbn_institution_id": "14",
+        "nibss_code": "000023"
       }
     },
     {
@@ -5381,7 +5767,8 @@
       "name": "QUICKFUND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3895"
+        "cbn_institution_id": "3895",
+        "nibss_code": "090261"
       }
     },
     {
@@ -5389,7 +5776,8 @@
       "name": "RAHAMA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3896"
+        "cbn_institution_id": "3896",
+        "nibss_code": "090170"
       }
     },
     {
@@ -5413,7 +5801,8 @@
       "name": "RAND MERCHANT BANK",
       "type": "merchant",
       "identifiers": {
-        "cbn_institution_id": "3186"
+        "cbn_institution_id": "3186",
+        "nibss_code": "000024"
       }
     },
     {
@@ -5421,7 +5810,8 @@
       "name": "RANDALPHA",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3899"
+        "cbn_institution_id": "3899",
+        "nibss_code": "090496"
       }
     },
     {
@@ -5445,7 +5835,8 @@
       "name": "REFUGE HOMES",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4108"
+        "cbn_institution_id": "4108",
+        "nibss_code": "070011"
       }
     },
     {
@@ -5453,7 +5844,8 @@
       "name": "REGENT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3903"
+        "cbn_institution_id": "3903",
+        "nibss_code": "090125"
       }
     },
     {
@@ -5461,7 +5853,8 @@
       "name": "REHOBOTH MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3904"
+        "cbn_institution_id": "3904",
+        "nibss_code": "090463"
       }
     },
     {
@@ -5469,7 +5862,8 @@
       "name": "RELIANCE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3905"
+        "cbn_institution_id": "3905",
+        "nibss_code": "090173"
       }
     },
     {
@@ -5477,7 +5871,8 @@
       "name": "RENMONEY MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3906"
+        "cbn_institution_id": "3906",
+        "nibss_code": "090198"
       }
     },
     {
@@ -5485,7 +5880,8 @@
       "name": "REPHIDIM MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3907"
+        "cbn_institution_id": "3907",
+        "nibss_code": "090322"
       }
     },
     {
@@ -5501,7 +5897,8 @@
       "name": "RICHWAY MFB LTD.",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3909"
+        "cbn_institution_id": "3909",
+        "nibss_code": "090132"
       }
     },
     {
@@ -5517,7 +5914,8 @@
       "name": "RIGO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3910"
+        "cbn_institution_id": "3910",
+        "nibss_code": "090433"
       }
     },
     {
@@ -5525,7 +5923,8 @@
       "name": "RIMA GROWTH PATHWAY MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3911"
+        "cbn_institution_id": "3911",
+        "nibss_code": "090515"
       }
     },
     {
@@ -5533,7 +5932,8 @@
       "name": "RIMA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3912"
+        "cbn_institution_id": "3912",
+        "nibss_code": "090443"
       }
     },
     {
@@ -5573,7 +5973,8 @@
       "name": "ROYAL EXCHANGE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3918"
+        "cbn_institution_id": "3918",
+        "nibss_code": "090138"
       }
     },
     {
@@ -5597,7 +5998,8 @@
       "name": "RUBIES MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3921"
+        "cbn_institution_id": "3921",
+        "nibss_code": "090175"
       }
     },
     {
@@ -5645,7 +6047,8 @@
       "name": "SAFE HAVEN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3926"
+        "cbn_institution_id": "3926",
+        "nibss_code": "090286"
       }
     },
     {
@@ -5661,7 +6064,8 @@
       "name": "SAGAMU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3929"
+        "cbn_institution_id": "3929",
+        "nibss_code": "090140"
       }
     },
     {
@@ -5709,7 +6113,8 @@
       "name": "SEAP MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3935"
+        "cbn_institution_id": "3935",
+        "nibss_code": "090513"
       }
     },
     {
@@ -5717,7 +6122,8 @@
       "name": "SEEDVEST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3937"
+        "cbn_institution_id": "3937",
+        "nibss_code": "090369"
       }
     },
     {
@@ -5733,7 +6139,8 @@
       "name": "Shalom MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3939"
+        "cbn_institution_id": "3939",
+        "nibss_code": "090502"
       }
     },
     {
@@ -5741,7 +6148,8 @@
       "name": "SHEPHERD TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3941"
+        "cbn_institution_id": "3941",
+        "nibss_code": "090401"
       }
     },
     {
@@ -5773,7 +6181,8 @@
       "name": "Signature Bank Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "9866"
+        "cbn_institution_id": "9866",
+        "nibss_code": "000034"
       }
     },
     {
@@ -5797,7 +6206,8 @@
       "name": "SLS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3945"
+        "cbn_institution_id": "3945",
+        "nibss_code": "090449"
       }
     },
     {
@@ -5805,7 +6215,8 @@
       "name": "SMARTCASH PSB LIMITED",
       "type": "payment_service",
       "identifiers": {
-        "cbn_institution_id": "9883"
+        "cbn_institution_id": "9883",
+        "nibss_code": "120004"
       }
     },
     {
@@ -5829,7 +6240,8 @@
       "name": "SOLID ALLIANZ MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3948"
+        "cbn_institution_id": "3948",
+        "nibss_code": "090506"
       }
     },
     {
@@ -5837,7 +6249,8 @@
       "name": "SOLID ROCK MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3949"
+        "cbn_institution_id": "3949",
+        "nibss_code": "090524"
       }
     },
     {
@@ -5877,7 +6290,8 @@
       "name": "SPARKLE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3952"
+        "cbn_institution_id": "3952",
+        "nibss_code": "090325"
       }
     },
     {
@@ -5885,7 +6299,8 @@
       "name": "SPECTRUM MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3953"
+        "cbn_institution_id": "3953",
+        "nibss_code": "090436"
       }
     },
     {
@@ -5909,7 +6324,8 @@
       "name": "Stanbic IBTC Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "15"
+        "cbn_institution_id": "15",
+        "nibss_code": "000012"
       }
     },
     {
@@ -5917,7 +6333,8 @@
       "name": "Standard Chartered Bank Nigeria Ltd.",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "16"
+        "cbn_institution_id": "16",
+        "nibss_code": "000021"
       }
     },
     {
@@ -5925,7 +6342,8 @@
       "name": "STANDARD MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3955"
+        "cbn_institution_id": "3955",
+        "nibss_code": "090182"
       }
     },
     {
@@ -5941,7 +6359,8 @@
       "name": "STB BUILDING SOCIETY",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4111"
+        "cbn_institution_id": "4111",
+        "nibss_code": "070022"
       }
     },
     {
@@ -5949,7 +6368,8 @@
       "name": "STELLAS MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3960"
+        "cbn_institution_id": "3960",
+        "nibss_code": "090262"
       }
     },
     {
@@ -5965,7 +6385,8 @@
       "name": "Sterling Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "17"
+        "cbn_institution_id": "17",
+        "nibss_code": "000001"
       }
     },
     {
@@ -5981,7 +6402,8 @@
       "name": "STOCKCORP MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3963"
+        "cbn_institution_id": "3963",
+        "nibss_code": "090340"
       }
     },
     {
@@ -5989,7 +6411,8 @@
       "name": "SULSPAP MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3965"
+        "cbn_institution_id": "3965",
+        "nibss_code": "090305"
       }
     },
     {
@@ -6005,7 +6428,8 @@
       "name": "SUNBEAM MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3967"
+        "cbn_institution_id": "3967",
+        "nibss_code": "090302"
       }
     },
     {
@@ -6021,7 +6445,8 @@
       "name": "SunTrust Bank Nigeria Limited",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "18"
+        "cbn_institution_id": "18",
+        "nibss_code": "000022"
       }
     },
     {
@@ -6029,7 +6454,8 @@
       "name": "SUPPORT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3969"
+        "cbn_institution_id": "3969",
+        "nibss_code": "090446"
       }
     },
     {
@@ -6053,7 +6479,8 @@
       "name": "TAJ",
       "type": "non_interest",
       "identifiers": {
-        "cbn_institution_id": "4121"
+        "cbn_institution_id": "4121",
+        "nibss_code": "000026"
       }
     },
     {
@@ -6077,7 +6504,8 @@
       "name": "Tangerine Money Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3263"
+        "cbn_institution_id": "3263",
+        "nibss_code": "090426"
       }
     },
     {
@@ -6101,7 +6529,16 @@
       "name": "TCF MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3978"
+        "cbn_institution_id": "3978",
+        "nibss_code": "090115"
+      }
+    },
+    {
+      "id": "teasy-international-company",
+      "name": "Teasy International Company Ltd",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100010"
       }
     },
     {
@@ -6133,7 +6570,8 @@
       "name": "TF MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3979"
+        "cbn_institution_id": "3979",
+        "nibss_code": "090373"
       }
     },
     {
@@ -6149,7 +6587,8 @@
       "name": "Titan Trust Bank Ltd",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "19"
+        "cbn_institution_id": "19",
+        "nibss_code": "000025"
       }
     },
     {
@@ -6213,7 +6652,8 @@
       "name": "TRIDENT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3989"
+        "cbn_institution_id": "3989",
+        "nibss_code": "090146"
       }
     },
     {
@@ -6221,7 +6661,8 @@
       "name": "TRIPPLE A MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3990"
+        "cbn_institution_id": "3990",
+        "nibss_code": "090525"
       }
     },
     {
@@ -6237,7 +6678,8 @@
       "name": "TRUST MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3991"
+        "cbn_institution_id": "3991",
+        "nibss_code": "090327"
       }
     },
     {
@@ -6245,7 +6687,8 @@
       "name": "TRUSTBANC J6",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3992"
+        "cbn_institution_id": "3992",
+        "nibss_code": "090123"
       }
     },
     {
@@ -6253,7 +6696,8 @@
       "name": "TRUSTBOND MORTGAGE BANK",
       "type": "mortgage",
       "identifiers": {
-        "cbn_institution_id": "4112"
+        "cbn_institution_id": "4112",
+        "nibss_code": "090005"
       }
     },
     {
@@ -6261,7 +6705,8 @@
       "name": "TRUSTFUND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3993"
+        "cbn_institution_id": "3993",
+        "nibss_code": "090276"
       }
     },
     {
@@ -6277,7 +6722,8 @@
       "name": "U & C MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "3997"
+        "cbn_institution_id": "3997",
+        "nibss_code": "090315"
       }
     },
     {
@@ -6341,7 +6787,8 @@
       "name": "UHURU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4003"
+        "cbn_institution_id": "4003",
+        "nibss_code": "090517"
       }
     },
     {
@@ -6397,7 +6844,8 @@
       "name": "UMUCHINEMERE PROCREDIT MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4011"
+        "cbn_institution_id": "4011",
+        "nibss_code": "090514"
       }
     },
     {
@@ -6413,7 +6861,8 @@
       "name": "UMUNNACHI MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4013"
+        "cbn_institution_id": "4013",
+        "nibss_code": "090510"
       }
     },
     {
@@ -6445,7 +6894,8 @@
       "name": "UNAAB MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4017"
+        "cbn_institution_id": "4017",
+        "nibss_code": "090331"
       }
     },
     {
@@ -6461,7 +6911,8 @@
       "name": "UNIBADAN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4019"
+        "cbn_institution_id": "4019",
+        "nibss_code": "090461"
       }
     },
     {
@@ -6469,7 +6920,8 @@
       "name": "UNICAL MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4020"
+        "cbn_institution_id": "4020",
+        "nibss_code": "090193"
       }
     },
     {
@@ -6493,7 +6945,8 @@
       "name": "UNILAG MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4023"
+        "cbn_institution_id": "4023",
+        "nibss_code": "090452"
       }
     },
     {
@@ -6501,7 +6954,8 @@
       "name": "UNILORIN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4024"
+        "cbn_institution_id": "4024",
+        "nibss_code": "090341"
       }
     },
     {
@@ -6509,7 +6963,8 @@
       "name": "UNIMAID MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4025"
+        "cbn_institution_id": "4025",
+        "nibss_code": "090464"
       }
     },
     {
@@ -6517,7 +6972,8 @@
       "name": "Union Bank of Nigeria Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "20"
+        "cbn_institution_id": "20",
+        "nibss_code": "000018"
       }
     },
     {
@@ -6525,7 +6981,8 @@
       "name": "United Bank For Africa Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "21"
+        "cbn_institution_id": "21",
+        "nibss_code": "000004"
       }
     },
     {
@@ -6541,7 +6998,8 @@
       "name": "Unity Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "22"
+        "cbn_institution_id": "22",
+        "nibss_code": "000011"
       }
     },
     {
@@ -6549,7 +7007,8 @@
       "name": "UNIUYO MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4026"
+        "cbn_institution_id": "4026",
+        "nibss_code": "090338"
       }
     },
     {
@@ -6557,7 +7016,8 @@
       "name": "UNIVERSITY OF BENIN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4027"
+        "cbn_institution_id": "4027",
+        "nibss_code": "090266"
       }
     },
     {
@@ -6565,7 +7025,8 @@
       "name": "UNN MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4028"
+        "cbn_institution_id": "4028",
+        "nibss_code": "090251"
       }
     },
     {
@@ -6629,7 +7090,8 @@
       "name": "UZONDU MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4036"
+        "cbn_institution_id": "4036",
+        "nibss_code": "090453"
       }
     },
     {
@@ -6637,7 +7099,8 @@
       "name": "Vangel Microfinance Bank Limited",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "10090"
+        "cbn_institution_id": "10090",
+        "nibss_code": "090304"
       }
     },
     {
@@ -6653,7 +7116,8 @@
       "name": "VFD MFB LTD",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4039"
+        "cbn_institution_id": "4039",
+        "nibss_code": "090110"
       }
     },
     {
@@ -6669,7 +7133,8 @@
       "name": "VISA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4043"
+        "cbn_institution_id": "4043",
+        "nibss_code": "090139"
       }
     },
     {
@@ -6686,6 +7151,20 @@
       "type": "microfinance",
       "identifiers": {
         "cbn_institution_id": "10092"
+      }
+    },
+    {
+      "id": "visual-ict",
+      "name": "Visual ICT Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
+      "id": "vtnetwork",
+      "name": "VTNetwork Limited",
+      "type": "mobile_money",
+      "identifiers": {
+        "nibss_code": "100012"
       }
     },
     {
@@ -6733,7 +7212,8 @@
       "name": "Wema Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "23"
+        "cbn_institution_id": "23",
+        "nibss_code": "000017"
       }
     },
     {
@@ -6749,7 +7229,8 @@
       "name": "WETLAND MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4049"
+        "cbn_institution_id": "4049",
+        "nibss_code": "090120"
       }
     },
     {
@@ -6793,11 +7274,18 @@
       }
     },
     {
+      "id": "xpress-mts",
+      "name": "Xpress MTS Limited",
+      "type": "mobile_money",
+      "identifiers": {}
+    },
+    {
       "id": "xslnce-mfb",
       "name": "XSLNCE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4054"
+        "cbn_institution_id": "4054",
+        "nibss_code": "090124"
       }
     },
     {
@@ -6829,7 +7317,8 @@
       "name": "YCT Microfinance Bank",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4058"
+        "cbn_institution_id": "4058",
+        "nibss_code": "090466"
       }
     },
     {
@@ -6837,7 +7326,8 @@
       "name": "YES MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4060"
+        "cbn_institution_id": "4060",
+        "nibss_code": "090142"
       }
     },
     {
@@ -6845,7 +7335,8 @@
       "name": "YOBE STATE MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4061"
+        "cbn_institution_id": "4061",
+        "nibss_code": "090252"
       }
     },
     {
@@ -6869,7 +7360,8 @@
       "name": "Zenith Bank Plc",
       "type": "commercial",
       "identifiers": {
-        "cbn_institution_id": "24"
+        "cbn_institution_id": "24",
+        "nibss_code": "000015"
       }
     },
     {
@@ -6877,7 +7369,8 @@
       "name": "ZIKORA MFB",
       "type": "microfinance",
       "identifiers": {
-        "cbn_institution_id": "4069"
+        "cbn_institution_id": "4069",
+        "nibss_code": "090504"
       }
     },
     {

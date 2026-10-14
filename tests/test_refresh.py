@@ -2,6 +2,7 @@
 
 import datetime
 import json
+import os
 
 import pytest
 
@@ -19,14 +20,14 @@ def record(name, cbn_id, bank_type="commercial"):
 
 class TestAssignIds:
     def test_new_banks_get_slugs_and_collisions_get_a_suffix(self):
-        banks = refresh.assign_ids([record("Paragon Bank", "1"), record("Paragon Bank Ltd", "2")], [], "cbn_institution_id")
+        banks = refresh.assign_ids([record("Paragon Bank", "1"), record("Paragon Bank Ltd", "2")], [], ["cbn_institution_id"])
         assert [bank["id"] for bank in banks] == ["paragon-bank", "paragon-bank-2"]
 
     def test_existing_banks_keep_their_id_after_a_rename(self):
         previous = [
             {"id": "diamond-bank", "name": "Diamond Bank", "type": "commercial", "identifiers": {"cbn_institution_id": "9"}}
         ]
-        banks = refresh.assign_ids([record("Access Bank (Diamond)", "9")], previous, "cbn_institution_id")
+        banks = refresh.assign_ids([record("Access Bank (Diamond)", "9")], previous, ["cbn_institution_id"])
         assert banks[0]["id"] == "diamond-bank"
 
     def test_new_bank_cannot_take_an_existing_id(self):
@@ -35,7 +36,7 @@ class TestAssignIds:
         ]
         # The new bank comes first in source order but must not claim zenith-bank.
         banks = refresh.assign_ids(
-            [record("Zenith Bank", "99"), record("Zenith Bank Plc", "24")], previous, "cbn_institution_id"
+            [record("Zenith Bank", "99"), record("Zenith Bank Plc", "24")], previous, ["cbn_institution_id"]
         )
         assert [bank["id"] for bank in banks] == ["zenith-bank-2", "zenith-bank"]
 
@@ -43,8 +44,28 @@ class TestAssignIds:
         previous = [
             {"id": "heritage-bank", "name": "Heritage Bank", "type": "commercial", "identifiers": {"cbn_institution_id": "9"}}
         ]
-        banks = refresh.assign_ids([record("Heritage Bank", "77")], previous, "cbn_institution_id")
+        banks = refresh.assign_ids([record("Heritage Bank", "77")], previous, ["cbn_institution_id"])
         assert banks[0]["id"] == "heritage-bank-2"
+
+    def test_a_bank_without_the_first_identifier_keeps_its_id_through_another_one(self):
+        previous = [
+            {"id": "opay-digital-services", "name": "OPay Digital Services Limited", "identifiers": {"nibss_code": "100004"}}
+        ]
+        renamed = {"name": "OPay Limited", "type": "mobile_money", "identifiers": {"nibss_code": "100004"}}
+        banks = refresh.assign_ids([renamed], previous, ["cbn_institution_id", "nibss_code"])
+        assert banks[0]["id"] == "opay-digital-services"
+
+    def test_a_bank_without_identifiers_keeps_its_id_by_name(self):
+        previous = [{"id": "visual-ict", "name": "Visual ICT Limited", "identifiers": {}}]
+        operator = {"name": "Visual ICT Limited", "type": "mobile_money", "identifiers": {}}
+        banks = refresh.assign_ids([operator], previous, ["cbn_institution_id", "nibss_code"])
+        assert banks[0]["id"] == "visual-ict"
+
+    def test_ids_of_renamed_banks_without_identifiers_stay_reserved(self):
+        previous = [{"id": "visual-ict", "name": "Visual ICT Limited", "identifiers": {}}]
+        newcomer = {"name": "Visual ICT", "type": "mobile_money", "identifiers": {}}
+        banks = refresh.assign_ids([newcomer], previous, ["cbn_institution_id"])
+        assert banks[0]["id"] == "visual-ict-2"
 
 
 def test_build_dataset_sorts_banks_and_validates():
@@ -65,7 +86,7 @@ def test_summarize_changes():
 class TestRefreshCommand:
     def test_writes_the_country_file(self, tmp_path, monkeypatch):
         fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
-        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client: fetched)
+        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client, previous: fetched)
         assert refresh.main(["ng", "--data-dir", str(tmp_path)]) == 0
         written = json.loads((tmp_path / "NGA.json").read_text(encoding="utf-8"))
         assert written["banks"][0]["id"] == "access-bank"
@@ -74,13 +95,13 @@ class TestRefreshCommand:
         (tmp_path / "NGA.json").write_text("old", encoding="utf-8")
         fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1", bank_type="savings")]}
         monkeypatch.setattr(refresh, "_read_previous", lambda path: {})
-        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client: fetched)
+        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client, previous: fetched)
         assert refresh.main(["NGA", "--data-dir", str(tmp_path)]) == 1
         assert (tmp_path / "NGA.json").read_text(encoding="utf-8") == "old"
 
     @pytest.mark.parametrize("error", [SourceError("CBN is down"), ValueError("CBN returned no institutions")])
     def test_keeps_the_old_file_when_the_source_fails(self, tmp_path, monkeypatch, error):
-        def fail(client):
+        def fail(client, previous):
             raise error
 
         monkeypatch.setattr(nigeria_refresh, "fetch_dataset", fail)
@@ -93,14 +114,53 @@ class TestRefreshCommand:
 
     def test_all_refreshes_every_registered_country(self, tmp_path, monkeypatch):
         fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
-        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client: fetched)
+        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client, previous: fetched)
         assert refresh.main(["all", "--data-dir", str(tmp_path)]) == 0
         assert sorted(path.name for path in tmp_path.iterdir()) == ["NGA.json"]
+
+    def test_passes_the_previous_banks_to_the_country_module(self, tmp_path, monkeypatch):
+        seen = []
+        first = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
+        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client, previous: seen.append(previous) or first)
+        refresh.main(["NGA", "--data-dir", str(tmp_path)])
+        refresh.main(["NGA", "--data-dir", str(tmp_path)])
+        assert seen[0] == []
+        assert [bank["id"] for bank in seen[1]] == ["access-bank"]
+
+    def test_reads_settings_from_the_env_file(self, tmp_path, monkeypatch):
+        env_file = tmp_path / ".env"
+        env_file.write_text("NIP_INSTITUTIONS_URL=https://example.test/banks\n", encoding="utf-8")
+        monkeypatch.setattr(refresh, "ENV_FILE", env_file)
+        monkeypatch.delenv("NIP_INSTITUTIONS_URL", raising=False)
+        seen = []
+        fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
+        monkeypatch.setattr(
+            nigeria_refresh,
+            "fetch_dataset",
+            lambda client, previous: seen.append(os.environ.get("NIP_INSTITUTIONS_URL")) or fetched,
+        )
+        refresh.main(["NGA", "--data-dir", str(tmp_path)])
+        assert seen == ["https://example.test/banks"]
+
+    def test_environment_values_win_over_the_env_file(self, tmp_path, monkeypatch):
+        env_file = tmp_path / ".env"
+        env_file.write_text("NIP_INSTITUTIONS_URL=https://file.example.test/\n", encoding="utf-8")
+        monkeypatch.setattr(refresh, "ENV_FILE", env_file)
+        monkeypatch.setenv("NIP_INSTITUTIONS_URL", "https://env.example.test/")
+        seen = []
+        fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
+        monkeypatch.setattr(
+            nigeria_refresh,
+            "fetch_dataset",
+            lambda client, previous: seen.append(os.environ.get("NIP_INSTITUTIONS_URL")) or fetched,
+        )
+        refresh.main(["NGA", "--data-dir", str(tmp_path)])
+        assert seen == ["https://env.example.test/"]
 
 
 class TestCheckMode:
     def write_current(self, tmp_path, monkeypatch, banks):
-        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client: {"sources": [SOURCE], "banks": banks})
+        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client, previous: {"sources": [SOURCE], "banks": banks})
         assert refresh.main(["NGA", "--data-dir", str(tmp_path)]) == 0
         return (tmp_path / "NGA.json").read_text(encoding="utf-8")
 
@@ -114,7 +174,10 @@ class TestCheckMode:
         monkeypatch.setattr(
             nigeria_refresh,
             "fetch_dataset",
-            lambda client: {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1"), record("Zenith Bank Plc", "24")]},
+            lambda client, previous: {
+                "sources": [SOURCE],
+                "banks": [record("Access Bank Plc", "1"), record("Zenith Bank Plc", "24")],
+            },
         )
         assert refresh.main(["NGA", "--check", "--data-dir", str(tmp_path)]) == 1
         assert (tmp_path / "NGA.json").read_text(encoding="utf-8") == before

@@ -1,6 +1,7 @@
 """Dataset validation tests."""
 
 import copy
+import dataclasses
 import json
 
 import pytest
@@ -51,6 +52,26 @@ def test_valid_dataset_has_no_errors():
 def test_reports_each_problem(change, expected):
     errors = validate_dataset(with_changes(change), NIGERIA_PROFILE)
     assert any(expected in error for error in errors), errors
+
+
+def test_rejects_identifiers_that_break_the_profile_pattern():
+    profile = dataclasses.replace(NIGERIA_PROFILE, identifier_patterns={"cbn_institution_id": r"[0-9]+"})
+    raw = with_changes(lambda raw: raw["banks"][0]["identifiers"].update(cbn_institution_id="A1"))
+    assert validate_dataset(raw, profile) == ["banks[0]: identifier 'cbn_institution_id' value 'A1' does not match '[0-9]+'."]
+
+
+def test_rejects_an_identifier_value_held_by_two_banks():
+    raw = with_changes(lambda raw: raw["banks"][1]["identifiers"].update(cbn_institution_id="1"))
+    assert validate_dataset(raw, NIGERIA_PROFILE) == [
+        "identifier 'cbn_institution_id' value '1' is shared by access-bank, zenith-bank."
+    ]
+
+
+def test_nigerian_nibss_codes_must_have_six_digits():
+    raw = with_changes(lambda raw: raw["banks"][0]["identifiers"].update(nibss_code="044"))
+    assert validate_dataset(raw, NIGERIA_PROFILE) == [
+        "banks[0]: identifier 'nibss_code' value '044' does not match '[0-9]{6}'."
+    ]
 
 
 def test_rejects_non_object():

@@ -99,6 +99,21 @@ class TestBankList:
         assert banks
         assert all(bank["type"] == "merchant" for bank in banks)
 
+    def test_finds_a_bank_by_identifier(self, client):
+        data = get_json(client, "/api/countries/NG/banks?cbn_institution_id=1")
+        assert [bank["id"] for bank in data["banks"]] == ["access-bank"]
+        assert get_json(client, "/api/countries/NG/banks?cbn_institution_id=999999")["total"] == 0
+
+    def test_lists_only_banks_that_have_an_identifier(self, client):
+        banks = get_json(client, "/api/countries/NG/banks?has=cbn_institution_id")["banks"]
+        assert banks
+        assert all("cbn_institution_id" in bank["identifiers"] for bank in banks)
+
+    def test_rejects_unknown_identifier_schemes(self, client):
+        message = get_json(client, "/api/countries/NG/banks?has=swift", status=400)["message"]
+        assert "swift" in message
+        assert "nibss_code" in message
+
     def test_pages_with_limit_and_offset(self, client):
         everything = get_json(client, "/api/countries/NG/banks")["banks"]
         page = get_json(client, "/api/countries/NG/banks?limit=5&offset=5")

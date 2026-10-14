@@ -30,8 +30,9 @@ class FakeSession:
         self.headers = {}
         self.calls = 0
 
-    def get(self, url, params=None, timeout=None):
+    def get(self, url, params=None, headers=None, timeout=None):
         self.calls += 1
+        self.last_headers = headers
         return self.responses.pop(0)
 
     def close(self):
@@ -60,6 +61,11 @@ class TestSourceClient:
         with pytest.raises(SourceError, match="answered 404"):
             client.get_json("https://example.test/")
         assert session.calls == 1
+
+    def test_reads_text_pages_and_sends_extra_headers(self):
+        client, session = make_client(FakeResponse(200, text="<html>banks</html>"))
+        assert client.get_text("https://example.test/", headers={"X-Key": "secret"}) == "<html>banks</html>"
+        assert session.last_headers == {"X-Key": "secret"}
 
     def test_identifies_itself(self):
         client, session = make_client()

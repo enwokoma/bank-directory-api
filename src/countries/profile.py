@@ -30,6 +30,8 @@ class CountryProfile:
     # Identifier scheme code -> human-readable description, for example the
     # regulator's own record ID or a national bank code.
     identifier_schemes: dict[str, str] = field(default_factory=dict)
+    # Identifier scheme code -> regular expression every value must fully match.
+    identifier_patterns: dict[str, str] = field(default_factory=dict)
     # Dotted module path whose `fetch_dataset()` rebuilds this country's data file.
     refresh_module: str = ""
 
