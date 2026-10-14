@@ -27,6 +27,15 @@ class TestServiceEndpoints:
         spec = get_json(client, "/apispec_1.json")
         assert "/api/countries/{country_code}/banks" in spec["paths"]
 
+    def test_unknown_route_returns_json(self, client):
+        data = get_json(client, "/api/nothing-here", status=404)
+        assert data["success"] is False
+
+    def test_wrong_method_returns_json(self, client):
+        response = client.post("/api/countries")
+        assert response.status_code == 405
+        assert response.get_json()["success"] is False
+
 
 class TestCountries:
     def test_lists_nigeria(self, client):

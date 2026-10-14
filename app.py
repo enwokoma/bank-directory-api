@@ -7,7 +7,8 @@ validation live in `src/core/dataset.py`; country details live under
 """
 
 from flasgger import Swagger
-from flask import Flask
+from flask import Flask, jsonify
+from werkzeug.exceptions import HTTPException
 
 from src.api.routes import banks_bp
 from src.core.dataset import load_datasets
@@ -44,6 +45,12 @@ app.config["SWAGGER"] = {
 Swagger(app, config=swagger_config)
 
 app.register_blueprint(banks_bp, url_prefix="/api")
+
+
+@app.errorhandler(HTTPException)
+def http_error(error: HTTPException):
+    """Return JSON rather than Flask's HTML page for unknown routes and methods."""
+    return jsonify({"success": False, "message": error.description}), error.code
 
 
 @app.route("/")
