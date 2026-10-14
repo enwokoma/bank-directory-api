@@ -90,6 +90,20 @@ def list_banks(country_code: str):
         type: integer
         required: false
         description: Skip this many matching banks first
+      - name: has
+        in: query
+        type: string
+        required: false
+        description: >-
+          Comma-separated identifier schemes every returned bank must have, for example nibss_code
+          to list only banks that can receive NIP transfers
+      - name: nibss_code
+        in: query
+        type: string
+        required: false
+        description: >-
+          Nigeria: return the bank with this 6-digit NIBSS code. Every identifier scheme listed by
+          GET /api/countries/{country_code} can be used as a filter the same way.
     responses:
       200:
         description: Matching banks sorted by name
@@ -104,6 +118,7 @@ def list_banks(country_code: str):
 
     try:
         types = _parse_types(request.args.get("type"), dataset.profile)
+        required = _parse_schemes(request.args.get("has"), dataset.profile)
         limit = _parse_int("limit", request.args.get("limit"), minimum=1, maximum=MAX_LIMIT)
         offset = _parse_int("offset", request.args.get("offset"), minimum=0) or 0
     except ValueError as exc:
@@ -112,6 +127,12 @@ def list_banks(country_code: str):
     banks = list(dataset.banks)
     if types:
         banks = [bank for bank in banks if bank["type"] in types]
+    if required:
+        banks = [bank for bank in banks if required <= bank["identifiers"].keys()]
+    for scheme in dataset.profile.identifier_schemes:
+        value = request.args.get(scheme)
+        if value is not None:
+            banks = [bank for bank in banks if bank["identifiers"].get(scheme) == value.strip()]
     query = search_text(request.args.get("q", ""))
     if query:
         banks = [bank for bank in banks if query in search_text(bank["name"]) or query in bank["id"]]
@@ -191,6 +212,19 @@ def _parse_types(value: str | None, profile: CountryProfile) -> set[str]:
             f"Use one of: {', '.join(profile.bank_type_codes())}."
         )
     return types
+
+
+def _parse_schemes(value: str | None, profile: CountryProfile) -> set[str]:
+    if not value:
+        return set()
+    schemes = {part.strip() for part in value.split(",") if part.strip()}
+    unknown = schemes - set(profile.identifier_schemes)
+    if unknown:
+        raise ValueError(
+            f"Unknown identifier scheme {', '.join(sorted(unknown))} for {profile.name}. "
+            f"Use one of: {', '.join(profile.identifier_schemes)}."
+        )
+    return schemes
 
 
 def _parse_int(name: str, value: str | None, *, minimum: int, maximum: int | None = None) -> int | None:
