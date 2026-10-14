@@ -2,6 +2,17 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## 0.3.1 - 2026-10-14
+
+### Added
+
+- Each release tag publishes the image to `ghcr.io/enwokoma/bank-directory-api` for amd64 and arm64, built natively per architecture.
+- `deploy/coolify/docker-compose.yml`, for running the API as a Coolify service with the published image, and a Coolify section in the deployment guide.
+
+### Fixed
+
+- The container's health check now allows 60 seconds for the workers to start, so a slow first boot is no longer reported as unhealthy.
+
 ## 0.3.0 - 2026-10-14
 
 ### Added
