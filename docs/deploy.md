@@ -1,6 +1,6 @@
 # Deploying the hosted API
 
-How `banks.example.com` runs: on the EC2 server that already serves `example.com` through Caddy, the API and a Redis run in Docker Compose. Caddy on the host serves the API over HTTPS, and sign-up emails go out through Amazon SES using the instance's IAM role, so no AWS keys are stored anywhere.
+How the hosted API runs: the API and a Redis run in Docker Compose behind a proxy that serves HTTPS, and sign-up emails go out through Amazon SES using the instance's IAM role, so no AWS keys are stored anywhere.
 
 There are three ways to run it:
 
@@ -19,7 +19,27 @@ client --HTTPS--> Caddy (host, :443) --> 127.0.0.1:5106 --> api container (gunic
 
 Coolify at `coolify.example.com` deploys and runs the API on the dedicated instance, with its own proxy (Traefik) serving HTTPS, and pulls the image each release publishes to `ghcr.io/enwokoma/bank-directory-api`, so the instance never builds.
 
-1. Create the instance with `deploy/aws/provision.sh` as in [Dedicated instance](#dedicated-instance-from-aws-cloudshell), so it has the SES role, the IMDS hop limit and Docker. Then stop the stack it started, so Coolify's proxy can take ports 80 and 443:
+The steps keep the instance's own stack serving the site until Coolify's is ready, so the switch itself takes under a minute.
+
+1. Create the instance with `deploy/aws/provision.sh` as in [Dedicated instance](#dedicated-instance-from-aws-cloudshell), so it has the SES role, the IMDS hop limit and Docker.
+2. Let Coolify connect over SSH:
+   - In Coolify, under **Keys & Tokens > Private Keys**, generate an ED25519 key for the server. Coolify keeps the private key.
+   - Add its public key to `/root/.ssh/authorized_keys` on the instance, from a Session Manager shell.
+   - Allow port 22 in the instance's security group from Coolify's address only:
+
+   ```bash
+   aws ec2 authorize-security-group-ingress --group-id <GROUP_ID> \
+     --ip-permissions 'IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=<COOLIFY_IP>/32,Description=Coolify}]'
+   ```
+
+3. Under **Servers > New server > IP address or domain**, add the instance's Elastic IP with user `root`, port 22 and that key, then validate it. Don't start its proxy yet: Caddy still holds ports 80 and 443.
+4. Create a project. In its environment, add a **Docker Compose** resource (the one without a Git repository) on that server. Paste `deploy/coolify/docker-compose.yml` into it, with the image pinned to the release's digest.
+5. Set up the service:
+   - **Domains > Add domain**: the api service, `https`, `banks.example.com`, port `5006`.
+   - **Environment Variables**: set `PUBLIC_BASE_URL=https://banks.example.com`, `SIGNUP_EMAIL_FROM` and `AWS_REGION`. The others have defaults.
+   - Deploy. The containers start, but get no traffic until the proxy runs.
+6. API keys live in the stack's `keys` volume, and the new service starts with an empty one. If the instance's own stack has issued keys that people use, copy its `keys.sqlite3` into the new volume first.
+7. Switch over. Stop the instance's own stack, keeping its volumes:
 
    ```bash
    cd /opt/bank-directory-api
@@ -27,19 +47,11 @@ Coolify at `coolify.example.com` deploys and runs the API on the dedicated insta
      -f deploy/docker-compose.standalone.yml down
    ```
 
-2. Let Coolify connect over SSH: add the public key of the private key Coolify uses to `/root/.ssh/authorized_keys` on the instance, and allow port 22 in the instance's security group from Coolify's address only:
+   Then click **Start Proxy** on the server in Coolify. Traefik gets a certificate within seconds.
+   - To roll back, stop the proxy and run the same command with `up --detach` instead of `down`.
+8. Check the site as in [step 8](#8-check-it-end-to-end).
 
-   ```bash
-   aws ec2 authorize-security-group-ingress --group-id <GROUP_ID> \
-     --ip-permissions 'IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=<COOLIFY_IP>/32,Description=Coolify}]'
-   ```
-
-3. In Coolify, add the instance under **Servers** (user `root`, port 22, that private key), validate it, and start its proxy.
-4. Create a project with a **Docker Compose Empty** service on that server, and paste `deploy/coolify/docker-compose.yml`, with the image pinned to the release's digest.
-5. In the service's **Domains**, set the api service to `https://banks.example.com:5006`. In **Environment Variables**, set `PUBLIC_BASE_URL=https://banks.example.com`, `SIGNUP_EMAIL_FROM` and `AWS_REGION`.
-6. Deploy, then check the site as in [step 8](#8-check-it-end-to-end).
-
-To deploy a new release, change the image's tag and digest in the service's compose file and redeploy. Keys can be managed from the service's **Terminal** in Coolify with `python -m src.keys_admin`.
+To deploy a new release, change the image's tag and digest in the service's compose file and redeploy. Manage keys from the service's **Terminal** in Coolify with `python -m src.keys_admin`.
 
 ## Dedicated instance, from AWS CloudShell
 
