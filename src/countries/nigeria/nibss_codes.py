@@ -8,8 +8,9 @@ transfers to the wrong institution, so matching is conservative:
    exactly as the CBN publishes it to a code, or to null for a bank that must
    stay without one.
 2. Otherwise a bank gets a code only when its normalized name matches exactly
-   one NIP institution, no other bank claims that institution, and the code
-   falls in a range NIBSS uses for that type of institution.
+   one NIP institution of a plausible type (the code falls in a range NIBSS
+   uses for that type, and the name's type words agree), and no other bank
+   claims that institution.
 
 Everything else stays without a code and is listed in the refresh report.
 """
@@ -49,7 +50,7 @@ _TYPE_WORDS = {
 }
 
 _FILLER_WORDS = frozenset(
-    "micro finance microfinance mfb bank banks plc limited ltd nigeria nig of the and company co "
+    "micro finance microfinance mfb mf bank banks plc limited ltd nigeria nig of the and company co "
     "mortgage psb payment service services digital technologies technology".split()
 )
 
@@ -82,12 +83,16 @@ def _plausible(bank: dict[str, Any], institution: NipInstitution) -> bool:
 
 
 def match_key(name: str) -> str:
-    """Reduce a name to its distinctive words, so both lists' spellings compare equal."""
+    """Reduce a name to its distinctive words, run together, so both lists' spellings compare equal.
+
+    Spaces are dropped because the lists split names differently: "COAL CAMP MFB" and
+    "CoalCamp Microfinance Bank" are the same bank.
+    """
     text = html.unescape(name).lower().replace("&", " ")
     text = re.sub(r"\((?:formerly|former)\b[^)]*\)", " ", text)
     text = re.sub(r"micro-finance", "microfinance", text)
     words = [word for word in re.findall(r"[a-z0-9]+", text) if word not in _FILLER_WORDS]
-    return " ".join(words)
+    return "".join(words)
 
 
 def assign_nibss_codes(
@@ -112,8 +117,8 @@ def assign_nibss_codes(
         if bank["name"] in reviewed:
             continue
         key = match_key(bank["name"])
-        candidates = by_key.get(key, []) if key else []
-        if len(candidates) == 1 and _plausible(bank, candidates[0]) and candidates[0].code not in reviewed_codes:
+        candidates = [institution for institution in by_key.get(key, []) if key and _plausible(bank, institution)]
+        if len(candidates) == 1 and candidates[0].code not in reviewed_codes:
             claims.setdefault(candidates[0].code, []).append(bank)
 
     used: set[str] = set()

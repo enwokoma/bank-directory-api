@@ -18,12 +18,15 @@ def codes(banks):
     ("name", "key"),
     [
         ("Access Bank Plc", "access"),
-        ("ACCESS(DIAMOND) BANK", "access diamond"),
+        ("ACCESS(DIAMOND) BANK", "accessdiamond"),
         ("KUDA MFB", "kuda"),
         ("Kuda Micro-finance Bank Limited", "kuda"),
+        ("BOI MF Bank", "boi"),
+        ("COAL CAMP MFB", "coalcamp"),
+        ("CoalCamp Microfinance Bank", "coalcamp"),
         ("Opay Digital Services Limited (Formerly Paycom Nigeria Limited)", "opay"),
-        ("JIGAWA SAVINGS & LOANS", "jigawa savings loans"),
-        ("Access Yello &amp; Beta", "access yello beta"),
+        ("JIGAWA SAVINGS & LOANS", "jigawasavingsloans"),
+        ("Access Yello &amp; Beta", "accessyellobeta"),
     ],
 )
 def test_match_key(name, key):
@@ -53,6 +56,12 @@ def test_records_every_match_with_the_nip_name_for_review():
         ("KUDA MFB", "090267", "KUDA MICROFINANCE BANK", "automatic"),
         ("Pagatech Limited", "100002", "PAGA", "reviewed"),
     ]
+
+
+def test_type_tells_apart_institutions_that_share_a_name():
+    banks = [bank("FCMB MFB LTD."), bank("First City Monument Bank Plc", "commercial")]
+    assign_nibss_codes(banks, [Nip("000003", "FCMB"), Nip("090409", "FCMB MFB")], {})
+    assert codes(banks) == {"FCMB MFB LTD.": "090409", "First City Monument Bank Plc": None}
 
 
 def test_leaves_a_bank_unmatched_when_two_institutions_share_its_name():
