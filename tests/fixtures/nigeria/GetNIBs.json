@@ -1,0 +1,42 @@
+[
+  {
+    "id": 4119,
+    "name": "JAIZ BANK PLC",
+    "institutetype": null,
+    "categorization": null,
+    "oldname": null,
+    "newnamedate": null,
+    "streetAddress": null,
+    "area": null,
+    "state": null,
+    "telephoneNo": null,
+    "website": null,
+    "email": null,
+    "faxNo": null,
+    "postalAddress": null,
+    "country": null,
+    "ownershiptype": null,
+    "otherinformation": null,
+    "datelicensed": null
+  },
+  {
+    "id": 4121,
+    "name": "TAJ ",
+    "institutetype": null,
+    "categorization": null,
+    "oldname": null,
+    "newnamedate": null,
+    "streetAddress": null,
+    "area": null,
+    "state": null,
+    "telephoneNo": null,
+    "website": null,
+    "email": null,
+    "faxNo": null,
+    "postalAddress": null,
+    "country": null,
+    "ownershiptype": null,
+    "otherinformation": null,
+    "datelicensed": null
+  }
+]
