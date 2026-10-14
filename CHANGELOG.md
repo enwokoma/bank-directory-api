@@ -2,6 +2,12 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## 0.3.2 - 2026-10-14
+
+### Fixed
+
+- The API now sends `X-Content-Type-Options: nosniff` on every response and, over HTTPS, `Strict-Transport-Security` itself, so both are present behind any proxy, including Coolify's, not only behind the bundled Caddy configuration.
+
 ## 0.3.1 - 2026-10-14
 
 ### Added
