@@ -5,7 +5,9 @@ import pytest
 from botocore.exceptions import ClientError
 from botocore.stub import Stubber
 
+from app import create_app
 from src.core.email import SesEmailSender
+from src.core.settings import Settings
 
 
 @pytest.fixture
@@ -47,3 +49,25 @@ def test_leaves_ses_errors_to_the_caller(ses):
 def test_creates_no_aws_client_until_an_email_is_sent(monkeypatch):
     monkeypatch.setattr(boto3, "client", lambda *args, **kwargs: pytest.fail("created an AWS client too early"))
     SesEmailSender("no-reply@example.test")
+
+
+@pytest.fixture
+def no_aws_region_sources(monkeypatch, tmp_path):
+    """Leave boto3 nothing of its own to find a region in, as on the hosted server."""
+    monkeypatch.delenv("AWS_DEFAULT_REGION", raising=False)
+    monkeypatch.delenv("AWS_REGION", raising=False)
+    monkeypatch.delenv("AWS_PROFILE", raising=False)
+    monkeypatch.setenv("AWS_CONFIG_FILE", str(tmp_path / "no-config"))
+    monkeypatch.setenv("AWS_EC2_METADATA_DISABLED", "true")
+
+
+def test_the_app_sends_from_the_region_in_aws_region(no_aws_region_sources):
+    # boto3 ignores AWS_REGION by itself, which once left sign-up emails without a region.
+    settings = Settings.from_env({"SIGNUP_EMAIL_FROM": "no-reply@example.test", "AWS_REGION": "eu-central-1"})
+    sender = create_app(settings).extensions["bank_email_sender"]
+    assert sender._ses().meta.region_name == "eu-central-1"
+
+
+def test_without_aws_region_boto3_finds_the_region_itself(no_aws_region_sources, monkeypatch):
+    monkeypatch.setenv("AWS_DEFAULT_REGION", "eu-west-1")
+    assert SesEmailSender("no-reply@example.test")._ses().meta.region_name == "eu-west-1"

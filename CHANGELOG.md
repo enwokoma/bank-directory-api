@@ -2,6 +2,13 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## 0.3.3 - 2026-10-15
+
+### Fixed
+
+- Sign-up emails failed with "The sign-up email could not be sent". boto3 reads the region only from `AWS_DEFAULT_REGION`, so the `AWS_REGION` that every deployment sets never reached the SES client. The API now reads `AWS_REGION` itself and passes it on.
+- gunicorn no longer tries to create its control socket, which failed on the container's read-only filesystem and logged an error at every start.
+
 ## 0.3.2 - 2026-10-15
 
 ### Fixed

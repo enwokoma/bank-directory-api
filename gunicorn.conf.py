@@ -8,6 +8,9 @@ timeout = 30
 # The worker heartbeat file goes to memory where there is a /dev/shm, so the
 # container's filesystem can be read-only. Elsewhere, such as macOS, gunicorn's default applies.
 worker_tmp_dir = "/dev/shm" if os.path.isdir("/dev/shm") else None
+# Docker manages the process, so gunicorn's control socket (for gunicornc) is not
+# needed, and it could not be created on the container's read-only filesystem.
+control_socket_disable = True
 accesslog = "-"
 # The path without its query string, so sign-up tokens never reach the logs.
 # The client address is the one the reverse proxy forwarded.

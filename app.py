@@ -69,7 +69,9 @@ def create_app(settings: Settings | None = None) -> Flask:
     Swagger(app, config=SWAGGER_CONFIG)
 
     install_access_control(app, settings, limited=[banks_bp, keys_bp], signup=[signup_bp])
-    app.extensions["bank_email_sender"] = SesEmailSender(settings.signup_email_from) if settings.signup_email_from else None
+    app.extensions["bank_email_sender"] = (
+        SesEmailSender(settings.signup_email_from, region=settings.aws_region) if settings.signup_email_from else None
+    )
     app.register_blueprint(banks_bp, url_prefix="/api")
     app.register_blueprint(keys_bp, url_prefix="/api")
     app.register_blueprint(signup_bp, url_prefix="/api")
