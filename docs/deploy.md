@@ -2,12 +2,45 @@
 
 How `banks.globbapay.com` runs: on the EC2 server that already serves `globbapay.com` through Caddy, the API and a Redis run in Docker Compose. Caddy on the host serves the API over HTTPS, and sign-up emails go out through Amazon SES using the instance's IAM role, so no AWS keys are stored anywhere.
 
+There are two ways to run it:
+
+- **A dedicated instance**, set up by one script from AWS CloudShell: see [Dedicated instance](#dedicated-instance-from-aws-cloudshell). This is how `banks.globbapay.com` runs.
+- **An existing server that already runs Caddy**, set up by hand: steps 1 to 8 below.
+
 ```text
 client --HTTPS--> Caddy (host, :443) --> 127.0.0.1:5106 --> api container (gunicorn, 3 workers)
                                                              |-- redis container: rate limit counters
                                                              |-- keys volume: API keys (SQLite, hashes only)
                                                              '-- Amazon SES: sign-up emails, via the instance role
 ```
+
+## Dedicated instance, from AWS CloudShell
+
+`deploy/aws/provision.sh` sets up everything on a new instance: an IAM role allowing Session Manager and SES (its SES policy generated from the code by IAM Policy Autopilot), a security group open only on ports 80 and 443, an Elastic IP, and an Amazon Linux 2023 `t4g.micro` with an encrypted disk, IMDSv2 only with a hop limit of 2, and standard CPU credits. On first boot the instance installs Docker, checks out the release, builds the image, and starts the API, Redis and Caddy (from `deploy/docker-compose.standalone.yml`). It is safe to run again: it reuses whatever it already created.
+
+1. Check SES as in [step 2](#2-amazon-ses).
+2. Open AWS CloudShell in the target region and run:
+
+   ```bash
+   git clone --branch <LATEST_RELEASE_TAG> https://github.com/enwokoma/bank-directory-api.git
+   cd bank-directory-api
+   SIGNUP_EMAIL_FROM="Bank Directory API <no-reply@globbapay.com>" SES_REGION=<REGION> deploy/aws/provision.sh
+   ```
+
+3. Add the DNS A record it prints (see [step 1](#1-dns)).
+4. Wait about 5 to 10 minutes for the first boot, then check the site as in [step 8](#8-check-it-end-to-end). Caddy gets the certificate once DNS points at the instance.
+
+There is no SSH. To get a shell on the instance, use Session Manager from the EC2 console or `aws ssm start-session --target <INSTANCE_ID>`. The first-boot log is `/var/log/bank-directory-bootstrap.log`, and the code is in `/opt/bank-directory-api`. To deploy a new release there:
+
+```bash
+cd /opt/bank-directory-api
+sudo git fetch --tags && sudo git checkout <TAG>
+sudo docker build --tag bank-directory-api:latest .
+sudo SITE_ADDRESS=banks.globbapay.com docker compose -f deploy/docker-compose.yml \
+  -f deploy/docker-compose.standalone.yml up --detach --no-build --wait
+```
+
+The commands in [Running it](#running-it) work there too, run with `sudo` and with `-f deploy/docker-compose.standalone.yml` added after the first `-f` file.
 
 ## 1. DNS
 
