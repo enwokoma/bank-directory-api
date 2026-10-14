@@ -10,6 +10,53 @@ A Flask API that lists the licensed banks of each country, compiled from that co
 
 `GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes.
 
+## Use it in your project
+
+### Download the data file
+
+Every release has each country's data file attached, with a `SHA256SUMS` file to verify it:
+
+| Link | Gives you |
+| --- | --- |
+| `https://github.com/enwokoma/bank-directory-api/releases/latest/download/NGA.json` | Nigeria's file from the latest release |
+| `https://github.com/enwokoma/bank-directory-api/releases/download/v0.2.0/NGA.json` | Nigeria's file exactly as released in v0.2.0 |
+
+```bash
+curl -LO https://github.com/enwokoma/bank-directory-api/releases/latest/download/NGA.json
+curl -LO https://github.com/enwokoma/bank-directory-api/releases/latest/download/SHA256SUMS
+shasum -a 256 -c SHA256SUMS
+```
+
+These links suit servers, build scripts and the command line. Browsers cannot fetch them from another site, because GitHub sends no CORS header for release downloads.
+
+### Fetch it from code
+
+GitHub also serves the file at each release tag from its raw file host, which allows requests from any site, browsers included:
+
+```js
+const url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/v0.2.0/data/countries/NGA.json";
+const { banks } = await (await fetch(url)).json();
+
+// Institutions that can receive a NIP transfer, for a bank dropdown
+const transferBanks = banks.filter((bank) => bank.identifiers.nibss_code);
+```
+
+```python
+import requests
+
+url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/v0.2.0/data/countries/NGA.json"
+banks = requests.get(url, timeout=10).json()["banks"]
+transfer_banks = [bank for bank in banks if "nibss_code" in bank["identifiers"]]
+```
+
+Each file has `country`, `retrieved_on`, `sources` and `banks`; each bank has the fields described in [Bank fields](#bank-fields), and its `id` stays the same between releases.
+
+Neither GitHub link is meant for production traffic: there is no uptime guarantee, and heavy use gets rate limited. Bundle the file with your app, or download it on a schedule and cache it, rather than fetching it on every request. Pinning a release, as above, means the data only changes when you upgrade.
+
+### Run the API yourself
+
+To query the data with search, filters and lookups by code, run the API: see [Setup](#setup), [Running](#running) and [Endpoints](#endpoints).
+
 ## How the data works
 
 Bank data is not fetched when a request comes in. Each country has a JSON file in `data/countries/` (for example `data/countries/NGA.json`) that is generated from its sources, reviewed as an ordinary git diff, and committed. The API loads every file at startup and refuses to start if one fails validation: unknown bank types, malformed or duplicated codes, and unsorted banks are all rejected.
@@ -45,6 +92,8 @@ bank-directory-api/
         nibss_code_matches.json
                           Reviewed matches for names the lists spell differently
     refresh.py            `python -m src.refresh` command
+  scripts/
+    upload-release-assets.sh  Attaches each country's data file to a GitHub release
   tests/                  Tests, with saved samples of real source responses in fixtures/
   .env.example            Settings for refreshing NIBSS codes (copy to .env)
   .github/workflows/
@@ -362,7 +411,14 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 
 ## Releases
 
-Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md). The version lives in `src/__init__.py`.
+Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md) and every country's data file attached. The version lives in `src/__init__.py`.
+
+To publish a release:
+
+1. In a pull request, set the version in `src/__init__.py` and date the release in the changelog.
+2. After merging, tag the merge commit and push the tag: `git tag -s vX.Y.Z -m "vX.Y.Z"`, then `git push origin vX.Y.Z`.
+3. Create the release: `gh release create vX.Y.Z --verify-tag --notes-file <notes>`.
+4. Attach the data files as they were at the tag: `scripts/upload-release-assets.sh vX.Y.Z`.
 
 ## Disclaimer
 
