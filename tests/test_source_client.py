@@ -3,6 +3,7 @@
 import pytest
 import requests
 
+from src import __version__
 from src.core.source_client import SourceClient, SourceError
 
 
@@ -69,4 +70,4 @@ class TestSourceClient:
 
     def test_identifies_itself(self):
         client, session = make_client()
-        assert session.headers["User-Agent"].startswith("bank-directory-api/")
+        assert session.headers["User-Agent"].startswith(f"bank-directory-api/{__version__} ")

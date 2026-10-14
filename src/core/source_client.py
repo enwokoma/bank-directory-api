@@ -14,7 +14,9 @@ from typing import Any
 
 import requests
 
-USER_AGENT = "bank-directory-api/0.1 (bank list refresh)"
+from src import __version__
+
+USER_AGENT = f"bank-directory-api/{__version__} (bank list refresh)"
 _RETRY_STATUSES = frozenset({429, 500, 502, 503, 504})
 
 

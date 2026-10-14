@@ -3,6 +3,7 @@
 import pytest
 
 from app import app
+from src import __version__
 
 
 @pytest.fixture
@@ -25,6 +26,7 @@ class TestServiceEndpoints:
     def test_swagger_ui_and_spec_are_served(self, client):
         assert client.get("/api-docs").status_code == 200
         spec = get_json(client, "/apispec_1.json")
+        assert spec["info"]["version"] == __version__
         assert "/api/countries/{country_code}/banks" in spec["paths"]
 
     def test_unknown_route_returns_json(self, client):

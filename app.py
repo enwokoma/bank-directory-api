@@ -10,6 +10,7 @@ from flasgger import Swagger
 from flask import Flask, jsonify, request
 from werkzeug.exceptions import HTTPException
 
+from src import __version__
 from src.api.routes import banks_bp
 from src.core.dataset import load_datasets
 
@@ -38,7 +39,7 @@ swagger_config = {
 }
 app.config["SWAGGER"] = {
     "title": "Bank Directory API",
-    "version": "0.1.0",
+    "version": __version__,
     "termsOfService": "",
     "uiversion": 3,
     "description": (
