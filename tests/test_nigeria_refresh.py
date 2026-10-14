@@ -12,13 +12,6 @@ FIXTURES = Path(__file__).parent / "fixtures" / "nigeria"
 NIP_URL = "https://nip.example.test/institutions"
 
 
-@pytest.fixture(autouse=True)
-def no_nip_list_configured(monkeypatch):
-    """Keep a developer's own .env settings out of these tests."""
-    for name in (nip.ENV_URL, nip.ENV_API_KEY, nip.ENV_KEY_HEADER):
-        monkeypatch.delenv(name, raising=False)
-
-
 class FixtureClient:
     """Answer each CBN list endpoint from a saved sample of its real response."""
 

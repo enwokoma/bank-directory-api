@@ -2,6 +2,7 @@
 
 import datetime
 import json
+import os
 
 import pytest
 
@@ -125,6 +126,36 @@ class TestRefreshCommand:
         refresh.main(["NGA", "--data-dir", str(tmp_path)])
         assert seen[0] == []
         assert [bank["id"] for bank in seen[1]] == ["access-bank"]
+
+    def test_reads_settings_from_the_env_file(self, tmp_path, monkeypatch):
+        env_file = tmp_path / ".env"
+        env_file.write_text("NIP_INSTITUTIONS_URL=https://example.test/banks\n", encoding="utf-8")
+        monkeypatch.setattr(refresh, "ENV_FILE", env_file)
+        monkeypatch.delenv("NIP_INSTITUTIONS_URL", raising=False)
+        seen = []
+        fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
+        monkeypatch.setattr(
+            nigeria_refresh,
+            "fetch_dataset",
+            lambda client, previous: seen.append(os.environ.get("NIP_INSTITUTIONS_URL")) or fetched,
+        )
+        refresh.main(["NGA", "--data-dir", str(tmp_path)])
+        assert seen == ["https://example.test/banks"]
+
+    def test_environment_values_win_over_the_env_file(self, tmp_path, monkeypatch):
+        env_file = tmp_path / ".env"
+        env_file.write_text("NIP_INSTITUTIONS_URL=https://file.example.test/\n", encoding="utf-8")
+        monkeypatch.setattr(refresh, "ENV_FILE", env_file)
+        monkeypatch.setenv("NIP_INSTITUTIONS_URL", "https://env.example.test/")
+        seen = []
+        fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
+        monkeypatch.setattr(
+            nigeria_refresh,
+            "fetch_dataset",
+            lambda client, previous: seen.append(os.environ.get("NIP_INSTITUTIONS_URL")) or fetched,
+        )
+        refresh.main(["NGA", "--data-dir", str(tmp_path)])
+        assert seen == ["https://env.example.test/"]
 
 
 class TestCheckMode:

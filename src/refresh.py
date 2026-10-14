@@ -23,6 +23,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from dotenv import load_dotenv
+
 from src.core.cleaning import slugify
 from src.core.dataset import DATA_DIR, bank_sort_key, validate_dataset
 from src.core.source_client import SourceClient, SourceError
@@ -30,6 +32,10 @@ from src.countries.profile import CountryProfile
 from src.countries.registry import get_country_profile, list_country_profiles
 
 logger = logging.getLogger("refresh")
+
+# Settings for sources that need credentials, such as the NIP institution list.
+# Values already set in the environment win over the file.
+ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -39,6 +45,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true", help="Report whether the sources changed without writing files")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    load_dotenv(ENV_FILE)
 
     if [code.lower() for code in args.countries] == ["all"]:
         profiles = list_country_profiles()
