@@ -35,4 +35,7 @@ jobs:
         NIP_INSTITUTIONS_URL: ${{ secrets.NIP_INSTITUTIONS_URL }}
         NIP_INSTITUTIONS_API_KEY: ${{ secrets.NIP_INSTITUTIONS_API_KEY }}
         NIP_INSTITUTIONS_KEY_HEADER: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER }}
+        NIP_INSTITUTIONS_URL_2: ${{ secrets.NIP_INSTITUTIONS_URL_2 }}
+        NIP_INSTITUTIONS_API_KEY_2: ${{ secrets.NIP_INSTITUTIONS_API_KEY_2 }}
+        NIP_INSTITUTIONS_KEY_HEADER_2: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER_2 }}
       run: python -m src.refresh all --check
