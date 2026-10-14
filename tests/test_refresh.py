@@ -90,3 +90,32 @@ class TestRefreshCommand:
     def test_rejects_unknown_country(self, tmp_path):
         with pytest.raises(SystemExit):
             refresh.main(["XX", "--data-dir", str(tmp_path)])
+
+    def test_all_refreshes_every_registered_country(self, tmp_path, monkeypatch):
+        fetched = {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1")]}
+        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client: fetched)
+        assert refresh.main(["all", "--data-dir", str(tmp_path)]) == 0
+        assert sorted(path.name for path in tmp_path.iterdir()) == ["NGA.json"]
+
+
+class TestCheckMode:
+    def write_current(self, tmp_path, monkeypatch, banks):
+        monkeypatch.setattr(nigeria_refresh, "fetch_dataset", lambda client: {"sources": [SOURCE], "banks": banks})
+        assert refresh.main(["NGA", "--data-dir", str(tmp_path)]) == 0
+        return (tmp_path / "NGA.json").read_text(encoding="utf-8")
+
+    def test_passes_when_the_source_matches(self, tmp_path, monkeypatch):
+        before = self.write_current(tmp_path, monkeypatch, [record("Access Bank Plc", "1")])
+        assert refresh.main(["NGA", "--check", "--data-dir", str(tmp_path)]) == 0
+        assert (tmp_path / "NGA.json").read_text(encoding="utf-8") == before
+
+    def test_fails_without_writing_when_the_source_changed(self, tmp_path, monkeypatch, caplog):
+        before = self.write_current(tmp_path, monkeypatch, [record("Access Bank Plc", "1")])
+        monkeypatch.setattr(
+            nigeria_refresh,
+            "fetch_dataset",
+            lambda client: {"sources": [SOURCE], "banks": [record("Access Bank Plc", "1"), record("Zenith Bank Plc", "24")]},
+        )
+        assert refresh.main(["NGA", "--check", "--data-dir", str(tmp_path)]) == 1
+        assert (tmp_path / "NGA.json").read_text(encoding="utf-8") == before
+        assert "+ Zenith Bank Plc (zenith-bank)" in caplog.text

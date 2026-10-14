@@ -1,10 +1,11 @@
-"""Rebuild one country's data file from its official source.
+"""Rebuild country data files from their official sources.
 
 Usage:
 
-    python -m src.refresh NGA
+    python -m src.refresh NGA          # rewrite data/countries/NGA.json
+    python -m src.refresh all --check  # only report which countries are out of date
 
-The command asks the country's refresh module for fresh records, keeps the id
+The command asks each country's refresh module for fresh records, keeps the id
 of every bank that was already in the file (matched by the profile's first
 identifier scheme), validates the result, and only then overwrites
 `data/countries/<ALPHA3>.json`. Review the diff before committing it.
@@ -25,22 +26,36 @@ from src.core.cleaning import slugify
 from src.core.dataset import DATA_DIR, bank_sort_key, validate_dataset
 from src.core.source_client import SourceClient, SourceError
 from src.countries.profile import CountryProfile
-from src.countries.registry import get_country_profile
+from src.countries.registry import get_country_profile, list_country_profiles
 
 logger = logging.getLogger("refresh")
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("country", help="ISO 3166-1 alpha-2 or alpha-3 code, for example NG or NGA")
+    parser.add_argument("countries", nargs="+", metavar="country", help="ISO 3166-1 code such as NG or NGA, or 'all'")
     parser.add_argument("--data-dir", type=Path, default=DATA_DIR, help="Folder that holds the country data files")
+    parser.add_argument("--check", action="store_true", help="Report whether the sources changed without writing files")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
 
-    profile = get_country_profile(args.country)
-    if profile is None:
-        parser.error(f"No registered country for {args.country!r}.")
-    path = args.data_dir / f"{profile.alpha3}.json"
+    if [code.lower() for code in args.countries] == ["all"]:
+        profiles = list_country_profiles()
+    else:
+        profiles = []
+        for code in args.countries:
+            profile = get_country_profile(code)
+            if profile is None:
+                parser.error(f"No registered country for {code!r}.")
+            profiles.append(profile)
+
+    results = [refresh_country(profile, args.data_dir, check=args.check) for profile in profiles]
+    return max(results)
+
+
+def refresh_country(profile: CountryProfile, data_dir: Path, *, check: bool = False) -> int:
+    """Fetch one country's data; write it, or with `check` only compare it. Returns an exit code."""
+    path = data_dir / f"{profile.alpha3}.json"
     previous = _read_previous(path)
 
     module = importlib.import_module(profile.refresh_module)
@@ -48,19 +63,34 @@ def main(argv: list[str] | None = None) -> int:
         with SourceClient() as client:
             fetched = module.fetch_dataset(client)
     except (SourceError, ValueError) as exc:
-        logger.error("Refresh failed, %s was not changed: %s", path.name, exc)
+        logger.error("%s: refresh failed, %s was not changed: %s", profile.name, path.name, exc)
         return 1
 
     dataset = build_dataset(profile, fetched, previous.get("banks", []), datetime.date.today())
     errors = validate_dataset(dataset, profile)
     if errors:
-        logger.error("Refreshed %s data is invalid, %s was not changed:\n- %s", profile.name, path.name, "\n- ".join(errors))
+        logger.error("%s: refreshed data is invalid, %s was not changed:\n- %s", profile.name, path.name, "\n- ".join(errors))
+        return 1
+
+    changes = summarize_changes(previous.get("banks", []), dataset["banks"])
+    if check:
+        if dataset["banks"] == previous.get("banks") and dataset["sources"] == previous.get("sources"):
+            logger.info("%s: %s matches the source.", profile.name, path.name)
+            return 0
+        logger.error(
+            "%s: %s is out of date. Run `python -m src.refresh %s` and commit the result.",
+            profile.name,
+            path.name,
+            profile.alpha3,
+        )
+        for line in changes:
+            logger.error(line)
         return 1
 
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(dataset, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    logger.info("Wrote %d banks to %s", len(dataset["banks"]), path)
-    for line in summarize_changes(previous.get("banks", []), dataset["banks"]):
+    logger.info("%s: wrote %d banks to %s", profile.name, len(dataset["banks"]), path)
+    for line in changes:
         logger.info(line)
     return 0
 
