@@ -71,13 +71,20 @@ A scheduled workflow compares the committed files with their sources every Monda
 
 ```text
 bank-directory-api/
-  app.py                  Flask app, Swagger UI, caching and CORS headers
+  app.py                  Flask app factory, Swagger UI, caching and CORS headers
   data/countries/         One generated JSON file per country
   src/
     __init__.py           The version, used by Swagger UI and the refresh's User-Agent
-    api/routes.py         HTTP routes
+    api/
+      routes.py           Country and bank routes
+      access.py           Rate limits and API key checks (hosted mode)
+      keys.py             GET /api/keys/me
+      signup.py           API key sign-up by email
     core/
       dataset.py          Loads and validates the country data files
+      settings.py         Settings read from environment variables
+      api_keys.py         API keys and sign-up tokens in SQLite, stored as hashes
+      email.py            Sign-up emails through Amazon SES
       cleaning.py         Whitespace cleanup and id slugs used by refresh modules
       source_client.py    Polite, retrying HTTP client for sources
     countries/
@@ -92,12 +99,16 @@ bank-directory-api/
         nibss_code_matches.json
                           Reviewed matches for names the lists spell differently
     refresh.py            `python -m src.refresh` command
+    keys_admin.py         `python -m src.keys_admin`: list, issue and revoke API keys
+  Dockerfile              The API's image, served by gunicorn (gunicorn.conf.py)
+  deploy/                 Docker Compose with Redis, Caddy block and settings for banks.globbapay.com
+  docs/deploy.md          How to deploy the hosted API on AWS
   scripts/
     upload-release-assets.sh  Attaches each country's data file to a GitHub release
   tests/                  Tests, with saved samples of real source responses in fixtures/
   .env.example            Settings for refreshing NIBSS codes (copy to .env)
   .github/workflows/
-    python-test.yml       Formatting, lint, types and tests on every push, then a gunicorn smoke test
+    python-test.yml       Formatting, lint, types and tests on every push, then gunicorn and Docker Compose checks
     data-check.yml        Monday check that the data files match their sources
   CHANGELOG.md            What each release added or changed
 ```
@@ -130,13 +141,67 @@ For production-style serving:
 gunicorn --bind 0.0.0.0:5006 --workers 2 app:app
 ```
 
-The API is read-only and needs no configuration or secrets. If you expose it publicly, put rate limiting in front of it at the proxy or load balancer.
+With no settings, the API serves its data openly, with no rate limits or keys. Before exposing it publicly, turn on [hosted mode](#hosted-mode-rate-limits-and-api-keys).
+
+To run it as the hosted service does, with Redis, see [docs/deploy.md](docs/deploy.md).
+
+## Hosted mode: rate limits and API keys
+
+Rate limits and API keys are off unless configured with environment variables:
+
+| Setting | Effect |
+| --- | --- |
+| `RATE_LIMIT_STORAGE_URI` | Turns on rate limits, counted in this store, for example `redis://redis:6379/0`. |
+| `ANONYMOUS_RATE_LIMIT` | Limits per client IP for requests without a key. Default `60 per hour;300 per day`. |
+| `KEY_RATE_LIMIT` | Limits per API key. Default `120 per minute;20000 per day`. |
+| `SIGNUP_RATE_LIMIT` | Limits per client IP on the sign-up endpoints. Default `10 per hour;30 per day`. |
+| `API_KEY_DATABASE` | Turns on API keys, stored only as SHA-256 hashes in this SQLite file. |
+| `PUBLIC_BASE_URL` | The API's public address, used in sign-up emails. |
+| `SIGNUP_EMAIL_FROM` | Turns on self-service sign-up, with emails sent from this address through Amazon SES. Needs `API_KEY_DATABASE` and `PUBLIC_BASE_URL`; AWS credentials and region come from the usual sources, such as an EC2 instance role and `AWS_REGION`. |
+| `TRUSTED_PROXIES` | How many reverse proxies sit in front of the app, so the client address comes from `X-Forwarded-For`. |
+
+With limits on, responses under `/api/` carry `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset`, and a request over the limit gets `429` with `Retry-After`:
+
+```json
+{
+  "success": false,
+  "message": "Rate limit exceeded: 60 per 1 hour. Try again later. An API key gives higher limits: POST /api/keys/signup."
+}
+```
+
+Send a key in the `X-API-Key` header, or as `Authorization: Bearer <key>`, to be counted under the key's own, higher limit. An unknown or revoked key gets `401`. A key in the URL gets `400`, so keys stay out of access logs. Keys are meant for servers: a key in browser code is visible to anyone using the page.
+
+### Getting a key
+
+1. Ask for a key with your email address:
+
+   ```bash
+   curl -X POST https://<api-host>/api/keys/signup \
+     -H "Content-Type: application/json" -d '{"email": "you@example.com"}'
+   ```
+
+   The answer is the same whether or not the address already has a key, and an address gets at most three links a day.
+
+2. The email links to `GET /api/keys/verify?token=...`, a page with a button. The link works once, within 30 minutes.
+3. The button shows the key once. Code can do this step with `POST /api/keys/verify` and `{"token": "..."}`, which returns `{"api_key": "bdk_..."}`.
+
+Each address has one key: getting a new one revokes the old one, which is also how a lost key is replaced. `GET /api/keys/me` with your key shows its prefix, email, dates and rate limit.
+
+### Managing keys
+
+On the server, `python -m src.keys_admin` works on the `API_KEY_DATABASE` file:
+
+```bash
+python -m src.keys_admin list [EMAIL OR PREFIX]   # keys by prefix; the keys themselves are never stored
+python -m src.keys_admin issue you@example.com    # issue a key by hand, printed once
+python -m src.keys_admin revoke 12                # revoke a key by id
+```
 
 ## Endpoints
 
 Country codes are ISO 3166-1 alpha-2 or alpha-3 codes in any case: `NG`, `ng`, `NGA` and `nga` all work.
 
-Successful responses have `"success": true`. Errors have `"success": false` and a `message`, with status 400 for a bad query parameter and 404 for an unknown country, bank or route:
+Successful responses have `"success": true`. Errors have `"success": false` and a `message`, with status 400 for a bad query parameter, 404 for an unknown country, bank or route, and in hosted mode 401 for a bad API key and 429 for too many requests:
 
 ```json
 {
@@ -398,7 +463,7 @@ mypy
 pytest
 ```
 
-CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it. Tests never read your `.env` or call a real NIP list.
+CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it, and starts the Docker Compose deployment to check its rate limits, keys and logs with a real Redis. Tests never read your `.env`, call a real NIP list or send email.
 
 ## Notes on Nigeria's data
 

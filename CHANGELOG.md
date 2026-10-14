@@ -8,6 +8,13 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 - Release downloads: every country's data file is attached to each GitHub release with a `SHA256SUMS` file, starting with v0.2.0, and `scripts/upload-release-assets.sh` attaches them.
 - A "Use it in your project" section in the README, with download links and code to fetch the data.
+- Hosted mode, off unless configured: rate limits per client IP and per API key, shared through Redis, with `X-RateLimit-*` headers and JSON 429s.
+- API keys stored only as hashes, sent in `X-API-Key` or as a Bearer token, with self-service sign-up proved by email through Amazon SES, `GET /api/keys/me`, and `python -m src.keys_admin` to list, issue and revoke keys.
+- A Docker image, a Docker Compose deployment with Redis, a Caddy block for banks.globbapay.com, and a deployment guide for AWS.
+
+### Changed
+
+- The app is built by `create_app()`, with settings read from environment variables.
 
 ## 0.2.0 - 2026-10-14
 

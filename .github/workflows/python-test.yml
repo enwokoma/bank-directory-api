@@ -69,3 +69,51 @@ jobs:
           sleep 1
         done
         curl --silent --fail "http://127.0.0.1:5006/api/countries/NG/banks?limit=1"
+
+  container:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Configure a test deployment without email
+      run: |
+        cat > deploy/.env.production <<'SETTINGS'
+        PUBLIC_BASE_URL=https://banks.example.test
+        ANONYMOUS_RATE_LIMIT=3 per minute
+        KEY_RATE_LIMIT=5 per minute
+        SETTINGS
+
+    - name: Build and start the API and Redis
+      run: docker compose -f deploy/docker-compose.yml up --detach --build --wait
+
+    - name: Check limits, keys and logs in the running containers
+      run: |
+        set -euo pipefail
+        compose="docker compose -f deploy/docker-compose.yml"
+        base=http://127.0.0.1:5106
+        curl --silent --fail "$base/"
+
+        # Three requests a minute without a key, counted in Redis across every gunicorn worker.
+        for n in 1 2 3; do curl --silent --fail --output /dev/null "$base/api/countries?token=SECRET-$n"; done
+        test "$(curl --silent --output /dev/null --write-out '%{http_code}' "$base/api/countries")" = 429
+        curl --silent --dump-header - --output /dev/null "$base/api/countries" | grep -i '^retry-after:'
+
+        # A key issued on the server works and has its own limit.
+        key=$($compose exec -T api python -m src.keys_admin issue ci@example.com | tail -n 1)
+        curl --silent --fail --header "X-API-Key: $key" "$base/api/keys/me" | grep '"email": "ci@example.com"'
+        curl --silent --fail --dump-header - --output /dev/null --header "X-API-Key: $key" "$base/api/countries" \
+          | grep -i '^x-ratelimit-limit: 5'
+
+        # Keys live on the volume, so they survive a restart.
+        $compose restart api
+        $compose up --detach --wait
+        curl --silent --fail --output /dev/null --header "X-API-Key: $key" "$base/api/keys/me"
+
+        # Query strings never reach the access log.
+        if $compose logs api | grep -q SECRET; then echo "A query string reached the access log."; exit 1; fi
+
+    - name: Show the container logs
+      if: failure()
+      run: docker compose -f deploy/docker-compose.yml logs
