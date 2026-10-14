@@ -1,0 +1,46 @@
+# The hosted API as a Coolify "Docker Compose" service. Paste this into the
+# service's compose editor, then in Coolify:
+#   - Domains: set the api service to https://banks.example.com:5006, so
+#     Coolify's proxy serves it over HTTPS and forwards to port 5006;
+#   - Environment Variables: set PUBLIC_BASE_URL, SIGNUP_EMAIL_FROM and
+#     AWS_REGION; the limits are optional.
+# Pin the image to the release's digest when deploying, as Coolify shows it.
+# SES uses the server's instance role. See docs/deploy.md.
+services:
+  api:
+    image: ghcr.io/enwokoma/bank-directory-api:0.3.1
+    environment:
+      RATE_LIMIT_STORAGE_URI: redis://redis:6379/0
+      API_KEY_DATABASE: /var/lib/bank-directory/keys.sqlite3
+      TRUSTED_PROXIES: "1"
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL}
+      SIGNUP_EMAIL_FROM: ${SIGNUP_EMAIL_FROM}
+      AWS_REGION: ${AWS_REGION}
+      GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}
+      ANONYMOUS_RATE_LIMIT: ${ANONYMOUS_RATE_LIMIT:-60 per hour;300 per day}
+      KEY_RATE_LIMIT: ${KEY_RATE_LIMIT:-120 per minute;20000 per day}
+      SIGNUP_RATE_LIMIT: ${SIGNUP_RATE_LIMIT:-10 per hour;30 per day}
+    volumes:
+      - keys:/var/lib/bank-directory
+    depends_on:
+      redis:
+        condition: service_healthy
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+
+  redis:
+    image: redis:7.4-alpine
+    # Counters expire on their own and are fine to lose on a restart, so nothing is saved to disk.
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "64mb", "--maxmemory-policy", "volatile-ttl"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    read_only: true
+    tmpfs: [/data]
+    security_opt: ["no-new-privileges:true"]
+
+volumes:
+  keys:
