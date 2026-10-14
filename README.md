@@ -103,6 +103,7 @@ bank-directory-api/
   Dockerfile              The API's image, served by gunicorn (gunicorn.conf.py)
   deploy/                 Docker Compose with Redis (and optionally Caddy), Caddy blocks and settings for banks.example.com
     aws/provision.sh      Sets up a dedicated EC2 instance from AWS CloudShell
+    coolify/docker-compose.yml  The API as a Coolify service, using the published image
   docs/deploy.md          How to deploy the hosted API on AWS
   scripts/
     upload-release-assets.sh  Attaches each country's data file to a GitHub release
@@ -111,6 +112,7 @@ bank-directory-api/
   .github/workflows/
     python-test.yml       Formatting, lint, types and tests on every push, then gunicorn and Docker Compose checks
     data-check.yml        Monday check that the data files match their sources
+    release-image.yml     Publishes the image to ghcr.io/enwokoma/bank-directory-api on each release tag
   CHANGELOG.md            What each release added or changed
 ```
 
@@ -477,12 +479,12 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 
 ## Releases
 
-Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md) and every country's data file attached. The version lives in `src/__init__.py`.
+Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md) and every country's data file attached, and its image is published as `ghcr.io/enwokoma/bank-directory-api:X.Y.Z` for amd64 and arm64. The version lives in `src/__init__.py`.
 
 To publish a release:
 
 1. In a pull request, set the version in `src/__init__.py` and date the release in the changelog.
-2. After merging, tag the merge commit and push the tag: `git tag -s vX.Y.Z -m "vX.Y.Z"`, then `git push origin vX.Y.Z`.
+2. After merging, tag the merge commit and push the tag: `git tag -s vX.Y.Z -m "vX.Y.Z"`, then `git push origin vX.Y.Z`. The tag starts the image build.
 3. Create the release: `gh release create vX.Y.Z --verify-tag --notes-file <notes>`.
 4. Attach the data files as they were at the tag: `scripts/upload-release-assets.sh vX.Y.Z`.
 
