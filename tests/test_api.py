@@ -2,8 +2,9 @@
 
 import pytest
 
-from app import app
+from app import app, create_app
 from src import __version__
+from src.core.settings import Settings
 
 
 @pytest.fixture
@@ -160,3 +161,25 @@ class TestCachingAndCors:
         response = client.get("/api/countries/XX")
         assert "Cache-Control" not in response.headers
         assert "ETag" not in response.headers
+
+
+class TestSecurityHeaders:
+    @pytest.mark.parametrize("path", ["/", "/api/countries", "/api/countries/XX"])
+    def test_every_response_forbids_content_type_guessing(self, client, path):
+        assert client.get(path).headers["X-Content-Type-Options"] == "nosniff"
+
+    def test_https_responses_keep_browsers_on_https(self, client):
+        response = client.get("/api/countries", base_url="https://localhost")
+        assert response.headers["Strict-Transport-Security"] == "max-age=31536000"
+
+    def test_plain_http_responses_do_not_send_hsts(self, client):
+        assert "Strict-Transport-Security" not in client.get("/api/countries").headers
+
+    def test_behind_a_trusted_proxy_https_comes_from_the_forwarded_protocol(self):
+        proxied = create_app(Settings(trusted_proxies=1)).test_client()
+        response = proxied.get("/api/countries", headers={"X-Forwarded-Proto": "https"})
+        assert response.headers["Strict-Transport-Security"] == "max-age=31536000"
+
+    def test_without_trusted_proxies_a_forged_protocol_is_ignored(self, client):
+        response = client.get("/api/countries", headers={"X-Forwarded-Proto": "https"})
+        assert "Strict-Transport-Security" not in response.headers

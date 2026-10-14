@@ -28,6 +28,9 @@ CACHE_CONTROL = "public, max-age=3600"
 CORS_ALLOWED_HEADERS = "X-API-Key, Authorization, Content-Type"
 CORS_EXPOSED_HEADERS = "X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After"
 
+# Once a browser has reached the API over HTTPS, it keeps using HTTPS for a year.
+STRICT_TRANSPORT_SECURITY = "max-age=31536000"
+
 SWAGGER_CONFIG = {
     "headers": [],
     "specs": [
@@ -71,6 +74,7 @@ def create_app(settings: Settings | None = None) -> Flask:
     app.register_blueprint(keys_bp, url_prefix="/api")
     app.register_blueprint(signup_bp, url_prefix="/api")
     app.after_request(add_public_api_headers)
+    app.after_request(add_security_headers)
     app.register_error_handler(HTTPException, http_error)
     app.add_url_rule("/", "health_check", health_check)
     return app
@@ -89,6 +93,18 @@ def add_public_api_headers(response):
             response.headers["Cache-Control"] = CACHE_CONTROL
             response.add_etag()
             response.make_conditional(request)
+    return response
+
+
+def add_security_headers(response):
+    """Stop browsers guessing content types, and keep them on HTTPS once they have used it.
+
+    The app sends these itself so they are there whichever proxy is in front.
+    HSTS only counts over HTTPS, which behind a trusted proxy is X-Forwarded-Proto.
+    """
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    if request.is_secure:
+        response.headers.setdefault("Strict-Transport-Security", STRICT_TRANSPORT_SECURITY)
     return response
 
 
