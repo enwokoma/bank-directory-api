@@ -154,6 +154,15 @@ class KeyStore:
             )
         return token
 
+    def signup_tokens_sent(self, email: str, within: timedelta) -> int:
+        """Count the sign-up tokens created for an email address in a recent period."""
+        with closing(self._connect()) as db:
+            row = db.execute(
+                "SELECT count(*) FROM signup_tokens WHERE email = ? AND created_at > ?",
+                (email, _iso(self._clock() - within)),
+            ).fetchone()
+        return int(row[0])
+
     def signup_token_is_valid(self, token: str) -> bool:
         """Check a token without using it up."""
         if not token or len(token) > _MAX_SECRET_LENGTH:

@@ -115,6 +115,14 @@ class TestSignupTokens:
         assert store.redeem_signup_token(attempt) is None
         assert not store.signup_token_is_valid(attempt)
 
+    def test_counts_recent_tokens_per_email(self, store, clock):
+        store.create_signup_token("ada@example.com")
+        clock.advance(hours=12)
+        store.create_signup_token("ada@example.com")
+        store.create_signup_token("grace@example.com")
+        assert store.signup_tokens_sent("ada@example.com", within=timedelta(days=1)) == 2
+        assert store.signup_tokens_sent("ada@example.com", within=timedelta(hours=1)) == 1
+
     def test_stores_only_a_hash_of_the_token(self, store, tmp_path):
         token = store.create_signup_token("ada@example.com")
         assert not any(token in value for value in every_stored_value(tmp_path / "keys.sqlite3"))
