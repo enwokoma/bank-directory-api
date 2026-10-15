@@ -87,6 +87,15 @@ class TestSignup:
         assert response.status_code == 503
         assert "ada@example.com" not in response.get_data(as_text=True)
 
+    def test_a_failed_email_does_not_use_up_a_daily_link(self, tmp_path):
+        app, client, sender = build(tmp_path)
+        error = ClientError({"Error": {"Code": "Throttling", "Message": "Maximum sending rate exceeded."}}, "SendEmail")
+        app.extensions["bank_email_sender"] = FakeSender(error=error)
+        assert [sign_up(client).status_code for _ in range(3)] == [503, 503, 503]
+        app.extensions["bank_email_sender"] = sender
+        assert [sign_up(client).status_code for _ in range(4)] == [202, 202, 202, 202]
+        assert len(sender.sent) == 3
+
     def test_sign_up_is_rate_limited_per_ip(self, tmp_path):
         _, client, _ = build(tmp_path, signup_rate_limit="2 per hour")
         statuses = [sign_up(client, f"user{number}@example.com").status_code for number in range(3)]

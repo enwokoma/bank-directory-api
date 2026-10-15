@@ -154,6 +154,11 @@ class KeyStore:
             )
         return token
 
+    def discard_signup_token(self, token: str) -> None:
+        """Delete a token whose email was never sent, so it neither works nor counts towards the daily limit."""
+        with self._transaction() as db:
+            db.execute("DELETE FROM signup_tokens WHERE token_hash = ?", (hash_secret(token),))
+
     def signup_tokens_sent(self, email: str, within: timedelta) -> int:
         """Count the sign-up tokens created for an email address in a recent period."""
         with closing(self._connect()) as db:
