@@ -2,7 +2,8 @@
 
 1. POST /api/keys/signup with an email address. The answer is the same
    whether or not the address already has a key, so nobody can test which
-   addresses do. Each address gets at most three links a day.
+   addresses do. Each address gets at most three links a day; a link whose
+   email could not be sent does not count.
 2. The email links to GET /api/keys/verify?token=..., which only shows a
    button. Mail scanners that open links therefore cannot use up the token.
 3. The button posts to /api/keys/verify, which uses up the token and shows the
@@ -85,6 +86,8 @@ def signup():
         try:
             _sender().send(email, "Your Bank Directory API key", _email_text(token))
         except (BotoCoreError, ClientError) as exc:
+            # The link never went out, so it must not use up one of the address's links for the day.
+            store.discard_signup_token(token)
             # Log the failure kind only: SES messages can contain addresses.
             code = exc.response.get("Error", {}).get("Code") if isinstance(exc, ClientError) else type(exc).__name__
             logger.error("Sign-up email could not be sent: %s", code)

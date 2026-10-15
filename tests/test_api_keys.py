@@ -123,6 +123,14 @@ class TestSignupTokens:
         assert store.signup_tokens_sent("ada@example.com", within=timedelta(days=1)) == 2
         assert store.signup_tokens_sent("ada@example.com", within=timedelta(hours=1)) == 1
 
+    def test_a_discarded_token_neither_works_nor_counts(self, store):
+        token = store.create_signup_token("ada@example.com")
+        kept = store.create_signup_token("ada@example.com")
+        store.discard_signup_token(token)
+        assert not store.signup_token_is_valid(token)
+        assert store.signup_token_is_valid(kept)
+        assert store.signup_tokens_sent("ada@example.com", within=timedelta(days=1)) == 1
+
     def test_stores_only_a_hash_of_the_token(self, store, tmp_path):
         token = store.create_signup_token("ada@example.com")
         assert not any(token in value for value in every_stored_value(tmp_path / "keys.sqlite3"))
