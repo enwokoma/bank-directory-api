@@ -12,19 +12,23 @@
 #     standard CPU credits, which on first boot installs Docker, checks out the
 #     release, builds the image and starts the API, Redis and Caddy.
 #
-# Usage:
-#   SIGNUP_EMAIL_FROM="Bank Directory API <no-reply@example.com>" SES_REGION=eu-central-1 \
+# Usage, with your own host name and sender:
+#   SITE_ADDRESS=banks.example.com SIGNUP_EMAIL_FROM="Bank Directory API <no-reply@example.com>" \
 #     deploy/aws/provision.sh
 #
-# Settings, with their defaults: REGION=eu-central-1, SES_REGION=$REGION,
-# INSTANCE_TYPE=t4g.micro, SITE_ADDRESS=banks.example.com, NAME=bank-directory-api,
-# RELEASE_TAG=the tag checked out in this clone.
+# SITE_ADDRESS and SIGNUP_EMAIL_FROM are required. The others have defaults:
+# REGION=the CloudShell session's region, SES_REGION=$REGION, INSTANCE_TYPE=t4g.micro,
+# NAME=bank-directory-api, RELEASE_TAG=the tag checked out in this clone.
 set -euo pipefail
 
-REGION="${REGION:-eu-central-1}"
+REGION="${REGION:-${AWS_REGION:-}}"
+if [ -z "$REGION" ]; then
+  echo "Set REGION to the AWS region to create the instance in, for example REGION=us-east-1." >&2
+  exit 1
+fi
 SES_REGION="${SES_REGION:-$REGION}"
 INSTANCE_TYPE="${INSTANCE_TYPE:-t4g.micro}"
-SITE_ADDRESS="${SITE_ADDRESS:-banks.example.com}"
+SITE_ADDRESS="${SITE_ADDRESS:?Set SITE_ADDRESS to the host name of the API, for example banks.example.com}"
 SIGNUP_EMAIL_FROM="${SIGNUP_EMAIL_FROM:?Set SIGNUP_EMAIL_FROM, for example "Bank Directory API <no-reply@example.com>"}"
 NAME="${NAME:-bank-directory-api}"
 REPOSITORY="https://github.com/enwokoma/bank-directory-api.git"

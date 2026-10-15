@@ -1,10 +1,12 @@
-# Deploying the hosted API
+# Running the API as a public service
 
-How the hosted API runs: the API and a Redis run in Docker Compose behind a proxy that serves HTTPS, and sign-up emails go out through Amazon SES using the instance's IAM role, so no AWS keys are stored anywhere.
+How to serve the API publicly with [rate limits and API keys](../README.md#hosted-mode-rate-limits-and-api-keys): the API and a Redis run in Docker Compose behind a proxy that serves HTTPS, and sign-up emails go out through Amazon SES using the instance's IAM role, so no AWS keys are stored anywhere. To run it on your own machine instead, see [Run it with Docker](../README.md#run-it-with-docker).
+
+The examples use `banks.example.com` for the API's host name and `no-reply@example.com` for the sender; use your own.
 
 There are three ways to run it:
 
-- **Managed by Coolify** on a dedicated instance: see [Managed by Coolify](#managed-by-coolify). This is how `banks.example.com` runs.
+- **Managed by Coolify** on a dedicated instance: see [Managed by Coolify](#managed-by-coolify).
 - **A dedicated instance on its own**, set up by one script from AWS CloudShell: see [Dedicated instance](#dedicated-instance-from-aws-cloudshell).
 - **An existing server that already runs Caddy**, set up by hand: steps 1 to 8 below.
 
@@ -17,7 +19,7 @@ client --HTTPS--> Caddy (host, :443) --> 127.0.0.1:5106 --> api container (gunic
 
 ## Managed by Coolify
 
-Coolify at `coolify.example.com` deploys and runs the API on the dedicated instance, with its own proxy (Traefik) serving HTTPS, and pulls the image each release publishes to `ghcr.io/enwokoma/bank-directory-api`, so the instance never builds.
+[Coolify](https://coolify.io) deploys and runs the API on the dedicated instance, with its own proxy (Traefik) serving HTTPS, and pulls the image each release publishes to `ghcr.io/enwokoma/bank-directory-api`, so the instance never builds.
 
 The steps keep the instance's own stack serving the site until Coolify's is ready, so the switch itself takes under a minute.
 
@@ -63,9 +65,11 @@ To deploy a new release, change the image's tag and digest in the service's comp
    ```bash
    git clone --branch <LATEST_RELEASE_TAG> https://github.com/enwokoma/bank-directory-api.git
    cd bank-directory-api
-   SIGNUP_EMAIL_FROM="Bank Directory API <no-reply@example.com>" SES_REGION=<REGION> deploy/aws/provision.sh
+   SITE_ADDRESS=banks.example.com SIGNUP_EMAIL_FROM="Bank Directory API <no-reply@example.com>" \
+     deploy/aws/provision.sh
    ```
 
+   It creates the instance in CloudShell's region; set `REGION` for another one, and `SES_REGION` if the sender's SES identity is in a different region.
 3. Add the DNS A record it prints (see [step 1](#1-dns)).
 4. Wait about 5 to 10 minutes for the first boot, then check the site as in [step 8](#8-check-it-end-to-end). Caddy gets the certificate once DNS points at the instance.
 
@@ -79,7 +83,7 @@ sudo SITE_ADDRESS=banks.example.com docker compose -f deploy/docker-compose.yml 
   -f deploy/docker-compose.standalone.yml up --detach --no-build --wait
 ```
 
-The commands in [Running it](#running-it) work there too, run with `sudo` and with `-f deploy/docker-compose.standalone.yml` added after the first `-f` file.
+The commands in [Running it](#running-it) work there too, run with `sudo`, with `SITE_ADDRESS=banks.example.com` before `docker compose`, and with `-f deploy/docker-compose.standalone.yml` added after the first `-f` file.
 
 ## 1. DNS
 
@@ -95,7 +99,7 @@ Check it from your machine:
 dig +short banks.example.com
 ```
 
-If the server's address is not an Elastic IP, it changes when the instance stops and starts; an Elastic IP keeps both records valid.
+If the server's address is not an Elastic IP, it changes when the instance stops and starts; an Elastic IP keeps the record valid.
 
 ## 2. Amazon SES
 

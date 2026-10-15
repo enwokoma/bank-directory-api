@@ -1,0 +1,20 @@
+# Run the API on your own machine:
+#
+#   docker compose up --build
+#
+# then open http://localhost:5006/api-docs. It builds this checkout, so local
+# changes and refreshed data files are included. Rate limits and API keys are
+# off; deploy/docker-compose.yml runs the public setup with Redis (see docs/deploy.md).
+name: bank-directory-api-local
+
+services:
+  api:
+    build: .
+    image: bank-directory-api:local
+    ports:
+      - "5006:5006"
+    environment:
+      GUNICORN_WORKERS: ${GUNICORN_WORKERS:-2}
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
