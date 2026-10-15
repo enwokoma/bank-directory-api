@@ -2,6 +2,17 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## Unreleased
+
+### Added
+
+- `compose.yaml` runs the API on your own machine with `docker compose up --build`, and the README explains running the published image with `docker run`.
+- The README describes the public API at banks.globbapay.com, and links to the data file that always has the latest data, as well as to pinned releases.
+
+### Changed
+
+- `deploy/aws/provision.sh` needs `SITE_ADDRESS` set, and creates the instance in the CloudShell session's region unless `REGION` is set. `deploy/docker-compose.standalone.yml` needs `SITE_ADDRESS` too. The deployment guide and example settings use placeholder names.
+
 ## 0.3.4 - 2026-10-15
 
 ### Fixed
