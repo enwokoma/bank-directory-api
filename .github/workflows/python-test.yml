@@ -121,8 +121,10 @@ jobs:
       run: |
         set -euo pipefail
         standalone="docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.standalone.yml"
-        # Plain HTTP on port 80, since CI cannot get a certificate.
-        SITE_ADDRESS=:80 $standalone up --detach --wait
+        # Plain HTTP on port 80, since CI cannot get a certificate. Every command
+        # with the standalone file needs SITE_ADDRESS, so it is set for the whole step.
+        export SITE_ADDRESS=:80
+        $standalone up --detach --wait
         # Earlier checks used up this address's allowance; start counting afresh.
         $standalone restart redis
         for attempt in 1 2 3 4 5 6 7 8 9 10; do
