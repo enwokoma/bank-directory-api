@@ -184,7 +184,7 @@ Send a key in the `X-API-Key` header, or as `Authorization: Bearer <key>`, to be
      -H "Content-Type: application/json" -d '{"email": "you@example.com"}'
    ```
 
-   The answer is the same whether or not the address already has a key, and an address gets at most three links a day.
+   The answer is the same whether or not the address already has a key, and an address gets at most three links a day. If the email can't be sent, the answer is `503` and the attempt doesn't count towards those three.
 
 2. The email links to `GET /api/keys/verify?token=...`, a page with a button. The link works once, within 30 minutes.
 3. The button shows the key once. Code can do this step with `POST /api/keys/verify` and `{"token": "..."}`, which returns `{"api_key": "bdk_..."}`.
