@@ -2,6 +2,12 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## 0.3.4 - 2026-10-15
+
+### Fixed
+
+- A sign-up email that could not be sent no longer uses up one of the address's three links for the day.
+
 ## 0.3.3 - 2026-10-15
 
 ### Fixed
