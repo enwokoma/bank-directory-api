@@ -2,6 +2,8 @@
 
 A Flask API that lists the licensed banks of each country, compiled from that country's official register, with the codes needed to send them bank transfers. Countries are added one release at a time; each one comes with a script that rebuilds its data from the regulator's own list.
 
+A public instance runs at [banks.globbapay.com](https://banks.globbapay.com/api-docs), and the data files can be used directly or with your own copy of the API: see [Use it in your project](#use-it-in-your-project).
+
 ## Coverage
 
 | Country | Codes | Institutions | Bank types | Transfer codes | Sources |
@@ -12,29 +14,45 @@ A Flask API that lists the licensed banks of each country, compiled from that co
 
 ## Use it in your project
 
-### Download the data file
+There are three ways, from least to most setup: call the public API, use the data file directly, or run the API yourself.
 
-Every release has each country's data file attached, with a `SHA256SUMS` file to verify it:
+### Call the public API
 
-| Link | Gives you |
-| --- | --- |
-| `https://github.com/enwokoma/bank-directory-api/releases/latest/download/NGA.json` | Nigeria's file from the latest release |
-| `https://github.com/enwokoma/bank-directory-api/releases/download/v0.2.0/NGA.json` | Nigeria's file exactly as released in v0.2.0 |
-
-```bash
-curl -LO https://github.com/enwokoma/bank-directory-api/releases/latest/download/NGA.json
-curl -LO https://github.com/enwokoma/bank-directory-api/releases/latest/download/SHA256SUMS
-shasum -a 256 -c SHA256SUMS
-```
-
-These links suit servers, build scripts and the command line. Browsers cannot fetch them from another site, because GitHub sends no CORS header for release downloads.
-
-### Fetch it from code
-
-GitHub also serves the file at each release tag from its raw file host, which allows requests from any site, browsers included:
+`https://banks.globbapay.com` serves the latest release, with search, filters and lookups by code. Try it in the browser at [banks.globbapay.com/api-docs](https://banks.globbapay.com/api-docs).
 
 ```js
-const url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/v0.2.0/data/countries/NGA.json";
+const response = await fetch("https://banks.globbapay.com/api/countries/NG/banks?has=nibss_code");
+const { banks } = await response.json();
+// Institutions that can receive a NIP transfer, for a bank dropdown, e.g.
+// { id: "access-bank", name: "Access Bank Plc", type: "commercial",
+//   identifiers: { cbn_institution_id: "1", nibss_code: "000014" } }
+```
+
+```python
+import requests
+
+response = requests.get("https://banks.globbapay.com/api/countries/NG/banks", params={"has": "nibss_code"}, timeout=10)
+transfer_banks = response.json()["banks"]
+```
+
+Without a key, each IP address can make 60 requests an hour and 300 a day, which is plenty for a web page that calls it from its visitors' browsers. A server that calls it more often should [get a free key](#getting-a-key), which allows 120 requests a minute and 20,000 a day; keys belong on servers, not in browser code. Responses can be cached for an hour. See [Endpoints](#endpoints) for everything the API can do.
+
+### Use the data file
+
+Each country's data is one JSON file, the same one the API serves. Fetch it from GitHub, either always the latest or pinned to a release:
+
+| URL | Gives you | From a browser |
+| --- | --- | --- |
+| `https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/data/countries/NGA.json` | Always the latest data | Yes |
+| `https://raw.githubusercontent.com/enwokoma/bank-directory-api/v0.3.4/data/countries/NGA.json` | The file as released in v0.3.4, which never changes | Yes |
+| `https://github.com/enwokoma/bank-directory-api/releases/latest/download/NGA.json` | The latest release's file, with a `SHA256SUMS` file next to it | No |
+| `https://github.com/enwokoma/bank-directory-api/releases/download/v0.3.4/NGA.json` | The v0.3.4 release's file | No |
+
+The `main` branch always has the newest data, reviewed before it is merged. The release download links suit servers, build scripts and the command line; browsers cannot fetch them from another site, because GitHub sends no CORS header for release downloads.
+
+```js
+// Always the latest data. To pin a release, replace "main" with its tag, such as "v0.3.4".
+const url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/data/countries/NGA.json";
 const { banks } = await (await fetch(url)).json();
 
 // Institutions that can receive a NIP transfer, for a bank dropdown
@@ -44,18 +62,53 @@ const transferBanks = banks.filter((bank) => bank.identifiers.nibss_code);
 ```python
 import requests
 
-url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/v0.2.0/data/countries/NGA.json"
+# Always the latest data. To pin a release, replace "main" with its tag, such as "v0.3.4".
+url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/data/countries/NGA.json"
 banks = requests.get(url, timeout=10).json()["banks"]
 transfer_banks = [bank for bank in banks if "nibss_code" in bank["identifiers"]]
 ```
 
+To download the latest release's file and check it:
+
+```bash
+curl -LO https://github.com/enwokoma/bank-directory-api/releases/latest/download/NGA.json
+curl -LO https://github.com/enwokoma/bank-directory-api/releases/latest/download/SHA256SUMS
+shasum -a 256 -c SHA256SUMS
+```
+
 Each file has `country`, `retrieved_on`, `sources` and `banks`; each bank has the fields described in [Bank fields](#bank-fields), and its `id` stays the same between releases.
 
-Neither GitHub link is meant for production traffic: there is no uptime guarantee, and heavy use gets rate limited. Bundle the file with your app, or download it on a schedule and cache it, rather than fetching it on every request. Pinning a release, as above, means the data only changes when you upgrade.
+Following `main` or `latest` picks up new data without changing your code; pinning a release means the data only changes when you upgrade. Either way, GitHub's links are not meant for production traffic: there is no uptime guarantee, and heavy use gets rate limited. Bundle the file with your app, or download it on a schedule and cache it, rather than fetching it on every request.
 
-### Run the API yourself
+### Run it with Docker
 
-To query the data with search, filters and lookups by code, run the API: see [Setup](#setup), [Running](#running) and [Endpoints](#endpoints).
+The image is published for amd64 and arm64, so it runs on most machines, Apple silicon included:
+
+```bash
+docker run --rm -p 5006:5006 ghcr.io/enwokoma/bank-directory-api:latest
+```
+
+Then open `http://localhost:5006/api-docs`. To keep it running in the background and start it again after a reboot, use `docker run --detach --name bank-directory-api --restart unless-stopped -p 5006:5006 ghcr.io/enwokoma/bank-directory-api:latest`.
+
+| Tag | Gives you |
+| --- | --- |
+| `latest` | The latest release |
+| `0.3` | The latest 0.3.x release |
+| `0.3.4` | That exact release; pin one like this in production so upgrades are deliberate |
+
+To build it from your own clone, for example after changing the code or refreshing the data, use the `compose.yaml` at the root of the repository:
+
+```bash
+git clone https://github.com/enwokoma/bank-directory-api.git
+cd bank-directory-api
+docker compose up --build
+```
+
+Either way it serves the API openly, with no rate limits or API keys, which suits your own machine or a private network. Settings are environment variables, such as `-e GUNICORN_WORKERS=2` for the number of worker processes (3 by default; 2 in `compose.yaml`). To serve it publicly with rate limits, API keys and HTTPS, see [docs/deploy.md](docs/deploy.md).
+
+### Run it with Python
+
+See [Setup](#setup) and [Running](#running).
 
 ## How the data works
 
@@ -101,16 +154,17 @@ bank-directory-api/
     refresh.py            `python -m src.refresh` command
     keys_admin.py         `python -m src.keys_admin`: list, issue and revoke API keys
   Dockerfile              The API's image, served by gunicorn (gunicorn.conf.py)
-  deploy/                 Docker Compose with Redis (and optionally Caddy), Caddy blocks and settings for banks.example.com
+  compose.yaml            Runs the API on your own machine with Docker Compose
+  deploy/                 Docker Compose with Redis (and optionally Caddy), a Caddy block and example settings for a public server
     aws/provision.sh      Sets up a dedicated EC2 instance from AWS CloudShell
     coolify/docker-compose.yml  The API as a Coolify service, using the published image
-  docs/deploy.md          How to deploy the hosted API on AWS
+  docs/deploy.md          How to run it as a public service on AWS: on its own, or managed by Coolify
   scripts/
     upload-release-assets.sh  Attaches each country's data file to a GitHub release
   tests/                  Tests, with saved samples of real source responses in fixtures/
   .env.example            Settings for refreshing NIBSS codes (copy to .env)
   .github/workflows/
-    python-test.yml       Formatting, lint, types and tests on every push, then gunicorn and Docker Compose checks
+    python-test.yml       Formatting, lint, types and tests on every push, then gunicorn and Docker checks
     data-check.yml        Monday check that the data files match their sources
     release-image.yml     Publishes the image to ghcr.io/enwokoma/bank-directory-api on each release tag
   CHANGELOG.md            What each release added or changed
@@ -118,7 +172,7 @@ bank-directory-api/
 
 ## Setup
 
-Requires Python 3.11 or newer.
+To run the API without installing Python, use [Docker](#run-it-with-docker). To work on it with Python, you need Python 3.11 or newer:
 
 ```bash
 git clone https://github.com/enwokoma/bank-directory-api.git
@@ -146,7 +200,7 @@ gunicorn --bind 0.0.0.0:5006 --workers 2 app:app
 
 With no settings, the API serves its data openly, with no rate limits or keys. Before exposing it publicly, turn on [hosted mode](#hosted-mode-rate-limits-and-api-keys).
 
-To run it as the hosted service does, with Redis, see [docs/deploy.md](docs/deploy.md).
+To serve it publicly with Redis, rate limits and HTTPS, see [docs/deploy.md](docs/deploy.md).
 
 ## Hosted mode: rate limits and API keys
 
@@ -177,10 +231,10 @@ Send a key in the `X-API-Key` header, or as `Authorization: Bearer <key>`, to be
 
 ### Getting a key
 
-1. Ask for a key with your email address:
+1. Ask for a key with your email address. For the public API, the host is `banks.globbapay.com`; for your own deployment, use its host:
 
    ```bash
-   curl -X POST https://<api-host>/api/keys/signup \
+   curl -X POST https://banks.globbapay.com/api/keys/signup \
      -H "Content-Type: application/json" -d '{"email": "you@example.com"}'
    ```
 
@@ -203,6 +257,8 @@ python -m src.keys_admin revoke 12                # revoke a key by id
 
 ## Endpoints
 
+The examples call a local copy at `http://localhost:5006`; the public API answers the same paths at `https://banks.globbapay.com`. Swagger UI lists every endpoint at `/api-docs`.
+
 Country codes are ISO 3166-1 alpha-2 or alpha-3 codes in any case: `NG`, `ng`, `NGA` and `nga` all work.
 
 Successful responses have `"success": true`. Errors have `"success": false` and a `message`, with status 400 for a bad query parameter, 404 for an unknown country, bank or route, and in hosted mode 401 for a bad API key and 429 for too many requests:
@@ -214,7 +270,7 @@ Successful responses have `"success": true`. Errors have `"success": false` and 
 }
 ```
 
-`GET` responses under `/api/` carry `Cache-Control: public, max-age=3600` and an `ETag`, so clients can revalidate with `If-None-Match` and get `304 Not Modified`. They also allow cross-origin requests from any site.
+`GET` responses under `/api/` carry `Cache-Control: public, max-age=3600` and an `ETag`, so clients can revalidate with `If-None-Match` and get `304 Not Modified`. They also allow cross-origin requests from any site. Every response carries `X-Content-Type-Options: nosniff`, and responses over HTTPS carry `Strict-Transport-Security`.
 
 ### Health check
 
@@ -467,7 +523,7 @@ mypy
 pytest
 ```
 
-CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it, and starts the Docker Compose deployment to check its rate limits, keys and logs with a real Redis. Tests never read your `.env`, call a real NIP list or send email.
+CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it. It also builds the image and runs each Docker setup: the public one with a real Redis, checking rate limits, keys, logs and that nothing logs an error; the same with Caddy in front; the Coolify Compose file; and the local `compose.yaml`. Tests never read your `.env`, call a real NIP list or send email.
 
 ## Notes on Nigeria's data
 
@@ -480,7 +536,7 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 
 ## Releases
 
-Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md) and every country's data file attached, and its image is published as `ghcr.io/enwokoma/bank-directory-api:X.Y.Z` for amd64 and arm64. The version lives in `src/__init__.py`.
+Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md) and every country's data file attached, and its image is published as `ghcr.io/enwokoma/bank-directory-api:X.Y.Z` for amd64 and arm64, also tagged `X.Y` and `latest`. The version lives in `src/__init__.py`.
 
 To publish a release:
 
