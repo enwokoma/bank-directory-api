@@ -11,7 +11,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 - Every bank has a `status`, `active` or `delisted`. A bank the regulator stops listing now stays in its data file as `delisted` instead of being removed, so stored ids and codes keep resolving; if it is listed again it becomes active under the same id.
 - `status` filter on the bank list: `active` (the default), `delisted` or `all`. `GET /api/countries/{country_code}/banks/{bank_id}` returns delisted banks too.
 - `delisted_bank_count` in the country summary.
-- Every bank has a `trading_name`: the name it trades under today when the register still lists an older one, or `null`. The bank list's `q` search matches it too. Trading names are kept in a reviewed file per country; Nigeria's starts with OSCOTECH MFB (OSCT MFB), Pocket (Abeg Technologies), Nombank (Amucha), Aella (Flourish) and 9japay (Amegy).
+- Every bank has a `trading_name`: the name it trades under today, which is its `name` unless the register still lists an older one. The bank list's `q` search matches it too. Trading names are kept in a reviewed file per country; Nigeria's starts with OSCOTECH MFB (OSCT MFB), Pocket (Abeg Technologies), Nombank (Amucha), Aella (Flourish) and 9japay (Amegy).
 - Nigeria: NIBSS codes for Quest Merchant Bank (formerly FBNQuest Merchant Bank, `060002`), Abeg Technologies (Pocket App, `100042`), Carbon (`100026`) and OSCT, now OSCOTECH (`090396`), bringing the total to 373.
 
 ### Changed

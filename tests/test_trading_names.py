@@ -11,10 +11,10 @@ def records(*names):
     return [{"name": name, "type": "microfinance", "identifiers": {}} for name in names]
 
 
-def test_sets_a_trading_name_on_matching_banks_and_none_on_the_rest():
+def test_sets_the_reviewed_trading_name_or_else_the_register_name():
     banks = records("OSCT MFB", "KUDA MFB")
     assert apply_trading_names(banks, {"OSCT MFB": "OSCOTECH MFB"}) == []
-    assert [bank["trading_name"] for bank in banks] == ["OSCOTECH MFB", None]
+    assert [bank["trading_name"] for bank in banks] == ["OSCOTECH MFB", "KUDA MFB"]
 
 
 def test_reports_entries_that_name_no_bank():
@@ -22,10 +22,10 @@ def test_reports_entries_that_name_no_bank():
     assert problems == ["Trading name for 'OSCT MFB' names no bank in the register."]
 
 
-def test_ignores_and_reports_a_trading_name_equal_to_the_register_name():
+def test_reports_a_trading_name_equal_to_the_register_name():
     banks = records("OSCOTECH MFB")
     problems = apply_trading_names(banks, {"OSCOTECH MFB": "OSCOTECH MFB"})
-    assert banks[0]["trading_name"] is None
+    assert banks[0]["trading_name"] == "OSCOTECH MFB"
     assert problems == ["Trading name for 'OSCOTECH MFB' is the register name; the entry can be removed."]
 
 

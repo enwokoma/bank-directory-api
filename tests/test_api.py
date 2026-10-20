@@ -80,6 +80,7 @@ class TestBankList:
         assert data["offset"] == 0
         assert data["limit"] is None
         assert list(data["banks"][0]) == ["id", "name", "trading_name", "type", "status", "identifiers"]
+        assert all(bank["trading_name"] for bank in data["banks"])
         assert {bank["status"] for bank in data["banks"]} == {"active"}
 
     def test_filters_by_one_or_more_types(self, client):
@@ -151,7 +152,7 @@ class TestStatus:
             return {
                 "id": bank_id,
                 "name": name,
-                "trading_name": None,
+                "trading_name": name,
                 "type": "commercial",
                 "status": status,
                 "identifiers": {"cbn_institution_id": cbn_id},

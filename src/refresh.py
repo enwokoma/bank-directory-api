@@ -195,7 +195,7 @@ def _with_status(bank: dict[str, Any], status: str) -> dict[str, Any]:
     return {
         "id": bank["id"],
         "name": bank["name"],
-        "trading_name": bank.get("trading_name"),
+        "trading_name": bank.get("trading_name") or bank["name"],
         "type": bank["type"],
         "status": status,
         "identifiers": bank["identifiers"],

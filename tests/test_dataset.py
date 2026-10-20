@@ -17,7 +17,7 @@ VALID = {
         {
             "id": "access-bank",
             "name": "Access Bank Plc",
-            "trading_name": None,
+            "trading_name": "Access Bank Plc",
             "type": "commercial",
             "status": "active",
             "identifiers": {"cbn_institution_id": "1"},
@@ -64,9 +64,9 @@ def test_valid_dataset_has_no_errors():
         (lambda raw: raw["banks"][0].update(status="closed"), "status 'closed' is not one of"),
         (lambda raw: raw["banks"][0].pop("status"), "missing keys ['status']"),
         (lambda raw: raw["banks"][0].pop("trading_name"), "missing keys ['trading_name']"),
-        (lambda raw: raw["banks"][0].update(trading_name="Access Bank Plc"), "trading_name must be null"),
-        (lambda raw: raw["banks"][0].update(trading_name=" Access "), "trading_name must be null"),
-        (lambda raw: raw["banks"][0].update(trading_name=""), "trading_name must be null"),
+        (lambda raw: raw["banks"][0].update(trading_name=None), "trading_name must be non-empty text"),
+        (lambda raw: raw["banks"][0].update(trading_name=" Access "), "trading_name must be non-empty text"),
+        (lambda raw: raw["banks"][0].update(trading_name=""), "trading_name must be non-empty text"),
     ],
 )
 def test_reports_each_problem(change, expected):

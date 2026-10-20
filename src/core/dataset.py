@@ -152,9 +152,8 @@ def _validate_bank(bank: Any, profile: CountryProfile, seen_ids: set[str]) -> li
 
     if not _is_clean_text(bank.get("name")):
         errors.append("name must be non-empty text without extra spaces.")
-    trading_name = bank.get("trading_name")
-    if trading_name is not None and (not _is_clean_text(trading_name) or trading_name == bank.get("name")):
-        errors.append("trading_name must be null, or text without extra spaces that differs from name.")
+    if not _is_clean_text(bank.get("trading_name")):
+        errors.append("trading_name must be non-empty text without extra spaces.")
     if bank.get("type") not in profile.bank_type_codes():
         errors.append(f"type {bank.get('type')!r} is not one of {profile.bank_type_codes()}.")
     if bank.get("status") not in STATUSES:

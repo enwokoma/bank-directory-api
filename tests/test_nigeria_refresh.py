@@ -45,7 +45,7 @@ def test_builds_records_from_every_category():
     banks = by_name(dataset["banks"])
     assert banks["Access Bank Plc"] == {
         "name": "Access Bank Plc",
-        "trading_name": None,
+        "trading_name": "Access Bank Plc",
         "type": "commercial",
         "identifiers": {"cbn_institution_id": "1"},
     }
@@ -73,7 +73,7 @@ def test_keeps_one_record_per_duplicated_name():
     assert banks == [
         {
             "name": "Katsu Microfinance Bank Limited",
-            "trading_name": None,
+            "trading_name": "Katsu Microfinance Bank Limited",
             "type": "microfinance",
             "identifiers": {"cbn_institution_id": "10009"},
         }
@@ -100,7 +100,7 @@ def test_adds_licensed_mobile_money_operators():
     banks = by_name(nigeria_refresh.fetch_dataset(FixtureClient())["banks"])
     assert banks["Opay Digital Services Limited (Formerly Paycom Nigeria Limited)"] == {
         "name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
-        "trading_name": None,
+        "trading_name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
         "type": "mobile_money",
         "identifiers": {},
     }
@@ -113,14 +113,14 @@ def test_adds_reviewed_trading_names(tmp_path, monkeypatch, caplog):
     monkeypatch.setattr(nigeria_refresh, "TRADING_NAMES_FILE", names)
     banks = by_name(nigeria_refresh.fetch_dataset(FixtureClient())["banks"])
     assert banks["Abeg Technologies Limited"]["trading_name"] == "Pocket"
-    assert banks["Access Bank Plc"]["trading_name"] is None
+    assert banks["Access Bank Plc"]["trading_name"] == "Access Bank Plc"
     assert "Trading name for 'Gone MFB' names no bank in the register." in caplog.text
 
 
 def test_committed_trading_names_name_banks_in_the_register():
     names = json.loads(nigeria_refresh.TRADING_NAMES_FILE.read_text(encoding="utf-8"))
     dataset = json.loads((Path(__file__).parents[1] / "data" / "countries" / "NGA.json").read_text(encoding="utf-8"))
-    trading = {bank["name"]: bank["trading_name"] for bank in dataset["banks"] if bank["trading_name"]}
+    trading = {bank["name"]: bank["trading_name"] for bank in dataset["banks"] if bank["trading_name"] != bank["name"]}
     assert trading == names
 
 

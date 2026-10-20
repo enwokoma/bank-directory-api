@@ -24,7 +24,7 @@ There are three ways, from least to most setup: call the public API, use the dat
 const response = await fetch("https://banks.globbapay.com/api/countries/NG/banks?has=nibss_code");
 const { banks } = await response.json();
 // Institutions that can receive a NIP transfer, for a bank dropdown, e.g.
-// { id: "access-bank", name: "Access Bank Plc", trading_name: null, type: "commercial",
+// { id: "access-bank", name: "Access Bank Plc", trading_name: "Access Bank Plc", type: "commercial",
 //   status: "active", identifiers: { cbn_institution_id: "1", nibss_code: "000014" } }
 ```
 
@@ -404,7 +404,7 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
     {
       "id": "zenith-bank",
       "name": "Zenith Bank Plc",
-      "trading_name": null,
+      "trading_name": "Zenith Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -453,7 +453,7 @@ curl http://localhost:5006/api/countries/NG/banks/access-bank
   "bank": {
     "id": "access-bank",
     "name": "Access Bank Plc",
-    "trading_name": null,
+    "trading_name": "Access Bank Plc",
     "type": "commercial",
     "status": "active",
     "identifiers": {
@@ -470,7 +470,7 @@ curl http://localhost:5006/api/countries/NG/banks/access-bank
 | --- | --- |
 | `id` | Slug made from the bank's name when it was first listed, for example `access-bank`. It stays the same when the bank is renamed, so it is safe to store. |
 | `name` | The name exactly as the official register publishes it, including its capitalization. Only stray spaces and line breaks are removed. |
-| `trading_name` | The name the bank trades under today, when the register still lists an older one, for example `Nombank` for the register's Amucha Microfinance Bank Limited. `null` for most banks. Show it in place of `name` where people pick a bank, such as a transfer dropdown. |
+| `trading_name` | The name the bank trades under today. It is the same as `name` unless the register still lists an older one, for example `Nombank` for the register's Amucha Microfinance Bank Limited. It is always set, so show it where people pick a bank, such as a transfer dropdown. |
 | `type` | One of the country's bank type codes, listed by `GET /api/countries/{country_code}`. |
 | `status` | `active` while the regulator lists the bank, `delisted` once it no longer does: its licence was revoked, it merged into another bank, or it otherwise left the register. |
 | `identifiers` | Codes for the bank under the schemes the country declares, listed by `GET /api/countries/{country_code}`. A scheme is left out when the bank has no code under it. |
@@ -528,7 +528,7 @@ Registers are slow to record renames, so a bank's `name` can be one it no longer
 
 1. Find an official, public source for the country's licensed banks, usually the central bank or banking regulator. Do not use sources whose terms forbid redistribution, such as the SWIFT BIC directory or paid sort-code directories.
 2. Create `src/countries/<country>/profile.py` with a `CountryProfile`: ISO codes, name, currency, the bank types the regulator licenses, the identifier schemes the source provides, and a pattern for each scheme's values. Banks keep their ids between refreshes through any shared identifier, or failing that their exact name.
-3. Create `src/countries/<country>/refresh.py` with a `fetch_dataset(client, previous_banks)` function that returns `{"sources": [...], "banks": [...]}`, where each bank has `name`, `type` and `identifiers`, and `trading_name` if the country keeps reviewed trading names (see `src/core/trading_names.py`). `previous_banks` holds the banks already in the file, for values a source cannot supply on a given run. Use `SourceClient` for requests and `clean_text` for names.
+3. Create `src/countries/<country>/refresh.py` with a `fetch_dataset(client, previous_banks)` function that returns `{"sources": [...], "banks": [...]}`, where each bank has `name`, `type` and `identifiers`, and `trading_name` if the country keeps reviewed trading names (see `src/core/trading_names.py`); a bank without one trades under its `name`. `previous_banks` holds the banks already in the file, for values a source cannot supply on a given run. Use `SourceClient` for requests and `clean_text` for names.
 4. Register the profile in `src/countries/registry.py`.
 5. Run `python -m src.refresh <CODE>` to generate the data file.
 6. Add tests for the refresh module using saved samples of the source's real responses in `tests/fixtures/<country>/`, then run the checks below.

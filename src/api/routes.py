@@ -148,7 +148,7 @@ def list_banks(country_code: str):
         banks = [
             bank
             for bank in banks
-            if query in search_text(bank["name"]) or query in search_text(bank["trading_name"] or "") or query in bank["id"]
+            if query in search_text(bank["name"]) or query in search_text(bank["trading_name"]) or query in bank["id"]
         ]
 
     page = banks[offset : offset + limit if limit is not None else None]
