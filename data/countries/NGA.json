@@ -1464,7 +1464,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3349"
+        "cbn_institution_id": "3349",
+        "nibss_code": "100026"
       }
     },
     {
@@ -5947,7 +5948,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3848"
+        "cbn_institution_id": "3848",
+        "nibss_code": "090396"
       }
     },
     {

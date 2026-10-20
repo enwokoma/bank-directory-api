@@ -8,7 +8,7 @@ A public instance runs at [banks.globbapay.com](https://banks.globbapay.com/api-
 
 | Country | Codes | Institutions | Bank types | Transfer codes | Sources |
 | --- | --- | --- | --- | --- | --- |
-| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 371 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
+| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 373 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
 
 `GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes.
 
@@ -414,7 +414,7 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
 
 `total` counts every match; `banks` holds the requested page. Banks are sorted by name.
 
-A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (371 today), which includes mobile money operators such as OPay and PalmPay:
+A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (373 today), which includes mobile money operators such as OPay and PalmPay:
 
 ```bash
 curl "http://localhost:5006/api/countries/NG/banks?has=nibss_code"
@@ -539,8 +539,8 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
 - Mobile money operators come from the CBN's Payment Service Providers page, which lists 17. The register's own mobile money list is shorter and leaves out OPay. Each operator's NIBSS code is the one its wallets use on NIP.
-- 371 of the 880 institutions have a NIBSS code: 27 of 28 commercial banks, all 5 payment service banks, 4 of 6 non-interest banks, all 5 merchant banks, 22 of 33 primary mortgage banks, 15 of 17 mobile money operators and 293 of 786 microfinance banks. Tatum Bank and Summit Bank were not in any NIP list used, and most microfinance banks without a code are not on NIP at all.
-- Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank and Abeg Technologies hold the codes NIP still lists as FBNQuest Merchant Bank and Pocket App.
+- 373 of the 880 institutions have a NIBSS code: 27 of 28 commercial banks, all 5 payment service banks, 4 of 6 non-interest banks, all 5 merchant banks, 22 of 33 primary mortgage banks, 15 of 17 mobile money operators and 295 of 786 microfinance banks. Tatum Bank and Summit Bank were not in any NIP list used, and most microfinance banks without a code are not on NIP at all.
+- Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank, Abeg Technologies and OSCT hold the codes NIP lists as FBNQuest Merchant Bank, Pocket App and Oscotech MFB.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
 - The register also has a per-bank detail endpoint with licence tier and website, but it fails for many banks and its websites are out of date, so it is not used.
 
