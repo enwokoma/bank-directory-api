@@ -44,14 +44,14 @@ Each country's data is one JSON file, the same one the API serves. Fetch it from
 | URL | Gives you | From a browser |
 | --- | --- | --- |
 | `https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/data/countries/NGA.json` | Always the latest data | Yes |
-| `https://raw.githubusercontent.com/enwokoma/bank-directory-api/v0.3.4/data/countries/NGA.json` | The file as released in v0.3.4, which never changes | Yes |
+| `https://raw.githubusercontent.com/enwokoma/bank-directory-api/v0.4.0/data/countries/NGA.json` | The file as released in v0.4.0, which never changes | Yes |
 | `https://github.com/enwokoma/bank-directory-api/releases/latest/download/NGA.json` | The latest release's file, with a `SHA256SUMS` file next to it | No |
-| `https://github.com/enwokoma/bank-directory-api/releases/download/v0.3.4/NGA.json` | The v0.3.4 release's file | No |
+| `https://github.com/enwokoma/bank-directory-api/releases/download/v0.4.0/NGA.json` | The v0.4.0 release's file | No |
 
 The `main` branch always has the newest data, reviewed before it is merged. The release download links suit servers, build scripts and the command line; browsers cannot fetch them from another site, because GitHub sends no CORS header for release downloads.
 
 ```js
-// Always the latest data. To pin a release, replace "main" with its tag, such as "v0.3.4".
+// Always the latest data. To pin a release, replace "main" with its tag, such as "v0.4.0".
 const url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/data/countries/NGA.json";
 const { banks } = await (await fetch(url)).json();
 
@@ -62,7 +62,7 @@ const transferBanks = banks.filter((bank) => bank.status === "active" && bank.id
 ```python
 import requests
 
-# Always the latest data. To pin a release, replace "main" with its tag, such as "v0.3.4".
+# Always the latest data. To pin a release, replace "main" with its tag, such as "v0.4.0".
 url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/data/countries/NGA.json"
 banks = requests.get(url, timeout=10).json()["banks"]
 transfer_banks = [bank for bank in banks if bank["status"] == "active" and "nibss_code" in bank["identifiers"]]
@@ -93,8 +93,8 @@ Then open `http://localhost:5006/api-docs`. To keep it running in the background
 | Tag | Gives you |
 | --- | --- |
 | `latest` | The latest release |
-| `0.3` | The latest 0.3.x release |
-| `0.3.4` | That exact release; pin one like this in production so upgrades are deliberate |
+| `0.4` | The latest 0.4.x release |
+| `0.4.0` | That exact release; pin one like this in production so upgrades are deliberate |
 
 To build it from your own clone, for example after changing the code or refreshing the data, use the `compose.yaml` at the root of the repository:
 
