@@ -192,7 +192,14 @@ def delisted_banks(previous_banks: list[dict[str, Any]], listed: list[dict[str, 
 
 
 def _with_status(bank: dict[str, Any], status: str) -> dict[str, Any]:
-    return {"id": bank["id"], "name": bank["name"], "type": bank["type"], "status": status, "identifiers": bank["identifiers"]}
+    return {
+        "id": bank["id"],
+        "name": bank["name"],
+        "trading_name": bank.get("trading_name"),
+        "type": bank["type"],
+        "status": status,
+        "identifiers": bank["identifiers"],
+    }
 
 
 def _conflicting_identifiers(record: dict[str, Any], previous: dict[str, Any], key_schemes: list[str]) -> bool:

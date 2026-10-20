@@ -73,7 +73,7 @@ def test_build_dataset_sorts_banks_and_validates():
     dataset = refresh.build_dataset(NIGERIA_PROFILE, fetched, [], datetime.date(2026, 10, 14))
     assert dataset["retrieved_on"] == "2026-10-14"
     assert [bank["id"] for bank in dataset["banks"]] == ["access-bank", "zenith-bank"]
-    assert list(dataset["banks"][0]) == ["id", "name", "type", "status", "identifiers"]
+    assert list(dataset["banks"][0]) == ["id", "name", "trading_name", "type", "status", "identifiers"]
     assert {bank["status"] for bank in dataset["banks"]} == {"active"}
     assert refresh.validate_dataset(dataset, NIGERIA_PROFILE) == []
 

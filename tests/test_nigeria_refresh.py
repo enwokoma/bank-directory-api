@@ -45,6 +45,7 @@ def test_builds_records_from_every_category():
     banks = by_name(dataset["banks"])
     assert banks["Access Bank Plc"] == {
         "name": "Access Bank Plc",
+        "trading_name": None,
         "type": "commercial",
         "identifiers": {"cbn_institution_id": "1"},
     }
@@ -70,7 +71,12 @@ def test_cleans_spacing_without_changing_capitalization():
 def test_keeps_one_record_per_duplicated_name():
     banks = [bank for bank in nigeria_refresh.fetch_dataset(FixtureClient())["banks"] if bank["name"].startswith("Katsu")]
     assert banks == [
-        {"name": "Katsu Microfinance Bank Limited", "type": "microfinance", "identifiers": {"cbn_institution_id": "10009"}}
+        {
+            "name": "Katsu Microfinance Bank Limited",
+            "trading_name": None,
+            "type": "microfinance",
+            "identifiers": {"cbn_institution_id": "10009"},
+        }
     ]
 
 
@@ -94,10 +100,28 @@ def test_adds_licensed_mobile_money_operators():
     banks = by_name(nigeria_refresh.fetch_dataset(FixtureClient())["banks"])
     assert banks["Opay Digital Services Limited (Formerly Paycom Nigeria Limited)"] == {
         "name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
+        "trading_name": None,
         "type": "mobile_money",
         "identifiers": {},
     }
     assert sum(1 for bank in banks.values() if bank["type"] == "mobile_money") == 17
+
+
+def test_adds_reviewed_trading_names(tmp_path, monkeypatch, caplog):
+    names = tmp_path / "trading_names.json"
+    names.write_text(json.dumps({"Abeg Technologies Limited": "Pocket", "Gone MFB": "Gone"}), encoding="utf-8")
+    monkeypatch.setattr(nigeria_refresh, "TRADING_NAMES_FILE", names)
+    banks = by_name(nigeria_refresh.fetch_dataset(FixtureClient())["banks"])
+    assert banks["Abeg Technologies Limited"]["trading_name"] == "Pocket"
+    assert banks["Access Bank Plc"]["trading_name"] is None
+    assert "Trading name for 'Gone MFB' names no bank in the register." in caplog.text
+
+
+def test_committed_trading_names_name_banks_in_the_register():
+    names = json.loads(nigeria_refresh.TRADING_NAMES_FILE.read_text(encoding="utf-8"))
+    dataset = json.loads((Path(__file__).parents[1] / "data" / "countries" / "NGA.json").read_text(encoding="utf-8"))
+    trading = {bank["name"]: bank["trading_name"] for bank in dataset["banks"] if bank["trading_name"]}
+    assert trading == names
 
 
 def test_reads_only_the_mobile_money_table():

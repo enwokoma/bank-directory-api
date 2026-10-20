@@ -79,7 +79,7 @@ class TestBankList:
         assert data["total"] == len(data["banks"]) == country["bank_count"]
         assert data["offset"] == 0
         assert data["limit"] is None
-        assert list(data["banks"][0]) == ["id", "name", "type", "status", "identifiers"]
+        assert list(data["banks"][0]) == ["id", "name", "trading_name", "type", "status", "identifiers"]
         assert {bank["status"] for bank in data["banks"]} == {"active"}
 
     def test_filters_by_one_or_more_types(self, client):
@@ -100,6 +100,12 @@ class TestBankList:
     def test_searches_names_and_ids(self, client, query):
         banks = get_json(client, f"/api/countries/NG/banks?q={query}")["banks"]
         assert "zenith-bank" in [bank["id"] for bank in banks]
+
+    @pytest.mark.parametrize("query", ["nombank", "NOMBANK", "amucha"])
+    def test_searches_trading_names_too(self, client, query):
+        banks = get_json(client, f"/api/countries/NG/banks?q={query}")["banks"]
+        amucha = next(bank for bank in banks if bank["name"] == "Amucha Microfinance Bank Limited")
+        assert amucha["trading_name"] == "Nombank"
 
     def test_search_and_type_combine(self, client):
         banks = get_json(client, "/api/countries/NG/banks?q=bank&type=merchant")["banks"]
@@ -145,6 +151,7 @@ class TestStatus:
             return {
                 "id": bank_id,
                 "name": name,
+                "trading_name": None,
                 "type": "commercial",
                 "status": status,
                 "identifiers": {"cbn_institution_id": cbn_id},

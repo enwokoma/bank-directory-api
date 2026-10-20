@@ -74,7 +74,7 @@ def list_banks(country_code: str):
         in: query
         type: string
         required: false
-        description: Match banks whose name or id contains this text, ignoring case and accents
+        description: Match banks whose name, trading name or id contains this text, ignoring case and accents
       - name: type
         in: query
         type: string
@@ -145,7 +145,11 @@ def list_banks(country_code: str):
             banks = [bank for bank in banks if bank["identifiers"].get(scheme) == value.strip()]
     query = search_text(request.args.get("q", ""))
     if query:
-        banks = [bank for bank in banks if query in search_text(bank["name"]) or query in bank["id"]]
+        banks = [
+            bank
+            for bank in banks
+            if query in search_text(bank["name"]) or query in search_text(bank["trading_name"] or "") or query in bank["id"]
+        ]
 
     page = banks[offset : offset + limit if limit is not None else None]
     return jsonify(

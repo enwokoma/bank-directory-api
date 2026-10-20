@@ -15,13 +15,18 @@ Run it through the refresh command: `python -m src.refresh NGA`.
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 from typing import Any
 
 from src.core.cleaning import clean_text
 from src.core.source_client import SourceClient
+from src.core.trading_names import apply_trading_names, load_trading_names
 from src.countries.nigeria import mobile_money, nibss_codes, nip
 
 logger = logging.getLogger(__name__)
+
+# Reviewed names banks trade under where the register still has an older one.
+TRADING_NAMES_FILE = Path(__file__).with_name("trading_names.json")
 
 CBN_BASE_URL = "https://www.cbn.gov.ng"
 SOURCE = {
@@ -80,6 +85,8 @@ def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | N
         )
         log_match_report(report, records)
         sources.append(nip.SOURCE)
+    for problem in apply_trading_names(records, load_trading_names(TRADING_NAMES_FILE)):
+        logger.warning(problem)
     return {"sources": sources, "banks": records}
 
 
