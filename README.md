@@ -24,8 +24,8 @@ There are three ways, from least to most setup: call the public API, use the dat
 const response = await fetch("https://banks.globbapay.com/api/countries/NG/banks?has=nibss_code");
 const { banks } = await response.json();
 // Institutions that can receive a NIP transfer, for a bank dropdown, e.g.
-// { id: "access-bank", name: "Access Bank Plc", type: "commercial", status: "active",
-//   identifiers: { cbn_institution_id: "1", nibss_code: "000014" } }
+// { id: "access-bank", name: "Access Bank Plc", trading_name: "Access Bank Plc", type: "commercial",
+//   status: "active", identifiers: { cbn_institution_id: "1", nibss_code: "000014" } }
 ```
 
 ```python
@@ -141,6 +141,7 @@ bank-directory-api/
       api_keys.py         API keys and sign-up tokens in SQLite, stored as hashes
       email.py            Sign-up emails through Amazon SES
       cleaning.py         Whitespace cleanup and id slugs used by refresh modules
+      trading_names.py    Adds reviewed trading names to register records
       source_client.py    Polite, retrying HTTP client for sources
     countries/
       profile.py          Country profile shape
@@ -153,6 +154,8 @@ bank-directory-api/
         nibss_codes.py    Matches banks to NIBSS codes
         nibss_code_matches.json
                           Reviewed matches for names the lists spell differently
+        trading_names.json
+                          Reviewed names banks trade under where the register has an older one
     refresh.py            `python -m src.refresh` command
     keys_admin.py         `python -m src.keys_admin`: list, issue and revoke API keys
   Dockerfile              The API's image, served by gunicorn (gunicorn.conf.py)
@@ -375,7 +378,7 @@ GET /api/countries/{country_code}/banks
 Query parameters, all optional:
 
 - `status`: `active` (the default) for banks the regulator lists today, `delisted` for banks it no longer lists, or `all` for both. It applies to every other filter, identifier lookups included.
-- `q`: match banks whose name or id contains this text, ignoring case, accents and extra spaces
+- `q`: match banks whose name, trading name or id contains this text, ignoring case, accents and extra spaces, so `q=nombank` finds the bank the register still calls Amucha Microfinance Bank
 - `type`: one or more comma-separated bank type codes, for example `commercial,merchant`
 - `limit`: return at most this many banks (1 to 1000); omit it to get every match
 - `offset`: skip this many matching banks first
@@ -401,6 +404,7 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
     {
       "id": "zenith-bank",
       "name": "Zenith Bank Plc",
+      "trading_name": "Zenith Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -449,6 +453,7 @@ curl http://localhost:5006/api/countries/NG/banks/access-bank
   "bank": {
     "id": "access-bank",
     "name": "Access Bank Plc",
+    "trading_name": "Access Bank Plc",
     "type": "commercial",
     "status": "active",
     "identifiers": {
@@ -465,6 +470,7 @@ curl http://localhost:5006/api/countries/NG/banks/access-bank
 | --- | --- |
 | `id` | Slug made from the bank's name when it was first listed, for example `access-bank`. It stays the same when the bank is renamed, so it is safe to store. |
 | `name` | The name exactly as the official register publishes it, including its capitalization. Only stray spaces and line breaks are removed. |
+| `trading_name` | The name the bank trades under today. It is the same as `name` unless the register still lists an older one, for example `Nombank` for the register's Amucha Microfinance Bank Limited. It is always set, so show it where people pick a bank, such as a transfer dropdown. |
 | `type` | One of the country's bank type codes, listed by `GET /api/countries/{country_code}`. |
 | `status` | `active` while the regulator lists the bank, `delisted` once it no longer does: its licence was revoked, it merged into another bank, or it otherwise left the register. |
 | `identifiers` | Codes for the bank under the schemes the country declares, listed by `GET /api/countries/{country_code}`. A scheme is left out when the bank has no code under it. |
@@ -514,11 +520,15 @@ With them, the command also prints a review report: every match with the institu
 
 The scheduled check compares the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` versions for a second list. GitHub masks secret values in the logs.
 
+### Trading names
+
+Registers are slow to record renames, so a bank's `name` can be one it no longer uses. To give it the name it trades under, add the bank's name exactly as the register publishes it, with its trading name, to `src/countries/nigeria/trading_names.json` and run the refresh again. The refresh warns about an entry that names no bank in the register, and about one whose trading name the register now uses itself; remove such entries.
+
 ## Adding a country
 
 1. Find an official, public source for the country's licensed banks, usually the central bank or banking regulator. Do not use sources whose terms forbid redistribution, such as the SWIFT BIC directory or paid sort-code directories.
 2. Create `src/countries/<country>/profile.py` with a `CountryProfile`: ISO codes, name, currency, the bank types the regulator licenses, the identifier schemes the source provides, and a pattern for each scheme's values. Banks keep their ids between refreshes through any shared identifier, or failing that their exact name.
-3. Create `src/countries/<country>/refresh.py` with a `fetch_dataset(client, previous_banks)` function that returns `{"sources": [...], "banks": [...]}`, where each bank has `name`, `type` and `identifiers`. `previous_banks` holds the banks already in the file, for values a source cannot supply on a given run. Use `SourceClient` for requests and `clean_text` for names.
+3. Create `src/countries/<country>/refresh.py` with a `fetch_dataset(client, previous_banks)` function that returns `{"sources": [...], "banks": [...]}`, where each bank has `name`, `type` and `identifiers`, and `trading_name` if the country keeps reviewed trading names (see `src/core/trading_names.py`); a bank without one trades under its `name`. `previous_banks` holds the banks already in the file, for values a source cannot supply on a given run. Use `SourceClient` for requests and `clean_text` for names.
 4. Register the profile in `src/countries/registry.py`.
 5. Run `python -m src.refresh <CODE>` to generate the data file.
 6. Add tests for the refresh module using saved samples of the source's real responses in `tests/fixtures/<country>/`, then run the checks below.

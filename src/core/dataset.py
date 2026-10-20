@@ -23,7 +23,7 @@ from src.countries.registry import list_country_profiles
 DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "countries"
 
 _TOP_LEVEL_KEYS = {"country", "retrieved_on", "sources", "banks"}
-_BANK_KEYS = {"id", "name", "type", "status", "identifiers"}
+_BANK_KEYS = {"id", "name", "trading_name", "type", "status", "identifiers"}
 # "active" while the regulator lists the bank; "delisted" once it no longer does.
 STATUSES = ("active", "delisted")
 _SLUG_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -152,6 +152,8 @@ def _validate_bank(bank: Any, profile: CountryProfile, seen_ids: set[str]) -> li
 
     if not _is_clean_text(bank.get("name")):
         errors.append("name must be non-empty text without extra spaces.")
+    if not _is_clean_text(bank.get("trading_name")):
+        errors.append("trading_name must be non-empty text without extra spaces.")
     if bank.get("type") not in profile.bank_type_codes():
         errors.append(f"type {bank.get('type')!r} is not one of {profile.bank_type_codes()}.")
     if bank.get("status") not in STATUSES:

@@ -19,6 +19,7 @@
     {
       "id": "1trust-microfinance-bank",
       "name": "1Trust Microfinance Bank Limited",
+      "trading_name": "1Trust Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -28,6 +29,7 @@
     {
       "id": "5tt-microfinance-bank",
       "name": "5TT Microfinance Bank Limited",
+      "trading_name": "5TT Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -37,6 +39,7 @@
     {
       "id": "9-psb",
       "name": "9 PSB Ltd",
+      "trading_name": "9 PSB Ltd",
       "type": "payment_service",
       "status": "active",
       "identifiers": {
@@ -47,6 +50,7 @@
     {
       "id": "aacb-microfinance-bank",
       "name": "AACB Microfinance Bank Limited",
+      "trading_name": "AACB Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -56,6 +60,7 @@
     {
       "id": "ab-microfinance-bank",
       "name": "AB Microfinance Bank Limited",
+      "trading_name": "AB Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -66,6 +71,7 @@
     {
       "id": "abbey-mortgage-bank",
       "name": "ABBEY MORTGAGE BANK",
+      "trading_name": "ABBEY MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -76,6 +82,7 @@
     {
       "id": "abeg-technologies",
       "name": "Abeg Technologies Limited",
+      "trading_name": "Pocket",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -85,6 +92,7 @@
     {
       "id": "abia-state-university-microfinance-bank",
       "name": "Abia State University Microfinance Bank Limited",
+      "trading_name": "Abia State University Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -94,6 +102,7 @@
     {
       "id": "abigi-microfinance-bank",
       "name": "Abigi Microfinance Bank Limited",
+      "trading_name": "Abigi Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -103,6 +112,7 @@
     {
       "id": "above-only-microfinance-bank",
       "name": "Above Only Microfinance Bank",
+      "trading_name": "Above Only Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -113,6 +123,7 @@
     {
       "id": "abubakar-tafawa-balewa-university-atbu-microfinance-bank",
       "name": "Abubakar Tafawa Balewa University (ATBU) Microfinance Bank",
+      "trading_name": "Abubakar Tafawa Balewa University (ATBU) Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -123,6 +134,7 @@
     {
       "id": "abucoop-microfinance-bank",
       "name": "Abucoop Microfinance Bank Limited",
+      "trading_name": "Abucoop Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -133,6 +145,7 @@
     {
       "id": "abulesoro-microfinance-bank",
       "name": "Abulesoro Microfinance Bank",
+      "trading_name": "Abulesoro Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -142,6 +155,7 @@
     {
       "id": "access-bank",
       "name": "Access Bank Plc",
+      "trading_name": "Access Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -152,6 +166,7 @@
     {
       "id": "accion-microfinance-bank",
       "name": "Accion Microfinance Bank Limited",
+      "trading_name": "Accion Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -162,6 +177,7 @@
     {
       "id": "ace-microfinance-bank",
       "name": "ACE Microfinance Bank Limited",
+      "trading_name": "ACE Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -171,6 +187,7 @@
     {
       "id": "achina-microfinance-bank",
       "name": "Achina Microfinance Bank Limited",
+      "trading_name": "Achina Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -180,6 +197,7 @@
     {
       "id": "ada-microfinance-bank",
       "name": "ADA Microfinance Bank Limited",
+      "trading_name": "ADA Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -190,6 +208,7 @@
     {
       "id": "adamawa-mortgage-bank",
       "name": "Adamawa Mortgage Bank Limited",
+      "trading_name": "Adamawa Mortgage Bank Limited",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -199,6 +218,7 @@
     {
       "id": "adazi-enu-microfinance-bank",
       "name": "Adazi-Enu Microfinance Bank Limited",
+      "trading_name": "Adazi-Enu Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -208,6 +228,7 @@
     {
       "id": "adazi-nnukwu-microfinance-bank",
       "name": "Adazi-Nnukwu Microfinance Bank Limited",
+      "trading_name": "Adazi-Nnukwu Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -217,6 +238,7 @@
     {
       "id": "addosser-microfinance-bank",
       "name": "Addosser Microfinance Bank Limited",
+      "trading_name": "Addosser Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -227,6 +249,7 @@
     {
       "id": "adeyemi-college-staff-microfinance-bank",
       "name": "Adeyemi College Staff Microfinance Bank",
+      "trading_name": "Adeyemi College Staff Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -237,6 +260,7 @@
     {
       "id": "adike-microfinance-bank",
       "name": "Adike Microfinance Bank Limited",
+      "trading_name": "Adike Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -246,6 +270,7 @@
     {
       "id": "advancly-microfinance-bank",
       "name": "Advancly Microfinance Bank Limited",
+      "trading_name": "Advancly Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -255,6 +280,7 @@
     {
       "id": "afekhafe-microfinance-bank",
       "name": "Afekhafe Microfinance Bank",
+      "trading_name": "Afekhafe Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -265,6 +291,7 @@
     {
       "id": "afemai-microfinance-bank",
       "name": "Afemai Microfinance Bank Limited",
+      "trading_name": "Afemai Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -275,6 +302,7 @@
     {
       "id": "afole-microfinance-bank",
       "name": "Afole Microfinance Bank Limited",
+      "trading_name": "Afole Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -284,6 +312,7 @@
     {
       "id": "ag-homes",
       "name": "AG HOMES",
+      "trading_name": "AG HOMES",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -294,6 +323,7 @@
     {
       "id": "agosasa-microfinance-bank",
       "name": "Agosasa Microfinance Bank Limited",
+      "trading_name": "Agosasa Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -304,6 +334,7 @@
     {
       "id": "ahmadu-bello-university-microfinance-bank",
       "name": "Ahmadu Bello University Microfinance Bank Limited",
+      "trading_name": "Ahmadu Bello University Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -314,6 +345,7 @@
     {
       "id": "aibio-microfinance-bank",
       "name": "Aibio Microfinance Bank",
+      "trading_name": "Aibio Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -323,6 +355,7 @@
     {
       "id": "ajewole-microfinance-bank",
       "name": "Ajewole Microfinance Bank Limited",
+      "trading_name": "Ajewole Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -332,6 +365,7 @@
     {
       "id": "ajose-microfinance-bank",
       "name": "Ajose Microfinance Bank Limited",
+      "trading_name": "Ajose Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -341,6 +375,7 @@
     {
       "id": "ajuta-microfinance-bank",
       "name": "Ajuta Microfinance Bank Limited",
+      "trading_name": "Ajuta Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -350,6 +385,7 @@
     {
       "id": "akalabo-microfinance-bank",
       "name": "Akalabo Microfinance Bank Limited",
+      "trading_name": "Akalabo Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -359,6 +395,7 @@
     {
       "id": "akata-microfinance-bank",
       "name": "Akata Microfinance Bank Limited",
+      "trading_name": "Akata Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -368,6 +405,7 @@
     {
       "id": "akokwa-microfinance-bank",
       "name": "Akokwa Microfinance Bank Limited",
+      "trading_name": "Akokwa Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -377,6 +415,7 @@
     {
       "id": "akpo-microfinance-bank",
       "name": "Akpo Microfinance Bank Limited",
+      "trading_name": "Akpo Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -386,6 +425,7 @@
     {
       "id": "aku-diewa-microfinance-bank",
       "name": "Aku Diewa Microfinance Bank Limited",
+      "trading_name": "Aku Diewa Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -395,6 +435,7 @@
     {
       "id": "akuchukwu-microfinance-bank",
       "name": "Akuchukwu Microfinance Bank Limited",
+      "trading_name": "Akuchukwu Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -404,6 +445,7 @@
     {
       "id": "akwa-savings",
       "name": "AKWA SAVINGS",
+      "trading_name": "AKWA SAVINGS",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -413,6 +455,7 @@
     {
       "id": "al-hikma-microfinance-bank",
       "name": "Al'Hikma Microfinance Bank Limited",
+      "trading_name": "Al'Hikma Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -422,6 +465,7 @@
     {
       "id": "al-barakah-microfinance-bank",
       "name": "Al-Barakah Microfinance Bank Limited",
+      "trading_name": "Al-Barakah Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -432,6 +476,7 @@
     {
       "id": "al-hayat-microfinance-bank",
       "name": "Al-Hayat Microfinance Bank",
+      "trading_name": "Al-Hayat Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -442,6 +487,7 @@
     {
       "id": "albasu-microfinance-bank",
       "name": "Albasu Microfinance Bank Limited",
+      "trading_name": "Albasu Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -451,6 +497,7 @@
     {
       "id": "alekun-microfinance-bank",
       "name": "Alekun Microfinance Bank Limited",
+      "trading_name": "Alekun Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -461,6 +508,7 @@
     {
       "id": "alert-microfinance-bank",
       "name": "Alert Microfinance Bank",
+      "trading_name": "Alert Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -471,6 +519,7 @@
     {
       "id": "algreb-microfinance-bank",
       "name": "Algreb Microfinance Bank",
+      "trading_name": "Algreb Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -480,6 +529,7 @@
     {
       "id": "aliero-microfinance-bank",
       "name": "Aliero Microfinance Bank Limited",
+      "trading_name": "Aliero Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -489,6 +539,7 @@
     {
       "id": "all-workers-microfinance-bank",
       "name": "All Workers Microfinance Bank Limited",
+      "trading_name": "All Workers Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -499,6 +550,7 @@
     {
       "id": "alor-microfinance-bank",
       "name": "Alor Microfinance Bank Limited",
+      "trading_name": "Alor Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -508,6 +560,7 @@
     {
       "id": "alpha-kapital-microfinance-bank",
       "name": "Alpha Kapital Microfinance Bank",
+      "trading_name": "Alpha Kapital Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -518,6 +571,7 @@
     {
       "id": "alpha-morgan-bank",
       "name": "Alpha Morgan Bank Limited",
+      "trading_name": "Alpha Morgan Bank Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -528,6 +582,7 @@
     {
       "id": "alternative-bank",
       "name": "Alternative Bank Limited",
+      "trading_name": "Alternative Bank Limited",
       "type": "non_interest",
       "status": "active",
       "identifiers": {
@@ -538,6 +593,7 @@
     {
       "id": "alvana-microfinance-bank",
       "name": "Alvana Microfinance Bank Limited",
+      "trading_name": "Alvana Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -548,6 +604,7 @@
     {
       "id": "amac-microfinance-bank",
       "name": "AMAC Microfinance Bank",
+      "trading_name": "AMAC Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -558,6 +615,7 @@
     {
       "id": "amazu-microfinance-bank",
       "name": "Amazu Microfinance Bank Limited",
+      "trading_name": "Amazu Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -567,6 +625,7 @@
     {
       "id": "amegy-microfinance-bank",
       "name": "Amegy Microfinance Bank Limited",
+      "trading_name": "9japay",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -577,6 +636,7 @@
     {
       "id": "amju-unique-microfinance-bank",
       "name": "AMJU-Unique Microfinance Bank Limited",
+      "trading_name": "AMJU-Unique Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -587,6 +647,7 @@
     {
       "id": "amml-microfinance-bank-limited-abuja-markets-management",
       "name": "AMML Microfinance Bank Limited (Abuja Markets Management Ltd)",
+      "trading_name": "AMML Microfinance Bank Limited (Abuja Markets Management Ltd)",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -597,6 +658,7 @@
     {
       "id": "ampersand-microfinance-bank",
       "name": "Ampersand Microfinance Bank",
+      "trading_name": "Ampersand Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -607,6 +669,7 @@
     {
       "id": "ample-microfinance-bank",
       "name": "Ample Microfinance Bank Limited",
+      "trading_name": "Ample Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -616,6 +679,7 @@
     {
       "id": "amucha-microfinance-bank",
       "name": "Amucha Microfinance Bank Limited",
+      "trading_name": "Nombank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -626,6 +690,7 @@
     {
       "id": "anchorage-microfinance-bank",
       "name": "Anchorage Microfinance Bank Limited",
+      "trading_name": "Anchorage Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -636,6 +701,7 @@
     {
       "id": "aniocha-microfinance-bank",
       "name": "Aniocha Microfinance Bank Limited",
+      "trading_name": "Aniocha Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -646,6 +712,7 @@
     {
       "id": "annointed-microfinance-bank",
       "name": "Annointed Microfinance Bank Limited",
+      "trading_name": "Annointed Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -655,6 +722,7 @@
     {
       "id": "aogo-microfinance-bank",
       "name": "Aogo Microfinance Bank Limited",
+      "trading_name": "Aogo Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -664,6 +732,7 @@
     {
       "id": "apa-microfinance-bank",
       "name": "Apa Microfinance Bank Limited",
+      "trading_name": "Apa Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -673,6 +742,7 @@
     {
       "id": "apex-trust-microfinance-bank",
       "name": "Apex Trust Microfinance Bank Limited",
+      "trading_name": "Apex Trust Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -682,6 +752,7 @@
     {
       "id": "aramoko-microfinance-bank",
       "name": "Aramoko Microfinance Bank Limited",
+      "trading_name": "Aramoko Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -691,6 +762,7 @@
     {
       "id": "aris-microfinance-bank",
       "name": "Aris Microfinance Bank",
+      "trading_name": "Aris Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -701,6 +773,7 @@
     {
       "id": "asha-microfinance-bank",
       "name": "Asha Microfinance Bank Limited",
+      "trading_name": "Asha Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -710,6 +783,7 @@
     {
       "id": "aso-savings-loans",
       "name": "ASO SAVINGS & LOANS",
+      "trading_name": "ASO SAVINGS & LOANS",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -720,6 +794,7 @@
     {
       "id": "aspire-microfinance-bank",
       "name": "Aspire Microfinance Bank LImited",
+      "trading_name": "Aspire Microfinance Bank LImited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -729,6 +804,7 @@
     {
       "id": "asset-matrix-microfinance-bank",
       "name": "Asset Matrix Microfinance Bank Limited",
+      "trading_name": "Asset Matrix Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -739,6 +815,7 @@
     {
       "id": "assets-microfinance-bank",
       "name": "Assets Microfinance Bank Limited",
+      "trading_name": "Assets Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -749,6 +826,7 @@
     {
       "id": "astra-polaris-microfinance-bank",
       "name": "Astra Polaris Microfinance Bank Limited",
+      "trading_name": "Astra Polaris Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -759,6 +837,7 @@
     {
       "id": "auchi-microfinance-bank",
       "name": "Auchi Microfinance Bank Limited",
+      "trading_name": "Auchi Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -769,6 +848,7 @@
     {
       "id": "auchi-polytechnic-microfinance-bank",
       "name": "Auchi Polytechnic Microfinance Bank Limited",
+      "trading_name": "Auchi Polytechnic Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -778,6 +858,7 @@
     {
       "id": "ave-maria-mfb",
       "name": "AVE MARIA MFB",
+      "trading_name": "AVE MARIA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -787,6 +868,7 @@
     {
       "id": "avest-microfinance-bank",
       "name": "Avest Microfinance bank Limited",
+      "trading_name": "Avest Microfinance bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -796,6 +878,7 @@
     {
       "id": "avunegbe-microfinance-bank",
       "name": "Avunegbe Microfinance Bank Limited",
+      "trading_name": "Avunegbe Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -806,6 +889,7 @@
     {
       "id": "avvic-microfinance-bank",
       "name": "AVVIC MICROFINANCE BANK LIMITED",
+      "trading_name": "AVVIC MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -815,6 +899,7 @@
     {
       "id": "awe-microfinance-bank",
       "name": "Awe Microfinance Bank Limited",
+      "trading_name": "Awe Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -824,6 +909,7 @@
     {
       "id": "awesome-mfb",
       "name": "AWESOME MFB",
+      "trading_name": "AWESOME MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -833,6 +919,7 @@
     {
       "id": "awka-etiti-microfinance-bank",
       "name": "Awka-Etiti Microfinance Bank Limited",
+      "trading_name": "Awka-Etiti Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -842,6 +929,7 @@
     {
       "id": "awkuzu-microfinance-bank",
       "name": "Awkuzu Microfinance Bank Limited",
+      "trading_name": "Awkuzu Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -851,6 +939,7 @@
     {
       "id": "azsa-microfinance-bank",
       "name": "AZSA Microfinance Bank Limited",
+      "trading_name": "AZSA Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -860,6 +949,7 @@
     {
       "id": "b-c-kash-microfinance-bank",
       "name": "B C Kash Microfinance Bank",
+      "trading_name": "B C Kash Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -870,6 +960,7 @@
     {
       "id": "babba-microfinance-bank",
       "name": "Babba Microfinance Bank Limited",
+      "trading_name": "Babba Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -879,6 +970,7 @@
     {
       "id": "babcock-microfinance-bank",
       "name": "Babcock Microfinance Bank Limited",
+      "trading_name": "Babcock Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -888,6 +980,7 @@
     {
       "id": "babura-microfinance-bank",
       "name": "Babura Microfinance Bank Limited",
+      "trading_name": "Babura Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -897,6 +990,7 @@
     {
       "id": "baige-microfinance-bank",
       "name": "BAIGE MICROFINANCE BANK LIMITED",
+      "trading_name": "BAIGE MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -906,6 +1000,7 @@
     {
       "id": "baines-credit-microfinance-bank",
       "name": "Baines Credit Microfinance bank",
+      "trading_name": "Baines Credit Microfinance bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -916,6 +1011,7 @@
     {
       "id": "balera-microfinance-bank",
       "name": "Balera Microfinance Bank Limited",
+      "trading_name": "Balera Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -925,6 +1021,7 @@
     {
       "id": "balogun-fulani-microfinance-bank",
       "name": "Balogun Fulani Microfinance Bank Limited",
+      "trading_name": "Balogun Fulani Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -935,6 +1032,7 @@
     {
       "id": "balogun-gambari-microfinance-bank",
       "name": "Balogun Gambari Microfinance Bank Limited",
+      "trading_name": "Balogun Gambari Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -945,6 +1043,7 @@
     {
       "id": "bam-microfinance-bank",
       "name": "Bam Microfinance Bank Limited",
+      "trading_name": "Bam Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -954,6 +1053,7 @@
     {
       "id": "banex-microfinance-bank",
       "name": "Banex Microfinance Bank Limited",
+      "trading_name": "Banex Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -964,6 +1064,7 @@
     {
       "id": "bankeasy-microfinance-bank",
       "name": "Bankeasy Microfinance bank Limited",
+      "trading_name": "Bankeasy Microfinance bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -973,6 +1074,7 @@
     {
       "id": "baobab-microfinance-bank",
       "name": "Baobab Microfinance Bank",
+      "trading_name": "Baobab Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -982,6 +1084,7 @@
     {
       "id": "barnawa-microfinance-bank",
       "name": "Barnawa Microfinance Bank Limited",
+      "trading_name": "Barnawa Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -991,6 +1094,7 @@
     {
       "id": "batagwara-mfb",
       "name": "BATAGWARA MFB",
+      "trading_name": "BATAGWARA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1000,6 +1104,7 @@
     {
       "id": "bauchi-cfa-mirofinance-bank",
       "name": "Bauchi CFA Mirofinance Bank Limited",
+      "trading_name": "Bauchi CFA Mirofinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1009,6 +1114,7 @@
     {
       "id": "bauchi-investment-corporation-mfb-limited-bic",
       "name": "Bauchi Investment Corporation MFB Limited (BIC)",
+      "trading_name": "Bauchi Investment Corporation MFB Limited (BIC)",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1018,6 +1124,7 @@
     {
       "id": "baure-mfb",
       "name": "BAURE MFB",
+      "trading_name": "BAURE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1027,6 +1134,7 @@
     {
       "id": "bawyi-microfinance-bank",
       "name": "Bawyi Microfinance Bank Limited",
+      "trading_name": "Bawyi Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1036,6 +1144,7 @@
     {
       "id": "bayajidda-microfinance-bank",
       "name": "Bayajidda Microfinance Bank Limited",
+      "trading_name": "Bayajidda Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1045,6 +1154,7 @@
     {
       "id": "bayero-university-microfinance-bank",
       "name": "Bayero University Microfinance Bank",
+      "trading_name": "Bayero University Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1055,6 +1165,7 @@
     {
       "id": "bayetin-microfinance-bank",
       "name": "Bayetin Microfinance Bank Limited",
+      "trading_name": "Bayetin Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1064,6 +1175,7 @@
     {
       "id": "benue-microfinance-bank",
       "name": "Benue Microfinance Bank",
+      "trading_name": "Benue Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1073,6 +1185,7 @@
     {
       "id": "benysta-microfinance-bank",
       "name": "Benysta Microfinance Bank",
+      "trading_name": "Benysta Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1083,6 +1196,7 @@
     {
       "id": "berachah-microfinance-bank",
       "name": "Berachah Microfinance Bank Limited",
+      "trading_name": "Berachah Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1092,6 +1206,7 @@
     {
       "id": "best-star-microfinance-bank",
       "name": "Best Star Microfinance Bank Limited",
+      "trading_name": "Best Star Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1102,6 +1217,7 @@
     {
       "id": "bethel-microfinance-bank",
       "name": "Bethel Microfinance Bank Limited",
+      "trading_name": "Bethel Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1111,6 +1227,7 @@
     {
       "id": "better-life-microfinace-bank",
       "name": "Better Life Microfinace Bank",
+      "trading_name": "Better Life Microfinace Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1120,6 +1237,7 @@
     {
       "id": "bichi-microfinance-bank",
       "name": "Bichi Microfinance Bank Limited",
+      "trading_name": "Bichi Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1129,6 +1247,7 @@
     {
       "id": "bida-polytechnic-microfinance-bank",
       "name": "Bida Polytechnic Microfinance Bank",
+      "trading_name": "Bida Polytechnic Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1138,6 +1257,7 @@
     {
       "id": "bkd-new-microfinance-bank",
       "name": "BKD NEW Microfinance bank Limited",
+      "trading_name": "BKD NEW Microfinance bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1147,6 +1267,7 @@
     {
       "id": "bloc-microfinance-bank",
       "name": "Bloc Microfinance bank Limited",
+      "trading_name": "Bloc Microfinance bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1156,6 +1277,7 @@
     {
       "id": "blooms-microfinance-bank",
       "name": "Blooms Microfinance Bank",
+      "trading_name": "Blooms Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1165,6 +1287,7 @@
     {
       "id": "blucon-mfb",
       "name": "BLUCON MFB",
+      "trading_name": "BLUCON MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1174,6 +1297,7 @@
     {
       "id": "blue-ridge-mfb",
       "name": "BLUE RIDGE MFB",
+      "trading_name": "BLUE RIDGE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1183,6 +1307,7 @@
     {
       "id": "blueprint-investments-mfb",
       "name": "BLUEPRINT INVESTMENTS MFB",
+      "trading_name": "BLUEPRINT INVESTMENTS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1192,6 +1317,7 @@
     {
       "id": "boctrust-mfb",
       "name": "BOCTRUST MFB",
+      "trading_name": "BOCTRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1202,6 +1328,7 @@
     {
       "id": "boi-mfb",
       "name": "BOI MFB",
+      "trading_name": "BOI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1212,6 +1339,7 @@
     {
       "id": "boji-boji-mfb",
       "name": "BOJI BOJI MFB LTD.",
+      "trading_name": "BOJI BOJI MFB LTD.",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1222,6 +1350,7 @@
     {
       "id": "bokkos-mfb",
       "name": "BOKKOS MFB",
+      "trading_name": "BOKKOS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1231,6 +1360,7 @@
     {
       "id": "bold-microfinance-bank",
       "name": "Bold Microfinance bank Limited",
+      "trading_name": "Bold Microfinance bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1241,6 +1371,7 @@
     {
       "id": "bonghe-mfb",
       "name": "BONGHE MFB",
+      "trading_name": "BONGHE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1251,6 +1382,7 @@
     {
       "id": "boost-microfinance-bank",
       "name": "Boost Microfinance Bank Limited",
+      "trading_name": "Boost Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1260,6 +1392,7 @@
     {
       "id": "borgu-mfb",
       "name": "BORGU MFB",
+      "trading_name": "BORGU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1270,6 +1403,7 @@
     {
       "id": "borno-renaissance-mfb",
       "name": "BORNO RENAISSANCE MFB LTD.",
+      "trading_name": "BORNO RENAISSANCE MFB LTD.",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1280,6 +1414,7 @@
     {
       "id": "boromu-mfb",
       "name": "BOROMU MFB",
+      "trading_name": "BOROMU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1290,6 +1425,7 @@
     {
       "id": "borstal-mfb",
       "name": "BORSTAL MFB",
+      "trading_name": "BORSTAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1300,6 +1436,7 @@
     {
       "id": "bosak-mfb",
       "name": "BOSAK MFB",
+      "trading_name": "BOSAK MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1310,6 +1447,7 @@
     {
       "id": "bowen-mfb",
       "name": "BOWEN MFB",
+      "trading_name": "BOWEN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1320,6 +1458,7 @@
     {
       "id": "bowman-mfb",
       "name": "BOWMAN MFB",
+      "trading_name": "BOWMAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1329,6 +1468,7 @@
     {
       "id": "brent-skyfield-savings",
       "name": "BRENT (SKYFIELD) SAVINGS",
+      "trading_name": "BRENT (SKYFIELD) SAVINGS",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -1339,6 +1479,7 @@
     {
       "id": "brethren-mfb",
       "name": "BRETHREN MFB",
+      "trading_name": "BRETHREN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1349,6 +1490,7 @@
     {
       "id": "brightway-mfb",
       "name": "BRIGHTWAY MFB LTD",
+      "trading_name": "BRIGHTWAY MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1359,6 +1501,7 @@
     {
       "id": "broadview-mfb",
       "name": "BROADVIEW MFB",
+      "trading_name": "BROADVIEW MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1368,6 +1511,7 @@
     {
       "id": "brooks-mfb",
       "name": "BROOKS MFB",
+      "trading_name": "BROOKS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1377,6 +1521,7 @@
     {
       "id": "bubayero-mfb",
       "name": "BUBAYERO MFB LTD",
+      "trading_name": "BUBAYERO MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1387,6 +1532,7 @@
     {
       "id": "bundi-mfb",
       "name": "BUNDI MFB",
+      "trading_name": "BUNDI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1396,6 +1542,7 @@
     {
       "id": "bungudu-mfb",
       "name": "BUNGUDU MFB",
+      "trading_name": "BUNGUDU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1405,6 +1552,7 @@
     {
       "id": "bunkasa-mfb",
       "name": "BUNKASA MFB",
+      "trading_name": "BUNKASA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1414,6 +1562,7 @@
     {
       "id": "bunkure-mfb",
       "name": "BUNKURE MFB",
+      "trading_name": "BUNKURE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1423,6 +1572,7 @@
     {
       "id": "bway-microfinance-bank",
       "name": "BWAY Microfinance bank Limited",
+      "trading_name": "BWAY Microfinance bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1432,6 +1582,7 @@
     {
       "id": "canaan-mfb",
       "name": "CANAAN MFB",
+      "trading_name": "CANAAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1441,6 +1592,7 @@
     {
       "id": "capitalmetriq-swift-mfb",
       "name": "CAPITALMETRIQ SWIFT MFB",
+      "trading_name": "CAPITALMETRIQ SWIFT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1451,6 +1603,7 @@
     {
       "id": "capstone-mfb",
       "name": "CAPSTONE MFB",
+      "trading_name": "CAPSTONE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1461,6 +1614,7 @@
     {
       "id": "carbon-mfb",
       "name": "CARBON MFB",
+      "trading_name": "CARBON MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1471,6 +1625,7 @@
     {
       "id": "caretaker-mfb",
       "name": "CARETAKER MFB",
+      "trading_name": "CARETAKER MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1481,6 +1636,7 @@
     {
       "id": "casa-microfinance-bank",
       "name": "Casa Microfinance bank Limited",
+      "trading_name": "Casa Microfinance bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1490,6 +1646,7 @@
     {
       "id": "cash-rite-mfb",
       "name": "CASH RITE MFB",
+      "trading_name": "CASH RITE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1499,6 +1656,7 @@
     {
       "id": "cashconnect-mfb",
       "name": "CASHCONNECT MFB",
+      "trading_name": "CASHCONNECT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1509,6 +1667,7 @@
     {
       "id": "cashwise-microfinance-bank",
       "name": "CASHWISE MICROFINANCE BANK LIMITED",
+      "trading_name": "CASHWISE MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1518,6 +1677,7 @@
     {
       "id": "castle-mfb",
       "name": "CASTLE MFB",
+      "trading_name": "CASTLE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1527,6 +1687,7 @@
     {
       "id": "catland-mfb",
       "name": "CATLAND MFB",
+      "trading_name": "CATLAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1537,6 +1698,7 @@
     {
       "id": "cedar-mfb",
       "name": "CEDAR MFB",
+      "trading_name": "CEDAR MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1546,6 +1708,7 @@
     {
       "id": "cedrus-microfinance-bank",
       "name": "Cedrus Microfinance Bank Limited",
+      "trading_name": "Cedrus Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1555,6 +1718,7 @@
     {
       "id": "centage-savings-loans",
       "name": "CENTAGE SAVINGS & LOANS",
+      "trading_name": "CENTAGE SAVINGS & LOANS",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -1564,6 +1728,7 @@
     {
       "id": "challenge-mfb",
       "name": "CHALLENGE MFB",
+      "trading_name": "CHALLENGE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1573,6 +1738,7 @@
     {
       "id": "chams-mobile",
       "name": "Chams Mobile",
+      "trading_name": "Chams Mobile",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -1582,6 +1748,7 @@
     {
       "id": "changan-rts-mfb",
       "name": "CHANGAN RTS MFB",
+      "trading_name": "CHANGAN RTS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1592,6 +1759,7 @@
     {
       "id": "charis-microfinance-bank",
       "name": "Charis Microfinance Bank Limited",
+      "trading_name": "Charis Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1601,6 +1769,7 @@
     {
       "id": "chase-mfb",
       "name": "CHASE MFB LTD",
+      "trading_name": "CHASE MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1611,6 +1780,7 @@
     {
       "id": "chevron-employee-co-operative-mfb-cemcs",
       "name": "CHEVRON EMPLOYEE CO-OPERATIVE MFB (CEMCS)",
+      "trading_name": "CHEVRON EMPLOYEE CO-OPERATIVE MFB (CEMCS)",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1621,6 +1791,7 @@
     {
       "id": "chibueze-mfb",
       "name": "CHIBUEZE MFB",
+      "trading_name": "CHIBUEZE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1631,6 +1802,7 @@
     {
       "id": "chikum-mfb",
       "name": "CHIKUM MFB",
+      "trading_name": "CHIKUM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1641,6 +1813,7 @@
     {
       "id": "chrisore-mfb",
       "name": "CHRISORE MFB",
+      "trading_name": "CHRISORE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1650,6 +1823,7 @@
     {
       "id": "chronicles-mfb",
       "name": "CHRONICLES MFB",
+      "trading_name": "CHRONICLES MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1659,6 +1833,7 @@
     {
       "id": "chukwunenye-mfb",
       "name": "CHUKWUNENYE MFB",
+      "trading_name": "CHUKWUNENYE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1669,6 +1844,7 @@
     {
       "id": "cintrust-mfb",
       "name": "CINTRUST MFB",
+      "trading_name": "CINTRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1679,6 +1855,7 @@
     {
       "id": "cit-mfb",
       "name": "CIT MFB",
+      "trading_name": "CIT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1689,6 +1866,7 @@
     {
       "id": "citibank-nigeria",
       "name": "Citibank Nigeria Limited",
+      "trading_name": "Citibank Nigeria Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -1699,6 +1877,7 @@
     {
       "id": "citizen-trust-mfb",
       "name": "CITIZEN TRUST MFB",
+      "trading_name": "CITIZEN TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1709,6 +1888,7 @@
     {
       "id": "city-code",
       "name": "CITY CODE",
+      "trading_name": "CITY CODE",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -1718,6 +1898,7 @@
     {
       "id": "city-mission-methodist-mfb",
       "name": "CITY MISSION METHODIST MFB",
+      "trading_name": "CITY MISSION METHODIST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1727,6 +1908,7 @@
     {
       "id": "civic-mfb",
       "name": "CIVIC MFB",
+      "trading_name": "CIVIC MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1736,6 +1918,7 @@
     {
       "id": "cloverleaf-mfb",
       "name": "CLOVERLEAF MFB",
+      "trading_name": "CLOVERLEAF MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1746,6 +1929,7 @@
     {
       "id": "coal-camp-mfb",
       "name": "COAL CAMP MFB",
+      "trading_name": "COAL CAMP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1756,6 +1940,7 @@
     {
       "id": "coastline-mfb",
       "name": "COASTLINE MFB",
+      "trading_name": "COASTLINE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1766,6 +1951,7 @@
     {
       "id": "coeminna-mfb",
       "name": "COEMINNA MFB",
+      "trading_name": "COEMINNA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1775,6 +1961,7 @@
     {
       "id": "confidence-mfb",
       "name": "CONFIDENCE MFB",
+      "trading_name": "CONFIDENCE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1784,6 +1971,7 @@
     {
       "id": "consistent-trust-mfb",
       "name": "CONSISTENT TRUST MFB",
+      "trading_name": "CONSISTENT TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1793,6 +1981,7 @@
     {
       "id": "consumer-mfb",
       "name": "CONSUMER MFB",
+      "trading_name": "CONSUMER MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1803,6 +1992,7 @@
     {
       "id": "cool-microfinance-bank",
       "name": "Cool Microfinance Bank Limited",
+      "trading_name": "Cool Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1812,6 +2002,7 @@
     {
       "id": "coop-savings-loans",
       "name": "COOP SAVINGS & LOANS",
+      "trading_name": "COOP SAVINGS & LOANS",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -1822,6 +2013,7 @@
     {
       "id": "corestep-mfb",
       "name": "CORESTEP MFB",
+      "trading_name": "CORESTEP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1832,6 +2024,7 @@
     {
       "id": "coronation-merchant-bank",
       "name": "CORONATION MERCHANT BANK",
+      "trading_name": "CORONATION MERCHANT BANK",
       "type": "merchant",
       "status": "active",
       "identifiers": {
@@ -1842,6 +2035,7 @@
     {
       "id": "covenant-mfb",
       "name": "COVENANT MFB",
+      "trading_name": "COVENANT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1852,6 +2046,7 @@
     {
       "id": "crescent-mfb",
       "name": "CRESCENT MFB",
+      "trading_name": "CRESCENT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1862,6 +2057,7 @@
     {
       "id": "crest-mfb",
       "name": "CREST MFB",
+      "trading_name": "CREST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1871,6 +2067,7 @@
     {
       "id": "crossriver-mfb",
       "name": "CROSSRIVER MFB",
+      "trading_name": "CROSSRIVER MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1881,6 +2078,7 @@
     {
       "id": "crutech-mfb",
       "name": "CRUTECH MFB",
+      "trading_name": "CRUTECH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1891,6 +2089,7 @@
     {
       "id": "csd-mfb",
       "name": "CSD MFB",
+      "trading_name": "CSD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1900,6 +2099,7 @@
     {
       "id": "custodian-mfb",
       "name": "CUSTODIAN MFB",
+      "trading_name": "CUSTODIAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1909,6 +2109,7 @@
     {
       "id": "dabtikir-microfinance-bank",
       "name": "Dabtikir Microfinance Bank Limited",
+      "trading_name": "Dabtikir Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1918,6 +2119,7 @@
     {
       "id": "daily-trust-mfb",
       "name": "DAILY-TRUST MFB",
+      "trading_name": "DAILY-TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1927,6 +2129,7 @@
     {
       "id": "dal-mfb",
       "name": "DAL MFB",
+      "trading_name": "DAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1936,6 +2139,7 @@
     {
       "id": "dambatta-makoda-mfb",
       "name": "DAMBATTA- MAKODA MFB",
+      "trading_name": "DAMBATTA- MAKODA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1945,6 +2149,7 @@
     {
       "id": "dash-microfinance-bank",
       "name": "Dash Microfinance Bank Limited",
+      "trading_name": "Dash Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1954,6 +2159,7 @@
     {
       "id": "davenport-microfinance-bank",
       "name": "Davenport Microfinance Bank Limited",
+      "trading_name": "Davenport Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1963,6 +2169,7 @@
     {
       "id": "davodani-mfb",
       "name": "DAVODANI MFB",
+      "trading_name": "DAVODANI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1973,6 +2180,7 @@
     {
       "id": "dawakin-kudu-mfb",
       "name": "DAWAKIN KUDU MFB",
+      "trading_name": "DAWAKIN KUDU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1982,6 +2190,7 @@
     {
       "id": "daylight-mfb",
       "name": "DAYLIGHT MFB LTD",
+      "trading_name": "DAYLIGHT MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -1992,6 +2201,7 @@
     {
       "id": "dec-enugu-mfb",
       "name": "DEC-ENUGU MFB",
+      "trading_name": "DEC-ENUGU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2001,6 +2211,7 @@
     {
       "id": "delta-mortgage-finance",
       "name": "DELTA MORTGAGE FINANCE",
+      "trading_name": "DELTA MORTGAGE FINANCE",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -2011,6 +2222,7 @@
     {
       "id": "destiny-mfb",
       "name": "DESTINY MFB",
+      "trading_name": "DESTINY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2020,6 +2232,7 @@
     {
       "id": "diobu-mfb",
       "name": "DIOBU MFB",
+      "trading_name": "DIOBU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2029,6 +2242,7 @@
     {
       "id": "doguwa-mfb",
       "name": "DOGUWA MFB",
+      "trading_name": "DOGUWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2038,6 +2252,7 @@
     {
       "id": "dolphin-mfb",
       "name": "DOLPHIN MFB",
+      "trading_name": "DOLPHIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2047,6 +2262,7 @@
     {
       "id": "dorben-mfb",
       "name": "DORBEN MFB",
+      "trading_name": "DORBEN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2056,6 +2272,7 @@
     {
       "id": "dsc-microfinance-bank",
       "name": "DSC Microfinance Bank Limited",
+      "trading_name": "DSC Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2065,6 +2282,7 @@
     {
       "id": "dutse-mfb",
       "name": "DUTSE MFB",
+      "trading_name": "DUTSE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2074,6 +2292,7 @@
     {
       "id": "dutsin-ma-mfb",
       "name": "DUTSIN-MA MFB",
+      "trading_name": "DUTSIN-MA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2083,6 +2302,7 @@
     {
       "id": "duxbank-microfinance-bank",
       "name": "Duxbank Microfinance Bank Limited",
+      "trading_name": "Duxbank Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2092,6 +2312,7 @@
     {
       "id": "e-barcs-mfb",
       "name": "e-BARCS MFB",
+      "trading_name": "e-BARCS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2102,6 +2323,7 @@
     {
       "id": "eagle-flight-mfb",
       "name": "EAGLE FLIGHT MFB",
+      "trading_name": "EAGLE FLIGHT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2112,6 +2334,7 @@
     {
       "id": "earnwell-mfb",
       "name": "EARNWELL MFB",
+      "trading_name": "EARNWELL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2121,6 +2344,7 @@
     {
       "id": "east-gate-mfb",
       "name": "EAST GATE MFB",
+      "trading_name": "EAST GATE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2130,6 +2354,7 @@
     {
       "id": "eastman-mfb",
       "name": "EASTMAN MFB",
+      "trading_name": "EASTMAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2139,6 +2364,7 @@
     {
       "id": "easy-access-mfb",
       "name": "EASY ACCESS MFB LTD",
+      "trading_name": "EASY ACCESS MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2148,6 +2374,7 @@
     {
       "id": "ebedi-mfb",
       "name": "EBEDI MFB",
+      "trading_name": "EBEDI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2157,6 +2384,7 @@
     {
       "id": "ebonyi-state-university-mfb-ebsu",
       "name": "EBONYI STATE UNIVERSITY MFB (EBSU)",
+      "trading_name": "EBONYI STATE UNIVERSITY MFB (EBSU)",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2167,6 +2395,7 @@
     {
       "id": "ecobank-nigeria",
       "name": "Ecobank Nigeria Plc",
+      "trading_name": "Ecobank Nigeria Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -2177,6 +2406,7 @@
     {
       "id": "edfin-mfb",
       "name": "EDFIN MFB",
+      "trading_name": "EDFIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2187,6 +2417,7 @@
     {
       "id": "edo-mfb",
       "name": "EDO MFB",
+      "trading_name": "EDO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2196,6 +2427,7 @@
     {
       "id": "edusoko-microfinance-bank",
       "name": "Edusoko Microfinance Bank Limited",
+      "trading_name": "Edusoko Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2205,6 +2437,7 @@
     {
       "id": "egbe-mfb",
       "name": "EGBE MFB",
+      "trading_name": "EGBE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2214,6 +2447,7 @@
     {
       "id": "egbemoha-mfb",
       "name": "EGBEMOHA MFB",
+      "trading_name": "EGBEMOHA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2223,6 +2457,7 @@
     {
       "id": "egwafin-mfb",
       "name": "EGWAFIN MFB",
+      "trading_name": "EGWAFIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2232,6 +2467,7 @@
     {
       "id": "ehinoma-microfinance-bank",
       "name": "Ehinoma Microfinance Bank Limited",
+      "trading_name": "Ehinoma Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2241,6 +2477,7 @@
     {
       "id": "ejindu-mfb",
       "name": "EJINDU MFB",
+      "trading_name": "EJINDU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2250,6 +2487,7 @@
     {
       "id": "ek-reliable-mfb",
       "name": "EK-RELIABLE MFB",
+      "trading_name": "EK-RELIABLE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2260,6 +2498,7 @@
     {
       "id": "ekimogun-mfb",
       "name": "EKIMOGUN MFB",
+      "trading_name": "EKIMOGUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2269,6 +2508,7 @@
     {
       "id": "ekondo-mfb",
       "name": "EKONDO MFB",
+      "trading_name": "EKONDO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2279,6 +2519,7 @@
     {
       "id": "ekwulobia-mfb",
       "name": "EKWULOBIA MFB",
+      "trading_name": "EKWULOBIA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2288,6 +2529,7 @@
     {
       "id": "ellington-microfinance-bank",
       "name": "Ellington Microfinance Bank Limited",
+      "trading_name": "Ellington Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2297,6 +2539,7 @@
     {
       "id": "elo-emede-mfb",
       "name": "ELO-EMEDE MFB",
+      "trading_name": "ELO-EMEDE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2306,6 +2549,7 @@
     {
       "id": "emerald-mfb",
       "name": "EMERALD MFB",
+      "trading_name": "EMERALD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2316,6 +2560,7 @@
     {
       "id": "empire-trust-mfb",
       "name": "EMPIRE TRUST MFB",
+      "trading_name": "EMPIRE TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2326,6 +2571,7 @@
     {
       "id": "endwell-mfb",
       "name": "ENDWELL MFB",
+      "trading_name": "ENDWELL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2335,6 +2581,7 @@
     {
       "id": "enede-mfb",
       "name": "ENEDE MFB LTD",
+      "trading_name": "ENEDE MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2344,6 +2591,7 @@
     {
       "id": "enrich-mfb",
       "name": "ENRICH MFB",
+      "trading_name": "ENRICH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2353,6 +2601,7 @@
     {
       "id": "equator-mfb",
       "name": "EQUATOR MFB",
+      "trading_name": "EQUATOR MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2362,6 +2611,7 @@
     {
       "id": "equinox-mfb",
       "name": "EQUINOX MFB",
+      "trading_name": "EQUINOX MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2371,6 +2621,7 @@
     {
       "id": "eso-e-mfb",
       "name": "ESO-E MFB",
+      "trading_name": "ESO-E MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2381,6 +2632,7 @@
     {
       "id": "etranzact-international",
       "name": "eTranzact International Limited",
+      "trading_name": "eTranzact International Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -2390,6 +2642,7 @@
     {
       "id": "evergreen-mfb",
       "name": "EVERGREEN MFB",
+      "trading_name": "EVERGREEN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2400,6 +2653,7 @@
     {
       "id": "ewt-mfb",
       "name": "EWT MFB",
+      "trading_name": "EWT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2409,6 +2663,7 @@
     {
       "id": "excel-mfb",
       "name": "EXCEL MFB",
+      "trading_name": "EXCEL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2418,6 +2673,7 @@
     {
       "id": "ezebo-mfb",
       "name": "EZEBO MFB",
+      "trading_name": "EZEBO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2427,6 +2683,7 @@
     {
       "id": "faida-mfb",
       "name": "FAIDA MFB LTD",
+      "trading_name": "FAIDA MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2436,6 +2693,7 @@
     {
       "id": "fairmoney-mfb",
       "name": "FAIRMONEY MFB LTD",
+      "trading_name": "FAIRMONEY MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2446,6 +2704,7 @@
     {
       "id": "fame-mfb",
       "name": "FAME MFB",
+      "trading_name": "FAME MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2456,6 +2715,7 @@
     {
       "id": "fast-mfb",
       "name": "FAST MFB",
+      "trading_name": "FAST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2466,6 +2726,7 @@
     {
       "id": "fbn-mortgages",
       "name": "FBN MORTGAGES",
+      "trading_name": "FBN MORTGAGES",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -2476,6 +2737,7 @@
     {
       "id": "fcmb-mfb",
       "name": "FCMB MFB LTD.",
+      "trading_name": "FCMB MFB LTD.",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2486,6 +2748,7 @@
     {
       "id": "fecetu-mfb",
       "name": "FECETU MFB",
+      "trading_name": "FECETU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2495,6 +2758,7 @@
     {
       "id": "federal-polytechnic-nekede-mfb",
       "name": "FEDERAL POLYTECHNIC, NEKEDE MFB LTD",
+      "trading_name": "FEDERAL POLYTECHNIC, NEKEDE MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2505,6 +2769,7 @@
     {
       "id": "fedeth-co-op-mfb",
       "name": "FEDETH CO-OP MFB",
+      "trading_name": "FEDETH CO-OP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2515,6 +2780,7 @@
     {
       "id": "fedpoly-nasarawa-mfb",
       "name": "FEDPOLY NASARAWA MFB",
+      "trading_name": "FEDPOLY NASARAWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2525,6 +2791,7 @@
     {
       "id": "ffs-mfb",
       "name": "FFS MFB",
+      "trading_name": "FFS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2535,6 +2802,7 @@
     {
       "id": "fha-homes",
       "name": "FHA HOMES LTD.",
+      "trading_name": "FHA HOMES LTD.",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -2544,6 +2812,7 @@
     {
       "id": "fidelity-bank",
       "name": "Fidelity Bank Plc",
+      "trading_name": "Fidelity Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -2554,6 +2823,7 @@
     {
       "id": "fidfund-mfb",
       "name": "FIDFUND MFB",
+      "trading_name": "FIDFUND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2564,6 +2834,7 @@
     {
       "id": "fims-mfb",
       "name": "FIMS MFB",
+      "trading_name": "FIMS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2574,6 +2845,7 @@
     {
       "id": "finatrust-mfb",
       "name": "FINATRUST MFB",
+      "trading_name": "FINATRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2584,6 +2856,7 @@
     {
       "id": "finca-mfb",
       "name": "FINCA MFB",
+      "trading_name": "FINCA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2594,6 +2867,7 @@
     {
       "id": "finex-mfb",
       "name": "FINEX MFB",
+      "trading_name": "FINEX MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2604,6 +2878,7 @@
     {
       "id": "firmus-mfb",
       "name": "FIRMUS MFB",
+      "trading_name": "FIRMUS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2614,6 +2889,7 @@
     {
       "id": "first-access-mfb",
       "name": "FIRST ACCESS MFB LTD",
+      "trading_name": "FIRST ACCESS MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2623,6 +2899,7 @@
     {
       "id": "first-bank-nigeria",
       "name": "First Bank Nigeria Limited",
+      "trading_name": "First Bank Nigeria Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -2633,6 +2910,7 @@
     {
       "id": "first-city-monument-bank",
       "name": "First City Monument Bank Plc",
+      "trading_name": "First City Monument Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -2643,6 +2921,7 @@
     {
       "id": "first-generation-homes",
       "name": "FIRST GENERATION HOMES",
+      "trading_name": "FIRST GENERATION HOMES",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -2653,6 +2932,7 @@
     {
       "id": "first-heritage-mfb",
       "name": "FIRST HERITAGE MFB",
+      "trading_name": "FIRST HERITAGE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2663,6 +2943,7 @@
     {
       "id": "first-low-land-mfb",
       "name": "FIRST LOW-LAND MFB",
+      "trading_name": "FIRST LOW-LAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2672,6 +2953,7 @@
     {
       "id": "first-mutual-mfb",
       "name": "FIRST MUTUAL MFB",
+      "trading_name": "FIRST MUTUAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2681,6 +2963,7 @@
     {
       "id": "first-option-mfb",
       "name": "FIRST OPTION MFB",
+      "trading_name": "FIRST OPTION MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2691,6 +2974,7 @@
     {
       "id": "first-royal-mfb",
       "name": "FIRST ROYAL MFB",
+      "trading_name": "FIRST ROYAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2701,6 +2985,7 @@
     {
       "id": "flexi-microfinance-bank",
       "name": "Flexi Microfinance Bank",
+      "trading_name": "Flexi Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2710,6 +2995,7 @@
     {
       "id": "flourish-mfb",
       "name": "FLOURISH MFB",
+      "trading_name": "Aella",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2720,6 +3006,7 @@
     {
       "id": "foresight-mfb",
       "name": "FORESIGHT MFB",
+      "trading_name": "FORESIGHT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2730,6 +3017,7 @@
     {
       "id": "fortis-mobile-money",
       "name": "Fortis Mobile Money Limited",
+      "trading_name": "Fortis Mobile Money Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -2739,6 +3027,7 @@
     {
       "id": "fortress-mfb",
       "name": "FORTRESS MFB",
+      "trading_name": "FORTRESS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2749,6 +3038,7 @@
     {
       "id": "forward-mfb",
       "name": "FORWARD MFB",
+      "trading_name": "FORWARD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2758,6 +3048,7 @@
     {
       "id": "fsdh-merchant-bank",
       "name": "FSDH MERCHANT BANK",
+      "trading_name": "FSDH MERCHANT BANK",
       "type": "merchant",
       "status": "active",
       "identifiers": {
@@ -2768,6 +3059,7 @@
     {
       "id": "fta-funtua-mfb",
       "name": "FTA FUNTUA MFB",
+      "trading_name": "FTA FUNTUA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2777,6 +3069,7 @@
     {
       "id": "fud-mfb",
       "name": "FUD MFB",
+      "trading_name": "FUD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2787,6 +3080,7 @@
     {
       "id": "fullrange-microfinance-bank",
       "name": "Fullrange Microfinance Bank Ltd",
+      "trading_name": "Fullrange Microfinance Bank Ltd",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2797,6 +3091,7 @@
     {
       "id": "funds-and-electronic-transfer-fets",
       "name": "Funds And Electronic Transfer (FETS) Limited",
+      "trading_name": "Funds And Electronic Transfer (FETS) Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -2806,6 +3101,7 @@
     {
       "id": "fut-minna",
       "name": "FUT MINNA",
+      "trading_name": "FUT MINNA",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2816,6 +3112,7 @@
     {
       "id": "futo-mfb",
       "name": "FUTO MFB",
+      "trading_name": "FUTO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2826,6 +3123,7 @@
     {
       "id": "gaa-akanbi-mfb",
       "name": "GAA AKANBI MFB",
+      "trading_name": "GAA AKANBI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2835,6 +3133,7 @@
     {
       "id": "gabasawa-mfb",
       "name": "GABASAWA MFB",
+      "trading_name": "GABASAWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2844,6 +3143,7 @@
     {
       "id": "gamawa-mfb",
       "name": "GAMAWA MFB",
+      "trading_name": "GAMAWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2853,6 +3153,7 @@
     {
       "id": "garewa-mfb",
       "name": "GAREWA MFB",
+      "trading_name": "GAREWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2862,6 +3163,7 @@
     {
       "id": "garki-mfb",
       "name": "GARKI MFB",
+      "trading_name": "GARKI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2872,6 +3174,7 @@
     {
       "id": "garu-mallam-mfb",
       "name": "GARU MALLAM MFB",
+      "trading_name": "GARU MALLAM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2881,6 +3184,7 @@
     {
       "id": "gashua-mfb",
       "name": "GASHUA MFB",
+      "trading_name": "GASHUA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2891,6 +3195,7 @@
     {
       "id": "gateway-savings",
       "name": "GATEWAY SAVINGS",
+      "trading_name": "GATEWAY SAVINGS",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -2901,6 +3206,7 @@
     {
       "id": "gaya-mfb",
       "name": "GAYA MFB",
+      "trading_name": "GAYA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2910,6 +3216,7 @@
     {
       "id": "gbede-mfb",
       "name": "GBEDE MFB",
+      "trading_name": "GBEDE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2919,6 +3226,7 @@
     {
       "id": "giant-stride-mfb",
       "name": "GIANT STRIDE MFB LTD",
+      "trading_name": "GIANT STRIDE MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2929,6 +3237,7 @@
     {
       "id": "gidauniya-alheri-mfb",
       "name": "Gidauniya Alheri MFB",
+      "trading_name": "Gidauniya Alheri MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2938,6 +3247,7 @@
     {
       "id": "giginya-mfb",
       "name": "GIGINYA MFB",
+      "trading_name": "GIGINYA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2948,6 +3258,7 @@
     {
       "id": "girei-mfb",
       "name": "GIREI MFB",
+      "trading_name": "GIREI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2958,6 +3269,7 @@
     {
       "id": "giwa-mfb",
       "name": "GIWA MFB",
+      "trading_name": "GIWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2968,6 +3280,7 @@
     {
       "id": "global-initiative-mfb",
       "name": "GLOBAL INITIATIVE MFB",
+      "trading_name": "GLOBAL INITIATIVE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -2977,6 +3290,7 @@
     {
       "id": "global-trust",
       "name": "GLOBAL TRUST",
+      "trading_name": "GLOBAL TRUST",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -2986,6 +3300,7 @@
     {
       "id": "globus-bank",
       "name": "Globus Bank Limited",
+      "trading_name": "Globus Bank Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -2996,6 +3311,7 @@
     {
       "id": "glory-mfb",
       "name": "GLORY MFB",
+      "trading_name": "GLORY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3006,6 +3322,7 @@
     {
       "id": "gmb-mfb",
       "name": "GMB MFB",
+      "trading_name": "GMB MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3016,6 +3333,7 @@
     {
       "id": "gobarau-mfb",
       "name": "GOBARAU MFB",
+      "trading_name": "GOBARAU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3025,6 +3343,7 @@
     {
       "id": "golden-choice-mfb",
       "name": "GOLDEN CHOICE MFB",
+      "trading_name": "GOLDEN CHOICE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3034,6 +3353,7 @@
     {
       "id": "goldman-mfb",
       "name": "GOLDMAN MFB",
+      "trading_name": "GOLDMAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3043,6 +3363,7 @@
     {
       "id": "gombe-mfb",
       "name": "GOMBE MFB",
+      "trading_name": "GOMBE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3052,6 +3373,7 @@
     {
       "id": "good-neighbours-mfb",
       "name": "GOOD NEIGHBOURS MFB",
+      "trading_name": "GOOD NEIGHBOURS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3062,6 +3384,7 @@
     {
       "id": "good-news-mfb",
       "name": "GOOD NEWS MFB",
+      "trading_name": "GOOD NEWS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3072,6 +3395,7 @@
     {
       "id": "good-shepherd-mfb",
       "name": "GOOD SHEPHERD MFB",
+      "trading_name": "GOOD SHEPHERD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3081,6 +3405,7 @@
     {
       "id": "gowans-mfb",
       "name": "GOWANS MFB",
+      "trading_name": "GOWANS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3091,6 +3416,7 @@
     {
       "id": "grants-mfb",
       "name": "GRANTS MFB",
+      "trading_name": "GRANTS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3101,6 +3427,7 @@
     {
       "id": "granule-microfinance-bank",
       "name": "GRANULE MICROFINANCE BANK",
+      "trading_name": "GRANULE MICROFINANCE BANK",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3110,6 +3437,7 @@
     {
       "id": "green-acres-mfb",
       "name": "GREEN ACRES MFB",
+      "trading_name": "GREEN ACRES MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3119,6 +3447,7 @@
     {
       "id": "green-energy-mfb",
       "name": "GREEN ENERGY MFB",
+      "trading_name": "GREEN ENERGY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3128,6 +3457,7 @@
     {
       "id": "green-bank-mfb",
       "name": "GREEN-BANK MFB",
+      "trading_name": "GREEN-BANK MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3138,6 +3468,7 @@
     {
       "id": "greenville-mfb",
       "name": "GREENVILLE MFB",
+      "trading_name": "GREENVILLE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3148,6 +3479,7 @@
     {
       "id": "greenwich-merchant-bank",
       "name": "GREENWICH MERCHANT BANK",
+      "trading_name": "GREENWICH MERCHANT BANK",
       "type": "merchant",
       "status": "active",
       "identifiers": {
@@ -3158,6 +3490,7 @@
     {
       "id": "grooming-mfb",
       "name": "GROOMING MFB",
+      "trading_name": "GROOMING MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3168,6 +3501,7 @@
     {
       "id": "gti-mfb",
       "name": "GTI MFB",
+      "trading_name": "GTI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3178,6 +3512,7 @@
     {
       "id": "guaranty-trust-bank",
       "name": "Guaranty Trust Bank Plc",
+      "trading_name": "Guaranty Trust Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -3188,6 +3523,7 @@
     {
       "id": "gudusisa-mfb",
       "name": "GUDUSISA MFB",
+      "trading_name": "GUDUSISA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3197,6 +3533,7 @@
     {
       "id": "gulfare-mfb",
       "name": "GULFARE MFB",
+      "trading_name": "GULFARE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3206,6 +3543,7 @@
     {
       "id": "gwong-mfb",
       "name": "GWONG MFB",
+      "trading_name": "GWONG MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3216,6 +3554,7 @@
     {
       "id": "hadeija-mfb",
       "name": "HADEIJA MFB",
+      "trading_name": "HADEIJA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3225,6 +3564,7 @@
     {
       "id": "haggai-mortgage-bank",
       "name": "HAGGAI MORTGAGE BANK",
+      "trading_name": "HAGGAI MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -3235,6 +3575,7 @@
     {
       "id": "halal-credit-mfb",
       "name": "HALAL CREDIT MFB",
+      "trading_name": "HALAL CREDIT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3245,6 +3586,7 @@
     {
       "id": "hallowed-mfb",
       "name": "HALLOWED MFB",
+      "trading_name": "HALLOWED MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3254,6 +3596,7 @@
     {
       "id": "hamada-mfb",
       "name": "HAMADA MFB",
+      "trading_name": "HAMADA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3263,6 +3606,7 @@
     {
       "id": "hamda-mfb",
       "name": "HAMDA MFB",
+      "trading_name": "HAMDA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3272,6 +3616,7 @@
     {
       "id": "hasal-mfb",
       "name": "HASAL MFB",
+      "trading_name": "HASAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3282,6 +3627,7 @@
     {
       "id": "headway-mfb",
       "name": "HEADWAY MFB LTD",
+      "trading_name": "HEADWAY MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3292,6 +3638,7 @@
     {
       "id": "hedge-microfinance-bank",
       "name": "HEDGE MICROFINANCE BANK LIMITED",
+      "trading_name": "HEDGE MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3301,6 +3648,7 @@
     {
       "id": "hedonmark-management-services",
       "name": "Hedonmark Management Services Limited",
+      "trading_name": "Hedonmark Management Services Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -3310,6 +3658,7 @@
     {
       "id": "highland-mfb",
       "name": "HIGHLAND MFB",
+      "trading_name": "HIGHLAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3320,6 +3669,7 @@
     {
       "id": "hinache-mfb",
       "name": "HINACHE MFB",
+      "trading_name": "HINACHE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3329,6 +3679,7 @@
     {
       "id": "home-base-mortgage",
       "name": "HOME-BASE MORTGAGE",
+      "trading_name": "HOME-BASE MORTGAGE",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -3339,6 +3690,7 @@
     {
       "id": "honey-mfb",
       "name": "HONEY MFB",
+      "trading_name": "HONEY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3348,6 +3700,7 @@
     {
       "id": "hope-alive-mfb",
       "name": "HOPE ALIVE MFB",
+      "trading_name": "HOPE ALIVE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3357,6 +3710,7 @@
     {
       "id": "hope-psb",
       "name": "Hope PSB Ltd",
+      "trading_name": "Hope PSB Ltd",
       "type": "payment_service",
       "status": "active",
       "identifiers": {
@@ -3367,6 +3721,7 @@
     {
       "id": "i-care-microfinance-bank",
       "name": "I-Care Microfinance Bank Ltd",
+      "trading_name": "I-Care Microfinance Bank Ltd",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3376,6 +3731,7 @@
     {
       "id": "ibeto-mfb",
       "name": "IBETO MFB",
+      "trading_name": "IBETO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3386,6 +3742,7 @@
     {
       "id": "ibile-mfb",
       "name": "IBILE MFB",
+      "trading_name": "IBILE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3396,6 +3753,7 @@
     {
       "id": "ibolo-mfb",
       "name": "IBOLO MFB",
+      "trading_name": "IBOLO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3405,6 +3763,7 @@
     {
       "id": "ibom-fadama-mfb",
       "name": "IBOM FADAMA MFB",
+      "trading_name": "IBOM FADAMA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3415,6 +3774,7 @@
     {
       "id": "ibrahim-badamasi-babangida-university-mfb",
       "name": "IBRAHIM BADAMASI BABANGIDA UNIVERSITY MFB",
+      "trading_name": "IBRAHIM BADAMASI BABANGIDA UNIVERSITY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3424,6 +3784,7 @@
     {
       "id": "ibu-aje-mfb",
       "name": "IBU-AJE MFB",
+      "trading_name": "IBU-AJE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3433,6 +3794,7 @@
     {
       "id": "ichi-mfb",
       "name": "ICHI MFB",
+      "trading_name": "ICHI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3442,6 +3804,7 @@
     {
       "id": "ideato-mfb",
       "name": "IDEATO MFB",
+      "trading_name": "IDEATO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3451,6 +3814,7 @@
     {
       "id": "idemili-mfb",
       "name": "IDEMILI MFB",
+      "trading_name": "IDEMILI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3460,6 +3824,7 @@
     {
       "id": "ifedapo-mfb",
       "name": "IFEDAPO MFB",
+      "trading_name": "IFEDAPO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3469,6 +3834,7 @@
     {
       "id": "ifelodun-mfb",
       "name": "IFELODUN MFB",
+      "trading_name": "IFELODUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3478,6 +3844,7 @@
     {
       "id": "igbo-ukwu-mfb",
       "name": "IGBO-UKWU MFB",
+      "trading_name": "IGBO-UKWU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3487,6 +3854,7 @@
     {
       "id": "igboora-mfb",
       "name": "IGBOORA MFB",
+      "trading_name": "IGBOORA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3496,6 +3864,7 @@
     {
       "id": "ihiala-mfb",
       "name": "IHIALA MFB",
+      "trading_name": "IHIALA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3505,6 +3874,7 @@
     {
       "id": "ijare-mfb",
       "name": "IJARE MFB",
+      "trading_name": "IJARE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3514,6 +3884,7 @@
     {
       "id": "ijebu-ife-mfb",
       "name": "IJEBU IFE MFB",
+      "trading_name": "IJEBU IFE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3523,6 +3894,7 @@
     {
       "id": "ikenne-mfb",
       "name": "IKENNE MFB",
+      "trading_name": "IKENNE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3533,6 +3905,7 @@
     {
       "id": "ikere-microfinance-bank",
       "name": "Ikere Microfinance Bank Limited",
+      "trading_name": "Ikere Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3542,6 +3915,7 @@
     {
       "id": "ikire-mfb",
       "name": "IKIRE MFB",
+      "trading_name": "IKIRE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3552,6 +3926,7 @@
     {
       "id": "ikorodu-division-mfb",
       "name": "IKORODU DIVISION MFB",
+      "trading_name": "IKORODU DIVISION MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3561,6 +3936,7 @@
     {
       "id": "ikoyi-ile-mfb",
       "name": "IKOYI-ILE MFB",
+      "trading_name": "IKOYI-ILE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3570,6 +3946,7 @@
     {
       "id": "ikoyi-osun-mfb",
       "name": "IKOYI-OSUN MFB",
+      "trading_name": "IKOYI-OSUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3579,6 +3956,7 @@
     {
       "id": "ilaro-polytechnic-mfb",
       "name": "ILARO POLYTECHNIC MFB",
+      "trading_name": "ILARO POLYTECHNIC MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3588,6 +3966,7 @@
     {
       "id": "ile-oluji-mfb",
       "name": "ILE-OLUJI MFB",
+      "trading_name": "ILE-OLUJI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3597,6 +3976,7 @@
     {
       "id": "ilisan-mfb",
       "name": "ILISAN MFB",
+      "trading_name": "ILISAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3607,6 +3987,7 @@
     {
       "id": "ilobu-mfb",
       "name": "ILOBU MFB",
+      "trading_name": "ILOBU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3616,6 +3997,7 @@
     {
       "id": "iloffa-mfb",
       "name": "ILOFFA MFB",
+      "trading_name": "ILOFFA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3625,6 +4007,7 @@
     {
       "id": "ilora-mfb",
       "name": "ILORA MFB",
+      "trading_name": "ILORA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3635,6 +4018,7 @@
     {
       "id": "ilorin-mfb",
       "name": "ILORIN MFB",
+      "trading_name": "ILORIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3645,6 +4029,7 @@
     {
       "id": "iludun-oro-mfb",
       "name": "ILUDUN ORO MFB",
+      "trading_name": "ILUDUN ORO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3654,6 +4039,7 @@
     {
       "id": "ilutuntun-osoro-mfb",
       "name": "ILUTUNTUN-OSORO MFB",
+      "trading_name": "ILUTUNTUN-OSORO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3663,6 +4049,7 @@
     {
       "id": "imo-state-microfinance-bank",
       "name": "IMO STATE MICROFINANCE BANK",
+      "trading_name": "IMO STATE MICROFINANCE BANK",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3673,6 +4060,7 @@
     {
       "id": "imodi-imosan-mfb",
       "name": "IMODI-IMOSAN MFB",
+      "trading_name": "IMODI-IMOSAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3682,6 +4070,7 @@
     {
       "id": "imopoly-mfb",
       "name": "IMOPOLY MFB",
+      "trading_name": "IMOPOLY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3691,6 +4080,7 @@
     {
       "id": "imowo-mfb",
       "name": "IMOWO MFB",
+      "trading_name": "IMOWO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3701,6 +4091,7 @@
     {
       "id": "imperial-homes",
       "name": "IMPERIAL HOMES",
+      "trading_name": "IMPERIAL HOMES",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -3711,6 +4102,7 @@
     {
       "id": "imsu-mfb",
       "name": "IMSU MFB",
+      "trading_name": "IMSU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3720,6 +4112,7 @@
     {
       "id": "imt-mfb",
       "name": "IMT MFB",
+      "trading_name": "IMT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3729,6 +4122,7 @@
     {
       "id": "indulge-microfinance-bank",
       "name": "Indulge Microfinance Bank Limited",
+      "trading_name": "Indulge Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3738,6 +4132,7 @@
     {
       "id": "infinity-mfb",
       "name": "INFINITY MFB",
+      "trading_name": "INFINITY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3748,6 +4143,7 @@
     {
       "id": "infinity-trust",
       "name": "INFINITY TRUST",
+      "trading_name": "INFINITY TRUST",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -3758,6 +4154,7 @@
     {
       "id": "insight-mfb",
       "name": "INSIGHT MFB",
+      "trading_name": "INSIGHT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3768,6 +4165,7 @@
     {
       "id": "ipapo-mfb",
       "name": "IPAPO MFB",
+      "trading_name": "IPAPO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3777,6 +4175,7 @@
     {
       "id": "iperu-mfb",
       "name": "IPERU MFB",
+      "trading_name": "IPERU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3787,6 +4186,7 @@
     {
       "id": "irl-mfb",
       "name": "IRL MFB",
+      "trading_name": "IRL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3797,6 +4197,7 @@
     {
       "id": "isale-oyo-mfb",
       "name": "ISALE OYO MFB",
+      "trading_name": "ISALE OYO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3807,6 +4208,7 @@
     {
       "id": "ishiagu-mfb",
       "name": "ISHIAGU MFB",
+      "trading_name": "ISHIAGU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3816,6 +4218,7 @@
     {
       "id": "ishie-mfb",
       "name": "ISHIE MFB",
+      "trading_name": "ISHIE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3826,6 +4229,7 @@
     {
       "id": "isi-ego-microfinance-bank",
       "name": "Isi-Ego Microfinance Bank Limited",
+      "trading_name": "Isi-Ego Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3835,6 +4239,7 @@
     {
       "id": "isi-uzo-mfb",
       "name": "ISI-UZO MFB",
+      "trading_name": "ISI-UZO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3844,6 +4249,7 @@
     {
       "id": "island-mfb",
       "name": "ISLAND MFB",
+      "trading_name": "ISLAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3853,6 +4259,7 @@
     {
       "id": "isua-mfb",
       "name": "ISUA MFB",
+      "trading_name": "ISUA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3862,6 +4269,7 @@
     {
       "id": "isuofia-mfb",
       "name": "ISUOFIA MFB",
+      "trading_name": "ISUOFIA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3872,6 +4280,7 @@
     {
       "id": "iwa-mfb",
       "name": "IWA MFB",
+      "trading_name": "IWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3881,6 +4290,7 @@
     {
       "id": "iwoye-ijesa-mfb",
       "name": "IWOYE-IJESA MFB",
+      "trading_name": "IWOYE-IJESA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3890,6 +4300,7 @@
     {
       "id": "iya-zakari-mashi-mfb",
       "name": "IYA-ZAKARI (MASHI) MFB",
+      "trading_name": "IYA-ZAKARI (MASHI) MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3899,6 +4310,7 @@
     {
       "id": "iyamoye-mfb",
       "name": "IYAMOYE MFB",
+      "trading_name": "IYAMOYE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3908,6 +4320,7 @@
     {
       "id": "iyeru-okin-mfb",
       "name": "IYERU OKIN MFB",
+      "trading_name": "IYERU OKIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3917,6 +4330,7 @@
     {
       "id": "iyin-ekiti-mfb",
       "name": "IYIN EKITI MFB",
+      "trading_name": "IYIN EKITI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3926,6 +4340,7 @@
     {
       "id": "izon-mfb",
       "name": "IZON MFB LTD",
+      "trading_name": "IZON MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3936,6 +4351,7 @@
     {
       "id": "jaiz-bank",
       "name": "JAIZ BANK PLC",
+      "trading_name": "JAIZ BANK PLC",
       "type": "non_interest",
       "status": "active",
       "identifiers": {
@@ -3946,6 +4362,7 @@
     {
       "id": "janzama-mfb",
       "name": "JANZAMA MFB",
+      "trading_name": "JANZAMA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3955,6 +4372,7 @@
     {
       "id": "jen-mfb",
       "name": "JEN MFB",
+      "trading_name": "JEN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3964,6 +4382,7 @@
     {
       "id": "jessefield-mfb",
       "name": "JESSEFIELD MFB",
+      "trading_name": "JESSEFIELD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3974,6 +4393,7 @@
     {
       "id": "jewel-coop-mfb",
       "name": "JEWEL COOP MFB",
+      "trading_name": "JEWEL COOP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -3983,6 +4403,7 @@
     {
       "id": "jigawa-savings-loans",
       "name": "JIGAWA SAVINGS & LOANS",
+      "trading_name": "JIGAWA SAVINGS & LOANS",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -3992,6 +4413,7 @@
     {
       "id": "jubilee-life-mortgage-bank",
       "name": "JUBILEE-LIFE MORTGAGE BANK",
+      "trading_name": "JUBILEE-LIFE MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -4002,6 +4424,7 @@
     {
       "id": "kabo-mfb",
       "name": "KABO MFB",
+      "trading_name": "KABO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4011,6 +4434,7 @@
     {
       "id": "kadpoly-mfb",
       "name": "KADPOLY MFB",
+      "trading_name": "KADPOLY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4021,6 +4445,7 @@
     {
       "id": "kadupe-mfb",
       "name": "KADUPE MFB",
+      "trading_name": "KADUPE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4030,6 +4455,7 @@
     {
       "id": "kaizen-microfinance-bank",
       "name": "Kaizen Microfinance Bank Limited",
+      "trading_name": "Kaizen Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4039,6 +4465,7 @@
     {
       "id": "kankara-mfb",
       "name": "KANKARA MFB",
+      "trading_name": "KANKARA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4048,6 +4475,7 @@
     {
       "id": "kankia-mfb",
       "name": "KANKIA MFB LTD",
+      "trading_name": "KANKIA MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4057,6 +4485,7 @@
     {
       "id": "kano-west-mfb",
       "name": "KANO-WEST MFB",
+      "trading_name": "KANO-WEST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4066,6 +4495,7 @@
     {
       "id": "katagum-mfb",
       "name": "KATAGUM MFB",
+      "trading_name": "KATAGUM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4075,6 +4505,7 @@
     {
       "id": "katsu-microfinance-bank",
       "name": "Katsu Microfinance Bank Limited",
+      "trading_name": "Katsu Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4084,6 +4515,7 @@
     {
       "id": "kayvee-mfb",
       "name": "KAYVEE MFB",
+      "trading_name": "KAYVEE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4093,6 +4525,7 @@
     {
       "id": "kc-mfb",
       "name": "KC MFB",
+      "trading_name": "KC MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4102,6 +4535,7 @@
     {
       "id": "kcmb-mfb",
       "name": "KCMB MFB",
+      "trading_name": "KCMB MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4112,6 +4546,7 @@
     {
       "id": "kebbi-state-homes",
       "name": "KEBBI STATE HOMES",
+      "trading_name": "KEBBI STATE HOMES",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -4121,6 +4556,7 @@
     {
       "id": "kenechukwu-mfb",
       "name": "KENECHUKWU MFB",
+      "trading_name": "KENECHUKWU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4130,6 +4566,7 @@
     {
       "id": "keystone-bank",
       "name": "Keystone Bank Limited",
+      "trading_name": "Keystone Bank Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -4140,6 +4577,7 @@
     {
       "id": "khb-mfb",
       "name": "KHB MFB",
+      "trading_name": "KHB MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4149,6 +4587,7 @@
     {
       "id": "kingdom-college-mfb",
       "name": "KINGDOM COLLEGE MFB LTD",
+      "trading_name": "KINGDOM COLLEGE MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4159,6 +4598,7 @@
     {
       "id": "kisi-mfb",
       "name": "KISI MFB",
+      "trading_name": "KISI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4168,6 +4608,7 @@
     {
       "id": "kku-microfinance",
       "name": "KKU Microfinance",
+      "trading_name": "KKU Microfinance",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4177,6 +4618,7 @@
     {
       "id": "kmc-mfb",
       "name": "KMC MFB",
+      "trading_name": "KMC MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4186,6 +4628,7 @@
     {
       "id": "koboweb-microfinance-bank",
       "name": "Koboweb Microfinance Bank Limited",
+      "trading_name": "Koboweb Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4195,6 +4638,7 @@
     {
       "id": "koins-microfinance-bank",
       "name": "Koins Microfinance Bank Limited",
+      "trading_name": "Koins Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4204,6 +4648,7 @@
     {
       "id": "kolisa-microfinance-bank",
       "name": "Kolisa Microfinance Bank Limited",
+      "trading_name": "Kolisa Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4213,6 +4658,7 @@
     {
       "id": "kongapay-technologies",
       "name": "KongaPay Technologies Limited (Formerly Zinternet Limited )",
+      "trading_name": "KongaPay Technologies Limited (Formerly Zinternet Limited )",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -4222,6 +4668,7 @@
     {
       "id": "kontagora-mfb",
       "name": "KONTAGORA MFB",
+      "trading_name": "KONTAGORA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4232,6 +4679,7 @@
     {
       "id": "kopo-kope-mfb",
       "name": "KOPO-KOPE MFB",
+      "trading_name": "KOPO-KOPE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4241,6 +4689,7 @@
     {
       "id": "kredi-money-mfb-formerly-conpro-mfb",
       "name": "KREDI MONEY MFB (Formerly CONPRO MFB)",
+      "trading_name": "KREDI MONEY MFB (Formerly CONPRO MFB)",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4251,6 +4700,7 @@
     {
       "id": "kuda-mfb",
       "name": "KUDA MFB",
+      "trading_name": "KUDA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4261,6 +4711,7 @@
     {
       "id": "kumbotso-mfb",
       "name": "KUMBOTSO MFB",
+      "trading_name": "KUMBOTSO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4270,6 +4721,7 @@
     {
       "id": "kunagaba-mfb",
       "name": "KUNAGABA MFB",
+      "trading_name": "KUNAGABA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4279,6 +4731,7 @@
     {
       "id": "kunchi-mfb",
       "name": "KUNCHI MFB",
+      "trading_name": "KUNCHI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4288,6 +4741,7 @@
     {
       "id": "kura-mfb",
       "name": "KURA MFB",
+      "trading_name": "KURA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4297,6 +4751,7 @@
     {
       "id": "kusalla-mfb",
       "name": "KUSALLA MFB",
+      "trading_name": "KUSALLA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4306,6 +4761,7 @@
     {
       "id": "kwacofocus-mfb",
       "name": "KWACOFOCUS MFB",
+      "trading_name": "KWACOFOCUS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4315,6 +4771,7 @@
     {
       "id": "kwara-polytechnic-microfinance-bank",
       "name": "KWARA POLYTECHNIC MICROFINANCE BANK LIMITED",
+      "trading_name": "KWARA POLYTECHNIC MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4324,6 +4781,7 @@
     {
       "id": "kwasu-mfb",
       "name": "KWASU MFB",
+      "trading_name": "KWASU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4334,6 +4792,7 @@
     {
       "id": "kwatashi-mfb",
       "name": "KWATASHI MFB",
+      "trading_name": "KWATASHI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4343,6 +4802,7 @@
     {
       "id": "la-fayette-mfb",
       "name": "LA FAYETTE MFB",
+      "trading_name": "LA FAYETTE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4353,6 +4813,7 @@
     {
       "id": "ladder-microfinance-bank",
       "name": "Ladder Microfinance Bank",
+      "trading_name": "Ladder Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4363,6 +4824,7 @@
     {
       "id": "lagos-building-investment",
       "name": "LAGOS BUILDING & INVESTMENT",
+      "trading_name": "LAGOS BUILDING & INVESTMENT",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -4373,6 +4835,7 @@
     {
       "id": "landgold-mfb",
       "name": "LANDGOLD MFB",
+      "trading_name": "LANDGOLD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4383,6 +4846,7 @@
     {
       "id": "lapo-mfb",
       "name": "LAPO MFB",
+      "trading_name": "LAPO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4393,6 +4857,7 @@
     {
       "id": "lavender",
       "name": "LAVENDER",
+      "trading_name": "LAVENDER",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4403,6 +4868,7 @@
     {
       "id": "lawyers-mfb",
       "name": "LAWYERS MFB",
+      "trading_name": "LAWYERS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4412,6 +4878,7 @@
     {
       "id": "layelu-mfb",
       "name": "LAYELU MFB",
+      "trading_name": "LAYELU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4421,6 +4888,7 @@
     {
       "id": "leadcity-mfb",
       "name": "LEADCITY MFB",
+      "trading_name": "LEADCITY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4430,6 +4898,7 @@
     {
       "id": "legacy-mfb",
       "name": "LEGACY MFB",
+      "trading_name": "LEGACY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4439,6 +4908,7 @@
     {
       "id": "legend-mfb",
       "name": "LEGEND MFB",
+      "trading_name": "LEGEND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4449,6 +4919,7 @@
     {
       "id": "letshego-mfb",
       "name": "LETSHEGO MFB",
+      "trading_name": "LETSHEGO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4459,6 +4930,7 @@
     {
       "id": "levite-mfb",
       "name": "LEVITE MFB",
+      "trading_name": "LEVITE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4468,6 +4940,7 @@
     {
       "id": "lifegate-mfb",
       "name": "LIFEGATE MFB",
+      "trading_name": "LIFEGATE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4477,6 +4950,7 @@
     {
       "id": "light-mfb",
       "name": "LIGHT MFB",
+      "trading_name": "LIGHT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4487,6 +4961,7 @@
     {
       "id": "lightway-microfinance-bank",
       "name": "Lightway Microfinance Bank Limited",
+      "trading_name": "Lightway Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4496,6 +4971,7 @@
     {
       "id": "links-mfb",
       "name": "LINKS MFB",
+      "trading_name": "LINKS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4506,6 +4982,7 @@
     {
       "id": "living-spring-mfb",
       "name": "LIVING SPRING MFB",
+      "trading_name": "LIVING SPRING MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4515,6 +4992,7 @@
     {
       "id": "lobrem-mfb",
       "name": "LOBREM MFB",
+      "trading_name": "LOBREM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4524,6 +5002,7 @@
     {
       "id": "lotus-bank",
       "name": "LOTUS BANK LTD",
+      "trading_name": "LOTUS BANK LTD",
       "type": "non_interest",
       "status": "active",
       "identifiers": {
@@ -4534,6 +5013,7 @@
     {
       "id": "lovonus-mfb",
       "name": "LOVONUS MFB",
+      "trading_name": "LOVONUS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4544,6 +5024,7 @@
     {
       "id": "m-m-mfb",
       "name": "M & M MFB",
+      "trading_name": "M & M MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4553,6 +5034,7 @@
     {
       "id": "mab-allianz-mfb",
       "name": "MAB ALLIANZ MFB LTD",
+      "trading_name": "MAB ALLIANZ MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4562,6 +5044,7 @@
     {
       "id": "macrod-mfb",
       "name": "MACROD MFB",
+      "trading_name": "MACROD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4571,6 +5054,7 @@
     {
       "id": "madelyn-mfb",
       "name": "MADELYN MFB",
+      "trading_name": "MADELYN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4580,6 +5064,7 @@
     {
       "id": "madobi-mfb",
       "name": "MADOBI MFB",
+      "trading_name": "MADOBI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4589,6 +5074,7 @@
     {
       "id": "magajin-giri-mfb",
       "name": "MAGAJIN-GIRI MFB",
+      "trading_name": "MAGAJIN-GIRI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4598,6 +5084,7 @@
     {
       "id": "magnet-mfb",
       "name": "MAGNET MFB",
+      "trading_name": "MAGNET MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4607,6 +5094,7 @@
     {
       "id": "maigatari-mfb",
       "name": "MAIGATARI MFB",
+      "trading_name": "MAIGATARI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4616,6 +5104,7 @@
     {
       "id": "main-trust-mfb",
       "name": "MAIN TRUST MFB",
+      "trading_name": "MAIN TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4626,6 +5115,7 @@
     {
       "id": "mainland-mfb",
       "name": "MAINLAND MFB",
+      "trading_name": "MAINLAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4636,6 +5126,7 @@
     {
       "id": "mainstreet-mfb",
       "name": "MAINSTREET MFB",
+      "trading_name": "MAINSTREET MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4646,6 +5137,7 @@
     {
       "id": "malachy-mfb",
       "name": "MALACHY MFB",
+      "trading_name": "MALACHY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4656,6 +5148,7 @@
     {
       "id": "mapoly-mfb",
       "name": "MAPOLY MFB",
+      "trading_name": "MAPOLY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4665,6 +5158,7 @@
     {
       "id": "maritime-mfb",
       "name": "MARITIME MFB",
+      "trading_name": "MARITIME MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4675,6 +5169,7 @@
     {
       "id": "matazu-mfb",
       "name": "MATAZU MFB LTD",
+      "trading_name": "MATAZU MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4684,6 +5179,7 @@
     {
       "id": "maxitrust-mfb",
       "name": "MAXITRUST MFB",
+      "trading_name": "MAXITRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4693,6 +5189,7 @@
     {
       "id": "mayden-microfinance-bank",
       "name": "MAYDEN MICROFINANCE BANK",
+      "trading_name": "MAYDEN MICROFINANCE BANK",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4702,6 +5199,7 @@
     {
       "id": "mayfresh-mortgage-bank",
       "name": "MAYFRESH MORTGAGE BANK",
+      "trading_name": "MAYFRESH MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -4712,6 +5210,7 @@
     {
       "id": "mbaitoli-mfb",
       "name": "MBAITOLI MFB",
+      "trading_name": "MBAITOLI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4721,6 +5220,7 @@
     {
       "id": "mbawulu-mfb",
       "name": "MBAWULU MFB",
+      "trading_name": "MBAWULU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4730,6 +5230,7 @@
     {
       "id": "mega-mfb",
       "name": "MEGA MFB",
+      "trading_name": "MEGA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4739,6 +5240,7 @@
     {
       "id": "megapraise-mfb",
       "name": "MEGAPRAISE MFB",
+      "trading_name": "MEGAPRAISE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4749,6 +5251,7 @@
     {
       "id": "memento-mfb",
       "name": "MEMENTO MFB LTD",
+      "trading_name": "MEMENTO MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4758,6 +5261,7 @@
     {
       "id": "memphis-microfinance-bank",
       "name": "MEMPHIS MICROFINANCE BANK LIMITED",
+      "trading_name": "MEMPHIS MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4768,6 +5272,7 @@
     {
       "id": "meridian-mfb",
       "name": "MERIDIAN MFB",
+      "trading_name": "MERIDIAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4778,6 +5283,7 @@
     {
       "id": "mgbidi-mfb",
       "name": "MGBIDI MFB",
+      "trading_name": "MGBIDI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4787,6 +5293,7 @@
     {
       "id": "mgsl-mortgage-bank",
       "name": "MGSL MORTGAGE BANK",
+      "trading_name": "MGSL MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -4796,6 +5303,7 @@
     {
       "id": "mia-microfinance-bank",
       "name": "Mia Microfinance Bank Limited",
+      "trading_name": "Mia Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4805,6 +5313,7 @@
     {
       "id": "micheal-okpara-university-mfb",
       "name": "MICHEAL OKPARA UNIVERSITY MFB",
+      "trading_name": "MICHEAL OKPARA UNIVERSITY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4814,6 +5323,7 @@
     {
       "id": "microvis-mfb",
       "name": "MICROVIS MFB",
+      "trading_name": "MICROVIS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4824,6 +5334,7 @@
     {
       "id": "midland-mfb",
       "name": "MIDLAND MFB",
+      "trading_name": "MIDLAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4834,6 +5345,7 @@
     {
       "id": "mint-microfinance-bank",
       "name": "Mint Microfinance Bank Limited",
+      "trading_name": "Mint Microfinance Bank Limited",
       "type": "non_interest",
       "status": "active",
       "identifiers": {
@@ -4843,6 +5355,7 @@
     {
       "id": "mkobo-mfb",
       "name": "MKOBO MFB LTD",
+      "trading_name": "MKOBO MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4852,6 +5365,7 @@
     {
       "id": "mkudi",
       "name": "Mkudi Limited",
+      "trading_name": "Mkudi Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -4861,6 +5375,7 @@
     {
       "id": "moddibo-adama-university-microfinance-bank",
       "name": "Moddibo Adama University Microfinance Bank Limited",
+      "trading_name": "Moddibo Adama University Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4871,6 +5386,7 @@
     {
       "id": "model-mfb",
       "name": "MODEL MFB",
+      "trading_name": "MODEL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4880,6 +5396,7 @@
     {
       "id": "modiya-yekokpe-mfb",
       "name": "MODIYA YEKOKPE MFB",
+      "trading_name": "MODIYA YEKOKPE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4889,6 +5406,7 @@
     {
       "id": "molusi-mfb",
       "name": "MOLUSI MFB",
+      "trading_name": "MOLUSI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4899,6 +5417,7 @@
     {
       "id": "momo-payment-service-bank",
       "name": "MOMO PAYMENT SERVICE BANK",
+      "trading_name": "MOMO PAYMENT SERVICE BANK",
       "type": "payment_service",
       "status": "active",
       "identifiers": {
@@ -4909,6 +5428,7 @@
     {
       "id": "monarch-mfb",
       "name": "MONARCH MFB",
+      "trading_name": "MONARCH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4919,6 +5439,7 @@
     {
       "id": "moneymaster-psb",
       "name": "Moneymaster PSB Ltd",
+      "trading_name": "Moneymaster PSB Ltd",
       "type": "payment_service",
       "status": "active",
       "identifiers": {
@@ -4929,6 +5450,7 @@
     {
       "id": "moneytronics-mfb-formerly-ipodo-ikeja-mfb",
       "name": "MONEYTRONICS MFB (Formerly Ipodo-Ikeja MFB)",
+      "trading_name": "MONEYTRONICS MFB (Formerly Ipodo-Ikeja MFB)",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4938,6 +5460,7 @@
     {
       "id": "moneytrust-mfb",
       "name": "Moneytrust MFB",
+      "trading_name": "Moneytrust MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4948,6 +5471,7 @@
     {
       "id": "moniepoint-mfb",
       "name": "Moniepoint MFB",
+      "trading_name": "Moniepoint MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4958,6 +5482,7 @@
     {
       "id": "movasco-op-microfinance-bank",
       "name": "Movasco-Op Microfinance Bank Limited",
+      "trading_name": "Movasco-Op Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4967,6 +5492,7 @@
     {
       "id": "moyofade-mfb",
       "name": "MOYOFADE MFB",
+      "trading_name": "MOYOFADE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4977,6 +5503,7 @@
     {
       "id": "mozfin-mfb",
       "name": "MOZFIN MFB",
+      "trading_name": "MOZFIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4987,6 +5514,7 @@
     {
       "id": "muamala-microfinance-bank",
       "name": "Muamala Microfinance Bank Limited",
+      "trading_name": "Muamala Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -4996,6 +5524,7 @@
     {
       "id": "multivest-mfb",
       "name": "MULTIVEST MFB",
+      "trading_name": "MULTIVEST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5005,6 +5534,7 @@
     {
       "id": "mutual-alliance",
       "name": "MUTUAL ALLIANCE",
+      "trading_name": "MUTUAL ALLIANCE",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -5014,6 +5544,7 @@
     {
       "id": "mutual-benefit-mfb",
       "name": "MUTUAL BENEFIT MFB",
+      "trading_name": "MUTUAL BENEFIT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5024,6 +5555,7 @@
     {
       "id": "mutual-trust-mfb",
       "name": "MUTUAL TRUST MFB",
+      "trading_name": "MUTUAL TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5034,6 +5566,7 @@
     {
       "id": "nagarta-mfb",
       "name": "NAGARTA MFB",
+      "trading_name": "NAGARTA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5044,6 +5577,7 @@
     {
       "id": "naisa-mfb",
       "name": "NAISA MFB",
+      "trading_name": "NAISA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5053,6 +5587,7 @@
     {
       "id": "nakowa-mfb",
       "name": "NAKOWA MFB",
+      "trading_name": "NAKOWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5062,6 +5597,7 @@
     {
       "id": "namoda-mfb",
       "name": "NAMODA MFB",
+      "trading_name": "NAMODA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5071,6 +5607,7 @@
     {
       "id": "nasarawa-mfb",
       "name": "NASARAWA MFB",
+      "trading_name": "NASARAWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5081,6 +5618,7 @@
     {
       "id": "ndiolu-mfb",
       "name": "NDIOLU MFB",
+      "trading_name": "NDIOLU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5090,6 +5628,7 @@
     {
       "id": "ndiorah-mfb",
       "name": "NDIORAH MFB",
+      "trading_name": "NDIORAH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5100,6 +5639,7 @@
     {
       "id": "nenzit-mfb",
       "name": "NENZIT MFB",
+      "trading_name": "NENZIT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5109,6 +5649,7 @@
     {
       "id": "neptune-mfb",
       "name": "NEPTUNE MFB",
+      "trading_name": "NEPTUNE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5119,6 +5660,7 @@
     {
       "id": "new-dawn-mfb",
       "name": "NEW DAWN MFB",
+      "trading_name": "NEW DAWN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5129,6 +5671,7 @@
     {
       "id": "new-era-mfb",
       "name": "NEW ERA MFB",
+      "trading_name": "NEW ERA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5138,6 +5681,7 @@
     {
       "id": "new-golden-pastures-mfb",
       "name": "NEW GOLDEN PASTURES MFB",
+      "trading_name": "NEW GOLDEN PASTURES MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5148,6 +5692,7 @@
     {
       "id": "new-prudential",
       "name": "NEW PRUDENTIAL",
+      "trading_name": "NEW PRUDENTIAL",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -5158,6 +5703,7 @@
     {
       "id": "new-women-s-mfb",
       "name": "NEW WOMEN'S MFB",
+      "trading_name": "NEW WOMEN'S MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5168,6 +5714,7 @@
     {
       "id": "nexton-microfinance-bank",
       "name": "Nexton Microfinance Bank Limited",
+      "trading_name": "Nexton Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5177,6 +5724,7 @@
     {
       "id": "ngbo-mfb",
       "name": "NGBO MFB LTD",
+      "trading_name": "NGBO MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5186,6 +5734,7 @@
     {
       "id": "nice-mfb",
       "name": "NICE MFB",
+      "trading_name": "NICE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5196,6 +5745,7 @@
     {
       "id": "nigeria-police-mortgage-bank",
       "name": "NIGERIA POLICE MORTGAGE BANK",
+      "trading_name": "NIGERIA POLICE MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -5205,6 +5755,7 @@
     {
       "id": "nigerian-navy-mfb",
       "name": "NIGERIAN NAVY MFB LTD",
+      "trading_name": "NIGERIAN NAVY MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5215,6 +5766,7 @@
     {
       "id": "nigerian-prisons-mfb",
       "name": "NIGERIAN PRISONS MFB",
+      "trading_name": "NIGERIAN PRISONS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5225,6 +5777,7 @@
     {
       "id": "ningi-mfb",
       "name": "NINGI MFB",
+      "trading_name": "NINGI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5234,6 +5787,7 @@
     {
       "id": "nirsal-mfb",
       "name": "NIRSAL MFB",
+      "trading_name": "NIRSAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5244,6 +5798,7 @@
     {
       "id": "nkpa-mfb",
       "name": "NKPA MFB",
+      "trading_name": "NKPA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5253,6 +5808,7 @@
     {
       "id": "nkpologwu-mfb",
       "name": "NKPOLOGWU MFB",
+      "trading_name": "NKPOLOGWU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5262,6 +5818,7 @@
     {
       "id": "nkpolu-ust-mfb",
       "name": "NKPOLU-UST MFB",
+      "trading_name": "NKPOLU-UST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5271,6 +5828,7 @@
     {
       "id": "nnokwa-mfb",
       "name": "NNOKWA MFB",
+      "trading_name": "NNOKWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5280,6 +5838,7 @@
     {
       "id": "noble-mfb",
       "name": "NOBLE MFB",
+      "trading_name": "NOBLE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5289,6 +5848,7 @@
     {
       "id": "nomase-microfinance-bank",
       "name": "NOMASE MICROFINANCE BANK LTD",
+      "trading_name": "NOMASE MICROFINANCE BANK LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5298,6 +5858,7 @@
     {
       "id": "noun-mfb",
       "name": "NOUN MFB",
+      "trading_name": "NOUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5307,6 +5868,7 @@
     {
       "id": "nova-commercial-bank",
       "name": "Nova Commercial Bank Limited",
+      "trading_name": "Nova Commercial Bank Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -5317,6 +5879,7 @@
     {
       "id": "novel-mfb",
       "name": "NOVEL MFB",
+      "trading_name": "NOVEL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5326,6 +5889,7 @@
     {
       "id": "novus-microfinance-bank",
       "name": "Novus Microfinance Bank Limited",
+      "trading_name": "Novus Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5335,6 +5899,7 @@
     {
       "id": "nownow-digital-systems",
       "name": "NowNow Digital Systems Limited (Formerly Contec Global Infotech Limited)",
+      "trading_name": "NowNow Digital Systems Limited (Formerly Contec Global Infotech Limited)",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -5344,6 +5909,7 @@
     {
       "id": "npf-mfb",
       "name": "NPF MFB",
+      "trading_name": "NPF MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5354,6 +5920,7 @@
     {
       "id": "nri-mfb",
       "name": "NRI MFB",
+      "trading_name": "NRI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5363,6 +5930,7 @@
     {
       "id": "nsu-mfb",
       "name": "NSU MFB",
+      "trading_name": "NSU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5372,6 +5940,7 @@
     {
       "id": "nsuk-mfb",
       "name": "NSUK MFB",
+      "trading_name": "NSUK MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5382,6 +5951,7 @@
     {
       "id": "nsukka-township-mfb",
       "name": "NSUKKA TOWNSHIP MFB",
+      "trading_name": "NSUKKA TOWNSHIP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5391,6 +5961,7 @@
     {
       "id": "nuggets-mfb",
       "name": "NUGGETS MFB",
+      "trading_name": "NUGGETS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5400,6 +5971,7 @@
     {
       "id": "numo-mfb",
       "name": "NUMO MFB",
+      "trading_name": "NUMO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5410,6 +5982,7 @@
     {
       "id": "nun-mfb",
       "name": "NUN MFB",
+      "trading_name": "NUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5419,6 +5992,7 @@
     {
       "id": "nut-okebola-mfb",
       "name": "NUT OKEBOLA MFB",
+      "trading_name": "NUT OKEBOLA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5428,6 +6002,7 @@
     {
       "id": "nwannegadi-mfb",
       "name": "NWANNEGADI MFB",
+      "trading_name": "NWANNEGADI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5438,6 +6013,7 @@
     {
       "id": "oakland-mfb",
       "name": "OAKLAND MFB",
+      "trading_name": "OAKLAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5448,6 +6024,7 @@
     {
       "id": "oba-mfb",
       "name": "OBA MFB",
+      "trading_name": "OBA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5457,6 +6034,7 @@
     {
       "id": "obafemi-awolowo-university-mfb",
       "name": "OBAFEMI AWOLOWO UNIVERSITY MFB",
+      "trading_name": "OBAFEMI AWOLOWO UNIVERSITY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5466,6 +6044,7 @@
     {
       "id": "obeledu-mfb",
       "name": "OBELEDU MFB",
+      "trading_name": "OBELEDU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5475,6 +6054,7 @@
     {
       "id": "obodoukwu-mfb",
       "name": "OBODOUKWU MFB",
+      "trading_name": "OBODOUKWU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5484,6 +6064,7 @@
     {
       "id": "obokun-mfb",
       "name": "OBOKUN MFB",
+      "trading_name": "OBOKUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5493,6 +6074,7 @@
     {
       "id": "obollo-mfb",
       "name": "OBOLLO MFB",
+      "trading_name": "OBOLLO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5502,6 +6084,7 @@
     {
       "id": "oche-mfb",
       "name": "OCHE MFB",
+      "trading_name": "OCHE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5512,6 +6095,7 @@
     {
       "id": "ocon-success-mfb",
       "name": "OCON SUCCESS MFB",
+      "trading_name": "OCON SUCCESS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5521,6 +6105,7 @@
     {
       "id": "octopus-mfb",
       "name": "OCTOPUS MFB",
+      "trading_name": "OCTOPUS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5530,6 +6115,7 @@
     {
       "id": "odoakpu-mfb",
       "name": "ODOAKPU MFB",
+      "trading_name": "ODOAKPU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5539,6 +6125,7 @@
     {
       "id": "odu-mfb",
       "name": "ODU MFB",
+      "trading_name": "ODU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5548,6 +6135,7 @@
     {
       "id": "oganiru-microfinance-bank",
       "name": "Oganiru Microfinance Bank Limited",
+      "trading_name": "Oganiru Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5557,6 +6145,7 @@
     {
       "id": "ogberuru-mfb",
       "name": "OGBERURU MFB",
+      "trading_name": "OGBERURU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5566,6 +6155,7 @@
     {
       "id": "ogbete-mfb",
       "name": "OGBETE MFB",
+      "trading_name": "OGBETE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5575,6 +6165,7 @@
     {
       "id": "ogboefere-mfb",
       "name": "OGBOEFERE MFB",
+      "trading_name": "OGBOEFERE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5584,6 +6175,7 @@
     {
       "id": "ogige-mfb",
       "name": "OGIGE MFB",
+      "trading_name": "OGIGE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5593,6 +6185,7 @@
     {
       "id": "ogiyan-mfb",
       "name": "OGIYAN MFB",
+      "trading_name": "OGIYAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5602,6 +6195,7 @@
     {
       "id": "ohafia-mfb",
       "name": "OHAFIA MFB",
+      "trading_name": "OHAFIA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5612,6 +6206,7 @@
     {
       "id": "ohha-mfb",
       "name": "OHHA MFB",
+      "trading_name": "OHHA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5621,6 +6216,7 @@
     {
       "id": "ojokoro-mfb",
       "name": "OJOKORO MFB",
+      "trading_name": "OJOKORO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5631,6 +6227,7 @@
     {
       "id": "okada-microfinance-bank",
       "name": "Okada Microfinance Bank Limited",
+      "trading_name": "Okada Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5640,6 +6237,7 @@
     {
       "id": "oke-aro-oredegbe-mfb",
       "name": "OKE- ARO OREDEGBE MFB",
+      "trading_name": "OKE- ARO OREDEGBE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5649,6 +6247,7 @@
     {
       "id": "okeagbe-mfb",
       "name": "OKEAGBE MFB",
+      "trading_name": "OKEAGBE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5658,6 +6257,7 @@
     {
       "id": "okengwe-mfb",
       "name": "OKENGWE MFB",
+      "trading_name": "OKENGWE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5667,6 +6267,7 @@
     {
       "id": "oko-mfb",
       "name": "OKO MFB",
+      "trading_name": "OKO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5676,6 +6277,7 @@
     {
       "id": "okpe-mfb",
       "name": "OKPE MFB",
+      "trading_name": "OKPE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5685,6 +6287,7 @@
     {
       "id": "okpofe-mfb",
       "name": "OKPOFE MFB",
+      "trading_name": "OKPOFE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5694,6 +6297,7 @@
     {
       "id": "okpoga-mfb",
       "name": "OKPOGA MFB",
+      "trading_name": "OKPOGA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5704,6 +6308,7 @@
     {
       "id": "okuku-mfb",
       "name": "OKUKU MFB",
+      "trading_name": "OKUKU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5713,6 +6318,7 @@
     {
       "id": "okuta-mfb",
       "name": "OKUTA MFB",
+      "trading_name": "OKUTA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5722,6 +6328,7 @@
     {
       "id": "okwo-oha-mfb",
       "name": "OKWO-OHA MFB",
+      "trading_name": "OKWO-OHA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5731,6 +6338,7 @@
     {
       "id": "olabisi-onabanjo-university-mfb",
       "name": "OLABISI ONABANJO UNIVERSITY MFB",
+      "trading_name": "OLABISI ONABANJO UNIVERSITY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5741,6 +6349,7 @@
     {
       "id": "olive-mfb",
       "name": "OLIVE MFB",
+      "trading_name": "OLIVE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5750,6 +6359,7 @@
     {
       "id": "olomu-aperan-microfinance-bank",
       "name": "Olomu Aperan Microfinance Bank Limited",
+      "trading_name": "Olomu Aperan Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5759,6 +6369,7 @@
     {
       "id": "olowolagba-mfb",
       "name": "OLOWOLAGBA MFB",
+      "trading_name": "OLOWOLAGBA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5769,6 +6380,7 @@
     {
       "id": "olu-basiri-mfb",
       "name": "OLU-BASIRI MFB",
+      "trading_name": "OLU-BASIRI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5778,6 +6390,7 @@
     {
       "id": "oluchukwu-mfb",
       "name": "OLUCHUKWU MFB",
+      "trading_name": "OLUCHUKWU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5788,6 +6401,7 @@
     {
       "id": "omak-mfb",
       "name": "OMAK MFB",
+      "trading_name": "OMAK MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5797,6 +6411,7 @@
     {
       "id": "omiye-mfb",
       "name": "OMIYE MFB",
+      "trading_name": "OMIYE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5807,6 +6422,7 @@
     {
       "id": "omoluabi-livingspring",
       "name": "OMOLUABI (LIVINGSPRING)",
+      "trading_name": "OMOLUABI (LIVINGSPRING)",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -5817,6 +6433,7 @@
     {
       "id": "omuma-mfb",
       "name": "OMUMA MFB",
+      "trading_name": "OMUMA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5826,6 +6443,7 @@
     {
       "id": "onewallet-microfinance-bank",
       "name": "Onewallet Microfinance Bank Limited",
+      "trading_name": "Onewallet Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5835,6 +6453,7 @@
     {
       "id": "onibu-ore-mfb",
       "name": "ONIBU-ORE MFB",
+      "trading_name": "ONIBU-ORE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5844,6 +6463,7 @@
     {
       "id": "opay-digital-services",
       "name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
+      "trading_name": "Opay Digital Services Limited (Formerly Paycom Nigeria Limited)",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -5853,6 +6473,7 @@
     {
       "id": "opay-mfb",
       "name": "OPAY MFB LIMITEd",
+      "trading_name": "OPAY MFB LIMITEd",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5862,6 +6483,7 @@
     {
       "id": "optimum-global-microfinance-bank",
       "name": "Optimum Global Microfinance Bank Limited",
+      "trading_name": "Optimum Global Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5871,6 +6493,7 @@
     {
       "id": "optimus-bank",
       "name": "Optimus Bank",
+      "trading_name": "Optimus Bank",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -5881,6 +6504,7 @@
     {
       "id": "oraukwu-mfb",
       "name": "ORAUKWU MFB",
+      "trading_name": "ORAUKWU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5891,6 +6515,7 @@
     {
       "id": "orilonise-mfb",
       "name": "ORILONISE MFB",
+      "trading_name": "ORILONISE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5900,6 +6525,7 @@
     {
       "id": "orisun-mfb",
       "name": "ORISUN MFB",
+      "trading_name": "ORISUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5909,6 +6535,7 @@
     {
       "id": "orita-basorun-mfb",
       "name": "ORITA BASORUN MFB",
+      "trading_name": "ORITA BASORUN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5918,6 +6545,7 @@
     {
       "id": "orokam-mfb",
       "name": "OROKAM MFB",
+      "trading_name": "OROKAM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5927,6 +6555,7 @@
     {
       "id": "orsu-mfb",
       "name": "ORSU MFB",
+      "trading_name": "ORSU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5936,6 +6565,7 @@
     {
       "id": "osanta-mfb",
       "name": "OSANTA MFB",
+      "trading_name": "OSANTA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5945,6 +6575,7 @@
     {
       "id": "osct-mfb",
       "name": "OSCT MFB",
+      "trading_name": "OSCOTECH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5955,6 +6586,7 @@
     {
       "id": "osi-mfb",
       "name": "OSI MFB",
+      "trading_name": "OSI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5964,6 +6596,7 @@
     {
       "id": "osomhe-mfb",
       "name": "OSOMHE MFB",
+      "trading_name": "OSOMHE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5973,6 +6606,7 @@
     {
       "id": "ospoly-mfb",
       "name": "OSPOLY MFB",
+      "trading_name": "OSPOLY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5983,6 +6617,7 @@
     {
       "id": "osumenyi-mfb",
       "name": "OSUMENYI MFB",
+      "trading_name": "OSUMENYI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -5992,6 +6627,7 @@
     {
       "id": "otuo-mfb",
       "name": "OTUO MFB",
+      "trading_name": "OTUO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6001,6 +6637,7 @@
     {
       "id": "ours-mfb",
       "name": "OURS MFB",
+      "trading_name": "OURS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6010,6 +6647,7 @@
     {
       "id": "owotutu-mfb",
       "name": "OWOTUTU MFB",
+      "trading_name": "OWOTUTU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6019,6 +6657,7 @@
     {
       "id": "oyan-mfb",
       "name": "OYAN MFB",
+      "trading_name": "OYAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6028,6 +6667,7 @@
     {
       "id": "oye-versity-microfinance-bank",
       "name": "OYE VERSITY MICROFINANCE BANK LIMITED",
+      "trading_name": "OYE VERSITY MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6037,6 +6677,7 @@
     {
       "id": "pact-microfinance-bank",
       "name": "PACT MICROFINANCE BANK",
+      "trading_name": "PACT MICROFINANCE BANK",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6046,6 +6687,7 @@
     {
       "id": "pagatech",
       "name": "Pagatech Limited",
+      "trading_name": "Pagatech Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -6055,6 +6697,7 @@
     {
       "id": "palmcoast-mfb",
       "name": "PALMCOAST MFB",
+      "trading_name": "PALMCOAST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6065,6 +6708,7 @@
     {
       "id": "palmera-mfb",
       "name": "PALMERA MFB",
+      "trading_name": "PALMERA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6074,6 +6718,7 @@
     {
       "id": "palmpay",
       "name": "PalmPay Limited",
+      "trading_name": "PalmPay Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -6083,6 +6728,7 @@
     {
       "id": "pana-mfb",
       "name": "PANA MFB",
+      "trading_name": "PANA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6092,6 +6738,7 @@
     {
       "id": "paragon-microfinance-bank",
       "name": "Paragon Microfinance Bank Limited",
+      "trading_name": "Paragon Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6101,6 +6748,7 @@
     {
       "id": "parallex-bank",
       "name": "Parallex Bank Ltd",
+      "trading_name": "Parallex Bank Ltd",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -6111,6 +6759,7 @@
     {
       "id": "parkway-mfb",
       "name": "PARKWAY MFB",
+      "trading_name": "PARKWAY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6121,6 +6770,7 @@
     {
       "id": "parkway-projects",
       "name": "Parkway Projects Limited.",
+      "trading_name": "Parkway Projects Limited.",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -6130,6 +6780,7 @@
     {
       "id": "pathfinder-mfb",
       "name": "PATHFINDER MFB",
+      "trading_name": "PATHFINDER MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6139,6 +6790,7 @@
     {
       "id": "patrickgold-mfb",
       "name": "PATRICKGOLD MFB",
+      "trading_name": "PATRICKGOLD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6149,6 +6801,7 @@
     {
       "id": "payrep-microfinance-bank",
       "name": "Payrep Microfinance Bank Limited",
+      "trading_name": "Payrep Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6158,6 +6811,7 @@
     {
       "id": "peace-mfb",
       "name": "PEACE MFB",
+      "trading_name": "PEACE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6168,6 +6822,7 @@
     {
       "id": "pecan-trust-mfb",
       "name": "PECAN TRUST MFB",
+      "trading_name": "PECAN TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6178,6 +6833,7 @@
     {
       "id": "peninsula-mfb",
       "name": "PENINSULA MFB LTD",
+      "trading_name": "PENINSULA MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6187,6 +6843,7 @@
     {
       "id": "pennywise-mfb",
       "name": "PENNYWISE MFB",
+      "trading_name": "PENNYWISE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6197,6 +6854,7 @@
     {
       "id": "pentecost-mfb",
       "name": "PENTECOST MFB LTD",
+      "trading_name": "PENTECOST MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6206,6 +6864,7 @@
     {
       "id": "personal-trust-mfb",
       "name": "PERSONAL TRUST MFB",
+      "trading_name": "PERSONAL TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6216,6 +6875,7 @@
     {
       "id": "petra-mfb",
       "name": "PETRA MFB",
+      "trading_name": "PETRA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6226,6 +6886,7 @@
     {
       "id": "phoenix-mfb",
       "name": "PHOENIX MFB",
+      "trading_name": "PHOENIX MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6235,6 +6896,7 @@
     {
       "id": "pillar-mfb",
       "name": "PILLAR MFB",
+      "trading_name": "PILLAR MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6245,6 +6907,7 @@
     {
       "id": "pioneer-microfinance-bank",
       "name": "Pioneer Microfinance Bank Limited",
+      "trading_name": "Pioneer Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6254,6 +6917,7 @@
     {
       "id": "platinum-microfinance-bank",
       "name": "Platinum Microfinance Bank Limited",
+      "trading_name": "Platinum Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6263,6 +6927,7 @@
     {
       "id": "platinum-mortgage-bank",
       "name": "PLATINUM MORTGAGE BANK",
+      "trading_name": "PLATINUM MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -6273,6 +6938,7 @@
     {
       "id": "plusone-microfinance-bank",
       "name": "Plusone Microfinance Bank Limited",
+      "trading_name": "Plusone Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6282,6 +6948,7 @@
     {
       "id": "pointone-microfinance-bank",
       "name": "Pointone Microfinance Bank",
+      "trading_name": "Pointone Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6291,6 +6958,7 @@
     {
       "id": "polaris-bank",
       "name": "Polaris Bank Plc",
+      "trading_name": "Polaris Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -6301,6 +6969,7 @@
     {
       "id": "polybadan-mfb",
       "name": "POLYBADAN MFB",
+      "trading_name": "POLYBADAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6310,6 +6979,7 @@
     {
       "id": "polyunwanna-mfb",
       "name": "POLYUNWANNA MFB",
+      "trading_name": "POLYUNWANNA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6320,6 +6990,7 @@
     {
       "id": "preeminent-mfb",
       "name": "PREEMINENT MFB",
+      "trading_name": "PREEMINENT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6330,6 +7001,7 @@
     {
       "id": "premier-microfinance-bank",
       "name": "Premier Microfinance Bank Limited",
+      "trading_name": "Premier Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6339,6 +7011,7 @@
     {
       "id": "premium-trust-bank",
       "name": "Premium Trust Bank",
+      "trading_name": "Premium Trust Bank",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -6349,6 +7022,7 @@
     {
       "id": "prestige-mfb",
       "name": "PRESTIGE MFB",
+      "trading_name": "PRESTIGE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6359,6 +7033,7 @@
     {
       "id": "prisco-mfb",
       "name": "PRISCO MFB",
+      "trading_name": "PRISCO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6369,6 +7044,7 @@
     {
       "id": "pristine-divitis-mfb",
       "name": "PRISTINE DIVITIS MFB",
+      "trading_name": "PRISTINE DIVITIS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6379,6 +7055,7 @@
     {
       "id": "projects-mfb",
       "name": "PROJECTS MFB",
+      "trading_name": "PROJECTS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6389,6 +7066,7 @@
     {
       "id": "prospects-mfb",
       "name": "PROSPECTS MFB",
+      "trading_name": "PROSPECTS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6398,6 +7076,7 @@
     {
       "id": "prosperity-mfb",
       "name": "PROSPERITY MFB",
+      "trading_name": "PROSPERITY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6407,6 +7086,7 @@
     {
       "id": "providus-bank",
       "name": "Providus Bank",
+      "trading_name": "Providus Bank",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -6417,6 +7097,7 @@
     {
       "id": "prudent-mfb",
       "name": "PRUDENT MFB",
+      "trading_name": "PRUDENT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6426,6 +7107,7 @@
     {
       "id": "pyramid-mfb",
       "name": "PYRAMID MFB",
+      "trading_name": "PYRAMID MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6435,6 +7117,7 @@
     {
       "id": "qube-mfb",
       "name": "QUBE MFB",
+      "trading_name": "QUBE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6444,6 +7127,7 @@
     {
       "id": "quest-merchant-bank",
       "name": "QUEST MERCHANT BANK",
+      "trading_name": "QUEST MERCHANT BANK",
       "type": "merchant",
       "status": "active",
       "identifiers": {
@@ -6454,6 +7138,7 @@
     {
       "id": "quickfund-mfb",
       "name": "QUICKFUND MFB",
+      "trading_name": "QUICKFUND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6464,6 +7149,7 @@
     {
       "id": "rahama-mfb",
       "name": "RAHAMA MFB",
+      "trading_name": "RAHAMA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6474,6 +7160,7 @@
     {
       "id": "rakib-mfb",
       "name": "RAKIB MFB",
+      "trading_name": "RAKIB MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6483,6 +7170,7 @@
     {
       "id": "ramilowo-mfb",
       "name": "RAMILOWO MFB",
+      "trading_name": "RAMILOWO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6492,6 +7180,7 @@
     {
       "id": "rand-merchant-bank",
       "name": "RAND MERCHANT BANK",
+      "trading_name": "RAND MERCHANT BANK",
       "type": "merchant",
       "status": "active",
       "identifiers": {
@@ -6502,6 +7191,7 @@
     {
       "id": "randalpha",
       "name": "RANDALPHA",
+      "trading_name": "RANDALPHA",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6512,6 +7202,7 @@
     {
       "id": "rano-mfb",
       "name": "RANO MFB",
+      "trading_name": "RANO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6521,6 +7212,7 @@
     {
       "id": "refined-benefits-mfb",
       "name": "REFINED BENEFITS MFB",
+      "trading_name": "REFINED BENEFITS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6530,6 +7222,7 @@
     {
       "id": "refuge-homes",
       "name": "REFUGE HOMES",
+      "trading_name": "REFUGE HOMES",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -6540,6 +7233,7 @@
     {
       "id": "regent-mfb",
       "name": "REGENT MFB",
+      "trading_name": "REGENT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6550,6 +7244,7 @@
     {
       "id": "rehoboth-mfb",
       "name": "REHOBOTH MFB",
+      "trading_name": "REHOBOTH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6560,6 +7255,7 @@
     {
       "id": "reliance-mfb",
       "name": "RELIANCE MFB",
+      "trading_name": "RELIANCE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6570,6 +7266,7 @@
     {
       "id": "renmoney-mfb",
       "name": "RENMONEY MFB",
+      "trading_name": "RENMONEY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6580,6 +7277,7 @@
     {
       "id": "rephidim-mfb",
       "name": "REPHIDIM MFB",
+      "trading_name": "REPHIDIM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6590,6 +7288,7 @@
     {
       "id": "ric-mfb",
       "name": "RIC MFB",
+      "trading_name": "RIC MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6599,6 +7298,7 @@
     {
       "id": "richway-mfb",
       "name": "RICHWAY MFB LTD.",
+      "trading_name": "RICHWAY MFB LTD.",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6609,6 +7309,7 @@
     {
       "id": "ricia-capital-microfinance-bank",
       "name": "Ricia Capital Microfinance Bank Limited",
+      "trading_name": "Ricia Capital Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6618,6 +7319,7 @@
     {
       "id": "rigo-mfb",
       "name": "RIGO MFB",
+      "trading_name": "RIGO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6628,6 +7330,7 @@
     {
       "id": "rima-growth-pathway-mfb",
       "name": "RIMA GROWTH PATHWAY MFB LTD",
+      "trading_name": "RIMA GROWTH PATHWAY MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6638,6 +7341,7 @@
     {
       "id": "rima-mfb",
       "name": "RIMA MFB",
+      "trading_name": "RIMA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6648,6 +7352,7 @@
     {
       "id": "riverside-mfb",
       "name": "RIVERSIDE MFB",
+      "trading_name": "RIVERSIDE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6657,6 +7362,7 @@
     {
       "id": "rockshield-mfb",
       "name": "ROCKSHIELD MFB",
+      "trading_name": "ROCKSHIELD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6666,6 +7372,7 @@
     {
       "id": "royal-blue-mfb",
       "name": "ROYAL BLUE MFB",
+      "trading_name": "ROYAL BLUE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6675,6 +7382,7 @@
     {
       "id": "royal-excellent-microfinance-bank",
       "name": "Royal Excellent Microfinance Bank Limited",
+      "trading_name": "Royal Excellent Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6684,6 +7392,7 @@
     {
       "id": "royal-exchange-mfb",
       "name": "ROYAL EXCHANGE MFB",
+      "trading_name": "ROYAL EXCHANGE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6694,6 +7403,7 @@
     {
       "id": "royal-life-key-mfb",
       "name": "ROYAL LIFE KEY MFB",
+      "trading_name": "ROYAL LIFE KEY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6703,6 +7413,7 @@
     {
       "id": "royal-mfb",
       "name": "ROYAL MFB",
+      "trading_name": "ROYAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6712,6 +7423,7 @@
     {
       "id": "rubies-mfb",
       "name": "RUBIES MFB",
+      "trading_name": "RUBIES MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6722,6 +7434,7 @@
     {
       "id": "run-microfinance-bank",
       "name": "Run Microfinance Bank Limited",
+      "trading_name": "Run Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6731,6 +7444,7 @@
     {
       "id": "sabi-mfb",
       "name": "SABI MFB",
+      "trading_name": "SABI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6740,6 +7454,7 @@
     {
       "id": "sabon-yelwa-mfb",
       "name": "SABON YELWA MFB",
+      "trading_name": "SABON YELWA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6749,6 +7464,7 @@
     {
       "id": "sabuwa-mfb",
       "name": "SABUWA MFB LTD",
+      "trading_name": "SABUWA MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6758,6 +7474,7 @@
     {
       "id": "safana-mfb",
       "name": "SAFANA MFB",
+      "trading_name": "SAFANA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6767,6 +7484,7 @@
     {
       "id": "safe-haven-mfb",
       "name": "SAFE HAVEN MFB",
+      "trading_name": "SAFE HAVEN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6777,6 +7495,7 @@
     {
       "id": "safeline-mfb",
       "name": "SAFELINE MFB",
+      "trading_name": "SAFELINE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6786,6 +7505,7 @@
     {
       "id": "sagamu-mfb",
       "name": "SAGAMU MFB",
+      "trading_name": "SAGAMU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6796,6 +7516,7 @@
     {
       "id": "sandamu-mfb",
       "name": "SANDAMU MFB",
+      "trading_name": "SANDAMU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6805,6 +7526,7 @@
     {
       "id": "sapida-mfb",
       "name": "SAPIDA MFB",
+      "trading_name": "SAPIDA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6814,6 +7536,7 @@
     {
       "id": "sarkin-kudu-mfb",
       "name": "SARKIN KUDU MFB LTD",
+      "trading_name": "SARKIN KUDU MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6823,6 +7546,7 @@
     {
       "id": "savesimple-microfinance-bank",
       "name": "Savesimple Microfinance Bank Limited",
+      "trading_name": "Savesimple Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6832,6 +7556,7 @@
     {
       "id": "seal-microfinance-bank",
       "name": "SEAL MICROFINANCE BANK LIMITED",
+      "trading_name": "SEAL MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6841,6 +7566,7 @@
     {
       "id": "seap-mfb",
       "name": "SEAP MFB",
+      "trading_name": "SEAP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6851,6 +7577,7 @@
     {
       "id": "seedvest-mfb",
       "name": "SEEDVEST MFB",
+      "trading_name": "SEEDVEST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6861,6 +7588,7 @@
     {
       "id": "senchi-mfb",
       "name": "SENCHI MFB",
+      "trading_name": "SENCHI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6870,6 +7598,7 @@
     {
       "id": "shalom-mfb",
       "name": "Shalom MFB",
+      "trading_name": "Shalom MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6880,6 +7609,7 @@
     {
       "id": "shepherd-trust-mfb",
       "name": "SHEPHERD TRUST MFB",
+      "trading_name": "SHEPHERD TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6890,6 +7620,7 @@
     {
       "id": "shield-mfb",
       "name": "SHIELD MFB",
+      "trading_name": "SHIELD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6899,6 +7630,7 @@
     {
       "id": "shine-microfinance-bank",
       "name": "Shine Microfinance Bank Limited",
+      "trading_name": "Shine Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6908,6 +7640,7 @@
     {
       "id": "shongom-mfb",
       "name": "SHONGOM MFB",
+      "trading_name": "SHONGOM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6917,6 +7650,7 @@
     {
       "id": "signature-bank",
       "name": "Signature Bank Limited",
+      "trading_name": "Signature Bank Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -6927,6 +7661,7 @@
     {
       "id": "silverend-microfinance-bank",
       "name": "Silverend Microfinance Bank Limited",
+      "trading_name": "Silverend Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6936,6 +7671,7 @@
     {
       "id": "sincere-mfb",
       "name": "SINCERE MFB",
+      "trading_name": "SINCERE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6945,6 +7681,7 @@
     {
       "id": "sls-mfb",
       "name": "SLS MFB",
+      "trading_name": "SLS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6955,6 +7692,7 @@
     {
       "id": "smartcash-psb",
       "name": "SMARTCASH PSB LIMITED",
+      "trading_name": "SMARTCASH PSB LIMITED",
       "type": "payment_service",
       "status": "active",
       "identifiers": {
@@ -6965,6 +7703,7 @@
     {
       "id": "smartmicro-mfb",
       "name": "SMARTMICRO MFB",
+      "trading_name": "SMARTMICRO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6974,6 +7713,7 @@
     {
       "id": "snow-mfb",
       "name": "SNOW MFB",
+      "trading_name": "SNOW MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6983,6 +7723,7 @@
     {
       "id": "solid-allianz-mfb",
       "name": "SOLID ALLIANZ MFB",
+      "trading_name": "SOLID ALLIANZ MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -6993,6 +7734,7 @@
     {
       "id": "solid-rock-mfb",
       "name": "SOLID ROCK MFB",
+      "trading_name": "SOLID ROCK MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7003,6 +7745,7 @@
     {
       "id": "solid-trust-mfb",
       "name": "Solid Trust MFB",
+      "trading_name": "Solid Trust MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7012,6 +7755,7 @@
     {
       "id": "soroman-mfb",
       "name": "SOROMAN MFB",
+      "trading_name": "SOROMAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7021,6 +7765,7 @@
     {
       "id": "sosa-microfinance-bank",
       "name": "Sosa Microfinance Bank Limited",
+      "trading_name": "Sosa Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7030,6 +7775,7 @@
     {
       "id": "source-microfinance-bank",
       "name": "SOURCE MICROFINANCE BANK LIMITED",
+      "trading_name": "SOURCE MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7039,6 +7785,7 @@
     {
       "id": "sparkle-mfb",
       "name": "SPARKLE MFB",
+      "trading_name": "SPARKLE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7049,6 +7796,7 @@
     {
       "id": "spectrum-mfb",
       "name": "SPECTRUM MFB",
+      "trading_name": "SPECTRUM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7059,6 +7807,7 @@
     {
       "id": "springfield-microfinance-bank",
       "name": "Springfield Microfinance Bank Limited",
+      "trading_name": "Springfield Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7068,6 +7817,7 @@
     {
       "id": "springville-microfinance-bank",
       "name": "Springville Microfinance Bank Limited",
+      "trading_name": "Springville Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7077,6 +7827,7 @@
     {
       "id": "stanbic-ibtc-bank",
       "name": "Stanbic IBTC Bank Plc",
+      "trading_name": "Stanbic IBTC Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7087,6 +7838,7 @@
     {
       "id": "standard-chartered-bank-nigeria",
       "name": "Standard Chartered Bank Nigeria Ltd.",
+      "trading_name": "Standard Chartered Bank Nigeria Ltd.",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7097,6 +7849,7 @@
     {
       "id": "standard-mfb",
       "name": "STANDARD MFB",
+      "trading_name": "STANDARD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7107,6 +7860,7 @@
     {
       "id": "stateside-mfb",
       "name": "STATESIDE MFB",
+      "trading_name": "STATESIDE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7116,6 +7870,7 @@
     {
       "id": "stb-building-society",
       "name": "STB BUILDING SOCIETY",
+      "trading_name": "STB BUILDING SOCIETY",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -7126,6 +7881,7 @@
     {
       "id": "stellas-mfb",
       "name": "STELLAS MFB",
+      "trading_name": "STELLAS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7136,6 +7892,7 @@
     {
       "id": "step-by-step-mfb",
       "name": "STEP BY STEP MFB",
+      "trading_name": "STEP BY STEP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7145,6 +7902,7 @@
     {
       "id": "sterling-bank",
       "name": "Sterling Bank Plc",
+      "trading_name": "Sterling Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7155,6 +7913,7 @@
     {
       "id": "stillwaters-mfb",
       "name": "STILLWATERS MFB LTD",
+      "trading_name": "STILLWATERS MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7164,6 +7923,7 @@
     {
       "id": "stockcorp-mfb",
       "name": "STOCKCORP MFB",
+      "trading_name": "STOCKCORP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7174,6 +7934,7 @@
     {
       "id": "sulspap-mfb",
       "name": "SULSPAP MFB",
+      "trading_name": "SULSPAP MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7184,6 +7945,7 @@
     {
       "id": "summit-bank",
       "name": "SUMMIT BANK LIMITED",
+      "trading_name": "SUMMIT BANK LIMITED",
       "type": "non_interest",
       "status": "active",
       "identifiers": {
@@ -7193,6 +7955,7 @@
     {
       "id": "sunbeam-mfb",
       "name": "SUNBEAM MFB",
+      "trading_name": "SUNBEAM MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7203,6 +7966,7 @@
     {
       "id": "suntop-microfinance-bank",
       "name": "Suntop Microfinance Bank",
+      "trading_name": "Suntop Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7212,6 +7976,7 @@
     {
       "id": "suntrust-bank-nigeria",
       "name": "SunTrust Bank Nigeria Limited",
+      "trading_name": "SunTrust Bank Nigeria Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7222,6 +7987,7 @@
     {
       "id": "support-mfb",
       "name": "SUPPORT MFB",
+      "trading_name": "SUPPORT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7232,6 +7998,7 @@
     {
       "id": "sure-anchor-mfb",
       "name": "SURE ANCHOR MFB",
+      "trading_name": "SURE ANCHOR MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7241,6 +8008,7 @@
     {
       "id": "swifttrust-microfinance-bank",
       "name": "Swifttrust Microfinance Bank Limited",
+      "trading_name": "Swifttrust Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7250,6 +8018,7 @@
     {
       "id": "taj",
       "name": "TAJ",
+      "trading_name": "TAJ",
       "type": "non_interest",
       "status": "active",
       "identifiers": {
@@ -7260,6 +8029,7 @@
     {
       "id": "tanadi-mfb",
       "name": "TANADI MFB",
+      "trading_name": "TANADI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7269,6 +8039,7 @@
     {
       "id": "tangale-mfb",
       "name": "TANGALE MFB",
+      "trading_name": "TANGALE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7278,6 +8049,7 @@
     {
       "id": "tangerine-money-microfinance-bank",
       "name": "Tangerine Money Microfinance Bank",
+      "trading_name": "Tangerine Money Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7288,6 +8060,7 @@
     {
       "id": "tasued-mfb",
       "name": "TASUED MFB",
+      "trading_name": "TASUED MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7297,6 +8070,7 @@
     {
       "id": "tatum-bank",
       "name": "Tatum Bank Limited",
+      "trading_name": "Tatum Bank Limited",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7306,6 +8080,7 @@
     {
       "id": "tcf-mfb",
       "name": "TCF MFB",
+      "trading_name": "TCF MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7316,6 +8091,7 @@
     {
       "id": "teasy-international-company",
       "name": "Teasy International Company Ltd",
+      "trading_name": "Teasy International Company Ltd",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -7325,6 +8101,7 @@
     {
       "id": "teerus-microfinance-bank",
       "name": "TEERUS MICROFINANCE BANK LIMITED",
+      "trading_name": "TEERUS MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7334,6 +8111,7 @@
     {
       "id": "tellerone-fi-microfinance-bank",
       "name": "Tellerone FI Microfinance Bank Limited",
+      "trading_name": "Tellerone FI Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7343,6 +8121,7 @@
     {
       "id": "tenn-microfinance-bank",
       "name": "Tenn Microfinance Bank Limited",
+      "trading_name": "Tenn Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7352,6 +8131,7 @@
     {
       "id": "tf-mfb",
       "name": "TF MFB",
+      "trading_name": "TF MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7362,6 +8142,7 @@
     {
       "id": "the-millennium-mfb",
       "name": "The Millennium MFB",
+      "trading_name": "The Millennium MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7371,6 +8152,7 @@
     {
       "id": "titan-trust-bank",
       "name": "Titan Trust Bank Ltd",
+      "trading_name": "Titan Trust Bank Ltd",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7381,6 +8163,7 @@
     {
       "id": "top-rate-mfb",
       "name": "TOP RATE MFB",
+      "trading_name": "TOP RATE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7390,6 +8173,7 @@
     {
       "id": "topclass-mfb",
       "name": "TOPCLASS MFB",
+      "trading_name": "TOPCLASS MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7399,6 +8183,7 @@
     {
       "id": "total-trust-mfb",
       "name": "TOTAL TRUST MFB",
+      "trading_name": "TOTAL TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7408,6 +8193,7 @@
     {
       "id": "touchgold-mfb",
       "name": "TOUCHGOLD MFB",
+      "trading_name": "TOUCHGOLD MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7417,6 +8203,7 @@
     {
       "id": "townserve-mfb",
       "name": "TOWNSERVE MFB",
+      "trading_name": "TOWNSERVE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7426,6 +8213,7 @@
     {
       "id": "transpay-microfinance-bank",
       "name": "Transpay Microfinance Bank Limited",
+      "trading_name": "Transpay Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7435,6 +8223,7 @@
     {
       "id": "treasures-mfb",
       "name": "TREASURES MFB",
+      "trading_name": "TREASURES MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7444,6 +8233,7 @@
     {
       "id": "trident-mfb",
       "name": "TRIDENT MFB",
+      "trading_name": "TRIDENT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7454,6 +8244,7 @@
     {
       "id": "tripple-a-mfb",
       "name": "TRIPPLE A MFB",
+      "trading_name": "TRIPPLE A MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7464,6 +8255,7 @@
     {
       "id": "triumphant-microfinance-bank",
       "name": "TRIUMPHANT MICROFINANCE BANK LIMITED",
+      "trading_name": "TRIUMPHANT MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7473,6 +8265,7 @@
     {
       "id": "trust-mfb",
       "name": "TRUST MFB",
+      "trading_name": "TRUST MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7483,6 +8276,7 @@
     {
       "id": "trustbanc-j6",
       "name": "TRUSTBANC J6",
+      "trading_name": "TRUSTBANC J6",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7493,6 +8287,7 @@
     {
       "id": "trustbond-mortgage-bank",
       "name": "TRUSTBOND MORTGAGE BANK",
+      "trading_name": "TRUSTBOND MORTGAGE BANK",
       "type": "mortgage",
       "status": "active",
       "identifiers": {
@@ -7503,6 +8298,7 @@
     {
       "id": "trustfund-mfb",
       "name": "TRUSTFUND MFB",
+      "trading_name": "TRUSTFUND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7513,6 +8309,7 @@
     {
       "id": "tudunwada-mfb",
       "name": "TUDUNWADA MFB LTD",
+      "trading_name": "TUDUNWADA MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7522,6 +8319,7 @@
     {
       "id": "u-c-mfb",
       "name": "U & C MFB",
+      "trading_name": "U & C MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7532,6 +8330,7 @@
     {
       "id": "ubj-microfinance-bank",
       "name": "UBJ Microfinance Bank Limited",
+      "trading_name": "UBJ Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7541,6 +8340,7 @@
     {
       "id": "ucb-mfb",
       "name": "UCB MFB",
+      "trading_name": "UCB MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7550,6 +8350,7 @@
     {
       "id": "uda-mfb",
       "name": "UDA MFB",
+      "trading_name": "UDA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7559,6 +8360,7 @@
     {
       "id": "udoka-mfb",
       "name": "UDOKA MFB",
+      "trading_name": "UDOKA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7568,6 +8370,7 @@
     {
       "id": "uforo-microfinance-bank",
       "name": "Uforo Microfinance Bank Limited",
+      "trading_name": "Uforo Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7577,6 +8380,7 @@
     {
       "id": "uga-mfb",
       "name": "UGA MFB",
+      "trading_name": "UGA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7586,6 +8390,7 @@
     {
       "id": "ugborimili-mfb",
       "name": "UGBORIMILI MFB",
+      "trading_name": "UGBORIMILI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7595,6 +8400,7 @@
     {
       "id": "uhuru-mfb",
       "name": "UHURU MFB",
+      "trading_name": "UHURU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7605,6 +8411,7 @@
     {
       "id": "ukpor-mfb",
       "name": "UKPOR MFB",
+      "trading_name": "UKPOR MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7614,6 +8421,7 @@
     {
       "id": "ukwala-mfb",
       "name": "UKWALA MFB",
+      "trading_name": "UKWALA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7623,6 +8431,7 @@
     {
       "id": "ultimate-mfb",
       "name": "ULTIMATE MFB",
+      "trading_name": "ULTIMATE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7632,6 +8441,7 @@
     {
       "id": "ultraviolet-microfinance-bank",
       "name": "Ultraviolet Microfinance Bank Limited",
+      "trading_name": "Ultraviolet Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7641,6 +8451,7 @@
     {
       "id": "ummah-mfb",
       "name": "UMMAH MFB",
+      "trading_name": "UMMAH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7650,6 +8461,7 @@
     {
       "id": "umuawulu-mfb",
       "name": "UMUAWULU MFB",
+      "trading_name": "UMUAWULU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7659,6 +8471,7 @@
     {
       "id": "umuchinemere-procredit-mfb",
       "name": "UMUCHINEMERE PROCREDIT MFB",
+      "trading_name": "UMUCHINEMERE PROCREDIT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7669,6 +8482,7 @@
     {
       "id": "umuchukwu-mfb",
       "name": "UMUCHUKWU MFB",
+      "trading_name": "UMUCHUKWU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7678,6 +8492,7 @@
     {
       "id": "umunnachi-mfb",
       "name": "UMUNNACHI MFB",
+      "trading_name": "UMUNNACHI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7688,6 +8503,7 @@
     {
       "id": "umunri-microfinance-bank",
       "name": "Umunri Microfinance Bank Limited",
+      "trading_name": "Umunri Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7697,6 +8513,7 @@
     {
       "id": "umuoji-mfb",
       "name": "UMUOJI MFB",
+      "trading_name": "UMUOJI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7706,6 +8523,7 @@
     {
       "id": "umyu-microfinance-bank",
       "name": "UMYU Microfinance Bank Limited",
+      "trading_name": "UMYU Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7715,6 +8533,7 @@
     {
       "id": "unaab-mfb",
       "name": "UNAAB MFB",
+      "trading_name": "UNAAB MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7725,6 +8544,7 @@
     {
       "id": "ungogo-mfb",
       "name": "UNGOGO MFB",
+      "trading_name": "UNGOGO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7734,6 +8554,7 @@
     {
       "id": "unibadan-mfb",
       "name": "UNIBADAN MFB",
+      "trading_name": "UNIBADAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7744,6 +8565,7 @@
     {
       "id": "unical-mfb",
       "name": "UNICAL MFB",
+      "trading_name": "UNICAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7754,6 +8576,7 @@
     {
       "id": "unicorn-microfinance-bank",
       "name": "Unicorn Microfinance Bank Limited",
+      "trading_name": "Unicorn Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7763,6 +8586,7 @@
     {
       "id": "unifund-mfb",
       "name": "UNIFUND MFB",
+      "trading_name": "UNIFUND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7772,6 +8596,7 @@
     {
       "id": "unilag-mfb",
       "name": "UNILAG MFB LTD",
+      "trading_name": "UNILAG MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7782,6 +8607,7 @@
     {
       "id": "unilorin-mfb",
       "name": "UNILORIN MFB",
+      "trading_name": "UNILORIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7792,6 +8618,7 @@
     {
       "id": "unimaid-mfb",
       "name": "UNIMAID MFB",
+      "trading_name": "UNIMAID MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7802,6 +8629,7 @@
     {
       "id": "union-bank-of-nigeria",
       "name": "Union Bank of Nigeria Plc",
+      "trading_name": "Union Bank of Nigeria Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7812,6 +8640,7 @@
     {
       "id": "united-bank-for-africa",
       "name": "United Bank For Africa Plc",
+      "trading_name": "United Bank For Africa Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7822,6 +8651,7 @@
     {
       "id": "united-capital-mfb",
       "name": "UNITED CAPITAL MFB",
+      "trading_name": "UNITED CAPITAL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7831,6 +8661,7 @@
     {
       "id": "unity-bank",
       "name": "Unity Bank Plc",
+      "trading_name": "Unity Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -7841,6 +8672,7 @@
     {
       "id": "uniuyo-mfb",
       "name": "UNIUYO MFB",
+      "trading_name": "UNIUYO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7851,6 +8683,7 @@
     {
       "id": "university-of-benin-mfb",
       "name": "UNIVERSITY OF BENIN MFB",
+      "trading_name": "UNIVERSITY OF BENIN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7861,6 +8694,7 @@
     {
       "id": "unn-mfb",
       "name": "UNN MFB",
+      "trading_name": "UNN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7871,6 +8705,7 @@
     {
       "id": "unubi-mfb",
       "name": "UNUBI MFB",
+      "trading_name": "UNUBI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7880,6 +8715,7 @@
     {
       "id": "urban-mfb",
       "name": "URBAN MFB",
+      "trading_name": "URBAN MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7889,6 +8725,7 @@
     {
       "id": "ure-mfb",
       "name": "URE MFB",
+      "trading_name": "URE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7898,6 +8735,7 @@
     {
       "id": "utako-mfb",
       "name": "UTAKO MFB",
+      "trading_name": "UTAKO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7907,6 +8745,7 @@
     {
       "id": "utuh-mfb",
       "name": "UTUH MFB",
+      "trading_name": "UTUH MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7916,6 +8755,7 @@
     {
       "id": "uvuoma-mfb",
       "name": "UVUOMA MFB",
+      "trading_name": "UVUOMA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7925,6 +8765,7 @@
     {
       "id": "uvuru-mfb",
       "name": "UVURU MFB",
+      "trading_name": "UVURU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7934,6 +8775,7 @@
     {
       "id": "uzondu-mfb",
       "name": "UZONDU MFB",
+      "trading_name": "UZONDU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7944,6 +8786,7 @@
     {
       "id": "vangel-microfinance-bank",
       "name": "Vangel Microfinance Bank Limited",
+      "trading_name": "Vangel Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7954,6 +8797,7 @@
     {
       "id": "vcl-mfb",
       "name": "VCL MFB",
+      "trading_name": "VCL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7963,6 +8807,7 @@
     {
       "id": "vfd-mfb",
       "name": "VFD MFB LTD",
+      "trading_name": "VFD MFB LTD",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7973,6 +8818,7 @@
     {
       "id": "victory-mfb",
       "name": "VICTORY MFB",
+      "trading_name": "VICTORY MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7982,6 +8828,7 @@
     {
       "id": "visa-mfb",
       "name": "VISA MFB",
+      "trading_name": "VISA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -7992,6 +8839,7 @@
     {
       "id": "viscount-mfb",
       "name": "VISCOUNT MFB",
+      "trading_name": "VISCOUNT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8001,6 +8849,7 @@
     {
       "id": "vista-microfinance-bank",
       "name": "Vista Microfinance Bank Limited",
+      "trading_name": "Vista Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8010,6 +8859,7 @@
     {
       "id": "visual-ict",
       "name": "Visual ICT Limited",
+      "trading_name": "Visual ICT Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {}
@@ -8017,6 +8867,7 @@
     {
       "id": "vtnetwork",
       "name": "VTNetwork Limited",
+      "trading_name": "VTNetwork Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {
@@ -8026,6 +8877,7 @@
     {
       "id": "waila-mfb",
       "name": "WAILA MFB",
+      "trading_name": "WAILA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8035,6 +8887,7 @@
     {
       "id": "wallet-microfinance-bank",
       "name": "Wallet Microfinance Bank",
+      "trading_name": "Wallet Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8044,6 +8897,7 @@
     {
       "id": "waya-mfb",
       "name": "WAYA MFB",
+      "trading_name": "WAYA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8053,6 +8907,7 @@
     {
       "id": "we-microfinance-bank",
       "name": "WE MICROFINANCE BANK LIMITED",
+      "trading_name": "WE MICROFINANCE BANK LIMITED",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8062,6 +8917,7 @@
     {
       "id": "welfare-mfb",
       "name": "WELFARE MFB",
+      "trading_name": "WELFARE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8071,6 +8927,7 @@
     {
       "id": "wema-bank",
       "name": "Wema Bank Plc",
+      "trading_name": "Wema Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -8081,6 +8938,7 @@
     {
       "id": "weston-charis-microfinance-bank",
       "name": "Weston-Charis Microfinance Bank Limited",
+      "trading_name": "Weston-Charis Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8090,6 +8948,7 @@
     {
       "id": "wetland-mfb",
       "name": "WETLAND MFB",
+      "trading_name": "WETLAND MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8100,6 +8959,7 @@
     {
       "id": "willows-microfinance-bank",
       "name": "Willows Microfinance Bank Limited",
+      "trading_name": "Willows Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8109,6 +8969,7 @@
     {
       "id": "woliwo-mfb",
       "name": "WOLIWO MFB",
+      "trading_name": "WOLIWO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8118,6 +8979,7 @@
     {
       "id": "women-development-mfb",
       "name": "WOMEN DEVELOPMENT MFB",
+      "trading_name": "WOMEN DEVELOPMENT MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8127,6 +8989,7 @@
     {
       "id": "wra-mfb",
       "name": "WRA MFB",
+      "trading_name": "WRA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8136,6 +8999,7 @@
     {
       "id": "wudil-mfb",
       "name": "WUDIL MFB",
+      "trading_name": "WUDIL MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8145,6 +9009,7 @@
     {
       "id": "xpress-mts",
       "name": "Xpress MTS Limited",
+      "trading_name": "Xpress MTS Limited",
       "type": "mobile_money",
       "status": "active",
       "identifiers": {}
@@ -8152,6 +9017,7 @@
     {
       "id": "xslnce-mfb",
       "name": "XSLNCE MFB",
+      "trading_name": "XSLNCE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8162,6 +9028,7 @@
     {
       "id": "yabo-mfb",
       "name": "YABO MFB",
+      "trading_name": "YABO MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8171,6 +9038,7 @@
     {
       "id": "yankari-mfb",
       "name": "Yankari MFB",
+      "trading_name": "Yankari MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8180,6 +9048,7 @@
     {
       "id": "yauri-emirates-mfb",
       "name": "YAURI EMIRATES MFB",
+      "trading_name": "YAURI EMIRATES MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8189,6 +9058,7 @@
     {
       "id": "yct-microfinance-bank",
       "name": "YCT Microfinance Bank",
+      "trading_name": "YCT Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8199,6 +9069,7 @@
     {
       "id": "yes-mfb",
       "name": "YES MFB",
+      "trading_name": "YES MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8209,6 +9080,7 @@
     {
       "id": "yobe-state-mfb",
       "name": "YOBE STATE MFB",
+      "trading_name": "YOBE STATE MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8219,6 +9091,7 @@
     {
       "id": "zazzau-mfb",
       "name": "ZAZZAU MFB",
+      "trading_name": "ZAZZAU MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8228,6 +9101,7 @@
     {
       "id": "zefa-mfb",
       "name": "ZEFA MFB",
+      "trading_name": "ZEFA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8237,6 +9111,7 @@
     {
       "id": "zenith-bank",
       "name": "Zenith Bank Plc",
+      "trading_name": "Zenith Bank Plc",
       "type": "commercial",
       "status": "active",
       "identifiers": {
@@ -8247,6 +9122,7 @@
     {
       "id": "zikora-mfb",
       "name": "ZIKORA MFB",
+      "trading_name": "ZIKORA MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8257,6 +9133,7 @@
     {
       "id": "zion-mfb",
       "name": "ZION MFB",
+      "trading_name": "ZION MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8266,6 +9143,7 @@
     {
       "id": "zircon-microfinance-bank",
       "name": "Zircon Microfinance Bank Limited",
+      "trading_name": "Zircon Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8275,6 +9153,7 @@
     {
       "id": "zitra-microfinance-bank",
       "name": "Zitra Microfinance Bank Limited",
+      "trading_name": "Zitra Microfinance Bank Limited",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
@@ -8284,6 +9163,7 @@
     {
       "id": "zurmi-mfb",
       "name": "ZURMI MFB",
+      "trading_name": "ZURMI MFB",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
