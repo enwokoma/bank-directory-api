@@ -11,7 +11,7 @@ from typing import Any
 
 from flask import Blueprint, current_app, jsonify, request
 
-from src.core.dataset import CountryDataset, search_text
+from src.core.dataset import STATUSES, CountryDataset, search_text
 from src.countries.profile import CountryProfile
 from src.countries.registry import get_country_profile
 
@@ -80,6 +80,15 @@ def list_banks(country_code: str):
         type: string
         required: false
         description: Comma-separated bank type codes from GET /api/countries/{country_code}
+      - name: status
+        in: query
+        type: string
+        required: false
+        enum: [active, delisted, all]
+        default: active
+        description: >-
+          active (the default) for banks the regulator lists today, delisted for banks it no longer
+          lists, or all for both
       - name: limit
         in: query
         type: integer
@@ -108,7 +117,7 @@ def list_banks(country_code: str):
       200:
         description: Matching banks sorted by name
       400:
-        description: An invalid type, limit or offset
+        description: An invalid type, status, limit or offset
       404:
         description: The country is not supported yet
     """
@@ -117,6 +126,7 @@ def list_banks(country_code: str):
         return _unsupported_country(country_code)
 
     try:
+        statuses = _parse_status(request.args.get("status"))
         types = _parse_types(request.args.get("type"), dataset.profile)
         required = _parse_schemes(request.args.get("has"), dataset.profile)
         limit = _parse_int("limit", request.args.get("limit"), minimum=1, maximum=MAX_LIMIT)
@@ -124,7 +134,7 @@ def list_banks(country_code: str):
     except ValueError as exc:
         return jsonify({"success": False, "message": str(exc)}), 400
 
-    banks = list(dataset.banks)
+    banks = [bank for bank in dataset.banks if bank["status"] in statuses]
     if types:
         banks = [bank for bank in banks if bank["type"] in types]
     if required:
@@ -169,7 +179,7 @@ def get_bank(country_code: str, bank_id: str):
         description: The bank's id from the bank list, for example access-bank
     responses:
       200:
-        description: The bank
+        description: The bank, whether active or delisted
       404:
         description: The country is not supported, or it has no bank with this id
     """
@@ -199,6 +209,15 @@ def _unsupported_country(country_code: str):
             "message": f"Unsupported country code: {code}. GET /api/countries lists the supported countries.",
         }
     ), 404
+
+
+def _parse_status(value: str | None) -> set[str]:
+    status = (value or "active").strip().lower()
+    if status == "all":
+        return set(STATUSES)
+    if status not in STATUSES:
+        raise ValueError(f"Unknown status {status}. Use one of: {', '.join(STATUSES)}, all.")
+    return {status}
 
 
 def _parse_types(value: str | None, profile: CountryProfile) -> set[str]:
@@ -243,18 +262,24 @@ def _country_reference(profile: CountryProfile) -> dict[str, str]:
     return {"alpha2": profile.alpha2, "alpha3": profile.alpha3, "name": profile.name}
 
 
+def _active_banks(dataset: CountryDataset) -> list[dict[str, Any]]:
+    return [bank for bank in dataset.banks if bank["status"] == "active"]
+
+
 def _country_summary(dataset: CountryDataset) -> dict[str, Any]:
+    active = len(_active_banks(dataset))
     return {
         **_country_reference(dataset.profile),
         "currency": dataset.profile.currency,
-        "bank_count": len(dataset.banks),
+        "bank_count": active,
+        "delisted_bank_count": len(dataset.banks) - active,
         "retrieved_on": dataset.retrieved_on,
     }
 
 
 def _country_detail(dataset: CountryDataset) -> dict[str, Any]:
     counts: dict[str, int] = {}
-    for bank in dataset.banks:
+    for bank in _active_banks(dataset):
         counts[bank["type"]] = counts.get(bank["type"], 0) + 1
     return {
         **_country_summary(dataset),

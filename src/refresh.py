@@ -8,7 +8,8 @@ Usage:
 The command asks each country's refresh module for fresh records (passing it
 the banks already in the file, for values a source cannot provide this time),
 keeps the id of every bank that was already in the file (matched by the profile's first
-identifier scheme), validates the result, and only then overwrites
+identifier scheme), keeps banks the source no longer lists as delisted,
+validates the result, and only then overwrites
 `data/countries/<ALPHA3>.json`. Review the diff before committing it.
 """
 
@@ -112,8 +113,14 @@ def build_dataset(
     previous_banks: list[dict[str, Any]],
     retrieved_on: datetime.date,
 ) -> dict[str, Any]:
-    """Assemble a data file from fetched records, keeping existing ids stable."""
-    banks = assign_ids(fetched["banks"], previous_banks, list(profile.identifier_schemes))
+    """Assemble a data file from fetched records, keeping existing ids stable.
+
+    Every fetched bank is active. A bank already in the file that the source no
+    longer lists stays in it, delisted, so its id and identifiers keep resolving.
+    """
+    listed = assign_ids(fetched["banks"], previous_banks, list(profile.identifier_schemes))
+    banks = [_with_status(bank, "active") for bank in listed]
+    banks += delisted_banks(previous_banks, banks)
     return {
         "country": profile.alpha3,
         "retrieved_on": retrieved_on.isoformat(),
@@ -167,6 +174,27 @@ def assign_ids(
     return banks
 
 
+def delisted_banks(previous_banks: list[dict[str, Any]], listed: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Mark every earlier bank the source no longer lists as delisted.
+
+    An identifier value a listed bank now holds is dropped from the delisted
+    one, so a lookup by that value finds only the listed bank.
+    """
+    listed_ids = {bank["id"] for bank in listed}
+    held = {(scheme, value) for bank in listed for scheme, value in bank["identifiers"].items()}
+    delisted = []
+    for bank in previous_banks:
+        if bank["id"] in listed_ids:
+            continue
+        identifiers = {scheme: value for scheme, value in bank["identifiers"].items() if (scheme, value) not in held}
+        delisted.append(_with_status({**bank, "identifiers": identifiers}, "delisted"))
+    return delisted
+
+
+def _with_status(bank: dict[str, Any], status: str) -> dict[str, Any]:
+    return {"id": bank["id"], "name": bank["name"], "type": bank["type"], "status": status, "identifiers": bank["identifiers"]}
+
+
 def _conflicting_identifiers(record: dict[str, Any], previous: dict[str, Any], key_schemes: list[str]) -> bool:
     """True when both banks have a value for the same scheme and the values differ."""
     previous_identifiers = previous.get("identifiers", {})
@@ -179,17 +207,25 @@ def _conflicting_identifiers(record: dict[str, Any], previous: dict[str, Any], k
 
 
 def summarize_changes(previous_banks: list[dict[str, Any]], banks: list[dict[str, Any]]) -> list[str]:
-    """Describe added, removed and changed banks between two versions of a file."""
+    """Describe added, delisted, relisted and otherwise changed banks between two versions of a file."""
     before = {bank["id"]: bank for bank in previous_banks}
     after = {bank["id"]: bank for bank in banks}
     added = sorted(after.keys() - before.keys())
-    removed = sorted(before.keys() - after.keys())
-    changed = sorted(bank_id for bank_id in after.keys() & before.keys() if after[bank_id] != before[bank_id])
-    if not (added or removed or changed):
+    delisted, relisted, changed = [], [], []
+    for bank_id in sorted(after.keys() & before.keys()):
+        was, now = before[bank_id].get("status", "active"), after[bank_id].get("status", "active")
+        if was != "delisted" and now == "delisted":
+            delisted.append(bank_id)
+        elif was == "delisted" and now != "delisted":
+            relisted.append(bank_id)
+        elif after[bank_id] != before[bank_id]:
+            changed.append(bank_id)
+    if not (added or delisted or relisted or changed):
         return ["No bank changes since the last refresh."]
-    lines = [f"{len(added)} added, {len(removed)} removed, {len(changed)} changed."]
+    lines = [f"{len(added)} added, {len(delisted)} delisted, {len(relisted)} relisted, {len(changed)} changed."]
     lines += [f"+ {after[bank_id]['name']} ({bank_id})" for bank_id in added]
-    lines += [f"- {before[bank_id]['name']} ({bank_id})" for bank_id in removed]
+    lines += [f"- {after[bank_id]['name']} ({bank_id})" for bank_id in delisted]
+    lines += [f"^ {after[bank_id]['name']} ({bank_id})" for bank_id in relisted]
     lines += [f"~ {after[bank_id]['name']} ({bank_id})" for bank_id in changed]
     return lines
 

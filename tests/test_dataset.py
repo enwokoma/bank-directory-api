@@ -14,8 +14,20 @@ VALID = {
     "retrieved_on": "2026-10-14",
     "sources": [{"name": "Central Bank of Nigeria", "url": "https://www.cbn.gov.ng/"}],
     "banks": [
-        {"id": "access-bank", "name": "Access Bank Plc", "type": "commercial", "identifiers": {"cbn_institution_id": "1"}},
-        {"id": "zenith-bank", "name": "Zenith Bank Plc", "type": "commercial", "identifiers": {"cbn_institution_id": "24"}},
+        {
+            "id": "access-bank",
+            "name": "Access Bank Plc",
+            "type": "commercial",
+            "status": "active",
+            "identifiers": {"cbn_institution_id": "1"},
+        },
+        {
+            "id": "zenith-bank",
+            "name": "Zenith Bank Plc",
+            "type": "commercial",
+            "status": "delisted",
+            "identifiers": {"cbn_institution_id": "24"},
+        },
     ],
 }
 
@@ -47,6 +59,8 @@ def test_valid_dataset_has_no_errors():
         (lambda raw: raw["banks"][0].pop("identifiers"), "missing keys ['identifiers']"),
         (lambda raw: raw["banks"][0]["identifiers"].update(swift="ABNGNGLA"), "identifier scheme 'swift'"),
         (lambda raw: raw["banks"].reverse(), "sorted by name"),
+        (lambda raw: raw["banks"][0].update(status="closed"), "status 'closed' is not one of"),
+        (lambda raw: raw["banks"][0].pop("status"), "missing keys ['status']"),
     ],
 )
 def test_reports_each_problem(change, expected):
