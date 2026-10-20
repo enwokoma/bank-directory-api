@@ -73,13 +73,81 @@ def test_build_dataset_sorts_banks_and_validates():
     dataset = refresh.build_dataset(NIGERIA_PROFILE, fetched, [], datetime.date(2026, 10, 14))
     assert dataset["retrieved_on"] == "2026-10-14"
     assert [bank["id"] for bank in dataset["banks"]] == ["access-bank", "zenith-bank"]
+    assert list(dataset["banks"][0]) == ["id", "name", "type", "status", "identifiers"]
+    assert {bank["status"] for bank in dataset["banks"]} == {"active"}
     assert refresh.validate_dataset(dataset, NIGERIA_PROFILE) == []
 
 
+class TestDelisting:
+    def build(self, banks, previous):
+        fetched = {"sources": [SOURCE], "banks": banks}
+        dataset = refresh.build_dataset(NIGERIA_PROFILE, fetched, previous, datetime.date(2026, 10, 14))
+        assert refresh.validate_dataset(dataset, NIGERIA_PROFILE) == []
+        return {bank["id"]: bank for bank in dataset["banks"]}
+
+    def test_a_bank_the_source_no_longer_lists_stays_delisted(self):
+        first = self.build([record("Access Bank Plc", "1"), record("Heritage Bank Plc", "9")], [])
+        banks = self.build([record("Access Bank Plc", "1")], list(first.values()))
+        assert banks["heritage-bank"]["status"] == "delisted"
+        assert banks["heritage-bank"]["identifiers"] == {"cbn_institution_id": "9"}
+        assert banks["access-bank"]["status"] == "active"
+
+    def test_a_delisted_bank_stays_delisted(self):
+        first = self.build([record("Access Bank Plc", "1"), record("Heritage Bank Plc", "9")], [])
+        second = self.build([record("Access Bank Plc", "1")], list(first.values()))
+        third = self.build([record("Access Bank Plc", "1")], list(second.values()))
+        assert third == second
+
+    def test_a_bank_listed_again_is_active_under_its_old_id(self):
+        first = self.build([record("Access Bank Plc", "1"), record("Heritage Bank Plc", "9")], [])
+        second = self.build([record("Access Bank Plc", "1")], list(first.values()))
+        third = self.build([record("Access Bank Plc", "1"), record("Heritage Bank", "9")], list(second.values()))
+        assert third["heritage-bank"]["status"] == "active"
+        assert third["heritage-bank"]["name"] == "Heritage Bank"
+
+    def test_an_identifier_now_held_by_a_listed_bank_leaves_the_delisted_one(self):
+        def wallet(name, cbn_id, nibss_code=None):
+            identifiers = {"cbn_institution_id": cbn_id} | ({"nibss_code": nibss_code} if nibss_code else {})
+            return {"name": name, "type": "mobile_money", "identifiers": identifiers}
+
+        first = self.build([wallet("Old Wallet Limited", "5", "100004"), wallet("New Wallet Limited", "6")], [])
+        banks = self.build([wallet("New Wallet Limited", "6", "100004")], list(first.values()))
+        assert banks["new-wallet"]["identifiers"] == {"cbn_institution_id": "6", "nibss_code": "100004"}
+        assert banks["old-wallet"]["identifiers"] == {"cbn_institution_id": "5"}
+        assert banks["old-wallet"]["status"] == "delisted"
+
+    def test_banks_from_a_file_without_statuses_can_be_delisted(self):
+        previous = [
+            {
+                "id": "heritage-bank",
+                "name": "Heritage Bank Plc",
+                "type": "commercial",
+                "identifiers": {"cbn_institution_id": "9"},
+            }
+        ]
+        banks = self.build([record("Access Bank Plc", "1")], previous)
+        assert banks["heritage-bank"]["status"] == "delisted"
+
+
 def test_summarize_changes():
-    before = [{"id": "a", "name": "A"}, {"id": "b", "name": "B"}]
-    after = [{"id": "b", "name": "B Plc"}, {"id": "c", "name": "C"}]
-    assert refresh.summarize_changes(before, after) == ["1 added, 1 removed, 1 changed.", "+ C (c)", "- A (a)", "~ B Plc (b)"]
+    before = [
+        {"id": "a", "name": "A", "status": "active"},
+        {"id": "b", "name": "B", "status": "active"},
+        {"id": "d", "name": "D", "status": "delisted"},
+    ]
+    after = [
+        {"id": "a", "name": "A", "status": "delisted"},
+        {"id": "b", "name": "B Plc", "status": "active"},
+        {"id": "c", "name": "C", "status": "active"},
+        {"id": "d", "name": "D", "status": "active"},
+    ]
+    assert refresh.summarize_changes(before, after) == [
+        "1 added, 1 delisted, 1 relisted, 1 changed.",
+        "+ C (c)",
+        "- A (a)",
+        "^ D (d)",
+        "~ B Plc (b)",
+    ]
     assert refresh.summarize_changes(after, after) == ["No bank changes since the last refresh."]
 
 

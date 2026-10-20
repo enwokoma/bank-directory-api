@@ -8,9 +8,15 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 - `compose.yaml` runs the API on your own machine with `docker compose up --build`, and the README explains running the published image with `docker run`.
 - The README describes the public API at banks.globbapay.com, and links to the data file that always has the latest data, as well as to pinned releases.
+- Every bank has a `status`, `active` or `delisted`. A bank the regulator stops listing now stays in its data file as `delisted` instead of being removed, so stored ids and codes keep resolving; if it is listed again it becomes active under the same id.
+- `status` filter on the bank list: `active` (the default), `delisted` or `all`. `GET /api/countries/{country_code}/banks/{bank_id}` returns delisted banks too.
+- `delisted_bank_count` in the country summary.
+- Nigeria: NIBSS codes for Quest Merchant Bank (formerly FBNQuest Merchant Bank, `060002`) and Abeg Technologies (Pocket App, `100042`), bringing the total to 371.
 
 ### Changed
 
+- The bank list returns only active banks unless `status` says otherwise, and `bank_count` counts only active banks. Nothing is delisted yet, so today's responses are unchanged apart from the new fields.
+- `python -m src.refresh` reports banks as added, delisted, relisted or changed; it no longer removes any.
 - `deploy/aws/provision.sh` needs `SITE_ADDRESS` set, and creates the instance in the CloudShell session's region unless `REGION` is set. `deploy/docker-compose.standalone.yml` needs `SITE_ADDRESS` too. The deployment guide and example settings use placeholder names.
 
 ## 0.3.4 - 2026-10-15

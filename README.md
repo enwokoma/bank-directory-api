@@ -8,7 +8,7 @@ A public instance runs at [banks.globbapay.com](https://banks.globbapay.com/api-
 
 | Country | Codes | Institutions | Bank types | Transfer codes | Sources |
 | --- | --- | --- | --- | --- | --- |
-| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 369 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
+| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 371 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
 
 `GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes.
 
@@ -24,7 +24,7 @@ There are three ways, from least to most setup: call the public API, use the dat
 const response = await fetch("https://banks.globbapay.com/api/countries/NG/banks?has=nibss_code");
 const { banks } = await response.json();
 // Institutions that can receive a NIP transfer, for a bank dropdown, e.g.
-// { id: "access-bank", name: "Access Bank Plc", type: "commercial",
+// { id: "access-bank", name: "Access Bank Plc", type: "commercial", status: "active",
 //   identifiers: { cbn_institution_id: "1", nibss_code: "000014" } }
 ```
 
@@ -56,7 +56,7 @@ const url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/
 const { banks } = await (await fetch(url)).json();
 
 // Institutions that can receive a NIP transfer, for a bank dropdown
-const transferBanks = banks.filter((bank) => bank.identifiers.nibss_code);
+const transferBanks = banks.filter((bank) => bank.status === "active" && bank.identifiers.nibss_code);
 ```
 
 ```python
@@ -65,7 +65,7 @@ import requests
 # Always the latest data. To pin a release, replace "main" with its tag, such as "v0.3.4".
 url = "https://raw.githubusercontent.com/enwokoma/bank-directory-api/main/data/countries/NGA.json"
 banks = requests.get(url, timeout=10).json()["banks"]
-transfer_banks = [bank for bank in banks if "nibss_code" in bank["identifiers"]]
+transfer_banks = [bank for bank in banks if bank["status"] == "active" and "nibss_code" in bank["identifiers"]]
 ```
 
 To download the latest release's file and check it:
@@ -76,7 +76,7 @@ curl -LO https://github.com/enwokoma/bank-directory-api/releases/latest/download
 shasum -a 256 -c SHA256SUMS
 ```
 
-Each file has `country`, `retrieved_on`, `sources` and `banks`; each bank has the fields described in [Bank fields](#bank-fields), and its `id` stays the same between releases.
+Each file has `country`, `retrieved_on`, `sources` and `banks`; each bank has the fields described in [Bank fields](#bank-fields), and its `id` stays the same between releases. The file also keeps banks the regulator no longer lists, with `status` set to `delisted`, so filter on `status` as the examples do.
 
 Following `main` or `latest` picks up new data without changing your code; pinning a release means the data only changes when you upgrade. Either way, GitHub's links are not meant for production traffic: there is no uptime guarantee, and heavy use gets rate limited. Bundle the file with your app, or download it on a schedule and cache it, rather than fetching it on every request.
 
@@ -113,6 +113,8 @@ See [Setup](#setup) and [Running](#running).
 ## How the data works
 
 Bank data is not fetched when a request comes in. Each country has a JSON file in `data/countries/` (for example `data/countries/NGA.json`) that is generated from its sources, reviewed as an ordinary git diff, and committed. The API loads every file at startup and refuses to start if one fails validation: unknown bank types, malformed or duplicated codes, and unsorted banks are all rejected.
+
+A bank stays in its file after the regulator stops listing it, with `status` set to `delisted`, so stored ids and codes keep resolving. The file's git history shows when each bank was delisted. If the regulator lists it again, it becomes active again under the same id.
 
 Serving the API needs no API keys, keeps working when a regulator's website is down, and makes every change to a country's bank list visible in the git history. The files can also be used directly without running the API.
 
@@ -301,7 +303,8 @@ GET /api/countries
       "name": "Nigeria",
       "currency": "NGN",
       "bank_count": 880,
-      "retrieved_on": "2026-10-14"
+      "delisted_bank_count": 0,
+      "retrieved_on": "2026-10-20"
     }
   ]
 }
@@ -313,7 +316,7 @@ GET /api/countries
 GET /api/countries/{country_code}
 ```
 
-Adds the country's bank types with a count for each, the identifier schemes its banks carry, and the sources its data comes from:
+Adds the country's bank types with a count for each, the identifier schemes its banks carry, and the sources its data comes from. `bank_count` and the counts per type cover active banks; `delisted_bank_count` counts the banks the regulator no longer lists:
 
 ```json
 {
@@ -324,7 +327,8 @@ Adds the country's bank types with a count for each, the identifier schemes its 
     "name": "Nigeria",
     "currency": "NGN",
     "bank_count": 880,
-    "retrieved_on": "2026-10-14",
+    "delisted_bank_count": 0,
+    "retrieved_on": "2026-10-20",
     "bank_types": [
       { "code": "commercial", "name": "Commercial bank", "bank_count": 28 },
       { "code": "merchant", "name": "Merchant bank", "bank_count": 5 },
@@ -370,6 +374,7 @@ GET /api/countries/{country_code}/banks
 
 Query parameters, all optional:
 
+- `status`: `active` (the default) for banks the regulator lists today, `delisted` for banks it no longer lists, or `all` for both. It applies to every other filter, identifier lookups included.
 - `q`: match banks whose name or id contains this text, ignoring case, accents and extra spaces
 - `type`: one or more comma-separated bank type codes, for example `commercial,merchant`
 - `limit`: return at most this many banks (1 to 1000); omit it to get every match
@@ -397,6 +402,7 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
       "id": "zenith-bank",
       "name": "Zenith Bank Plc",
       "type": "commercial",
+      "status": "active",
       "identifiers": {
         "cbn_institution_id": "24",
         "nibss_code": "000015"
@@ -408,16 +414,16 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
 
 `total` counts every match; `banks` holds the requested page. Banks are sorted by name.
 
-A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (369 today), which includes mobile money operators such as OPay and PalmPay:
+A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (371 today), which includes mobile money operators such as OPay and PalmPay:
 
 ```bash
 curl "http://localhost:5006/api/countries/NG/banks?has=nibss_code"
 ```
 
-To turn a code from a transfer back into a bank:
+To turn a code from a transfer back into a bank, including one the regulator no longer lists:
 
 ```bash
-curl "http://localhost:5006/api/countries/NG/banks?nibss_code=090267"
+curl "http://localhost:5006/api/countries/NG/banks?nibss_code=090267&status=all"
 ```
 
 ### Get a bank
@@ -425,6 +431,8 @@ curl "http://localhost:5006/api/countries/NG/banks?nibss_code=090267"
 ```http
 GET /api/countries/{country_code}/banks/{bank_id}
 ```
+
+Returns the bank whether it is active or delisted, so stored ids keep working.
 
 ```bash
 curl http://localhost:5006/api/countries/NG/banks/access-bank
@@ -442,6 +450,7 @@ curl http://localhost:5006/api/countries/NG/banks/access-bank
     "id": "access-bank",
     "name": "Access Bank Plc",
     "type": "commercial",
+    "status": "active",
     "identifiers": {
       "cbn_institution_id": "1",
       "nibss_code": "000014"
@@ -457,6 +466,7 @@ curl http://localhost:5006/api/countries/NG/banks/access-bank
 | `id` | Slug made from the bank's name when it was first listed, for example `access-bank`. It stays the same when the bank is renamed, so it is safe to store. |
 | `name` | The name exactly as the official register publishes it, including its capitalization. Only stray spaces and line breaks are removed. |
 | `type` | One of the country's bank type codes, listed by `GET /api/countries/{country_code}`. |
+| `status` | `active` while the regulator lists the bank, `delisted` once it no longer does: its licence was revoked, it merged into another bank, or it otherwise left the register. |
 | `identifiers` | Codes for the bank under the schemes the country declares, listed by `GET /api/countries/{country_code}`. A scheme is left out when the bank has no code under it. |
 
 Nigeria's identifier schemes:
@@ -475,7 +485,7 @@ python -m src.refresh NGA
 git diff data/countries/NGA.json
 ```
 
-The command prints which banks were added, removed or changed. Existing banks keep their ids. If a source fails or the new data does not pass validation, the file is left untouched.
+The command prints which banks were added, delisted, listed again or otherwise changed. Existing banks keep their ids, and banks the source no longer lists stay in the file as delisted rather than being removed. If a source fails or the new data does not pass validation, the file is left untouched.
 
 | Option | Effect |
 | --- | --- |
@@ -529,8 +539,8 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
 - Mobile money operators come from the CBN's Payment Service Providers page, which lists 17. The register's own mobile money list is shorter and leaves out OPay. Each operator's NIBSS code is the one its wallets use on NIP.
-- 369 of the 880 institutions have a NIBSS code: 27 of 28 commercial banks, all 5 payment service banks, 4 of 6 non-interest banks, 4 of 5 merchant banks, 22 of 33 primary mortgage banks, 14 of 17 mobile money operators and 293 of 786 microfinance banks. Tatum Bank, Summit Bank and Quest Merchant Bank were not in any NIP list used, and most microfinance banks without a code are not on NIP at all.
-- Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay.
+- 371 of the 880 institutions have a NIBSS code: 27 of 28 commercial banks, all 5 payment service banks, 4 of 6 non-interest banks, all 5 merchant banks, 22 of 33 primary mortgage banks, 15 of 17 mobile money operators and 293 of 786 microfinance banks. Tatum Bank and Summit Bank were not in any NIP list used, and most microfinance banks without a code are not on NIP at all.
+- Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank and Abeg Technologies hold the codes NIP still lists as FBNQuest Merchant Bank and Pocket App.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
 - The register also has a per-bank detail endpoint with licence tier and website, but it fails for many banks and its websites are out of date, so it is not used.
 

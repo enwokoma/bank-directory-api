@@ -1,9 +1,12 @@
 """API tests against the committed country data files."""
 
+import json
+
 import pytest
 
 from app import app, create_app
 from src import __version__
+from src.core.dataset import load_datasets
 from src.core.settings import Settings
 
 
@@ -76,7 +79,8 @@ class TestBankList:
         assert data["total"] == len(data["banks"]) == country["bank_count"]
         assert data["offset"] == 0
         assert data["limit"] is None
-        assert list(data["banks"][0]) == ["id", "name", "type", "identifiers"]
+        assert list(data["banks"][0]) == ["id", "name", "type", "status", "identifiers"]
+        assert {bank["status"] for bank in data["banks"]} == {"active"}
 
     def test_filters_by_one_or_more_types(self, client):
         counts = {item["code"]: item["bank_count"] for item in get_json(client, "/api/countries/NG")["country"]["bank_types"]}
@@ -130,6 +134,62 @@ class TestBankList:
     )
     def test_rejects_bad_paging(self, client, query):
         assert get_json(client, f"/api/countries/NG/banks?{query}", status=400)["success"] is False
+
+
+class TestStatus:
+    """Against a small dataset with one delisted bank, since the committed data may have none."""
+
+    @pytest.fixture
+    def client(self, tmp_path):
+        def bank(bank_id, name, status, cbn_id):
+            return {
+                "id": bank_id,
+                "name": name,
+                "type": "commercial",
+                "status": status,
+                "identifiers": {"cbn_institution_id": cbn_id},
+            }
+
+        raw = {
+            "country": "NGA",
+            "retrieved_on": "2026-10-20",
+            "sources": [{"name": "Central Bank of Nigeria", "url": "https://www.cbn.gov.ng/"}],
+            "banks": [
+                bank("access-bank", "Access Bank Plc", "active", "1"),
+                bank("heritage-bank", "Heritage Bank Plc", "delisted", "9"),
+            ],
+        }
+        (tmp_path / "NGA.json").write_text(json.dumps(raw), encoding="utf-8")
+        status_app = create_app()
+        status_app.extensions["bank_datasets"] = load_datasets(tmp_path)
+        return status_app.test_client()
+
+    def ids(self, client, query=""):
+        return [bank["id"] for bank in get_json(client, f"/api/countries/NG/banks{query}")["banks"]]
+
+    def test_lists_only_active_banks_by_default(self, client):
+        assert self.ids(client) == ["access-bank"]
+        assert self.ids(client, "?status=active") == ["access-bank"]
+
+    def test_lists_delisted_banks_on_request(self, client):
+        assert self.ids(client, "?status=delisted") == ["heritage-bank"]
+        assert self.ids(client, "?status=All") == ["access-bank", "heritage-bank"]
+
+    def test_identifier_filters_default_to_active_banks_too(self, client):
+        assert self.ids(client, "?cbn_institution_id=9") == []
+        assert self.ids(client, "?cbn_institution_id=9&status=all") == ["heritage-bank"]
+
+    def test_rejects_unknown_status(self, client):
+        message = get_json(client, "/api/countries/NG/banks?status=closed", status=400)["message"]
+        assert message == "Unknown status closed. Use one of: active, delisted, all."
+
+    def test_a_delisted_bank_is_still_found_by_id(self, client):
+        assert get_json(client, "/api/countries/NG/banks/heritage-bank")["bank"]["status"] == "delisted"
+
+    def test_country_counts_cover_active_banks(self, client):
+        country = get_json(client, "/api/countries/NG")["country"]
+        assert (country["bank_count"], country["delisted_bank_count"]) == (1, 1)
+        assert next(item for item in country["bank_types"] if item["code"] == "commercial")["bank_count"] == 1
 
 
 class TestBankDetail:
