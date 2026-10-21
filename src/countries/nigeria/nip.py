@@ -38,8 +38,10 @@ CODE_PATTERN = r"[0-9]{6}"
 
 # Relaying APIs name their fields differently. Some also return a code of their
 # own under a generic name, so when a row has a field that says NIBSS, only
-# that field is used, even when it is empty.
-_NIBSS_CODE_KEYS = ("nibss_code", "nibss_bank_code", "nip_code")
+# that field is used, even when it is empty. Paystack's bank list returns
+# nip_sort_code only when asked with currency=NGN&include_nip_sort_code=true;
+# without it, its rows carry only Paystack's own codes.
+_NIBSS_CODE_KEYS = ("nibss_code", "nibss_bank_code", "nip_code", "nip_sort_code")
 _CODE_KEYS = ("institution_code", "institutionCode", "bankCode", "code")
 _NAME_KEYS = ("name", "bankName", "institution_name", "institutionName")
 _LIST_KEYS = ("data", "banks", "institutions")
