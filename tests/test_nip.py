@@ -61,6 +61,24 @@ def test_an_empty_nibss_code_is_not_replaced_by_an_api_specific_code():
     assert nip.parse_nip_institutions(body) == [nip.NipInstitution("000014", "ACCESS BANK")]
 
 
+def test_reads_paystack_nip_sort_codes():
+    body = {
+        "status": True,
+        "message": "Banks retrieved",
+        "data": [
+            {"name": "Access Bank", "code": "044", "longcode": "044150149", "nip_sort_code": "000014"},
+            {"name": "OPay Digital Services Limited (OPay)", "code": "999992", "nip_sort_code": "100004"},
+            {"name": "Infinity trust  Mortgage Bank", "code": "070016", "nip_sort_code": None},
+            {"name": "UNIABUJA MFB", "code": "51447", "nip_sort_code": "MFB51447"},
+        ],
+        "meta": None,
+    }
+    assert nip.parse_nip_institutions(body) == [
+        nip.NipInstitution("000014", "Access Bank"),
+        nip.NipInstitution("100004", "OPay Digital Services Limited (OPay)"),
+    ]
+
+
 def test_skips_rows_without_a_six_digit_code_or_a_name():
     body = [
         {"code": "044", "name": "ACCESS"},
