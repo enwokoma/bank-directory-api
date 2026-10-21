@@ -8,7 +8,7 @@ A public instance runs at [banks.globbapay.com](https://banks.globbapay.com/api-
 
 | Country | Codes | Institutions | Bank types | Transfer codes | Sources |
 | --- | --- | --- | --- | --- | --- |
-| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 373 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
+| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 417 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
 
 `GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes.
 
@@ -418,7 +418,7 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
 
 `total` counts every match; `banks` holds the requested page. Banks are sorted by name.
 
-A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (373 today), which includes mobile money operators such as OPay and PalmPay:
+A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (417 today), which includes mobile money operators such as OPay and PalmPay:
 
 ```bash
 curl "http://localhost:5006/api/countries/NG/banks?has=nibss_code"
@@ -507,7 +507,7 @@ The scheduled workflow runs `python -m src.refresh all --check`.
 
 NIBSS does not publish its institution list openly; it serves it to connected institutions through NIP's `financialinstitutionlist` operation, and payment providers relay it to their API customers. To refresh the codes, copy `.env.example` to `.env` and set the URL of an API that returns the list, with its key and, if it is not `X-API-Key`, the header that carries the key. `.env` is ignored by git, and the refresh never prints the endpoints or keys, so they never reach the repository.
 
-A relayed copy can leave institutions out, so up to five can be combined: the same setting names ending in `_2` to `_5` configure more endpoints, and the lists are merged by code.
+A relayed copy can leave institutions out, so up to five can be combined: the same setting names ending in `_2` to `_5` configure more endpoints, and the lists are merged by code. Paystack's bank list is one such relay: it returns the NIP code as `nip_sort_code` only when called as `https://api.paystack.co/bank?currency=NGN&include_nip_sort_code=true` (with `country=nigeria` instead of `currency=NGN` it leaves the field out), with the header set to `Authorization` and the key written as `Bearer sk_...`.
 
 ```bash
 cp .env.example .env
@@ -518,7 +518,7 @@ Without these settings, the refresh keeps the codes already in the file and upda
 
 With them, the command also prints a review report: every match with the institution's name in the NIP list (with `--verbose`), banks still without a code, and NIP institutions that matched no bank. A bank gets a code automatically only when its name matches exactly one NIP institution of a plausible type, and no other bank claims it. When the lists spell a name differently, add the bank's name exactly as the CBN publishes it, with its code, to `src/countries/nigeria/nibss_code_matches.json`, check that the code really belongs to that bank, and run the refresh again. A name mapped to `null` stays without a code. No code may belong to two banks; a data file where one does fails validation.
 
-The scheduled check compares the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` versions for a second list. GitHub masks secret values in the logs.
+The scheduled check compares the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` and `_3` versions for more lists. GitHub masks secret values in the logs.
 
 ### Trading names
 
@@ -549,8 +549,8 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
 - Mobile money operators come from the CBN's Payment Service Providers page, which lists 17. The register's own mobile money list is shorter and leaves out OPay. Each operator's NIBSS code is the one its wallets use on NIP.
-- 373 of the 880 institutions have a NIBSS code: 27 of 28 commercial banks, all 5 payment service banks, 4 of 6 non-interest banks, all 5 merchant banks, 22 of 33 primary mortgage banks, 15 of 17 mobile money operators and 295 of 786 microfinance banks. Tatum Bank and Summit Bank were not in any NIP list used, and most microfinance banks without a code are not on NIP at all.
-- Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank, Abeg Technologies and OSCT hold the codes NIP lists as FBNQuest Merchant Bank, Pocket App and Oscotech MFB.
+- 417 of the 880 institutions have a NIBSS code: all 28 commercial banks, all 5 payment service banks, 5 of 6 non-interest banks, all 5 merchant banks, 24 of 33 primary mortgage banks, all 17 mobile money operators and 333 of 786 microfinance banks. Mint Microfinance Bank has none because it now trades as Mint - Finex MFB, whose code the register's FINEX MFB holds, and most microfinance banks without a code are not on NIP at all.
+- Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank, Abeg Technologies, OSCT and Visual ICT hold the codes NIP lists as FBNQuest Merchant Bank, Pocket App, Oscotech MFB and TagPay.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
 - The register also has a per-bank detail endpoint with licence tier and website, but it fails for many banks and its websites are out of date, so it is not used.
 
