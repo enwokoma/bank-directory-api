@@ -2,6 +2,16 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## Unreleased
+
+### Added
+
+- Bank detection answers carry a `recommended` block: the candidates to try first, taken from the top until their confidences add up to `coverage` (a new parameter, 0.5 to 0.99, default 0.9), at most five, with the probability that the right institution is among them.
+
+### Changed
+
+- Candidates whose confidence rounds to 0, as every other one does once a hint names an institution, are left out of bank detection answers.
+
 ## 0.5.0 - 2026-10-22
 
 ### Added

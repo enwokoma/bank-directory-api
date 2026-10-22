@@ -15,7 +15,7 @@ from flasgger import swag_from
 from flask import Blueprint, current_app, jsonify, request
 
 from src.core.dataset import STATUSES, CountryDataset, search_text
-from src.core.detection import Candidate, get_detector
+from src.core.detection import DEFAULT_COVERAGE, MAX_RECOMMENDED, Candidate, get_detector, recommended_count
 from src.countries.profile import CountryProfile
 from src.countries.registry import get_country_profile
 
@@ -25,6 +25,8 @@ MAX_LIMIT = 1000
 DETECTION_DEFAULT_LIMIT = 10
 DETECTION_MAX_LIMIT = 100
 MAX_HINT_LENGTH = 200
+MIN_COVERAGE = 0.5
+MAX_COVERAGE = 0.99
 
 
 @banks_bp.route("/countries", methods=["GET"])
@@ -246,6 +248,14 @@ def _detection_spec(*, country_in_path: bool, post: bool) -> dict[str, Any]:
                 f"{DETECTION_DEFAULT_LIMIT}). total_candidates counts every one regardless."
             ),
         },
+        "coverage": {
+            "type": "number",
+            "description": (
+                f"How sure the recommended block should be of holding the right institution, {MIN_COVERAGE} to "
+                f"{MAX_COVERAGE} (default {DEFAULT_COVERAGE}): candidates are recommended from the top until their "
+                f"confidences add up to this, at most {MAX_RECOMMENDED} of them."
+            ),
+        },
     }
     if not country_in_path:
         fields["country"] = {
@@ -288,8 +298,11 @@ def _detection_spec(*, country_in_path: bool, post: bool) -> dict[str, Any]:
         "description": _DETECTION_DESCRIPTION,
         "parameters": parameters,
         "responses": {
-            "200": {"description": "The candidates, most likely first, each with its confidence and the evidence for it"},
-            "400": {"description": "A missing or malformed account number, or an invalid hint, type or limit"},
+            "200": {
+                "description": "The candidates, most likely first, each with its confidence and the evidence for it, "
+                "and the recommended ones to try first"
+            },
+            "400": {"description": "A missing or malformed account number, or an invalid hint, type, limit or coverage"},
             "404": {"description": "The country is not supported, or has no bank detection"},
         },
     }
@@ -337,6 +350,7 @@ def _detect_bank(country_code: str | None, params: Mapping[str, Any] | None):
             raise ValueError(f"hint must be at most {MAX_HINT_LENGTH} characters.")
         types = _parse_types(_text_param(params, "type"), dataset.profile)
         limit = _parse_int("limit", _text_param(params, "limit"), minimum=1, maximum=DETECTION_MAX_LIMIT)
+        coverage = _parse_fraction("coverage", _text_param(params, "coverage"), minimum=MIN_COVERAGE, maximum=MAX_COVERAGE)
         detector = get_detector(dataset.profile)
         if detector is None:  # Guarded by _detection_dataset; kept for the type checker.
             return failure
@@ -345,7 +359,9 @@ def _detect_bank(country_code: str | None, params: Mapping[str, Any] | None):
         return _bad_request(str(exc))
 
     limit = limit or DETECTION_DEFAULT_LIMIT
+    coverage = DEFAULT_COVERAGE if coverage is None else coverage
     candidates = [_candidate_json(candidate) for candidate in detection.candidates[:limit]]
+    recommended = candidates[: recommended_count(detection.candidates, coverage, limit=min(MAX_RECOMMENDED, limit))]
     return jsonify(
         {
             "success": True,
@@ -353,6 +369,11 @@ def _detect_bank(country_code: str | None, params: Mapping[str, Any] | None):
             "account_number": detection.account_number,
             "looks_like_phone_number": detection.looks_like_phone_number,
             "best_guess": candidates[0] if candidates else None,
+            "recommended": {
+                "coverage": coverage,
+                "confidence": round(sum(candidate["confidence"] for candidate in recommended), 4),
+                "candidates": recommended,
+            },
             "candidates": candidates,
             "total_candidates": len(detection.candidates),
             "limit": limit,
@@ -465,6 +486,18 @@ def _parse_schemes(value: str | None, profile: CountryProfile) -> set[str]:
             f"Use one of: {', '.join(profile.identifier_schemes)}."
         )
     return schemes
+
+
+def _parse_fraction(name: str, value: str | None, *, minimum: float, maximum: float) -> float | None:
+    if value is None or value == "":
+        return None
+    try:
+        number = float(value)
+    except ValueError:
+        raise ValueError(f"{name} must be a number between {minimum} and {maximum}.") from None
+    if not minimum <= number <= maximum:
+        raise ValueError(f"{name} must be between {minimum} and {maximum}.")
+    return number
 
 
 def _parse_int(name: str, value: str | None, *, minimum: int, maximum: int | None = None) -> int | None:

@@ -7,6 +7,7 @@ import pytest
 
 from app import app, create_app
 from src.core.dataset import load_datasets
+from src.core.detection import Candidate, recommended_count
 from src.countries.nigeria import detection, nuban
 from src.countries.nigeria.detection import DetectionSettings, InstitutionSettings, detect, load_settings
 from src.countries.nigeria.profile import NIGERIA_PROFILE
@@ -154,6 +155,37 @@ class TestHints:
     def test_an_empty_hint_changes_nothing(self):
         assert ids(detect(DATASET, "0123456789", hint="   ")) == ids(detect(DATASET, "0123456789"))
 
+    def test_institutions_a_hint_leaves_with_no_confidence_are_left_out(self):
+        result = detect(DATASET, "8012345678", hint="opay")
+        assert all(candidate.confidence > 0 for candidate in result.candidates)
+        assert len(result.candidates) < 5
+        assert ids(result, 1) == ["opay-digital-services"]
+
+
+def fake_candidates(*confidences):
+    return [
+        Candidate(
+            bank={"id": f"bank-{index}"}, confidence=confidence, reasons=(), institution_code="000000", check_digit_valid=True
+        )
+        for index, confidence in enumerate(confidences, start=1)
+    ]
+
+
+class TestRecommendedCount:
+    def test_takes_the_fewest_candidates_that_reach_the_coverage(self):
+        assert recommended_count(fake_candidates(0.6, 0.25, 0.1, 0.03, 0.02), 0.9) == 3
+        assert recommended_count(fake_candidates(0.6, 0.25, 0.1, 0.03, 0.02), 0.5) == 1
+        assert recommended_count(fake_candidates(0.6, 0.25, 0.1, 0.03, 0.02), 0.85) == 2
+
+    def test_caps_an_ambiguous_number_at_the_limit(self):
+        assert recommended_count(fake_candidates(*[0.1] * 20), 0.9) == 5
+        assert recommended_count(fake_candidates(*[0.1] * 20), 0.9, limit=2) == 2
+
+    def test_always_recommends_one_when_there_are_any(self):
+        assert recommended_count(fake_candidates(0.2, 0.2), 0.99) == 2
+        assert recommended_count(fake_candidates(0.2), 0.99) == 1
+        assert recommended_count([], 0.9) == 0
+
 
 class TestSettings:
     def test_committed_settings_name_active_institutions_on_nip(self):
@@ -236,7 +268,9 @@ class TestApi:
         data = response.get_json()
         assert [candidate["bank"]["id"] for candidate in data["candidates"]][0] == "guaranty-trust-bank"
         assert data["candidates"][0]["reasons"][0] == "hint"
-        assert (data["limit"], len(data["candidates"])) == (2, 2)
+        # A hint is decisive, so every other candidate's confidence rounds to 0 and is left out.
+        assert data["limit"] == 2
+        assert [candidate["bank"]["id"] for candidate in data["candidates"]] == ["guaranty-trust-bank"]
 
     def test_detects_from_a_form_body(self, client):
         response = client.post("/api/detect-bank", data={"account_number": "0801 234 5678"})
@@ -252,6 +286,41 @@ class TestApi:
         assert client.get("/api/detect-bank?country=NG&account_number=0123456789").status_code == 200
         assert client.get("/api/detect-bank?country=XX&account_number=0123456789").status_code == 404
         assert client.get("/api/countries/XX/detect-bank?account_number=0123456789").status_code == 404
+
+    def test_recommends_the_top_candidates_up_to_the_coverage(self, client):
+        data = client.get("/api/detect-bank?account_number=0016563228").get_json()
+        recommended = data["recommended"]
+        assert list(recommended) == ["coverage", "confidence", "candidates"]
+        assert recommended["coverage"] == 0.9
+        assert recommended["candidates"] == data["candidates"][: len(recommended["candidates"])]
+        assert [candidate["bank"]["id"] for candidate in recommended["candidates"]] == [
+            "guaranty-trust-bank",
+            "moniepoint-mfb",
+        ]
+        assert recommended["confidence"] == round(sum(c["confidence"] for c in recommended["candidates"]), 4)
+        assert recommended["confidence"] >= 0.9
+
+    def test_coverage_widens_or_narrows_the_recommendation(self, client):
+        narrow = client.get("/api/detect-bank?account_number=0016563228&coverage=0.5").get_json()["recommended"]
+        wide = client.post("/api/detect-bank", json={"account_number": "0016563228", "coverage": 0.99}).get_json()[
+            "recommended"
+        ]
+        assert len(narrow["candidates"]) == 1
+        assert len(wide["candidates"]) > len(narrow["candidates"])
+        assert wide["coverage"] == 0.99
+
+    def test_recommendation_never_exceeds_five_or_the_limit(self, client):
+        ambiguous = client.get("/api/detect-bank?account_number=5050114930&coverage=0.99").get_json()["recommended"]
+        assert len(ambiguous["candidates"]) == 5
+        assert ambiguous["confidence"] < 0.99
+        capped = client.get("/api/detect-bank?account_number=5050114930&limit=2").get_json()
+        assert len(capped["recommended"]["candidates"]) <= 2
+
+    @pytest.mark.parametrize("coverage", ["0.3", "1", "abc", "nan"])
+    def test_rejects_bad_coverage(self, client, coverage):
+        response = client.get(f"/api/detect-bank?account_number=0016563228&coverage={coverage}")
+        assert response.status_code == 400
+        assert "coverage must be" in response.get_json()["message"]
 
     def test_type_and_limit_narrow_the_answer(self, client):
         data = client.get("/api/detect-bank?account_number=0123456789&type=mobile_money&limit=3").get_json()

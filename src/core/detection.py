@@ -14,7 +14,7 @@ the same shape.
 from __future__ import annotations
 
 import importlib
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from functools import cache
 from typing import Any
@@ -45,6 +45,30 @@ class Detection:
     account_number: str
     looks_like_phone_number: bool
     candidates: tuple[Candidate, ...]
+
+
+# How many of the ranked candidates to recommend trying first: the fewest
+# whose confidences add up to the wanted coverage, and never more than this
+# many, so an ambiguous number still gives a short list.
+DEFAULT_COVERAGE = 0.9
+MAX_RECOMMENDED = 5
+
+
+def recommended_count(
+    candidates: Sequence[Candidate], coverage: float = DEFAULT_COVERAGE, limit: int = MAX_RECOMMENDED
+) -> int:
+    """How many candidates, from the top, are worth trying before the rest.
+
+    The fewest whose confidences add up to `coverage`, the probability that the
+    right institution is among them, capped at `limit`. At least one whenever
+    there are any.
+    """
+    covered = 0.0
+    for count, candidate in enumerate(candidates[:limit], start=1):
+        covered += candidate.confidence
+        if covered >= coverage:
+            return count
+    return min(len(candidates), limit)
 
 
 def get_detector(profile: CountryProfile) -> Callable[..., Detection] | None:
