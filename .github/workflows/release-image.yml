@@ -164,10 +164,17 @@ jobs:
           # 405 to GET on this endpoint, so it is called with POST.
           response=$(curl --silent --show-error --fail --request POST "$COOLIFY_WEBHOOK_URL" \
             --header "Authorization: Bearer $COOLIFY_API_TOKEN" --header "Accept: application/json")
+          resource=$(printf '%s' "$response" | jq -r '.deployments[0].resource_uuid // empty')
+          if [ -z "$resource" ]; then
+            echo "::error::Coolify did not start a deployment: $response"
+            exit 1
+          fi
           deployment=$(printf '%s' "$response" | jq -r '.deployments[0].deployment_uuid // empty')
           if [ -z "$deployment" ]; then
-            echo "::error::Coolify did not queue a deployment: $response"
-            exit 1
+            # A Docker Compose service reports no deployment to follow, only that it started;
+            # the next step then watches the site itself.
+            printf '%s\n' "$response" | jq -r '.deployments[0].message'
+            exit 0
           fi
           echo "Coolify queued deployment $deployment."
           api="${COOLIFY_WEBHOOK_URL%%/api/v1/deploy*}/api/v1/deployments/$deployment"
@@ -186,13 +193,19 @@ jobs:
       - name: Check that the site answers with the new version
         if: env.PUBLIC_SITE_URL != '' && env.COOLIFY_WEBHOOK_URL != '' && env.COOLIFY_API_TOKEN != ''
         run: |
+          # Pulling the image and starting the new container takes a while, during which the old
+          # one may still answer, so the site is given time and then watched for up to five minutes.
+          # A manual run redeploys the version already live, so there the check proves that the
+          # site is up and on that version once the restart is through.
+          sleep 60
           for attempt in $(seq 1 30); do
             live=$(curl --silent "$PUBLIC_SITE_URL/apispec_1.json" | jq -r '.info.version // empty' || true)
-            if [ "$live" = "$VERSION" ]; then
-              echo "$PUBLIC_SITE_URL answers with version $VERSION."
+            healthy=$(curl --silent --output /dev/null --write-out '%{http_code}' "$PUBLIC_SITE_URL/" || true)
+            if [ "$live" = "$VERSION" ] && [ "$healthy" = 200 ]; then
+              echo "$PUBLIC_SITE_URL is healthy and answers with version $VERSION."
               exit 0
             fi
             sleep 10
           done
-          echo "::error::$PUBLIC_SITE_URL still answers with version '${live:-nothing}', not $VERSION."
+          echo "::error::$PUBLIC_SITE_URL answers with version '${live:-nothing}' and health status ${healthy:-none}, not $VERSION and 200."
           exit 1
