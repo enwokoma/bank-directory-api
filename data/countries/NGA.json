@@ -11,6 +11,10 @@
       "url": "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html"
     },
     {
+      "name": "Paystack: bank list (CBN bank codes)",
+      "url": "https://paystack.com/docs/api/miscellaneous/#bank"
+    },
+    {
       "name": "NIBSS Instant Payment (NIP) institution list",
       "url": "https://nibss-plc.com.ng/nibss-instant-payment/"
     }
@@ -34,7 +38,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10016",
-        "nibss_code": "090832"
+        "nibss_code": "090832",
+        "cbn_bank_code": "51455"
       }
     },
     {
@@ -77,7 +82,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4079",
-        "nibss_code": "070010"
+        "nibss_code": "070010",
+        "cbn_bank_code": "404"
       }
     },
     {
@@ -118,7 +124,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3195",
-        "nibss_code": "090260"
+        "nibss_code": "090260",
+        "cbn_bank_code": "51204"
       }
     },
     {
@@ -151,7 +158,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3198",
-        "nibss_code": "090545"
+        "nibss_code": "090545",
+        "cbn_bank_code": "51312"
       }
     },
     {
@@ -162,7 +170,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "1",
-        "nibss_code": "000014"
+        "nibss_code": "000014",
+        "cbn_bank_code": "044"
       }
     },
     {
@@ -173,7 +182,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3199",
-        "nibss_code": "090134"
+        "nibss_code": "090134",
+        "cbn_bank_code": "602"
       }
     },
     {
@@ -215,7 +225,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9882",
-        "nibss_code": "070030"
+        "nibss_code": "070030",
+        "cbn_bank_code": "90102"
       }
     },
     {
@@ -321,7 +332,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4080",
-        "nibss_code": "100028"
+        "nibss_code": "100028",
+        "cbn_bank_code": "90077"
       }
     },
     {
@@ -343,7 +355,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3213",
-        "nibss_code": "090197"
+        "nibss_code": "090197",
+        "cbn_bank_code": "50036"
       }
     },
     {
@@ -475,7 +488,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3226",
-        "nibss_code": "090133"
+        "nibss_code": "090133",
+        "cbn_bank_code": "50055"
       }
     },
     {
@@ -518,7 +532,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3192",
-        "nibss_code": "090297"
+        "nibss_code": "090297",
+        "cbn_bank_code": "51074"
       }
     },
     {
@@ -549,7 +564,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3233",
-        "nibss_code": "090131"
+        "nibss_code": "090131",
+        "cbn_bank_code": "50059"
       }
     },
     {
@@ -581,7 +597,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9894",
-        "nibss_code": "000041"
+        "nibss_code": "000041",
+        "cbn_bank_code": "108"
       }
     },
     {
@@ -592,7 +609,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9845",
-        "nibss_code": "000037"
+        "nibss_code": "000037",
+        "cbn_bank_code": "304"
       }
     },
     {
@@ -646,7 +664,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3242",
-        "nibss_code": "090180"
+        "nibss_code": "090180",
+        "cbn_bank_code": "50926"
       }
     },
     {
@@ -668,7 +687,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3245",
-        "nibss_code": "090529"
+        "nibss_code": "090529",
+        "cbn_bank_code": "51341"
       }
     },
     {
@@ -689,7 +709,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3246",
-        "nibss_code": "090645"
+        "nibss_code": "090645",
+        "cbn_bank_code": "50072"
       }
     },
     {
@@ -762,7 +783,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3256",
-        "nibss_code": "090307"
+        "nibss_code": "090307",
+        "cbn_bank_code": "50083"
       }
     },
     {
@@ -794,7 +816,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4082",
-        "nibss_code": "090001"
+        "nibss_code": "090001",
+        "cbn_bank_code": "401"
       }
     },
     {
@@ -826,7 +849,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3262",
-        "nibss_code": "090473"
+        "nibss_code": "090473",
+        "cbn_bank_code": "50092"
       }
     },
     {
@@ -837,7 +861,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3264",
-        "nibss_code": "090172"
+        "nibss_code": "090172",
+        "cbn_bank_code": "50094"
       }
     },
     {
@@ -960,7 +985,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3275",
-        "nibss_code": "090127"
+        "nibss_code": "090127",
+        "cbn_bank_code": "51212"
       }
     },
     {
@@ -1011,7 +1037,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3279",
-        "nibss_code": "090188"
+        "nibss_code": "090188",
+        "cbn_bank_code": "51229"
       }
     },
     {
@@ -1085,7 +1112,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3287",
-        "nibss_code": "090136"
+        "nibss_code": "090136",
+        "cbn_bank_code": "50992"
       }
     },
     {
@@ -1197,7 +1225,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3298",
-        "nibss_code": "090413"
+        "nibss_code": "090413",
+        "cbn_bank_code": "51267"
       }
     },
     {
@@ -1208,7 +1237,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3299",
-        "nibss_code": "090618"
+        "nibss_code": "090618",
+        "cbn_bank_code": "50122"
       }
     },
     {
@@ -1219,7 +1249,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3300",
-        "nibss_code": "090615"
+        "nibss_code": "090615",
+        "cbn_bank_code": "50123"
       }
     },
     {
@@ -1280,7 +1311,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10027",
-        "nibss_code": "090977"
+        "nibss_code": "090977",
+        "cbn_bank_code": "51411"
       }
     },
     {
@@ -1374,7 +1406,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10028",
-        "nibss_code": "090753"
+        "nibss_code": "090753",
+        "cbn_bank_code": "50725"
       }
     },
     {
@@ -1396,7 +1429,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9878",
-        "nibss_code": "090819"
+        "nibss_code": "090819",
+        "cbn_bank_code": "51449"
       }
     },
     {
@@ -1451,7 +1485,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3327",
-        "nibss_code": "090176"
+        "nibss_code": "090176",
+        "cbn_bank_code": "650"
       }
     },
     {
@@ -1462,7 +1497,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3328",
-        "nibss_code": "090148"
+        "nibss_code": "090148",
+        "cbn_bank_code": "50931"
       }
     },
     {
@@ -1483,7 +1519,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4083",
-        "nibss_code": "070015"
+        "nibss_code": "070015",
+        "cbn_bank_code": "90070"
       }
     },
     {
@@ -1629,7 +1666,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3349",
-        "nibss_code": "100026"
+        "nibss_code": "100026",
+        "cbn_bank_code": "565"
       }
     },
     {
@@ -1671,7 +1709,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3352",
-        "nibss_code": "090360"
+        "nibss_code": "090360",
+        "cbn_bank_code": "865"
       }
     },
     {
@@ -1723,7 +1762,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10032",
-        "nibss_code": "090851"
+        "nibss_code": "090851",
+        "cbn_bank_code": "51437"
       }
     },
     {
@@ -1764,7 +1804,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3358",
-        "nibss_code": "090470"
+        "nibss_code": "090470",
+        "cbn_bank_code": "50162"
       }
     },
     {
@@ -1796,7 +1837,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3361",
-        "nibss_code": "090154"
+        "nibss_code": "090154",
+        "cbn_bank_code": "50823"
       }
     },
     {
@@ -1818,7 +1860,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3364",
-        "nibss_code": "090141"
+        "nibss_code": "090141",
+        "cbn_bank_code": "312"
       }
     },
     {
@@ -1882,7 +1925,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "2",
-        "nibss_code": "000009"
+        "nibss_code": "000009",
+        "cbn_bank_code": "023"
       }
     },
     {
@@ -1998,7 +2042,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3380",
-        "nibss_code": "090130"
+        "nibss_code": "090130",
+        "cbn_bank_code": "50910"
       }
     },
     {
@@ -2009,7 +2054,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10034",
-        "nibss_code": "090842"
+        "nibss_code": "090842",
+        "cbn_bank_code": "51458"
       }
     },
     {
@@ -2020,7 +2066,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4086",
-        "nibss_code": "070021"
+        "nibss_code": "070021",
+        "cbn_bank_code": "90089"
       }
     },
     {
@@ -2031,7 +2078,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3381",
-        "nibss_code": "090365"
+        "nibss_code": "090365",
+        "cbn_bank_code": "50204"
       }
     },
     {
@@ -2042,7 +2090,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3181",
-        "nibss_code": "060001"
+        "nibss_code": "060001",
+        "cbn_bank_code": "559"
       }
     },
     {
@@ -2064,7 +2113,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3387",
-        "nibss_code": "090526"
+        "nibss_code": "090526",
+        "cbn_bank_code": "51297"
       }
     },
     {
@@ -2096,7 +2146,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3392",
-        "nibss_code": "090414"
+        "nibss_code": "090414",
+        "cbn_bank_code": "50216"
       }
     },
     {
@@ -2167,7 +2218,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10036",
-        "nibss_code": "090845"
+        "nibss_code": "090845",
+        "cbn_bank_code": "51368"
       }
     },
     {
@@ -2178,7 +2230,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10010",
-        "nibss_code": "090673"
+        "nibss_code": "090673",
+        "cbn_bank_code": "51334"
       }
     },
     {
@@ -2404,7 +2457,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3423",
-        "nibss_code": "090427"
+        "nibss_code": "090427",
+        "cbn_bank_code": "50922"
       }
     },
     {
@@ -2415,7 +2469,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3",
-        "nibss_code": "000010"
+        "nibss_code": "000010",
+        "cbn_bank_code": "050"
       }
     },
     {
@@ -2518,7 +2573,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3435",
-        "nibss_code": "090552"
+        "nibss_code": "090552",
+        "cbn_bank_code": "50263"
       }
     },
     {
@@ -2642,7 +2698,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3451",
-        "nibss_code": "090166"
+        "nibss_code": "090166",
+        "cbn_bank_code": "50280"
       }
     },
     {
@@ -2715,7 +2772,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3463",
-        "nibss_code": "090551"
+        "nibss_code": "090551",
+        "cbn_bank_code": "51318"
       }
     },
     {
@@ -2748,7 +2806,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4088",
-        "nibss_code": "090107"
+        "nibss_code": "090107",
+        "cbn_bank_code": "413"
       }
     },
     {
@@ -2759,7 +2818,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3467",
-        "nibss_code": "090409"
+        "nibss_code": "090409",
+        "cbn_bank_code": "51241"
       }
     },
     {
@@ -2791,7 +2851,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3471",
-        "nibss_code": "090482"
+        "nibss_code": "090482",
+        "cbn_bank_code": "50298"
       }
     },
     {
@@ -2813,7 +2874,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3473",
-        "nibss_code": "090153"
+        "nibss_code": "090153",
+        "cbn_bank_code": "51110"
       }
     },
     {
@@ -2834,7 +2896,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4",
-        "nibss_code": "000007"
+        "nibss_code": "000007",
+        "cbn_bank_code": "070"
       }
     },
     {
@@ -2889,7 +2952,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3478",
-        "nibss_code": "090281"
+        "nibss_code": "090281",
+        "cbn_bank_code": "50304"
       }
     },
     {
@@ -2900,7 +2964,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3479",
-        "nibss_code": "090366"
+        "nibss_code": "090366",
+        "cbn_bank_code": "51314"
       }
     },
     {
@@ -2921,7 +2986,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "5",
-        "nibss_code": "000016"
+        "nibss_code": "000016",
+        "cbn_bank_code": "011"
       }
     },
     {
@@ -2932,7 +2998,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "6",
-        "nibss_code": "000003"
+        "nibss_code": "000003",
+        "cbn_bank_code": "214"
       }
     },
     {
@@ -2985,7 +3052,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3486",
-        "nibss_code": "090285"
+        "nibss_code": "090285",
+        "cbn_bank_code": "50934"
       }
     },
     {
@@ -3017,7 +3085,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3489",
-        "nibss_code": "090614"
+        "nibss_code": "090614",
+        "cbn_bank_code": "50315"
       }
     },
     {
@@ -3070,7 +3139,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3183",
-        "nibss_code": "400001"
+        "nibss_code": "400001",
+        "cbn_bank_code": "501"
       }
     },
     {
@@ -3123,7 +3193,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3496",
-        "nibss_code": "090438"
+        "nibss_code": "090438",
+        "cbn_bank_code": "832"
       }
     },
     {
@@ -3196,7 +3267,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3503",
-        "nibss_code": "090691"
+        "nibss_code": "090691",
+        "cbn_bank_code": "51093"
       }
     },
     {
@@ -3218,7 +3290,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4091",
-        "nibss_code": "070009"
+        "nibss_code": "070009",
+        "cbn_bank_code": "812"
       }
     },
     {
@@ -3323,7 +3396,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "7",
-        "nibss_code": "000027"
+        "nibss_code": "000027",
+        "cbn_bank_code": "103"
       }
     },
     {
@@ -3408,7 +3482,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3523",
-        "nibss_code": "090495"
+        "nibss_code": "090495",
+        "cbn_bank_code": "50739"
       }
     },
     {
@@ -3504,7 +3579,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3184",
-        "nibss_code": "060004"
+        "nibss_code": "060004",
+        "cbn_bank_code": "562"
       }
     },
     {
@@ -3515,7 +3591,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3533",
-        "nibss_code": "090195"
+        "nibss_code": "090195",
+        "cbn_bank_code": "51276"
       }
     },
     {
@@ -3526,7 +3603,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3534",
-        "nibss_code": "090385"
+        "nibss_code": "090385",
+        "cbn_bank_code": "50368"
       }
     },
     {
@@ -3537,7 +3615,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "8",
-        "nibss_code": "000013"
+        "nibss_code": "000013",
+        "cbn_bank_code": "058"
       }
     },
     {
@@ -3589,7 +3668,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4093",
-        "nibss_code": "070017"
+        "nibss_code": "070017",
+        "cbn_bank_code": "90065"
       }
     },
     {
@@ -3641,7 +3721,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3546",
-        "nibss_code": "090121"
+        "nibss_code": "090121",
+        "cbn_bank_code": "50383"
       }
     },
     {
@@ -3767,7 +3848,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3554",
-        "nibss_code": "090118"
+        "nibss_code": "090118",
+        "cbn_bank_code": "51244"
       }
     },
     {
@@ -3971,7 +4053,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3581",
-        "nibss_code": "090536"
+        "nibss_code": "090536",
+        "cbn_bank_code": "50439"
       }
     },
     {
@@ -3982,7 +4065,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3582",
-        "nibss_code": "090571"
+        "nibss_code": "090571",
+        "cbn_bank_code": "50442"
       }
     },
     {
@@ -4107,7 +4191,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3594",
-        "nibss_code": "090417"
+        "nibss_code": "090417",
+        "cbn_bank_code": "50453"
       }
     },
     {
@@ -4118,7 +4203,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4095",
-        "nibss_code": "100024"
+        "nibss_code": "100024",
+        "cbn_bank_code": "415"
       }
     },
     {
@@ -4159,7 +4245,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3597",
-        "nibss_code": "090157"
+        "nibss_code": "090157",
+        "cbn_bank_code": "50457"
       }
     },
     {
@@ -4378,7 +4465,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4119",
-        "nibss_code": "000006"
+        "nibss_code": "000006",
+        "cbn_bank_code": "301"
       }
     },
     {
@@ -4440,7 +4528,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4098",
-        "nibss_code": "090003"
+        "nibss_code": "090003",
+        "cbn_bank_code": "402"
       }
     },
     {
@@ -4461,7 +4550,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3631",
-        "nibss_code": "090320"
+        "nibss_code": "090320",
+        "cbn_bank_code": "50502"
       }
     },
     {
@@ -4594,7 +4684,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10",
-        "nibss_code": "000002"
+        "nibss_code": "000002",
+        "cbn_bank_code": "082"
       }
     },
     {
@@ -4717,7 +4808,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3378",
-        "nibss_code": "090380"
+        "nibss_code": "090380",
+        "cbn_bank_code": "50200"
       }
     },
     {
@@ -4728,7 +4820,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3652",
-        "nibss_code": "090267"
+        "nibss_code": "090267",
+        "cbn_bank_code": "50211"
       }
     },
     {
@@ -4841,7 +4934,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9876",
-        "nibss_code": "090986"
+        "nibss_code": "090986",
+        "cbn_bank_code": "51457"
       }
     },
     {
@@ -4852,7 +4946,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4100",
-        "nibss_code": "070012"
+        "nibss_code": "070012",
+        "cbn_bank_code": "90052"
       }
     },
     {
@@ -4999,7 +5094,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3675",
-        "nibss_code": "090435"
+        "nibss_code": "090435",
+        "cbn_bank_code": "50549"
       }
     },
     {
@@ -5030,7 +5126,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4120",
-        "nibss_code": "000029"
+        "nibss_code": "000029",
+        "cbn_bank_code": "303"
       }
     },
     {
@@ -5217,7 +5314,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9903",
-        "nibss_code": "090854"
+        "nibss_code": "090854",
+        "cbn_bank_code": "51474"
       }
     },
     {
@@ -5228,7 +5326,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4101",
-        "nibss_code": "070019"
+        "nibss_code": "070019",
+        "cbn_bank_code": "90003"
       }
     },
     {
@@ -5259,7 +5358,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3703",
-        "nibss_code": "090824"
+        "nibss_code": "090824",
+        "cbn_bank_code": "50570"
       }
     },
     {
@@ -5302,7 +5402,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3709",
-        "nibss_code": "090275"
+        "nibss_code": "090275",
+        "cbn_bank_code": "50572"
       }
     },
     {
@@ -5502,7 +5603,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3916",
-        "nibss_code": "090405"
+        "nibss_code": "090405",
+        "cbn_bank_code": "50515"
       }
     },
     {
@@ -5786,7 +5888,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3759",
-        "nibss_code": "090263"
+        "nibss_code": "090263",
+        "cbn_bank_code": "51142"
       }
     },
     {
@@ -5818,7 +5921,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3762",
-        "nibss_code": "090194"
+        "nibss_code": "090194",
+        "cbn_bank_code": "51304"
       }
     },
     {
@@ -5899,7 +6003,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9870",
-        "nibss_code": "060003"
+        "nibss_code": "060003",
+        "cbn_bank_code": "561"
       }
     },
     {
@@ -5920,7 +6025,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10060",
-        "nibss_code": "090734"
+        "nibss_code": "090734",
+        "cbn_bank_code": "51371"
       }
     },
     {
@@ -5941,7 +6047,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3774",
-        "nibss_code": "070001"
+        "nibss_code": "070001",
+        "cbn_bank_code": "50629"
       }
     },
     {
@@ -5972,7 +6079,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3778",
-        "nibss_code": "090491"
+        "nibss_code": "090491",
+        "cbn_bank_code": "51261"
       }
     },
     {
@@ -6370,7 +6478,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3824",
-        "nibss_code": "090272"
+        "nibss_code": "090272",
+        "cbn_bank_code": "50689"
       }
     },
     {
@@ -6422,7 +6531,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3831",
-        "nibss_code": "090471"
+        "nibss_code": "090471",
+        "cbn_bank_code": "50697"
       }
     },
     {
@@ -6454,7 +6564,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4106",
-        "nibss_code": "070007"
+        "nibss_code": "070007",
+        "cbn_bank_code": "031"
       }
     },
     {
@@ -6525,7 +6636,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9865",
-        "nibss_code": "000036"
+        "nibss_code": "000036",
+        "cbn_bank_code": "107"
       }
     },
     {
@@ -6709,7 +6821,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9906",
-        "nibss_code": "090846"
+        "nibss_code": "090846",
+        "cbn_bank_code": "51477"
       }
     },
     {
@@ -6781,7 +6894,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "11",
-        "nibss_code": "000030"
+        "nibss_code": "000030",
+        "cbn_bank_code": "104"
       }
     },
     {
@@ -6845,7 +6959,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3867",
-        "nibss_code": "090402"
+        "nibss_code": "090402",
+        "cbn_bank_code": "50743"
       }
     },
     {
@@ -6856,7 +6971,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3869",
-        "nibss_code": "090137"
+        "nibss_code": "090137",
+        "cbn_bank_code": "51226"
       }
     },
     {
@@ -6898,7 +7014,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3874",
-        "nibss_code": "090135"
+        "nibss_code": "090135",
+        "cbn_bank_code": "51146"
       }
     },
     {
@@ -6961,7 +7078,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4107",
-        "nibss_code": "070013"
+        "nibss_code": "070013",
+        "cbn_bank_code": "268"
       }
     },
     {
@@ -6992,7 +7110,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "12",
-        "nibss_code": "000008"
+        "nibss_code": "000008",
+        "cbn_bank_code": "076"
       }
     },
     {
@@ -7013,7 +7132,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3879",
-        "nibss_code": "090296"
+        "nibss_code": "090296",
+        "cbn_bank_code": "50864"
       }
     },
     {
@@ -7045,7 +7165,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "13",
-        "nibss_code": "000031"
+        "nibss_code": "000031",
+        "cbn_bank_code": "105"
       }
     },
     {
@@ -7120,7 +7241,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "14",
-        "nibss_code": "000023"
+        "nibss_code": "000023",
+        "cbn_bank_code": "101"
       }
     },
     {
@@ -7172,7 +7294,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3895",
-        "nibss_code": "090261"
+        "nibss_code": "090261",
+        "cbn_bank_code": "51293"
       }
     },
     {
@@ -7214,7 +7337,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3186",
-        "nibss_code": "000024"
+        "nibss_code": "000024",
+        "cbn_bank_code": "502"
       }
     },
     {
@@ -7256,7 +7380,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4108",
-        "nibss_code": "070011"
+        "nibss_code": "070011",
+        "cbn_bank_code": "90067"
       }
     },
     {
@@ -7278,7 +7403,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3904",
-        "nibss_code": "090463"
+        "nibss_code": "090463",
+        "cbn_bank_code": "50761"
       }
     },
     {
@@ -7300,7 +7426,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3906",
-        "nibss_code": "090198"
+        "nibss_code": "090198",
+        "cbn_bank_code": "51049"
       }
     },
     {
@@ -7353,7 +7480,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3910",
-        "nibss_code": "090433"
+        "nibss_code": "090433",
+        "cbn_bank_code": "51286"
       }
     },
     {
@@ -7396,7 +7524,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3915",
-        "nibss_code": "090547"
+        "nibss_code": "090547",
+        "cbn_bank_code": "50767"
       }
     },
     {
@@ -7458,7 +7587,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3921",
-        "nibss_code": "090175"
+        "nibss_code": "090175",
+        "cbn_bank_code": "125"
       }
     },
     {
@@ -7519,7 +7649,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3926",
-        "nibss_code": "090286"
+        "nibss_code": "090286",
+        "cbn_bank_code": "51113"
       }
     },
     {
@@ -7644,7 +7775,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3941",
-        "nibss_code": "090401"
+        "nibss_code": "090401",
+        "cbn_bank_code": "50789"
       }
     },
     {
@@ -7655,7 +7787,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3942",
-        "nibss_code": "090559"
+        "nibss_code": "090559",
+        "cbn_bank_code": "50582"
       }
     },
     {
@@ -7686,7 +7819,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9866",
-        "nibss_code": "000034"
+        "nibss_code": "000034",
+        "cbn_bank_code": "106"
       }
     },
     {
@@ -7717,7 +7851,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3945",
-        "nibss_code": "090449"
+        "nibss_code": "090449",
+        "cbn_bank_code": "51108"
       }
     },
     {
@@ -7759,7 +7894,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3948",
-        "nibss_code": "090506"
+        "nibss_code": "090506",
+        "cbn_bank_code": "51062"
       }
     },
     {
@@ -7770,7 +7906,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3949",
-        "nibss_code": "090524"
+        "nibss_code": "090524",
+        "cbn_bank_code": "50800"
       }
     },
     {
@@ -7821,7 +7958,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3952",
-        "nibss_code": "090325"
+        "nibss_code": "090325",
+        "cbn_bank_code": "51310"
       }
     },
     {
@@ -7832,7 +7970,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3953",
-        "nibss_code": "090436"
+        "nibss_code": "090436",
+        "cbn_bank_code": "50756"
       }
     },
     {
@@ -7843,7 +7982,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10076",
-        "nibss_code": "090806"
+        "nibss_code": "090806",
+        "cbn_bank_code": "51429"
       }
     },
     {
@@ -7864,7 +8004,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "15",
-        "nibss_code": "000012"
+        "nibss_code": "000012",
+        "cbn_bank_code": "221"
       }
     },
     {
@@ -7875,7 +8016,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "16",
-        "nibss_code": "000021"
+        "nibss_code": "000021",
+        "cbn_bank_code": "068"
       }
     },
     {
@@ -7897,7 +8039,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3958",
-        "nibss_code": "090583"
+        "nibss_code": "090583",
+        "cbn_bank_code": "50809"
       }
     },
     {
@@ -7919,7 +8062,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3960",
-        "nibss_code": "090262"
+        "nibss_code": "090262",
+        "cbn_bank_code": "51253"
       }
     },
     {
@@ -7940,7 +8084,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "17",
-        "nibss_code": "000001"
+        "nibss_code": "000001",
+        "cbn_bank_code": "232"
       }
     },
     {
@@ -7983,7 +8128,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9917",
-        "nibss_code": "080003"
+        "nibss_code": "080003",
+        "cbn_bank_code": "305"
       }
     },
     {
@@ -8015,7 +8161,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "18",
-        "nibss_code": "000022"
+        "nibss_code": "000022",
+        "cbn_bank_code": "100"
       }
     },
     {
@@ -8057,7 +8204,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4121",
-        "nibss_code": "000026"
+        "nibss_code": "000026",
+        "cbn_bank_code": "302"
       }
     },
     {
@@ -8088,7 +8236,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3263",
-        "nibss_code": "090426"
+        "nibss_code": "090426",
+        "cbn_bank_code": "51269"
       }
     },
     {
@@ -8109,7 +8258,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "9895",
-        "nibss_code": "000042"
+        "nibss_code": "000042",
+        "cbn_bank_code": "109"
       }
     },
     {
@@ -8120,7 +8270,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3978",
-        "nibss_code": "090115"
+        "nibss_code": "090115",
+        "cbn_bank_code": "51211"
       }
     },
     {
@@ -8161,7 +8312,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10083",
-        "nibss_code": "090716"
+        "nibss_code": "090716",
+        "cbn_bank_code": "51403"
       }
     },
     {
@@ -8172,7 +8324,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3979",
-        "nibss_code": "090373"
+        "nibss_code": "090373",
+        "cbn_bank_code": "677"
       }
     },
     {
@@ -8193,7 +8346,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "19",
-        "nibss_code": "000025"
+        "nibss_code": "000025",
+        "cbn_bank_code": "102"
       }
     },
     {
@@ -8317,7 +8471,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3992",
-        "nibss_code": "090123"
+        "nibss_code": "090123",
+        "cbn_bank_code": "51118"
       }
     },
     {
@@ -8360,7 +8515,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3997",
-        "nibss_code": "090315"
+        "nibss_code": "090315",
+        "cbn_bank_code": "50840"
       }
     },
     {
@@ -8371,7 +8527,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10085",
-        "nibss_code": "090762"
+        "nibss_code": "090762",
+        "cbn_bank_code": "51396"
       }
     },
     {
@@ -8442,7 +8599,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4003",
-        "nibss_code": "090517"
+        "nibss_code": "090517",
+        "cbn_bank_code": "51322"
       }
     },
     {
@@ -8483,7 +8641,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10087",
-        "nibss_code": "090781"
+        "nibss_code": "090781",
+        "cbn_bank_code": "51080"
       }
     },
     {
@@ -8535,7 +8694,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4013",
-        "nibss_code": "090510"
+        "nibss_code": "090510",
+        "cbn_bank_code": "51097"
       }
     },
     {
@@ -8576,7 +8736,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4017",
-        "nibss_code": "090331"
+        "nibss_code": "090331",
+        "cbn_bank_code": "50870"
       }
     },
     {
@@ -8608,7 +8769,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4020",
-        "nibss_code": "090193"
+        "nibss_code": "090193",
+        "cbn_bank_code": "50871"
       }
     },
     {
@@ -8639,7 +8801,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4023",
-        "nibss_code": "090452"
+        "nibss_code": "090452",
+        "cbn_bank_code": "51316"
       }
     },
     {
@@ -8661,7 +8824,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4025",
-        "nibss_code": "090464"
+        "nibss_code": "090464",
+        "cbn_bank_code": "50875"
       }
     },
     {
@@ -8672,7 +8836,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "20",
-        "nibss_code": "000018"
+        "nibss_code": "000018",
+        "cbn_bank_code": "032"
       }
     },
     {
@@ -8683,7 +8848,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "21",
-        "nibss_code": "000004"
+        "nibss_code": "000004",
+        "cbn_bank_code": "033"
       }
     },
     {
@@ -8704,7 +8870,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "22",
-        "nibss_code": "000011"
+        "nibss_code": "000011",
+        "cbn_bank_code": "215"
       }
     },
     {
@@ -8818,7 +8985,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4036",
-        "nibss_code": "090453"
+        "nibss_code": "090453",
+        "cbn_bank_code": "50894"
       }
     },
     {
@@ -8850,7 +9018,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4039",
-        "nibss_code": "090110"
+        "nibss_code": "090110",
+        "cbn_bank_code": "566"
       }
     },
     {
@@ -8861,7 +9030,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4041",
-        "nibss_code": "090813"
+        "nibss_code": "090813",
+        "cbn_bank_code": "51085"
       }
     },
     {
@@ -8943,7 +9113,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4138",
-        "nibss_code": "090590"
+        "nibss_code": "090590",
+        "cbn_bank_code": "51355"
       }
     },
     {
@@ -8974,7 +9145,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "23",
-        "nibss_code": "000017"
+        "nibss_code": "000017",
+        "cbn_bank_code": "035"
       }
     },
     {
@@ -8985,7 +9157,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10093",
-        "nibss_code": "090741"
+        "nibss_code": "090741",
+        "cbn_bank_code": "51386"
       }
     },
     {
@@ -9119,7 +9292,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4060",
-        "nibss_code": "090142"
+        "nibss_code": "090142",
+        "cbn_bank_code": "594"
       }
     },
     {
@@ -9161,7 +9335,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "24",
-        "nibss_code": "000015"
+        "nibss_code": "000015",
+        "cbn_bank_code": "057"
       }
     },
     {
@@ -9203,7 +9378,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10096",
-        "nibss_code": "090718"
+        "nibss_code": "090718",
+        "cbn_bank_code": "51373"
       }
     },
     {

@@ -24,7 +24,17 @@ NIGERIA_PROFILE = CountryProfile(
     identifier_schemes={
         "cbn_institution_id": "Record ID in the Central Bank of Nigeria's financial institutions register",
         "nibss_code": "6-digit NIBSS Instant Payment (NIP) institution code, used to send bank transfers",
+        "cbn_bank_code": (
+            "CBN bank code, from which NUBAN account numbers' check digits are computed and which payment "
+            "providers use as the bank code: 3 digits for banks (058 for GTBank), 5 for other financial "
+            "institutions (50515 for Moniepoint)"
+        ),
     },
-    identifier_patterns={"cbn_institution_id": r"[0-9]+", "nibss_code": r"[0-9]{6}"},
+    identifier_patterns={
+        "cbn_institution_id": r"[0-9]+",
+        "nibss_code": r"[0-9]{6}",
+        "cbn_bank_code": r"[0-9]{3}|[0-9]{5}",
+    },
     refresh_module="src.countries.nigeria.refresh",
+    detection_module="src.countries.nigeria.detection",
 )

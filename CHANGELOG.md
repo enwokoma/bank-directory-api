@@ -2,6 +2,15 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## Unreleased
+
+### Added
+
+- Bank detection from an account number: `GET` or `POST /api/detect-bank`, and the same under `/api/countries/{country_code}/detect-bank`, takes a 10-digit Nigerian account number, or a mobile number for a wallet account, and returns the institutions it can belong to, most likely first, each with a `confidence` and the evidence for it. The check digit of a NUBAN account number is computed from the issuing institution's CBN bank code, so institutions whose code gives another digit are ruled out, and the rest are ranked by how common they are, by whether the number looks like a mobile number (OPay, PalmPay, Moniepoint, Paga and the payment service banks use phone numbers as account numbers), by leading digits banks are known to use, and by a `hint`, the text the number was copied with. `type` and `limit` narrow the answer.
+- Nigeria: the `cbn_bank_code` identifier, the CBN's 3-digit bank code (`058` for GTBank) or 5-digit code for other financial institutions (`50515` for Moniepoint), for 172 institutions, from the reviewed file `src/countries/nigeria/cbn_bank_codes.json`. It is the code payment providers such as Paystack take as the bank code, and the one NUBAN check digits are computed from. The bank list can be filtered by it, `?cbn_bank_code=058`.
+- `src/countries/nigeria/account_detection.json`: reviewed shares, phone-number account fractions, leading digits and aliases per institution, which rank the candidates and can be calibrated without code changes.
+- `GET /api/countries/{country_code}` says whether the country has `bank_detection`, and Nigeria's sources cite Paystack's bank list for the CBN bank codes.
+
 ## 0.4.0 - 2026-10-20
 
 ### Added

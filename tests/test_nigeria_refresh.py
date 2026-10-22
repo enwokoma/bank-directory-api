@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from src.countries.nigeria import mobile_money, nibss_codes, nip
+from src.countries.nigeria import cbn_bank_codes, mobile_money, nibss_codes, nip
 from src.countries.nigeria import refresh as nigeria_refresh
 
 FIXTURES = Path(__file__).parent / "fixtures" / "nigeria"
@@ -47,7 +47,7 @@ def test_builds_records_from_every_category():
         "name": "Access Bank Plc",
         "trading_name": "Access Bank Plc",
         "type": "commercial",
-        "identifiers": {"cbn_institution_id": "1"},
+        "identifiers": {"cbn_institution_id": "1", "cbn_bank_code": "044"},
     }
     assert {bank["type"] for bank in dataset["banks"]} == {
         "commercial",
@@ -58,7 +58,7 @@ def test_builds_records_from_every_category():
         "mortgage",
         "mobile_money",
     }
-    assert dataset["sources"] == [nigeria_refresh.SOURCE, mobile_money.SOURCE]
+    assert dataset["sources"] == [nigeria_refresh.SOURCE, mobile_money.SOURCE, cbn_bank_codes.SOURCE]
 
 
 def test_cleans_spacing_without_changing_capitalization():
@@ -115,6 +115,37 @@ def test_adds_reviewed_trading_names(tmp_path, monkeypatch, caplog):
     assert banks["Abeg Technologies Limited"]["trading_name"] == "Pocket"
     assert banks["Access Bank Plc"]["trading_name"] == "Access Bank Plc"
     assert "Trading name for 'Gone MFB' names no bank in the register." in caplog.text
+
+
+def test_adds_reviewed_cbn_bank_codes(tmp_path, monkeypatch, caplog):
+    codes = tmp_path / "cbn_bank_codes.json"
+    codes.write_text(json.dumps({"Access Bank Plc": "044", "Gone MFB": "50999"}), encoding="utf-8")
+    monkeypatch.setattr(cbn_bank_codes, "CODES_FILE", codes)
+    dataset = nigeria_refresh.fetch_dataset(FixtureClient())
+    banks = by_name(dataset["banks"])
+    assert banks["Access Bank Plc"]["identifiers"]["cbn_bank_code"] == "044"
+    assert "cbn_bank_code" not in banks["Unity Bank Plc"]["identifiers"]
+    assert cbn_bank_codes.SOURCE in dataset["sources"]
+    assert "CBN bank code for 'Gone MFB' names no bank in the register." in caplog.text
+
+
+def test_without_any_cbn_bank_code_does_not_cite_their_source(tmp_path, monkeypatch):
+    codes = tmp_path / "cbn_bank_codes.json"
+    codes.write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(cbn_bank_codes, "CODES_FILE", codes)
+    assert cbn_bank_codes.SOURCE not in nigeria_refresh.fetch_dataset(FixtureClient())["sources"]
+
+
+def test_committed_cbn_bank_codes_are_in_the_data_file():
+    codes = json.loads(cbn_bank_codes.CODES_FILE.read_text(encoding="utf-8"))
+    dataset = json.loads((Path(__file__).parents[1] / "data" / "countries" / "NGA.json").read_text(encoding="utf-8"))
+    in_file = {
+        bank["name"]: bank["identifiers"]["cbn_bank_code"]
+        for bank in dataset["banks"]
+        if "cbn_bank_code" in bank["identifiers"]
+    }
+    assert in_file == codes
+    assert cbn_bank_codes.SOURCE in dataset["sources"]
 
 
 def test_committed_trading_names_name_banks_in_the_register():
