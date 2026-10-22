@@ -2,7 +2,7 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
-## Unreleased
+## 0.5.0 - 2026-10-22
 
 ### Added
 
@@ -10,6 +10,12 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 - Nigeria: the `cbn_bank_code` identifier, the CBN's 3-digit bank code (`058` for GTBank) or 5-digit code for other financial institutions (`50515` for Moniepoint), for 172 institutions, from the reviewed file `src/countries/nigeria/cbn_bank_codes.json`. It is the code payment providers such as Paystack take as the bank code, and the one NUBAN check digits are computed from. The bank list can be filtered by it, `?cbn_bank_code=058`.
 - `src/countries/nigeria/account_detection.json`: reviewed shares, phone-number account fractions, leading digits and aliases per institution, which rank the candidates and can be calibrated without code changes.
 - `GET /api/countries/{country_code}` says whether the country has `bank_detection`, and Nigeria's sources cite Paystack's bank list for the CBN bank codes.
+- Nigeria: 44 more institutions have NIBSS codes, 417 of 880 (up from 373): 42 matched from Paystack's bank list, read as a third relayed NIP list, plus reviewed matches for Summit Bank (`080003`) and Visual ICT (`100023`), which trades as TagPay.
+- The refresh reads Paystack's `nip_sort_code` field as a NIBSS code, so Paystack's bank list, called with `currency=NGN&include_nip_sort_code=true`, can be set as a NIP list source. `.env.example` and the scheduled data check carry the `_3` settings for it.
+
+### Changed
+
+- Nigeria's data was retrieved on 2026-10-21. Its identifiers gain the `cbn_bank_code` scheme and its sources a fourth entry, Paystack's bank list; nothing is removed or renamed.
 
 ## 0.4.0 - 2026-10-20
 
