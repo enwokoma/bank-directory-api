@@ -8,7 +8,7 @@
 # SES uses the server's instance role. See docs/deploy.md.
 services:
   api:
-    image: ghcr.io/enwokoma/bank-directory-api:0.5.0
+    image: ghcr.io/enwokoma/bank-directory-api:0.6.0
     environment:
       RATE_LIMIT_STORAGE_URI: redis://redis:6379/0
       API_KEY_DATABASE: /var/lib/bank-directory/keys.sqlite3
