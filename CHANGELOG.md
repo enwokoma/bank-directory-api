@@ -8,6 +8,9 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 - Bank detection answers carry a `recommended` block: the candidates to try first, taken from the top until their confidences add up to `coverage` (a new parameter, 0.5 to 0.99, default 0.9), at most five, with the probability that the right institution is among them.
 
+- Nigeria: CBN bank codes for 422 more institutions, from the CBN's own list of microfinance bank codes matched to the register by name where the name is unique in both lists. 594 of the 880 institutions now have one, 307 of the 417 on NIP, and the data cites the CBN list as a source.
+- `other_bank_codes` in `account_detection.json`: other codes an institution has issued account numbers under, which bank detection tests too. Accion, Bosak, Chikum and FUT Minna used 3-digit NIBSS codes before the CBN's 5-digit ones, which payment providers still list; their `cbn_bank_code` is now the CBN's.
+
 ### Changed
 
 - Candidates whose confidence rounds to 0, as every other one does once a hint names an institution, are left out of bank detection answers.

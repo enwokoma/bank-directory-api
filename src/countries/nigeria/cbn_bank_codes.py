@@ -7,11 +7,12 @@ payment providers such as Paystack use it as the bank code in their transfer
 APIs, but the CBN does not publish the list, and its register records only
 its own row ids. So the codes are kept as a reviewed file,
 `cbn_bank_codes.json`: a bank's name exactly as the CBN publishes it, mapped
-to its code. The file was compiled from Paystack's bank list, which carries
-both this code and the NIBSS code, and checked against published code lists
-for the deposit money banks. Institutions whose code Paystack gives in another
-form, such as OPay and PalmPay, are left out; detection then falls back to
-their NIBSS code.
+to its code. The microfinance banks' codes come from the CBN's own list of
+them, matched by name where the name is unique in both lists; the other
+institutions' from Paystack's bank list, which carries both this code and the
+NIBSS code, checked against published code lists for the deposit money banks.
+Institutions neither source gives a code for, such as OPay and PalmPay, are
+left out; detection then falls back to their NIBSS code.
 """
 
 from __future__ import annotations
@@ -24,7 +25,15 @@ from typing import Any
 CODES_FILE = Path(__file__).with_name("cbn_bank_codes.json")
 SCHEME = "cbn_bank_code"
 CODE_PATTERN = r"[0-9]{3}|[0-9]{5}"
-SOURCE = {"name": "Paystack: bank list (CBN bank codes)", "url": "https://paystack.com/docs/api/miscellaneous/#bank"}
+# Where the reviewed codes were taken from: the CBN's own list of microfinance
+# bank codes, and Paystack's bank list for the other institutions.
+SOURCES = (
+    {
+        "name": "Central Bank of Nigeria: microfinance bank codes",
+        "url": "https://www.cbn.gov.ng/Out/2014/OFISD/MFB%20Codes.pdf",
+    },
+    {"name": "Paystack: bank list (CBN bank codes)", "url": "https://paystack.com/docs/api/miscellaneous/#bank"},
+)
 
 
 def load_cbn_bank_codes(path: Path = CODES_FILE) -> dict[str, str]:

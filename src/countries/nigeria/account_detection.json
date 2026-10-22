@@ -12,363 +12,676 @@
     "opay-digital-services": {
       "share": 20,
       "phone_number_accounts": 0.9,
-      "aliases": ["opay", "o pay", "paycom"]
+      "aliases": [
+        "opay",
+        "o pay",
+        "paycom"
+      ]
     },
     "palmpay": {
       "share": 12,
       "phone_number_accounts": 0.9,
-      "aliases": ["palmpay", "palm pay"]
+      "aliases": [
+        "palmpay",
+        "palm pay"
+      ]
     },
     "moniepoint-mfb": {
       "share": 10,
       "phone_number_accounts": 0.5,
-      "aliases": ["moniepoint", "monie point", "moniepoint mfb", "moniepoint bank"]
+      "aliases": [
+        "moniepoint",
+        "monie point",
+        "moniepoint mfb",
+        "moniepoint bank"
+      ]
     },
     "access-bank": {
       "share": 7,
-      "account_prefixes": ["0", "1"],
-      "aliases": ["access", "access bank", "accessbank", "diamond bank", "access diamond"]
+      "account_prefixes": [
+        "0",
+        "1"
+      ],
+      "aliases": [
+        "access",
+        "access bank",
+        "accessbank",
+        "diamond bank",
+        "access diamond"
+      ]
     },
     "guaranty-trust-bank": {
       "share": 7,
-      "account_prefixes": ["0"],
-      "aliases": ["gtb", "gtbank", "gt bank", "guaranty trust", "gtco"]
+      "account_prefixes": [
+        "0"
+      ],
+      "aliases": [
+        "gtb",
+        "gtbank",
+        "gt bank",
+        "guaranty trust",
+        "gtco"
+      ]
     },
     "zenith-bank": {
       "share": 6,
-      "account_prefixes": ["1", "2"],
-      "aliases": ["zenith", "zenith bank"]
+      "account_prefixes": [
+        "1",
+        "2"
+      ],
+      "aliases": [
+        "zenith",
+        "zenith bank"
+      ]
     },
     "united-bank-for-africa": {
       "share": 6,
-      "account_prefixes": ["1", "2"],
-      "aliases": ["uba", "united bank for africa"]
+      "account_prefixes": [
+        "1",
+        "2"
+      ],
+      "aliases": [
+        "uba",
+        "united bank for africa"
+      ]
     },
     "first-bank-nigeria": {
       "share": 6,
-      "account_prefixes": ["2", "3"],
-      "aliases": ["first bank", "firstbank", "fbn", "first bank of nigeria"]
+      "account_prefixes": [
+        "2",
+        "3"
+      ],
+      "aliases": [
+        "first bank",
+        "firstbank",
+        "fbn",
+        "first bank of nigeria"
+      ]
     },
     "kuda-mfb": {
       "share": 3,
-      "account_prefixes": ["1", "2"],
-      "aliases": ["kuda", "kuda bank", "kuda mfb"]
+      "account_prefixes": [
+        "1",
+        "2"
+      ],
+      "aliases": [
+        "kuda",
+        "kuda bank",
+        "kuda mfb"
+      ]
     },
     "first-city-monument-bank": {
       "share": 2.5,
-      "aliases": ["fcmb", "first city monument"]
+      "aliases": [
+        "fcmb",
+        "first city monument"
+      ]
     },
     "fidelity-bank": {
       "share": 2.5,
-      "account_prefixes": ["4", "5", "6"],
-      "aliases": ["fidelity", "fidelity bank"]
+      "account_prefixes": [
+        "4",
+        "5",
+        "6"
+      ],
+      "aliases": [
+        "fidelity",
+        "fidelity bank"
+      ]
     },
     "sterling-bank": {
       "share": 1.5,
-      "account_prefixes": ["0"],
-      "aliases": ["sterling", "sterling bank"]
+      "account_prefixes": [
+        "0"
+      ],
+      "aliases": [
+        "sterling",
+        "sterling bank"
+      ]
     },
     "wema-bank": {
       "share": 1.5,
-      "account_prefixes": ["0"],
-      "aliases": ["wema", "wema bank", "alat", "alat by wema"]
+      "account_prefixes": [
+        "0"
+      ],
+      "aliases": [
+        "wema",
+        "wema bank",
+        "alat",
+        "alat by wema"
+      ]
     },
     "union-bank-of-nigeria": {
       "share": 1,
-      "account_prefixes": ["0"],
-      "aliases": ["union bank", "unionbank"]
+      "account_prefixes": [
+        "0"
+      ],
+      "aliases": [
+        "union bank",
+        "unionbank"
+      ]
     },
     "stanbic-ibtc-bank": {
       "share": 1,
-      "aliases": ["stanbic", "stanbic ibtc", "ibtc"]
+      "aliases": [
+        "stanbic",
+        "stanbic ibtc",
+        "ibtc"
+      ]
     },
     "polaris-bank": {
       "share": 1,
-      "aliases": ["polaris", "polaris bank", "skye bank"]
+      "aliases": [
+        "polaris",
+        "polaris bank",
+        "skye bank"
+      ]
     },
     "ecobank-nigeria": {
       "share": 1,
-      "aliases": ["ecobank", "eco bank"]
+      "aliases": [
+        "ecobank",
+        "eco bank"
+      ]
     },
     "momo-payment-service-bank": {
       "share": 1,
       "phone_number_accounts": 0.95,
-      "aliases": ["momo", "mtn momo", "momo psb", "mtn"]
+      "aliases": [
+        "momo",
+        "mtn momo",
+        "momo psb",
+        "mtn"
+      ]
     },
     "keystone-bank": {
       "share": 0.5,
-      "aliases": ["keystone", "keystone bank"]
+      "aliases": [
+        "keystone",
+        "keystone bank"
+      ]
     },
     "jaiz-bank": {
       "share": 0.5,
-      "account_prefixes": ["0"],
-      "aliases": ["jaiz", "jaiz bank"]
+      "account_prefixes": [
+        "0"
+      ],
+      "aliases": [
+        "jaiz",
+        "jaiz bank"
+      ]
     },
     "providus-bank": {
       "share": 0.5,
-      "aliases": ["providus", "providus bank"]
+      "aliases": [
+        "providus",
+        "providus bank"
+      ]
     },
     "smartcash-psb": {
       "share": 0.5,
       "phone_number_accounts": 0.95,
-      "aliases": ["smartcash", "smart cash", "airtel smartcash", "airtel"]
+      "aliases": [
+        "smartcash",
+        "smart cash",
+        "airtel smartcash",
+        "airtel"
+      ]
     },
     "fairmoney-mfb": {
       "share": 0.5,
-      "aliases": ["fairmoney", "fair money"]
+      "aliases": [
+        "fairmoney",
+        "fair money"
+      ]
     },
     "unity-bank": {
       "share": 0.3,
-      "account_prefixes": ["0"],
-      "aliases": ["unity bank", "unitybank"]
+      "account_prefixes": [
+        "0"
+      ],
+      "aliases": [
+        "unity bank",
+        "unitybank"
+      ]
     },
     "standard-chartered-bank-nigeria": {
       "share": 0.3,
-      "aliases": ["standard chartered", "stanchart", "scb"]
+      "aliases": [
+        "standard chartered",
+        "stanchart",
+        "scb"
+      ]
     },
     "taj": {
       "share": 0.3,
-      "aliases": ["taj bank", "tajbank"]
+      "aliases": [
+        "taj bank",
+        "tajbank"
+      ]
     },
     "9-psb": {
       "share": 0.3,
       "phone_number_accounts": 0.9,
-      "aliases": ["9psb", "9 psb", "9mobile psb", "9 payment service bank"]
+      "aliases": [
+        "9psb",
+        "9 psb",
+        "9mobile psb",
+        "9 payment service bank"
+      ]
     },
     "pagatech": {
       "share": 0.3,
       "phone_number_accounts": 0.9,
-      "aliases": ["paga", "pagatech"]
+      "aliases": [
+        "paga",
+        "pagatech"
+      ]
     },
     "carbon-mfb": {
       "share": 0.3,
-      "aliases": ["carbon", "carbon mfb", "paylater"]
+      "aliases": [
+        "carbon",
+        "carbon mfb",
+        "paylater"
+      ]
     },
     "vfd-mfb": {
       "share": 0.3,
-      "aliases": ["vfd", "v bank", "vbank", "vfd mfb"]
+      "aliases": [
+        "vfd",
+        "v bank",
+        "vbank",
+        "vfd mfb"
+      ]
     },
     "lotus-bank": {
       "share": 0.2,
-      "aliases": ["lotus", "lotus bank"]
+      "aliases": [
+        "lotus",
+        "lotus bank"
+      ]
     },
     "globus-bank": {
       "share": 0.2,
-      "aliases": ["globus", "globus bank"]
+      "aliases": [
+        "globus",
+        "globus bank"
+      ]
     },
     "titan-trust-bank": {
       "share": 0.2,
-      "aliases": ["titan", "titan trust", "titan bank"]
+      "aliases": [
+        "titan",
+        "titan trust",
+        "titan bank"
+      ]
     },
     "parallex-bank": {
       "share": 0.2,
-      "aliases": ["parallex"]
+      "aliases": [
+        "parallex"
+      ]
     },
     "sparkle-mfb": {
       "share": 0.2,
-      "aliases": ["sparkle"]
+      "aliases": [
+        "sparkle"
+      ]
     },
     "premium-trust-bank": {
       "share": 0.1,
-      "aliases": ["premium trust", "premiumtrust"]
+      "aliases": [
+        "premium trust",
+        "premiumtrust"
+      ]
     },
     "signature-bank": {
       "share": 0.1,
-      "aliases": ["signature bank"]
+      "aliases": [
+        "signature bank"
+      ]
     },
     "optimus-bank": {
       "share": 0.1,
-      "aliases": ["optimus", "optimus bank"]
+      "aliases": [
+        "optimus",
+        "optimus bank"
+      ]
     },
     "suntrust-bank-nigeria": {
       "share": 0.1,
-      "aliases": ["suntrust", "sun trust"]
+      "aliases": [
+        "suntrust",
+        "sun trust"
+      ]
     },
     "alternative-bank": {
       "share": 0.1,
-      "aliases": ["alternative bank", "altbank", "alt bank"]
+      "aliases": [
+        "alternative bank",
+        "altbank",
+        "alt bank"
+      ]
     },
     "alpha-morgan-bank": {
       "share": 0.1,
-      "aliases": ["alpha morgan"]
+      "aliases": [
+        "alpha morgan"
+      ]
     },
     "tatum-bank": {
       "share": 0.1,
-      "aliases": ["tatum"]
+      "aliases": [
+        "tatum"
+      ]
     },
     "nova-commercial-bank": {
       "share": 0.1,
-      "aliases": ["nova", "nova bank"]
+      "aliases": [
+        "nova",
+        "nova bank"
+      ]
     },
     "hope-psb": {
       "share": 0.1,
       "phone_number_accounts": 0.9,
-      "aliases": ["hope psb", "hopepsb", "hope payment service bank"]
+      "aliases": [
+        "hope psb",
+        "hopepsb",
+        "hope payment service bank"
+      ]
     },
     "abeg-technologies": {
       "share": 0.1,
-      "aliases": ["pocket", "pocket app", "piggyvest", "abeg"]
+      "aliases": [
+        "pocket",
+        "pocket app",
+        "piggyvest",
+        "abeg"
+      ]
     },
     "renmoney-mfb": {
       "share": 0.1,
-      "aliases": ["renmoney", "ren money"]
+      "aliases": [
+        "renmoney",
+        "ren money"
+      ]
     },
     "rubies-mfb": {
       "share": 0.1,
-      "aliases": ["rubies", "rubies bank"]
+      "aliases": [
+        "rubies",
+        "rubies bank"
+      ]
     },
     "finex-mfb": {
       "share": 0.1,
-      "aliases": ["mint finex", "mint mfb", "finex"]
+      "aliases": [
+        "mint finex",
+        "mint mfb",
+        "finex"
+      ]
     },
     "lapo-mfb": {
       "share": 0.1,
-      "aliases": ["lapo"]
+      "aliases": [
+        "lapo"
+      ]
     },
     "npf-mfb": {
       "share": 0.1,
-      "aliases": ["npf", "npf mfb", "nigeria police"]
+      "aliases": [
+        "npf",
+        "npf mfb",
+        "nigeria police"
+      ]
     },
     "accion-microfinance-bank": {
       "share": 0.1,
-      "aliases": ["accion"]
+      "aliases": [
+        "accion"
+      ],
+      "other_bank_codes": [
+        "602"
+      ]
     },
     "citibank-nigeria": {
       "share": 0.05,
-      "aliases": ["citibank", "citi bank", "citi"]
+      "aliases": [
+        "citibank",
+        "citi bank",
+        "citi"
+      ]
     },
     "moneymaster-psb": {
       "share": 0.05,
       "phone_number_accounts": 0.9,
-      "aliases": ["moneymaster", "money master", "glo moneymaster"]
+      "aliases": [
+        "moneymaster",
+        "money master",
+        "glo moneymaster"
+      ]
     },
     "summit-bank": {
       "share": 0.05,
-      "aliases": ["summit bank"]
+      "aliases": [
+        "summit bank"
+      ]
     },
     "coronation-merchant-bank": {
       "share": 0.05,
-      "aliases": ["coronation"]
+      "aliases": [
+        "coronation"
+      ]
     },
     "ab-microfinance-bank": {
       "share": 0.05,
-      "aliases": ["ab mfb", "ab microfinance"]
+      "aliases": [
+        "ab mfb",
+        "ab microfinance"
+      ]
     },
     "baobab-microfinance-bank": {
       "share": 0.05,
-      "aliases": ["baobab"]
+      "aliases": [
+        "baobab"
+      ]
     },
     "ampersand-microfinance-bank": {
       "share": 0.05,
-      "aliases": ["bankly"]
+      "aliases": [
+        "bankly"
+      ]
     },
     "cintrust-mfb": {
       "share": 0.05,
-      "aliases": ["kolomoni"]
+      "aliases": [
+        "kolomoni"
+      ]
     },
     "flourish-mfb": {
       "share": 0.05,
-      "aliases": ["aella"]
+      "aliases": [
+        "aella"
+      ]
     },
     "amegy-microfinance-bank": {
       "share": 0.05,
-      "aliases": ["9japay", "9ja pay"]
+      "aliases": [
+        "9japay",
+        "9ja pay"
+      ]
     },
     "meridian-mfb": {
       "share": 0.05,
-      "aliases": ["bankit"]
+      "aliases": [
+        "bankit"
+      ]
     },
     "mutual-trust-mfb": {
       "share": 0.05,
-      "aliases": ["mutual trust"]
+      "aliases": [
+        "mutual trust"
+      ]
     },
     "finatrust-mfb": {
       "share": 0.05,
-      "aliases": ["finatrust", "fina trust"]
+      "aliases": [
+        "finatrust",
+        "fina trust"
+      ]
     },
     "hasal-mfb": {
       "share": 0.05,
-      "aliases": ["hasal"]
+      "aliases": [
+        "hasal"
+      ]
     },
     "ladder-microfinance-bank": {
       "share": 0.05,
-      "aliases": ["paystack", "paystack mfb", "ladder"]
+      "aliases": [
+        "paystack",
+        "paystack mfb",
+        "ladder"
+      ]
     },
     "xpress-mts": {
       "share": 0.05,
-      "aliases": ["xpress wallet", "xpresspay"]
+      "aliases": [
+        "xpress wallet",
+        "xpresspay"
+      ]
     },
     "amucha-microfinance-bank": {
       "share": 0.03,
-      "aliases": ["nombank"]
+      "aliases": [
+        "nombank"
+      ]
     },
     "letshego-mfb": {
       "share": 0.03,
-      "aliases": ["letshego"]
+      "aliases": [
+        "letshego"
+      ]
     },
     "sls-mfb": {
       "share": 0.03,
-      "aliases": ["rex mfb", "rex bank"]
+      "aliases": [
+        "rex mfb",
+        "rex bank"
+      ]
     },
     "changan-rts-mfb": {
       "share": 0.03,
-      "aliases": ["dot mfb", "dot bank"]
+      "aliases": [
+        "dot mfb",
+        "dot bank"
+      ]
     },
     "tangerine-money-microfinance-bank": {
       "share": 0.03,
-      "aliases": ["tangerine"]
+      "aliases": [
+        "tangerine"
+      ]
     },
     "trustbanc-j6": {
       "share": 0.03,
-      "aliases": ["trustbanc"]
+      "aliases": [
+        "trustbanc"
+      ]
     },
     "mainstreet-mfb": {
       "share": 0.03,
-      "aliases": ["mainstreet"]
+      "aliases": [
+        "mainstreet"
+      ]
     },
     "links-mfb": {
       "share": 0.03,
-      "aliases": ["links mfb"]
+      "aliases": [
+        "links mfb"
+      ]
     },
     "shield-mfb": {
       "share": 0.03,
-      "aliases": ["shield mfb"]
+      "aliases": [
+        "shield mfb"
+      ]
     },
     "rand-merchant-bank": {
       "share": 0.02,
-      "aliases": ["rand merchant", "rmb"]
+      "aliases": [
+        "rand merchant",
+        "rmb"
+      ]
     },
     "fsdh-merchant-bank": {
       "share": 0.02,
-      "aliases": ["fsdh"]
+      "aliases": [
+        "fsdh"
+      ]
     },
     "greenwich-merchant-bank": {
       "share": 0.02,
-      "aliases": ["greenwich"]
+      "aliases": [
+        "greenwich"
+      ]
     },
     "quest-merchant-bank": {
       "share": 0.02,
-      "aliases": ["quest", "fbnquest"]
+      "aliases": [
+        "quest",
+        "fbnquest"
+      ]
     },
     "etranzact-international": {
       "share": 0.02,
-      "aliases": ["etranzact", "pocketmoni"]
+      "aliases": [
+        "etranzact",
+        "pocketmoni"
+      ]
     },
     "kongapay-technologies": {
       "share": 0.02,
-      "aliases": ["kongapay", "konga pay"]
+      "aliases": [
+        "kongapay",
+        "konga pay"
+      ]
     },
     "visual-ict": {
       "share": 0.02,
-      "aliases": ["tagpay"]
+      "aliases": [
+        "tagpay"
+      ]
     },
     "nownow-digital-systems": {
       "share": 0.02,
-      "aliases": ["nownow", "now now"]
+      "aliases": [
+        "nownow",
+        "now now"
+      ]
     },
     "chams-mobile": {
       "share": 0.02,
-      "aliases": ["chams"]
+      "aliases": [
+        "chams"
+      ]
+    },
+    "bosak-mfb": {
+      "other_bank_codes": [
+        "650"
+      ]
+    },
+    "chikum-mfb": {
+      "other_bank_codes": [
+        "312"
+      ]
+    },
+    "fut-minna": {
+      "other_bank_codes": [
+        "832"
+      ]
     }
   }
 }

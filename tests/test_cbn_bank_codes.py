@@ -75,6 +75,9 @@ def test_committed_codes_match_the_data_file():
         ("JAIZ BANK PLC", "301"),
         ("KUDA MFB", "50211"),
         ("Moniepoint MFB", "50515"),
+        ("LAPO MFB", "50547"),
+        ("Accion Microfinance Bank Limited", "50009"),
+        ("AB Microfinance Bank Limited", "50002"),
     ],
 )
 def test_well_known_codes(name, code):

@@ -78,7 +78,7 @@ REASONS = ("hint", "phone_number_account", "check_digit", "account_prefix")
 
 _FORMER_NAME = re.compile(r"\((?:formerly|former)\b[^)]*\)", re.IGNORECASE)
 _NAME_SUFFIXES = frozenset({"plc", "limited", "ltd", "nigeria", "nig", "co", "company"})
-_INSTITUTION_KEYS = {"share", "phone_number_accounts", "account_prefixes", "aliases"}
+_INSTITUTION_KEYS = {"share", "phone_number_accounts", "account_prefixes", "aliases", "other_bank_codes"}
 
 
 @dataclass(frozen=True)
@@ -93,6 +93,9 @@ class InstitutionSettings:
     account_prefixes: tuple[str, ...] = ()
     # Short names people call it, normalized like a hint.
     aliases: tuple[str, ...] = ()
+    # Other codes it has issued account numbers under, as CBN-style codes: an
+    # early microfinance bank on NIP used its 3-digit NIBSS code before the CBN's.
+    other_bank_codes: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -151,8 +154,7 @@ def detect(
         if types and bank["type"] not in types:
             continue
         institution = settings.institutions.get(bank["id"], _UNLISTED)
-        code = institution_code(bank)
-        valid = nuban.is_valid(number, code)
+        code, valid = _check_digit_test(number, bank, institution)
         hinted = bool(hint_words) and _named_in(hint_words, bank, institution.aliases)
         likelihood, reasons = _likelihood(number, mobile, valid, hinted, institution)
         if likelihood <= 0:
@@ -182,6 +184,17 @@ def institution_code(bank: dict[str, Any]) -> str:
     """The 6-digit code to test the check digit with: from the CBN bank code, or else the NIBSS code as it is."""
     cbn_code = bank["identifiers"].get(CBN_BANK_CODE)
     return nuban.institution_code(cbn_code) if cbn_code else bank["identifiers"]["nibss_code"]
+
+
+def _check_digit_test(number: str, bank: dict[str, Any], institution: InstitutionSettings) -> tuple[str, bool]:
+    """Test the number against the institution's code and any other code it has issued numbers under.
+
+    Returns the first code that gives the number's check digit, or the
+    institution's own code when none does, with whether it passed.
+    """
+    codes = [institution_code(bank), *(nuban.institution_code(code) for code in institution.other_bank_codes)]
+    passing = next((code for code in codes if nuban.is_valid(number, code)), None)
+    return (passing, True) if passing else (codes[0], False)
 
 
 def normalize_name(text: str) -> str:
@@ -255,9 +268,13 @@ def _institution_settings(item: Any) -> InstitutionSettings:
     aliases = tuple(normalize_name(alias) for alias in item.get("aliases", ()))
     if not all(aliases):
         raise ValueError("aliases must be non-empty text")
+    other_codes = tuple(item.get("other_bank_codes", ()))
+    if not all(isinstance(code, str) and code.isdigit() and len(code) in (3, 5, 6) for code in other_codes):
+        raise ValueError(f"other_bank_codes must be CBN-style codes of 3, 5 or 6 digits, not {other_codes!r}")
     return InstitutionSettings(
         share=_share(item["share"]) if "share" in item else None,
         phone_number_accounts=float(phone_share),
         account_prefixes=prefixes,
         aliases=aliases,
+        other_bank_codes=other_codes,
     )

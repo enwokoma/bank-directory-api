@@ -91,7 +91,7 @@ def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | N
     for problem in cbn_bank_codes.apply_cbn_bank_codes(records, codes):
         logger.warning(problem)
     if any(cbn_bank_codes.SCHEME in record["identifiers"] for record in records):
-        sources.append(cbn_bank_codes.SOURCE)
+        sources.extend(cbn_bank_codes.SOURCES)
     if cites_nip:
         sources.append(nip.SOURCE)
 

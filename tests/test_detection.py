@@ -217,6 +217,7 @@ class TestSettings:
             ({"default_share_by_type": {"commercial": 1}, "institutions": {"x": {"account_prefixes": ["a"]}}}, "digits"),
             ({"default_share_by_type": {"commercial": 1}, "institutions": {"x": {"aliases": [" "]}}}, "non-empty"),
             ({"default_share_by_type": {"commercial": 1}, "institutions": {"x": "opay"}}, "must be an object"),
+            ({"default_share_by_type": {"commercial": 1}, "institutions": {"x": {"other_bank_codes": ["6020"]}}}, "3, 5 or 6"),
         ],
     )
     def test_rejects_malformed_settings(self, tmp_path, content, problem):
@@ -230,6 +231,24 @@ class TestSettings:
         result = detect(DATASET, "0123456789", settings=settings)
         assert len({candidate.confidence for candidate in result.candidates}) == 1
         assert all(candidate.reasons == ("check_digit",) for candidate in result.candidates)
+
+    def test_other_bank_codes_are_tested_too(self):
+        """Accion issued account numbers under its old 3-digit NIBSS code 602 before the CBN's 50009."""
+        settings = DetectionSettings(
+            default_shares=dict.fromkeys(NIGERIA_PROFILE.bank_type_codes(), 1.0),
+            institutions={"accion-microfinance-bank": InstitutionSettings(other_bank_codes=("602",))},
+        )
+        old = nuban.make_account_number("000602", "001234567")
+        accion = candidate(detect(DATASET, old, settings=settings), "accion-microfinance-bank")
+        assert accion.check_digit_valid is True
+        assert accion.institution_code == "000602"
+        new = nuban.make_account_number("950009", "001234567")
+        assert candidate(detect(DATASET, new, settings=settings), "accion-microfinance-bank").institution_code == "950009"
+
+    def test_committed_other_bank_codes_cover_the_early_nip_microfinance_banks(self):
+        settings = load_settings()
+        assert settings.institutions["accion-microfinance-bank"].other_bank_codes == ("602",)
+        assert settings.institutions["fut-minna"].other_bank_codes == ("832",)
 
     def test_a_listed_share_outweighs_the_default(self):
         settings = DetectionSettings(
