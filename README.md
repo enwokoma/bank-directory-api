@@ -18,14 +18,14 @@ There are three ways, from least to most setup: call the public API, use the dat
 
 ### Call the public API
 
-`https://banks.globbapay.com` serves the latest release, with search, filters and lookups by code. Try it in the browser at [banks.globbapay.com/api-docs](https://banks.globbapay.com/api-docs).
+`https://banks.globbapay.com` serves the latest release, with search, filters and lookups by code. Try it in the browser at [banks.globbapay.com/api-docs](https://banks.globbapay.com/api-docs). What the changelog lists under Unreleased reaches it with the next release.
 
 ```js
 const response = await fetch("https://banks.globbapay.com/api/countries/NG/banks?has=nibss_code");
 const { banks } = await response.json();
 // Institutions that can receive a NIP transfer, for a bank dropdown, e.g.
 // { id: "access-bank", name: "Access Bank Plc", trading_name: "Access Bank Plc", type: "commercial",
-//   status: "active", identifiers: { cbn_institution_id: "1", nibss_code: "000014" } }
+//   status: "active", identifiers: { cbn_institution_id: "1", nibss_code: "000014", cbn_bank_code: "044" } }
 ```
 
 ```python
@@ -108,7 +108,104 @@ Either way it serves the API openly, with no rate limits or API keys, which suit
 
 ### Run it with Python
 
-See [Setup](#setup) and [Running](#running).
+See the [step-by-step guide](#step-by-step-guide), or just [Setup](#setup) and [Running](#running).
+
+## Step-by-step guide
+
+The whole setup in order, from a clone to a public service. Each step links to the section with the details.
+
+### 1. Install
+
+You need git and Python 3.11 or newer. Clone the repository, create a virtual environment, and install the development dependencies, which are the runtime ones plus ruff, mypy and pytest:
+
+```bash
+git clone https://github.com/enwokoma/bank-directory-api.git
+cd bank-directory-api
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements-dev.txt
+```
+
+### 2. Check the setup
+
+Run the checks CI runs. All four pass on a fresh clone:
+
+```bash
+ruff format --check .
+ruff check .
+mypy
+pytest
+```
+
+### 3. Start the API and try it
+
+```bash
+python app.py
+```
+
+Open `http://localhost:5006/api-docs` for Swagger UI, or call the endpoints directly:
+
+```bash
+curl http://localhost:5006/api/countries
+curl "http://localhost:5006/api/countries/NG/banks?has=nibss_code&limit=5"
+curl "http://localhost:5006/api/countries/NG/banks?q=moniepoint"
+curl http://localhost:5006/api/countries/NG/banks/access-bank
+curl "http://localhost:5006/api/detect-bank?account_number=0016563228&limit=3"
+```
+
+The last one ranks the banks an account number can belong to. [Detect the bank from an account number](#detect-the-bank-from-an-account-number) explains the answer and how to use it in a transfer flow.
+
+### 4. Use it from your application
+
+Call your own copy, call the public instance, or read the data file straight from GitHub: see [Use it in your project](#use-it-in-your-project). Cache `GET` answers for an hour and revalidate with the `ETag`. For a transfer flow, run bank detection with the copied text as `hint`, then your payment provider's name enquiry on the candidates in order, and remember what resolved.
+
+### 5. Refresh the data
+
+The data files are generated, reviewed and committed, never fetched at request time. To bring Nigeria's up to date:
+
+```bash
+cp .env.example .env            # optional: the NIP list settings, for the NIBSS codes
+python -m src.refresh NGA --verbose
+git diff data/countries/NGA.json
+```
+
+Review the diff and the report the command prints, then commit the file. Without `.env`, the NIBSS codes already in the file are kept. [Refreshing data](#refreshing-data) has the details, including how to combine several relayed NIP lists.
+
+### 6. Maintain the reviewed files
+
+Four files under `src/countries/nigeria/` hold what the sources cannot say, and the refresh applies them on every run:
+
+| File | Maps | Add an entry when |
+| --- | --- | --- |
+| `nibss_code_matches.json` | Register name to NIBSS code | The register and the NIP list spell a bank's name differently |
+| `trading_names.json` | Register name to trading name | A bank trades under a name the register has not caught up with |
+| `cbn_bank_codes.json` | Register name to CBN bank code | A bank's CBN bank code is known and not listed yet |
+| `account_detection.json` | Bank id to share, phone-number accounts, leading digits and aliases | Your name-enquiry logs give a better estimate, or a bank gets a new short name |
+
+Run the refresh after editing the first three, and the tests after editing any of them: the tests check that every entry names a bank in the data file.
+
+### 7. Run it with Docker
+
+Without installing Python, run the published image or build your clone:
+
+```bash
+docker run --rm -p 5006:5006 ghcr.io/enwokoma/bank-directory-api:latest   # the latest release
+docker compose up --build                                                  # this checkout, refreshed data included
+```
+
+Both serve the API openly on `http://localhost:5006`; see [Run it with Docker](#run-it-with-docker).
+
+### 8. Serve it publicly
+
+A public server needs rate limits, API keys and HTTPS. Turn them on with the settings in [Hosted mode](#hosted-mode-rate-limits-and-api-keys), and follow [docs/deploy.md](docs/deploy.md) to run the API with Redis behind a proxy that serves HTTPS, on an AWS instance on its own or managed by Coolify. Once it runs, people get keys with `POST /api/keys/signup` (see [Getting a key](#getting-a-key)), and you manage them on the server with `python -m src.keys_admin`.
+
+### 9. Release
+
+Set the version in `src/__init__.py`, date the changelog, merge, tag, create the release and attach the data files: see [Releases](#releases). The tag publishes the image, and the public instance serves the latest release.
+
+### 10. Keep it healthy
+
+Every push runs the checks and the Docker setups in CI, and a workflow compares the data files with their sources every Monday (see [How the data works](#how-the-data-works)). `main` is protected: changes land through pull requests whose checks pass, and nothing is force-pushed or deleted, so a release is always cut from a state CI has run.
 
 ## How the data works
 
@@ -274,7 +371,7 @@ The examples call a local copy at `http://localhost:5006`; the public API answer
 
 Country codes are ISO 3166-1 alpha-2 or alpha-3 codes in any case: `NG`, `ng`, `NGA` and `nga` all work.
 
-Successful responses have `"success": true`. Errors have `"success": false` and a `message`, with status 400 for a bad query parameter, 404 for an unknown country, bank or route, and in hosted mode 401 for a bad API key and 429 for too many requests:
+Successful responses have `"success": true`. Errors have `"success": false` and a `message`, with status 400 for a bad parameter, 404 for an unknown country, bank or route, and in hosted mode 401 for a bad API key and 429 for too many requests:
 
 ```json
 {
@@ -315,7 +412,7 @@ GET /api/countries
       "currency": "NGN",
       "bank_count": 880,
       "delisted_bank_count": 0,
-      "retrieved_on": "2026-10-20"
+      "retrieved_on": "2026-10-21"
     }
   ]
 }
@@ -339,7 +436,7 @@ Adds the country's bank types with a count for each, the identifier schemes its 
     "currency": "NGN",
     "bank_count": 880,
     "delisted_bank_count": 0,
-    "retrieved_on": "2026-10-20",
+    "retrieved_on": "2026-10-21",
     "bank_types": [
       { "code": "commercial", "name": "Commercial bank", "bank_count": 28 },
       { "code": "merchant", "name": "Merchant bank", "bank_count": 5 },
@@ -666,7 +763,7 @@ mypy
 pytest
 ```
 
-CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it. It also builds the image and runs each Docker setup: the public one with a real Redis, checking rate limits, keys, logs and that nothing logs an error; the same with Caddy in front; the Coolify Compose file; and the local `compose.yaml`. Tests never read your `.env`, call a real NIP list or send email.
+CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it. `main` only takes pull requests whose checks have passed. It also builds the image and runs each Docker setup: the public one with a real Redis, checking rate limits, keys, logs and that nothing logs an error; the same with Caddy in front; the Coolify Compose file; and the local `compose.yaml`. Tests never read your `.env`, call a real NIP list or send email.
 
 ## Notes on Nigeria's data
 
