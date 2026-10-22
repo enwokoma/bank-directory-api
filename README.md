@@ -157,7 +157,7 @@ The last one ranks the banks an account number can belong to. [Detect the bank f
 
 ### 4. Use it from your application
 
-Call your own copy, call the public instance, or read the data file straight from GitHub: see [Use it in your project](#use-it-in-your-project). Cache `GET` answers for an hour and revalidate with the `ETag`. For a transfer flow, run bank detection with the copied text as `hint`, then your payment provider's name enquiry on the candidates in order, and remember what resolved.
+Call your own copy, call the public instance, or read the data file straight from GitHub: see [Use it in your project](#use-it-in-your-project). Cache `GET` answers for an hour and revalidate with the `ETag`. For a transfer flow, run bank detection with the copied text as `hint`, then your payment provider's name enquiry on the recommended candidates in order, and remember what resolved.
 
 ### 5. Refresh the data
 
@@ -602,6 +602,7 @@ Parameters, as query parameters for `GET` or a JSON object for `POST`:
 - `hint`: text copied along with the number, at most 200 characters, for example `GTBank 0123456789 John Doe`.
 - `type`: comma-separated bank types to consider, for example `commercial,mobile_money`.
 - `limit`: return at most this many candidates, 1 to 100 (default 10). `total_candidates` always counts every one.
+- `coverage`: how sure the `recommended` block should be of holding the right institution, 0.5 to 0.99 (default 0.9). Candidates are recommended from the top until their confidences add up to it, at most five of them.
 - `country`, on `/api/detect-bank` only: `NG` or `NGA`. Optional while Nigeria is the only country with detection.
 
 ```bash
@@ -616,6 +617,11 @@ curl -X POST http://localhost:5006/api/detect-bank \
   "account_number": "0016563228",
   "looks_like_phone_number": false,
   "best_guess": { "...": "the first candidate, repeated" },
+  "recommended": {
+    "coverage": 0.9,
+    "confidence": 0.9063,
+    "candidates": [ { "...": "the first two candidates, repeated" } ]
+  },
   "candidates": [
     {
       "confidence": 0.6678,
@@ -643,11 +649,13 @@ Each candidate carries:
 
 | Field | Meaning |
 | --- | --- |
-| `confidence` | The estimated probability that this is the right institution. The confidences of all candidates, not only the returned ones, add up to 1. |
+| `confidence` | The estimated probability that this is the right institution. The confidences of all candidates, not only the returned ones, add up to 1; a candidate whose confidence rounds to 0 is left out. |
 | `reasons` | The evidence for it, strongest first: `hint` (the hint names it), `phone_number_account` (the number looks like a mobile number and the institution issues those), `check_digit` (the check digit is the one its code gives), `account_prefix` (the number starts with digits it is known to use). An empty list means nothing counts for it, but nothing rules it out either: it issues account numbers outside NUBAN. |
 | `institution_code` | The 6-digit code the check digit was tested with: `000` and the 3-digit CBN bank code for banks, `9` and the 5-digit code for other financial institutions, or the NIBSS code for institutions whose CBN bank code is not known. |
 | `check_digit_valid` | Whether the number's check digit is the one that code gives. |
 | `bank` | The bank as `GET /api/countries/{country_code}/banks/{bank_id}` returns it, with the `nibss_code` to send the transfer with. |
+
+The `recommended` block holds the candidates to try first: taken from the top until their confidences add up to `coverage`, and never more than five, so an unambiguous number recommends one or two while an ambiguous one still gives a short list. Its `confidence` is the probability that the right institution is among them. The default of 0.9 suits a transfer screen that suggests a bank and lets the user change it: the suggestion is right most of the time and the list stays short. For a flow that runs name enquiry itself, a higher value such as 0.99 recommends more candidates to try in order, which with the cap of five means every candidate still worth an enquiry. A threshold on each candidate's own confidence would do worse: it lets too many through when the number is unambiguous and too few when it is not.
 
 A `GET` answer is cached like the other data, since it depends only on the input; a `POST` answer is not.
 
@@ -673,7 +681,7 @@ Within a group, only the leading digits, the hint and, in the end, a name enquir
 The number alone cannot single out one of 400 institutions: it carries one digit of information. What gets a transfer flow to the right bank nearly every time is using the ranking as the order in which to try things:
 
 1. Send the whole text the number was copied from as `hint`. Copied bank details usually name the bank, and a named institution goes first.
-2. Run your payment provider's name enquiry on the candidates in order, and stop at the first that resolves. The ranking exists to make the first try the likely one and to keep the number of tries small; `limit` bounds it.
+2. Run your payment provider's name enquiry on the `recommended` candidates in order, and stop at the first that resolves; raise `coverage` to try more before giving up. The ranking exists to make the first try the likely one and to keep the number of tries small.
 3. Remember what resolved. An account number together with the institution it resolved at is the best evidence there is: check your own record before calling this endpoint, and put that institution first when you have one.
 4. Calibrate the reviewed file. `src/countries/nigeria/account_detection.json` holds, per bank id, the `share` of transfers the institution receives (on any scale), the fraction of its accounts that are phone numbers (`phone_number_accounts`), the leading digits its account numbers are known to use (`account_prefixes`) and the names people call it (`aliases`), with a default share per bank type for the rest. The shares and leading digits are estimates; your own name-enquiry logs will give better ones, and changing the file needs no code change.
 

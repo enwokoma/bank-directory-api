@@ -25,9 +25,10 @@ likely each is to hold the account:
   0123456789 John Doe"); an institution the hint names outranks everything.
 
 Each candidate's confidence is its share of the total, an estimate of the
-probability that it is the right institution. The check digit carries one
-digit of information, so the list is for trying candidates in order against a
-name enquiry, not for picking a bank without one.
+probability that it is the right institution; candidates whose share rounds
+to nothing are left out. The check digit carries one digit of information, so
+the list is for trying candidates in order against a name enquiry, not for
+picking a bank without one.
 """
 
 from __future__ import annotations
@@ -161,15 +162,18 @@ def detect(
 
     total = sum(score for score, *_ in scored)
     scored.sort(key=lambda item: (-item[0], item[1]["name"]))
+    # An institution whose confidence rounds to nothing, as every other one does
+    # once a hint names one, is not worth listing.
     candidates = tuple(
         Candidate(
             bank=bank,
-            confidence=round(score / total, 4),
+            confidence=confidence,
             reasons=reasons,
             institution_code=code,
             check_digit_valid=valid,
         )
         for score, bank, reasons, code, valid in scored
+        if (confidence := round(score / total, 4)) > 0
     )
     return Detection(account_number=number, looks_like_phone_number=mobile, candidates=candidates)
 
