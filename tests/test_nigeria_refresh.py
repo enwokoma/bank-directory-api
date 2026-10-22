@@ -58,7 +58,7 @@ def test_builds_records_from_every_category():
         "mortgage",
         "mobile_money",
     }
-    assert dataset["sources"] == [nigeria_refresh.SOURCE, mobile_money.SOURCE, cbn_bank_codes.SOURCE]
+    assert dataset["sources"] == [nigeria_refresh.SOURCE, mobile_money.SOURCE, *cbn_bank_codes.SOURCES]
 
 
 def test_cleans_spacing_without_changing_capitalization():
@@ -125,7 +125,7 @@ def test_adds_reviewed_cbn_bank_codes(tmp_path, monkeypatch, caplog):
     banks = by_name(dataset["banks"])
     assert banks["Access Bank Plc"]["identifiers"]["cbn_bank_code"] == "044"
     assert "cbn_bank_code" not in banks["Unity Bank Plc"]["identifiers"]
-    assert cbn_bank_codes.SOURCE in dataset["sources"]
+    assert all(source in dataset["sources"] for source in cbn_bank_codes.SOURCES)
     assert "CBN bank code for 'Gone MFB' names no bank in the register." in caplog.text
 
 
@@ -133,7 +133,8 @@ def test_without_any_cbn_bank_code_does_not_cite_their_source(tmp_path, monkeypa
     codes = tmp_path / "cbn_bank_codes.json"
     codes.write_text("{}", encoding="utf-8")
     monkeypatch.setattr(cbn_bank_codes, "CODES_FILE", codes)
-    assert cbn_bank_codes.SOURCE not in nigeria_refresh.fetch_dataset(FixtureClient())["sources"]
+    sources = nigeria_refresh.fetch_dataset(FixtureClient())["sources"]
+    assert not any(source in sources for source in cbn_bank_codes.SOURCES)
 
 
 def test_committed_cbn_bank_codes_are_in_the_data_file():
@@ -145,7 +146,7 @@ def test_committed_cbn_bank_codes_are_in_the_data_file():
         if "cbn_bank_code" in bank["identifiers"]
     }
     assert in_file == codes
-    assert cbn_bank_codes.SOURCE in dataset["sources"]
+    assert all(source in dataset["sources"] for source in cbn_bank_codes.SOURCES)
 
 
 def test_committed_trading_names_name_banks_in_the_register():

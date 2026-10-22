@@ -180,7 +180,7 @@ Four files under `src/countries/nigeria/` hold what the sources cannot say, and 
 | `nibss_code_matches.json` | Register name to NIBSS code | The register and the NIP list spell a bank's name differently |
 | `trading_names.json` | Register name to trading name | A bank trades under a name the register has not caught up with |
 | `cbn_bank_codes.json` | Register name to CBN bank code | A bank's CBN bank code is known and not listed yet |
-| `account_detection.json` | Bank id to share, phone-number accounts, leading digits and aliases | Your name-enquiry logs give a better estimate, or a bank gets a new short name |
+| `account_detection.json` | Bank id to share, phone-number accounts, leading digits, aliases and other codes it issued numbers under | Your name-enquiry logs give a better estimate, or a bank gets a new short name |
 
 Run the refresh after editing the first three, and the tests after editing any of them: the tests check that every entry names a bank in the data file.
 
@@ -470,6 +470,10 @@ Adds the country's bank types with a count for each, the identifier schemes its 
         "url": "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html"
       },
       {
+        "name": "Central Bank of Nigeria: microfinance bank codes",
+        "url": "https://www.cbn.gov.ng/Out/2014/OFISD/MFB%20Codes.pdf"
+      },
+      {
         "name": "Paystack: bank list (CBN bank codes)",
         "url": "https://paystack.com/docs/api/miscellaneous/#bank"
       },
@@ -750,7 +754,7 @@ Registers are slow to record renames, so a bank's `name` can be one it no longer
 
 ### CBN bank codes
 
-The CBN gives every bank a 3-digit code and every other financial institution a 5-digit one. NUBAN account numbers' check digits are computed from it, and payment providers such as Paystack use it as the bank code, but the CBN does not publish the list, so `src/countries/nigeria/cbn_bank_codes.json` keeps a reviewed copy: the bank's name exactly as the register publishes it, mapped to its code. It was compiled from Paystack's bank list, which carries both this code and the NIBSS code, and checked against published lists for the deposit money banks. The refresh applies it every time and needs no settings for it; it warns about an entry that names no bank in the register, and no code may belong to two banks. To add a bank, confirm its code with a payment provider's bank list, add the entry, and run the refresh again. Institutions without an entry are tested with their NIBSS code when detecting a bank from an account number.
+The CBN gives every bank a 3-digit code and every other financial institution a 5-digit one. NUBAN account numbers' check digits are computed from it, and payment providers such as Paystack use it as the bank code, but the CBN's register does not show it, so `src/countries/nigeria/cbn_bank_codes.json` keeps a reviewed copy: the bank's name exactly as the register publishes it, mapped to its code. The microfinance banks' codes come from the CBN's own list of them (`MFB Codes.pdf` under its OFISD publications), matched to the register by name where the name is unique in both lists; the other institutions' come from Paystack's bank list, which carries both this code and the NIBSS code, checked against published lists for the deposit money banks. On the microfinance banks both sources cover, the two agree on every 5-digit code. The refresh applies the file every time and needs no settings for it; it warns about an entry that names no bank in the register, and no code may belong to two banks. To add a bank, confirm its code with the CBN's list or a payment provider's, add the entry, and run the refresh again. Institutions without an entry are tested with their NIBSS code when detecting a bank from an account number.
 
 ## Adding a country
 
@@ -778,7 +782,8 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
 - Mobile money operators come from the CBN's Payment Service Providers page, which lists 17. The register's own mobile money list is shorter and leaves out OPay. Each operator's NIBSS code is the one its wallets use on NIP.
 - 417 of the 880 institutions have a NIBSS code: all 28 commercial banks, all 5 payment service banks, 5 of 6 non-interest banks, all 5 merchant banks, 24 of 33 primary mortgage banks, all 17 mobile money operators and 333 of 786 microfinance banks. Mint Microfinance Bank has none because it now trades as Mint - Finex MFB, whose code the register's FINEX MFB holds, and most microfinance banks without a code are not on NIP at all.
-- 172 of the 417 institutions on NIP have a CBN bank code: all 28 commercial banks, 4 of 5 merchant banks, all 5 non-interest banks, 16 of 24 primary mortgage banks and 119 of 333 microfinance banks. The payment service banks and mobile money operators have none, because Paystack lists them under their NIBSS code or a code of its own; bank detection tests those with their NIBSS code.
+- 594 of the 880 institutions have a CBN bank code, 307 of the 417 on NIP: all 28 commercial banks, 4 of 5 merchant banks, all 5 non-interest banks, 16 of 24 primary mortgage banks, and 541 of 786 microfinance banks (254 of the 333 on NIP), whose codes come from the CBN's own list of microfinance bank codes. The payment service banks and mobile money operators have none, since neither source gives one; bank detection tests those with their NIBSS code.
+- Four early microfinance banks on NIP, Accion, Bosak, Chikum and FUT Minna, issued account numbers under 3-digit NIBSS codes (602, 650, 312 and 832) before the CBN's 5-digit ones, and payment providers such as Paystack still list them under those. Their `cbn_bank_code` is the CBN's; bank detection tests both codes, through `other_bank_codes` in `account_detection.json`.
 - Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank, Abeg Technologies, OSCT and Visual ICT hold the codes NIP lists as FBNQuest Merchant Bank, Pocket App, Oscotech MFB and TagPay.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
 - The register also has a per-bank detail endpoint with licence tier and website, but it fails for many banks and its websites are out of date, so it is not used.
