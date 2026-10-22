@@ -34,6 +34,9 @@ class CountryProfile:
     identifier_patterns: dict[str, str] = field(default_factory=dict)
     # Dotted module path whose `fetch_dataset()` rebuilds this country's data file.
     refresh_module: str = ""
+    # Dotted module path whose `detect()` finds the bank an account number belongs
+    # to (see `src/core/detection.py`), or "" when the country has no such scheme.
+    detection_module: str = ""
 
     def bank_type_codes(self) -> list[str]:
         """Return the bank type codes in the profile's display order."""

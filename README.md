@@ -1,6 +1,6 @@
 # Bank Directory API
 
-A Flask API that lists the licensed banks of each country, compiled from that country's official register, with the codes needed to send them bank transfers. Countries are added one release at a time; each one comes with a script that rebuilds its data from the regulator's own list.
+A Flask API that lists the licensed banks of each country, compiled from that country's official register, with the codes needed to send them bank transfers, and that tells which bank an account number belongs to where the number allows it. Countries are added one release at a time; each one comes with a script that rebuilds its data from the regulator's own list.
 
 A public instance runs at [banks.globbapay.com](https://banks.globbapay.com/api-docs), and the data files can be used directly or with your own copy of the API: see [Use it in your project](#use-it-in-your-project).
 
@@ -10,7 +10,7 @@ A public instance runs at [banks.globbapay.com](https://banks.globbapay.com/api-
 | --- | --- | --- | --- | --- | --- |
 | Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 417 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
 
-`GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes.
+`GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes. For Nigeria, `POST /api/detect-bank` also tells which banks a 10-digit account number can belong to, most likely first: see [Detect the bank from an account number](#detect-the-bank-from-an-account-number).
 
 ## Use it in your project
 
@@ -131,12 +131,13 @@ bank-directory-api/
   src/
     __init__.py           The version, used by Swagger UI and the refresh's User-Agent
     api/
-      routes.py           Country and bank routes
+      routes.py           Country, bank and detect-bank routes
       access.py           Rate limits and API key checks (hosted mode)
       keys.py             GET /api/keys/me
       signup.py           API key sign-up by email
     core/
       dataset.py          Loads and validates the country data files
+      detection.py        Shape of a bank detection, and each country's detector
       settings.py         Settings read from environment variables
       api_keys.py         API keys and sign-up tokens in SQLite, stored as hashes
       email.py            Sign-up emails through Amazon SES
@@ -148,7 +149,14 @@ bank-directory-api/
       registry.py         Registered countries, looked up by alpha-2 or alpha-3 code
       nigeria/
         profile.py        Nigeria's bank types, identifier schemes and code formats
-        refresh.py        Reads the CBN register and adds NIBSS codes
+        refresh.py        Reads the CBN register and adds NIBSS and CBN bank codes
+        nuban.py          NUBAN check digit arithmetic
+        detection.py      Ranks the banks an account number can belong to
+        account_detection.json
+                          Reviewed shares, phone-number wallets, leading digits and aliases per bank
+        cbn_bank_codes.py Adds reviewed CBN bank codes to register records
+        cbn_bank_codes.json
+                          Reviewed CBN bank codes, which NUBAN check digits are computed from
         mobile_money.py   Reads the CBN's licensed mobile money operators
         nip.py            Reads the NIBSS Instant Payment institution list
         nibss_codes.py    Matches banks to NIBSS codes
@@ -271,7 +279,7 @@ Successful responses have `"success": true`. Errors have `"success": false` and 
 ```json
 {
   "success": false,
-  "message": "Unknown identifier scheme swift for Nigeria. Use one of: cbn_institution_id, nibss_code."
+  "message": "Unknown identifier scheme swift for Nigeria. Use one of: cbn_institution_id, nibss_code, cbn_bank_code."
 }
 ```
 
@@ -349,6 +357,10 @@ Adds the country's bank types with a count for each, the identifier schemes its 
       {
         "code": "nibss_code",
         "description": "6-digit NIBSS Instant Payment (NIP) institution code, used to send bank transfers"
+      },
+      {
+        "code": "cbn_bank_code",
+        "description": "CBN bank code, from which NUBAN account numbers' check digits are computed and which payment providers use as the bank code: 3 digits for banks (058 for GTBank), 5 for other financial institutions (50515 for Moniepoint)"
       }
     ],
     "sources": [
@@ -361,10 +373,15 @@ Adds the country's bank types with a count for each, the identifier schemes its 
         "url": "https://www.cbn.gov.ng/PaymentsSystem/PSPs.html"
       },
       {
+        "name": "Paystack: bank list (CBN bank codes)",
+        "url": "https://paystack.com/docs/api/miscellaneous/#bank"
+      },
+      {
         "name": "NIBSS Instant Payment (NIP) institution list",
         "url": "https://nibss-plc.com.ng/nibss-instant-payment/"
       }
-    ]
+    ],
+    "bank_detection": true
   }
 }
 ```
@@ -409,7 +426,8 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "24",
-        "nibss_code": "000015"
+        "nibss_code": "000015",
+        "cbn_bank_code": "057"
       }
     }
   ]
@@ -458,11 +476,111 @@ curl http://localhost:5006/api/countries/NG/banks/access-bank
     "status": "active",
     "identifiers": {
       "cbn_institution_id": "1",
-      "nibss_code": "000014"
+      "nibss_code": "000014",
+      "cbn_bank_code": "044"
     }
   }
 }
 ```
+
+### Detect the bank from an account number
+
+```http
+GET  /api/detect-bank?account_number=0123456789
+POST /api/detect-bank
+GET  /api/countries/{country_code}/detect-bank?account_number=0123456789
+POST /api/countries/{country_code}/detect-bank
+```
+
+A Nigerian account number does not name its bank, but its last digit is a check digit that the CBN's NUBAN standard computes from the first nine digits and the issuing institution's CBN bank code. So the number can be tested against every institution on NIP: an institution whose code gives a different digit cannot have issued it, which rules out about nine in ten. The rest are ranked, and each comes with a `confidence`, the estimated probability that it is the right one, from:
+
+- how common the institution is as a transfer destination: reviewed estimates for the well-known ones and a default per bank type for the rest;
+- whether the number looks like a Nigerian mobile number. OPay, PalmPay, Moniepoint, Paga and the payment service banks give customers their phone number as account number, which does not follow NUBAN, so those institutions are never ruled out, and a number starting with 70, 80, 81, 90 or 91 counts strongly for them;
+- leading digits some banks are known to use, applied softly: Guaranty Trust Bank's account numbers all start with 0, Fidelity's with 4, 5 or 6;
+- the `hint`, the text the number was copied with. An institution it names is put first whatever the number says, and stays in the list even when its check digit fails.
+
+Parameters, as query parameters for `GET` or a JSON object for `POST`:
+
+- `account_number` (required): the 10 digits. Spaces and dashes are ignored, and a mobile number written in full, `08012345678` or `+2348012345678`, is read as the wallet account number it stands for. In JSON, send it as a string, so leading zeros survive.
+- `hint`: text copied along with the number, at most 200 characters, for example `GTBank 0123456789 John Doe`.
+- `type`: comma-separated bank types to consider, for example `commercial,mobile_money`.
+- `limit`: return at most this many candidates, 1 to 100 (default 10). `total_candidates` always counts every one.
+- `country`, on `/api/detect-bank` only: `NG` or `NGA`. Optional while Nigeria is the only country with detection.
+
+```bash
+curl -X POST http://localhost:5006/api/detect-bank \
+  -H "Content-Type: application/json" -d '{"account_number": "0016563228", "limit": 3}'
+```
+
+```json
+{
+  "success": true,
+  "country": { "alpha2": "NG", "alpha3": "NGA", "name": "Nigeria" },
+  "account_number": "0016563228",
+  "looks_like_phone_number": false,
+  "best_guess": { "...": "the first candidate, repeated" },
+  "candidates": [
+    {
+      "confidence": 0.6678,
+      "reasons": ["check_digit", "account_prefix"],
+      "institution_code": "000058",
+      "check_digit_valid": true,
+      "bank": {
+        "id": "guaranty-trust-bank",
+        "name": "Guaranty Trust Bank Plc",
+        "trading_name": "Guaranty Trust Bank Plc",
+        "type": "commercial",
+        "status": "active",
+        "identifiers": { "cbn_institution_id": "8", "nibss_code": "000013", "cbn_bank_code": "058" }
+      }
+    },
+    { "confidence": 0.2385, "reasons": ["check_digit"], "institution_code": "950515", "check_digit_valid": true, "bank": { "id": "moniepoint-mfb", "...": "..." } },
+    { "confidence": 0.0358, "reasons": ["check_digit"], "institution_code": "000070", "check_digit_valid": true, "bank": { "id": "fidelity-bank", "...": "..." } }
+  ],
+  "total_candidates": 44,
+  "limit": 3
+}
+```
+
+Each candidate carries:
+
+| Field | Meaning |
+| --- | --- |
+| `confidence` | The estimated probability that this is the right institution. The confidences of all candidates, not only the returned ones, add up to 1. |
+| `reasons` | The evidence for it, strongest first: `hint` (the hint names it), `phone_number_account` (the number looks like a mobile number and the institution issues those), `check_digit` (the check digit is the one its code gives), `account_prefix` (the number starts with digits it is known to use). An empty list means nothing counts for it, but nothing rules it out either: it issues account numbers outside NUBAN. |
+| `institution_code` | The 6-digit code the check digit was tested with: `000` and the 3-digit CBN bank code for banks, `9` and the 5-digit code for other financial institutions, or the NIBSS code for institutions whose CBN bank code is not known. |
+| `check_digit_valid` | Whether the number's check digit is the one that code gives. |
+| `bank` | The bank as `GET /api/countries/{country_code}/banks/{bank_id}` returns it, with the `nibss_code` to send the transfer with. |
+
+A `GET` answer is cached like the other data, since it depends only on the input; a `POST` answer is not.
+
+#### What the check digit can and cannot tell apart
+
+Only the weighted sum of an institution's code modulo 10 matters, so the 417 institutions on NIP fall into ten groups of about 40, and a number valid for one member of a group is valid for all of them. The best-known institutions fall as follows:
+
+| Group | Institutions |
+| --- | --- |
+| 0 | Access Bank, United Bank for Africa, First Bank |
+| 2 | Keystone Bank, Jaiz Bank, Globus Bank, Carbon |
+| 3 | Sterling Bank, Stanbic IBTC Bank |
+| 5 | First City Monument Bank, Ecobank, TAJ Bank, FairMoney, VFD |
+| 6 | Zenith Bank, Wema Bank, Standard Chartered Bank, Providus Bank |
+| 7 | Union Bank, Polaris Bank |
+| 8 | Unity Bank, Lotus Bank, Kuda |
+| 9 | Guaranty Trust Bank, Fidelity Bank, Titan Trust Bank, Moniepoint |
+
+Within a group, only the leading digits, the hint and, in the end, a name enquiry tell the members apart. The wallets whose account numbers are phone numbers appear in every group's answer regardless.
+
+#### Getting to a near-certain answer
+
+The number alone cannot single out one of 400 institutions: it carries one digit of information. What gets a transfer flow to the right bank nearly every time is using the ranking as the order in which to try things:
+
+1. Send the whole text the number was copied from as `hint`. Copied bank details usually name the bank, and a named institution goes first.
+2. Run your payment provider's name enquiry on the candidates in order, and stop at the first that resolves. The ranking exists to make the first try the likely one and to keep the number of tries small; `limit` bounds it.
+3. Remember what resolved. An account number together with the institution it resolved at is the best evidence there is: check your own record before calling this endpoint, and put that institution first when you have one.
+4. Calibrate the reviewed file. `src/countries/nigeria/account_detection.json` holds, per bank id, the `share` of transfers the institution receives (on any scale), the fraction of its accounts that are phone numbers (`phone_number_accounts`), the leading digits its account numbers are known to use (`account_prefixes`) and the names people call it (`aliases`), with a default share per bank type for the rest. The shares and leading digits are estimates; your own name-enquiry logs will give better ones, and changing the file needs no code change.
+
+The CBN bank codes the check digit is computed with come from a reviewed file too (see [CBN bank codes](#cbn-bank-codes)). An institution whose code is not in it is tested with its NIBSS code instead, which may be wrong, so such an institution can be missing from the list when it should be there. Adding its code to the file fixes that.
 
 ## Bank fields
 
@@ -481,6 +599,7 @@ Nigeria's identifier schemes:
 | --- | --- |
 | `cbn_institution_id` | The bank's record ID in the CBN register. Mobile money operators come from a different CBN page and have none. |
 | `nibss_code` | The 6-digit code NIBSS uses for the institution in NIBSS Instant Payment (NIP) transfers, for example `000014` for Access Bank and `100004` for OPay. Payment providers' transfer APIs either take this code or list it next to their own, so it can be matched to any provider. Institutions that are not on NIP, which includes most small microfinance banks, have none. |
+| `cbn_bank_code` | The CBN's own code for the institution, from which the check digit of its NUBAN account numbers is computed, and the code payment providers such as Paystack take as the bank code: 3 digits for banks, `058` for GTBank, and 5 for other financial institutions, `50515` for Moniepoint. It comes from a reviewed file, so institutions whose code is not known yet have none. |
 
 ## Refreshing data
 
@@ -524,6 +643,10 @@ The scheduled check compares the codes too when the repository has the same sett
 
 Registers are slow to record renames, so a bank's `name` can be one it no longer uses. To give it the name it trades under, add the bank's name exactly as the register publishes it, with its trading name, to `src/countries/nigeria/trading_names.json` and run the refresh again. The refresh warns about an entry that names no bank in the register, and about one whose trading name the register now uses itself; remove such entries.
 
+### CBN bank codes
+
+The CBN gives every bank a 3-digit code and every other financial institution a 5-digit one. NUBAN account numbers' check digits are computed from it, and payment providers such as Paystack use it as the bank code, but the CBN does not publish the list, so `src/countries/nigeria/cbn_bank_codes.json` keeps a reviewed copy: the bank's name exactly as the register publishes it, mapped to its code. It was compiled from Paystack's bank list, which carries both this code and the NIBSS code, and checked against published lists for the deposit money banks. The refresh applies it every time and needs no settings for it; it warns about an entry that names no bank in the register, and no code may belong to two banks. To add a bank, confirm its code with a payment provider's bank list, add the entry, and run the refresh again. Institutions without an entry are tested with their NIBSS code when detecting a bank from an account number.
+
 ## Adding a country
 
 1. Find an official, public source for the country's licensed banks, usually the central bank or banking regulator. Do not use sources whose terms forbid redistribution, such as the SWIFT BIC directory or paid sort-code directories.
@@ -550,6 +673,7 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
 - Mobile money operators come from the CBN's Payment Service Providers page, which lists 17. The register's own mobile money list is shorter and leaves out OPay. Each operator's NIBSS code is the one its wallets use on NIP.
 - 417 of the 880 institutions have a NIBSS code: all 28 commercial banks, all 5 payment service banks, 5 of 6 non-interest banks, all 5 merchant banks, 24 of 33 primary mortgage banks, all 17 mobile money operators and 333 of 786 microfinance banks. Mint Microfinance Bank has none because it now trades as Mint - Finex MFB, whose code the register's FINEX MFB holds, and most microfinance banks without a code are not on NIP at all.
+- 172 of the 417 institutions on NIP have a CBN bank code: all 28 commercial banks, 4 of 5 merchant banks, all 5 non-interest banks, 16 of 24 primary mortgage banks and 119 of 333 microfinance banks. The payment service banks and mobile money operators have none, because Paystack lists them under their NIBSS code or a code of its own; bank detection tests those with their NIBSS code.
 - Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank, Abeg Technologies, OSCT and Visual ICT hold the codes NIP lists as FBNQuest Merchant Bank, Pocket App, Oscotech MFB and TagPay.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
 - The register also has a per-bank detail endpoint with licence tier and website, but it fails for many banks and its websites are out of date, so it is not used.
@@ -567,7 +691,7 @@ To publish a release:
 
 ## Disclaimer
 
-The data is compiled from public registers and relayed copies of the NIBSS institution list, and may lag behind them. It is not affiliated with or endorsed by any regulator or by NIBSS. Check the regulator's own list before relying on a bank's licence status. A NIBSS code only identifies the receiving institution: before sending money, confirm the recipient's account name through your payment provider's name enquiry.
+The data is compiled from public registers and relayed copies of the NIBSS institution list, and may lag behind them. It is not affiliated with or endorsed by any regulator or by NIBSS. Check the regulator's own list before relying on a bank's licence status. A NIBSS code only identifies the receiving institution: before sending money, confirm the recipient's account name through your payment provider's name enquiry. Bank detection ranks the institutions an account number can belong to; it is a suggestion to verify with name enquiry, never a reason to skip it.
 
 ## License
 

@@ -21,7 +21,7 @@ from typing import Any
 from src.core.cleaning import clean_text
 from src.core.source_client import SourceClient
 from src.core.trading_names import apply_trading_names, load_trading_names
-from src.countries.nigeria import mobile_money, nibss_codes, nip
+from src.countries.nigeria import cbn_bank_codes, mobile_money, nibss_codes, nip
 
 logger = logging.getLogger(__name__)
 
@@ -72,8 +72,7 @@ def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | N
     if not settings:
         kept = keep_previous_nibss_codes(records, previous_banks or [])
         logger.warning("%s is not set, so the %d NIBSS codes already in the file were kept.", nip.ENV_URL, kept)
-        if kept:
-            sources.append(nip.SOURCE)
+        cites_nip = kept > 0
     else:
         institutions = []
         for number, list_settings in enumerate(settings, start=1):
@@ -84,7 +83,18 @@ def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | N
             records, institutions, nibss_codes.load_reviewed_matches(nibss_codes.MATCHES_FILE)
         )
         log_match_report(report, records)
+        cites_nip = True
+
+    # The CBN bank codes come from a reviewed file rather than a fetch, so they
+    # need no settings and are applied on every refresh.
+    codes = cbn_bank_codes.load_cbn_bank_codes(cbn_bank_codes.CODES_FILE)
+    for problem in cbn_bank_codes.apply_cbn_bank_codes(records, codes):
+        logger.warning(problem)
+    if any(cbn_bank_codes.SCHEME in record["identifiers"] for record in records):
+        sources.append(cbn_bank_codes.SOURCE)
+    if cites_nip:
         sources.append(nip.SOURCE)
+
     for problem in apply_trading_names(records, load_trading_names(TRADING_NAMES_FILE)):
         logger.warning(problem)
     return {"sources": sources, "banks": records}
