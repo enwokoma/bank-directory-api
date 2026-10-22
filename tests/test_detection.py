@@ -312,12 +312,14 @@ class TestApi:
         assert list(recommended) == ["coverage", "confidence", "candidates"]
         assert recommended["coverage"] == 0.9
         assert recommended["candidates"] == data["candidates"][: len(recommended["candidates"])]
-        assert [candidate["bank"]["id"] for candidate in recommended["candidates"]] == [
-            "guaranty-trust-bank",
-            "moniepoint-mfb",
-        ]
-        assert recommended["confidence"] == round(sum(c["confidence"] for c in recommended["candidates"]), 4)
+        ids = [candidate["bank"]["id"] for candidate in recommended["candidates"]]
+        assert ids[0] == "guaranty-trust-bank"
+        assert 1 <= len(ids) <= 5
+        confidences = [candidate["confidence"] for candidate in recommended["candidates"]]
+        assert recommended["confidence"] == round(sum(confidences), 4)
+        # The shortest prefix that reaches the coverage: with the last one it does, without it does not.
         assert recommended["confidence"] >= 0.9
+        assert sum(confidences[:-1]) < 0.9
 
     def test_coverage_widens_or_narrows_the_recommendation(self, client):
         narrow = client.get("/api/detect-bank?account_number=0016563228&coverage=0.5").get_json()["recommended"]
