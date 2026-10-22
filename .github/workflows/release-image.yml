@@ -160,8 +160,9 @@ jobs:
             exit 0
           fi
           # The webhook queues a deployment of the service, which pulls the image its compose file
-          # names: latest, which the publish job has just moved to this release.
-          response=$(curl --silent --show-error --fail --request GET "$COOLIFY_WEBHOOK_URL" \
+          # names: latest, which the publish job has just moved to this release. Coolify answers
+          # 405 to GET on this endpoint, so it is called with POST.
+          response=$(curl --silent --show-error --fail --request POST "$COOLIFY_WEBHOOK_URL" \
             --header "Authorization: Bearer $COOLIFY_API_TOKEN" --header "Accept: application/json")
           deployment=$(printf '%s' "$response" | jq -r '.deployments[0].deployment_uuid // empty')
           if [ -z "$deployment" ]; then
