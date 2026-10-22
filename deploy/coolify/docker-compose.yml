@@ -4,11 +4,15 @@
 #     so Coolify's proxy serves it over HTTPS and forwards to the API;
 #   - Environment Variables: set PUBLIC_BASE_URL, SIGNUP_EMAIL_FROM and
 #     AWS_REGION; the limits are optional.
-# Pin the image to the release's digest when deploying, as Coolify shows it.
+# The api service tracks the latest release and pulls it on every deploy, so
+# the release workflow can redeploy it through Coolify's webhook as soon as a
+# release's image is published (see docs/deploy.md). To hold a deployment at
+# one release instead, pin the image to that release's tag and digest.
 # SES uses the server's instance role. See docs/deploy.md.
 services:
   api:
-    image: ghcr.io/enwokoma/bank-directory-api:0.6.0
+    image: ghcr.io/enwokoma/bank-directory-api:latest
+    pull_policy: always
     environment:
       RATE_LIMIT_STORAGE_URI: redis://redis:6379/0
       API_KEY_DATABASE: /var/lib/bank-directory/keys.sqlite3

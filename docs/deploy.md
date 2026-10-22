@@ -35,7 +35,7 @@ The steps keep the instance's own stack serving the site until Coolify's is read
    ```
 
 3. Under **Servers > New server > IP address or domain**, add the instance's Elastic IP with user `root`, port 22 and that key, then validate it. Don't start its proxy yet: Caddy still holds ports 80 and 443.
-4. Create a project. In its environment, add a **Docker Compose** resource (the one without a Git repository) on that server. Paste `deploy/coolify/docker-compose.yml` into it, with the image pinned to the release's digest.
+4. Create a project. In its environment, add a **Docker Compose** resource (the one without a Git repository) on that server. Paste `deploy/coolify/docker-compose.yml` into it.
 5. Set up the service:
    - **Domains > Add domain**: the api service, `https`, `banks.example.com`, port `5006`.
    - **Environment Variables**: set `PUBLIC_BASE_URL=https://banks.example.com`, `SIGNUP_EMAIL_FROM` and `AWS_REGION`. The others have defaults.
@@ -53,13 +53,24 @@ The steps keep the instance's own stack serving the site until Coolify's is read
    - To roll back, stop the proxy and run the same command with `up --detach` instead of `down`.
 8. Check the site as in [step 8](#8-check-it-end-to-end).
 
-To deploy a new release, change the image's tag and digest in the service's compose file and redeploy; nothing happens by itself when a release is published, so this is the last step of every release. The digest is on the release's package page under the repository's **Packages**, or from the registry, on the `Digest:` line of:
+### Deploying releases automatically
+
+With the service tracking `latest`, as `deploy/coolify/docker-compose.yml` does, the release workflow can redeploy it as soon as a release's image is published, so a release reaches the site a few minutes after its tag is pushed. The workflow calls Coolify's deploy webhook for the service, waits for the deployment to finish, and then checks that the site answers with the new version. Set it up once:
+
+1. In Coolify, under **Keys & Tokens > API tokens**, create a token for the workflow with the **deploy** permission only, and copy it. Coolify's API must be enabled under **Settings > API**; leave its IP allowlist empty, since GitHub's runners have no fixed addresses.
+2. Open the service, then its **Webhooks** tab, and copy the **Deploy Webhook** URL. It looks like `https://coolify.example.com/api/v1/deploy?uuid=<service>&force=false`.
+3. In the service's compose editor, make sure the api service reads `image: ghcr.io/enwokoma/bank-directory-api:latest` with `pull_policy: always`, as in the repository's file, and redeploy once by hand.
+4. In the GitHub repository, under **Settings > Secrets and variables > Actions**, add the secrets `COOLIFY_WEBHOOK_URL` (the URL from step 2) and `COOLIFY_API_TOKEN` (the token from step 1), and the variable `PUBLIC_SITE_URL` with the site's address, such as `https://banks.example.com`.
+
+From then on, every release deploys itself; the workflow's **Deploy to the public instance** job shows what happened. Without the secrets the job does nothing, and the image is only published. To deploy a release again, or to test the setup, run the workflow on the release's tag:
 
 ```bash
-docker buildx imagetools inspect ghcr.io/enwokoma/bank-directory-api:0.6.0
+gh workflow run release-image.yml --ref v0.6.0
 ```
 
-Then check that `https://banks.example.com/api-docs` shows the new version. Manage keys from the service's **Terminal** in Coolify with `python -m src.keys_admin`.
+To hold the site at one release while newer ones are published, pin the image in Coolify to that release's tag and digest instead of `latest`; the digest is on the `Digest:` line of `docker buildx imagetools inspect ghcr.io/enwokoma/bank-directory-api:0.6.0`. Deployments the workflow triggers then keep that release until the pin is removed.
+
+Manage keys from the service's **Terminal** in Coolify with `python -m src.keys_admin`.
 
 ## Dedicated instance, from AWS CloudShell
 

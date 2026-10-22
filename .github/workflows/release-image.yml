@@ -5,9 +5,19 @@ name: Release image
 # and match the version in src/__init__.py. Each architecture is built natively
 # on its own runner, so nothing is emulated and no third-party action runs;
 # the two are then joined under the version, its minor version and latest.
+#
+# Then, when the repository has the COOLIFY_WEBHOOK_URL and COOLIFY_API_TOKEN
+# secrets, the public instance is redeployed through Coolify's deploy webhook,
+# and when it has the PUBLIC_SITE_URL variable, the job waits until the site
+# answers with the new version. Without them the image is only published.
+#
+# Running the workflow by hand on a release tag (gh workflow run
+# release-image.yml --ref vX.Y.Z) rebuilds and redeploys that release, for a
+# deploy that did not happen or to test the deployment itself.
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -120,3 +130,57 @@ jobs:
             sleep $((attempt * 10))
           done
           docker buildx imagetools inspect "$IMAGE:$VERSION"
+
+  deploy:
+    name: Deploy to the public instance
+    needs: [check, publish]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VERSION: ${{ needs.check.outputs.version }}
+      COOLIFY_WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
+      COOLIFY_API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+    steps:
+      - name: Ask Coolify to redeploy the service, and wait for it
+        run: |
+          if [ -z "$COOLIFY_WEBHOOK_URL" ] || [ -z "$COOLIFY_API_TOKEN" ]; then
+            echo "::notice::COOLIFY_WEBHOOK_URL and COOLIFY_API_TOKEN are not set, so the public instance is not deployed."
+            exit 0
+          fi
+          # The webhook queues a deployment of the service, which pulls the image its compose file
+          # names: latest, which the publish job has just moved to this release.
+          response=$(curl --silent --show-error --fail --request GET "$COOLIFY_WEBHOOK_URL" \
+            --header "Authorization: Bearer $COOLIFY_API_TOKEN" --header "Accept: application/json")
+          deployment=$(printf '%s' "$response" | jq -r '.deployments[0].deployment_uuid // empty')
+          if [ -z "$deployment" ]; then
+            echo "::error::Coolify did not queue a deployment: $response"
+            exit 1
+          fi
+          echo "Coolify queued deployment $deployment."
+          api="${COOLIFY_WEBHOOK_URL%%/api/v1/deploy*}/api/v1/deployments/$deployment"
+          for attempt in $(seq 1 60); do
+            status=$(curl --silent --show-error --fail --header "Authorization: Bearer $COOLIFY_API_TOKEN" \
+              --header "Accept: application/json" "$api" | jq -r '.status // empty')
+            case "$status" in
+              finished) echo "Deployment finished."; exit 0 ;;
+              failed|cancelled*) echo "::error::Deployment $status; see the deployment's log in Coolify."; exit 1 ;;
+            esac
+            sleep 10
+          done
+          echo "::error::The deployment did not finish within 10 minutes; its last status was '$status'."
+          exit 1
+
+      - name: Check that the site answers with the new version
+        if: env.PUBLIC_SITE_URL != '' && env.COOLIFY_WEBHOOK_URL != '' && env.COOLIFY_API_TOKEN != ''
+        run: |
+          for attempt in $(seq 1 30); do
+            live=$(curl --silent "$PUBLIC_SITE_URL/apispec_1.json" | jq -r '.info.version // empty' || true)
+            if [ "$live" = "$VERSION" ]; then
+              echo "$PUBLIC_SITE_URL answers with version $VERSION."
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::$PUBLIC_SITE_URL still answers with version '${live:-nothing}', not $VERSION."
+          exit 1
