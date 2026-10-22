@@ -53,7 +53,13 @@ The steps keep the instance's own stack serving the site until Coolify's is read
    - To roll back, stop the proxy and run the same command with `up --detach` instead of `down`.
 8. Check the site as in [step 8](#8-check-it-end-to-end).
 
-To deploy a new release, change the image's tag and digest in the service's compose file and redeploy. Manage keys from the service's **Terminal** in Coolify with `python -m src.keys_admin`.
+To deploy a new release, change the image's tag and digest in the service's compose file and redeploy; nothing happens by itself when a release is published, so this is the last step of every release. The digest is on the release's package page under the repository's **Packages**, or from the registry, on the `Digest:` line of:
+
+```bash
+docker buildx imagetools inspect ghcr.io/enwokoma/bank-directory-api:0.5.0
+```
+
+Then check that `https://banks.example.com/api-docs` shows the new version. Manage keys from the service's **Terminal** in Coolify with `python -m src.keys_admin`.
 
 ## Dedicated instance, from AWS CloudShell
 

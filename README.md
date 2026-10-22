@@ -18,7 +18,7 @@ There are three ways, from least to most setup: call the public API, use the dat
 
 ### Call the public API
 
-`https://banks.globbapay.com` serves the latest release, with search, filters and lookups by code. Try it in the browser at [banks.globbapay.com/api-docs](https://banks.globbapay.com/api-docs). What the changelog lists under Unreleased reaches it with the next release.
+`https://banks.globbapay.com` serves the release last deployed to it, with search, filters and lookups by code. Try it in the browser at [banks.globbapay.com/api-docs](https://banks.globbapay.com/api-docs), where the title shows which version it runs. What the changelog lists under Unreleased reaches it with the next release.
 
 ```js
 const response = await fetch("https://banks.globbapay.com/api/countries/NG/banks?has=nibss_code");
@@ -201,7 +201,7 @@ A public server needs rate limits, API keys and HTTPS. Turn them on with the set
 
 ### 9. Release
 
-Set the version in `src/__init__.py`, date the changelog, merge, tag, create the release and attach the data files: see [Releases](#releases). The tag publishes the image, and the public instance serves the latest release.
+Set the version in `src/__init__.py`, date the changelog, merge, tag, create the release, attach the data files, and deploy it to the public instance: see [Releases](#releases). The tag publishes the image, but the public instance serves a release only once it has been deployed there.
 
 ### 10. Keep it healthy
 
@@ -785,6 +785,7 @@ To publish a release:
 2. After merging, tag the merge commit and push the tag: `git tag -s vX.Y.Z -m "vX.Y.Z"`, then `git push origin vX.Y.Z`. The tag starts the image build.
 3. Create the release: `gh release create vX.Y.Z --verify-tag --notes-file <notes>`.
 4. Attach the data files as they were at the tag: `scripts/upload-release-assets.sh vX.Y.Z`.
+5. Deploy it to the public instance, which runs the image it was last pointed at, not the latest: in Coolify, set the service's image to the release's tag and digest and redeploy, as described in [docs/deploy.md](docs/deploy.md#managed-by-coolify). Check that `/api-docs` shows the new version.
 
 ## Disclaimer
 
