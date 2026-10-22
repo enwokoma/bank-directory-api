@@ -62,10 +62,10 @@ With the service tracking `latest`, as `deploy/coolify/docker-compose.yml` does,
 3. In the service's compose editor, make sure the api service reads `image: ghcr.io/enwokoma/bank-directory-api:latest` with `pull_policy: always`, as in the repository's file, and redeploy once by hand.
 4. In the GitHub repository, under **Settings > Secrets and variables > Actions**, add the secrets `COOLIFY_WEBHOOK_URL` (the URL from step 2) and `COOLIFY_API_TOKEN` (the token from step 1), and the variable `PUBLIC_SITE_URL` with the site's address, such as `https://banks.example.com`.
 
-From then on, every release deploys itself; the workflow's **Deploy to the public instance** job shows what happened. Without the secrets the job does nothing, and the image is only published. To deploy a release again, or to test the setup, run the workflow on the release's tag:
+From then on, every release deploys itself; the workflow's **Deploy to the public instance** job shows what happened. Without the secrets the job does nothing, and the image is only published. To deploy the latest release again, or to test the setup, run the workflow by hand; it builds nothing, redeploys the latest published image, and checks that the site answers with the version on `main`:
 
 ```bash
-gh workflow run release-image.yml --ref v0.6.0
+gh workflow run release-image.yml
 ```
 
 To hold the site at one release while newer ones are published, pin the image in Coolify to that release's tag and digest instead of `latest`; the digest is on the `Digest:` line of `docker buildx imagetools inspect ghcr.io/enwokoma/bank-directory-api:0.6.0`. Deployments the workflow triggers then keep that release until the pin is removed.

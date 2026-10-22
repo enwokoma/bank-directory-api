@@ -6,7 +6,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ### Added
 
-- The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. It can also be run by hand on a release tag. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
+- The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
 
 ## 0.6.0 - 2026-10-22
 
