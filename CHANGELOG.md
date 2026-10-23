@@ -15,6 +15,10 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 - An hourly workflow fetches the public instance's `/` and `/apispec_1.json` and, when either does not answer 200 within 20 seconds, opens an issue titled "Public instance is down" or adds the details to the open one. It needs the `PUBLIC_SITE_URL` variable and is a coarse check; the README names external monitors for alerting.
 - The README has an "API stability" section: responses only gain fields within a minor version, nothing is removed or renamed without a major version, bank ids are stable, the data file's shape is part of the API, and breaking changes are announced under a "Breaking changes" heading.
 
+### Changed
+
+- The image no longer carries pip. The API does not use it at run time, and the image scan flagged the copies of urllib3, msgpack and pkg_resources that pip vendors, which no `pip install` can update.
+
 ## 0.6.0 - 2026-10-22
 
 ### Added
