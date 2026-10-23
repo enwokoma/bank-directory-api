@@ -229,6 +229,7 @@ bank-directory-api/
     __init__.py           The version, used by Swagger UI and the refresh's User-Agent
     api/
       routes.py           Country, bank and detect-bank routes
+      schemas.py          Swagger definitions of every response, with examples
       access.py           Rate limits and API key checks (hosted mode)
       keys.py             GET /api/keys/me
       signup.py           API key sign-up by email
@@ -367,7 +368,7 @@ python -m src.keys_admin revoke 12                # revoke a key by id
 
 ## Endpoints
 
-The examples call a local copy at `http://localhost:5006`; the public API answers the same paths at `https://banks.globbapay.com`. Swagger UI lists every endpoint at `/api-docs`.
+The examples call a local copy at `http://localhost:5006`; the public API answers the same paths at `https://banks.globbapay.com`. Swagger UI lists every endpoint at `/api-docs`. The Swagger 2.0 spec behind it, at `/apispec_1.json`, describes every response with a schema (`Bank`, `BankList`, `Detection`, `Error` and the others under `definitions`) and an example, so a typed client can be generated from it with the usual OpenAPI tools.
 
 Country codes are ISO 3166-1 alpha-2 or alpha-3 codes in any case: `NG`, `ng`, `NGA` and `nga` all work.
 

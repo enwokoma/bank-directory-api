@@ -6,6 +6,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ### Added
 
+- The Swagger spec at `/apispec_1.json` describes every response with a schema, under `definitions` (`Bank`, `BankList`, `CountryDetail`, `Detection`, `DetectionCandidate`, `Recommended`, `Error` and the rest), and an example taken from the README, so typed clients can be generated from it and Swagger UI shows a real answer for each route. Fields that can be null carry `x-nullable`.
 - The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
 
 ## 0.6.0 - 2026-10-22
