@@ -78,6 +78,8 @@ def fetch_dataset(client: SourceClient, previous_banks: list[dict[str, Any]] | N
         for number, list_settings in enumerate(settings, start=1):
             listed = nip.fetch_nip_institutions(client, list_settings)
             logger.info("NIP institution list %d has %d institutions", number, len(listed))
+            if not listed:
+                logger.warning("%s carries no NIBSS codes, so it only serves the bank-code report.", list_settings.setting)
             institutions += listed
         report = nibss_codes.assign_nibss_codes(
             records, institutions, nibss_codes.load_reviewed_matches(nibss_codes.MATCHES_FILE)

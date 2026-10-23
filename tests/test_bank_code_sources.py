@@ -1,4 +1,4 @@
-"""Tests for reading payment providers' bank lists and reporting what they add to the CBN bank codes."""
+"""Tests for reading the configured institution lists and reporting what they add to the CBN bank codes."""
 
 import base64
 
@@ -6,11 +6,17 @@ import pytest
 
 from src.core.source_client import SourceError
 from src.countries.nigeria import bank_code_sources as sources
+from src.countries.nigeria import nip
 from src.countries.nigeria.bank_code_sources import ProviderCode, collect, report
+
+PAYSTACK = "https://paystack.example.test/bank"
+MONNIFY_LOGIN = "https://monnify.example.test/login"
+MONNIFY = "https://monnify.example.test/banks"
+FLUTTERWAVE = "https://flutterwave.example.test/banks/NG"
 
 
 class FakeClient:
-    """Answer each provider endpoint with a canned body, and remember the headers sent."""
+    """Answer each endpoint with a canned body, and remember the headers sent."""
 
     def __init__(self, answers, failures=()):
         self.answers = answers
@@ -37,17 +43,19 @@ class FakeClient:
 
 
 ANSWERS = {
-    sources.PAYSTACK_URL: {"data": [{"name": "Kuda Bank", "code": "50211", "nip_sort_code": "090267"}]},
-    sources.MONNIFY_LOGIN_URL: {"responseBody": {"accessToken": "monnify-token"}},
-    sources.MONNIFY_BANKS_URL: {"responseBody": [{"name": "KUDA MFB", "code": "50211", "nipBankCode": "090267"}]},
-    sources.FLUTTERWAVE_TOKEN_URL: {"access_token": "flw-token"},
-    sources.FLUTTERWAVE_BANKS_URL: {"data": [{"name": "Kuda Microfinance Bank", "code": "50211"}]},
+    PAYSTACK: {"data": [{"name": "Kuda Bank", "code": "50211", "nip_sort_code": "090267"}]},
+    MONNIFY_LOGIN: {"requestSuccessful": True, "responseBody": {"accessToken": "monnify-token"}},
+    MONNIFY: {"responseBody": [{"name": "KUDA MFB", "code": "50211", "nipBankCode": "090267"}]},
+    FLUTTERWAVE: {"status": "success", "data": [{"id": 1, "name": "Kuda Microfinance Bank", "code": "50211"}]},
 }
-CREDENTIALS = {
-    "MONNIFY_API_KEY": "key",
-    "MONNIFY_SECRET_KEY": "secret",
-    "FLUTTERWAVE_CLIENT_ID": "id",
-    "FLUTTERWAVE_CLIENT_SECRET": "secret",
+SETTINGS = {
+    nip.ENV_URL + "_3": PAYSTACK,
+    nip.ENV_URL + "_4": MONNIFY,
+    nip.ENV_LOGIN_URL + "_4": MONNIFY_LOGIN,
+    nip.ENV_API_KEY + "_4": "key:secret",
+    nip.ENV_URL + "_5": FLUTTERWAVE,
+    nip.ENV_API_KEY + "_5": "Bearer flw-secret",
+    nip.ENV_KEY_HEADER + "_5": "Authorization",
 }
 
 
@@ -65,36 +73,40 @@ def bank(bank_id, name, nibss_code, cbn_bank_code=None):
     }
 
 
-def test_reads_every_provider_with_its_own_login():
+def test_reads_every_configured_list_with_its_own_login():
     client = FakeClient(ANSWERS)
-    codes, notes = collect(client, CREDENTIALS)
+    codes, notes = collect(client, SETTINGS)
     assert [(code.provider, code.code, code.nibss_code) for code in codes] == [
-        ("paystack", "50211", "090267"),
-        ("monnify", "50211", "090267"),
-        ("flutterwave", "50211", None),
+        ("list 3", "50211", "090267"),
+        ("list 4", "50211", "090267"),
+        ("list 5", "50211", None),
     ]
-    assert notes == ["Paystack lists 1 institutions.", "Monnify lists 1 institutions.", "Flutterwave lists 1 institutions."]
-    basic = base64.b64encode(b"key:secret").decode()
-    assert client.headers[sources.MONNIFY_LOGIN_URL] == {"Authorization": f"Basic {basic}"}
-    assert client.headers[sources.MONNIFY_BANKS_URL] == {"Authorization": "Bearer monnify-token"}
-    assert client.headers[sources.FLUTTERWAVE_BANKS_URL] == {"Authorization": "Bearer flw-token"}
-
-
-def test_skips_providers_without_credentials_or_that_fail():
-    client = FakeClient(ANSWERS, failures={sources.FLUTTERWAVE_BANKS_URL})
-    codes, notes = collect(client, {**CREDENTIALS, "MONNIFY_API_KEY": ""})
-    assert [code.provider for code in codes] == ["paystack"]
     assert notes == [
-        "Monnify skipped: MONNIFY_API_KEY and MONNIFY_SECRET_KEY are not set.",
-        "Paystack lists 1 institutions.",
-        f"Flutterwave skipped: {sources.FLUTTERWAVE_BANKS_URL} answered 504",
+        "list 3 (NIP_INSTITUTIONS_URL_3) names 1 institutions.",
+        "list 4 (NIP_INSTITUTIONS_URL_4) names 1 institutions.",
+        "list 5 (NIP_INSTITUTIONS_URL_5) names 1 institutions.",
     ]
+    basic = base64.b64encode(b"key:secret").decode()
+    assert client.headers[MONNIFY_LOGIN] == {"Authorization": f"Basic {basic}"}
+    assert client.headers[MONNIFY] == {"Authorization": "Bearer monnify-token"}
+    assert client.headers[FLUTTERWAVE] == {"Authorization": "Bearer flw-secret"}
+
+
+def test_skips_a_list_that_cannot_be_read_and_says_when_none_is_set():
+    client = FakeClient(ANSWERS, failures={FLUTTERWAVE})
+    codes, notes = collect(client, {k: v for k, v in SETTINGS.items() if not k.endswith("_4")})
+    assert [code.provider for code in codes] == ["list 3"]
+    assert notes == [
+        "list 3 (NIP_INSTITUTIONS_URL_3) names 1 institutions.",
+        "list 5 skipped: The institution list set in NIP_INSTITUTIONS_URL_5 answered HTTP 504.",
+    ]
+    assert collect(client, {}) == ([], ["No institution list is set: see NIP_INSTITUTIONS_URL in .env.example."])
 
 
 def test_a_login_without_a_token_is_reported_not_raised():
-    answers = {**ANSWERS, sources.MONNIFY_LOGIN_URL: {"responseBody": {}}}
-    _, notes = collect(FakeClient(answers), {**CREDENTIALS, "FLUTTERWAVE_CLIENT_ID": ""})
-    assert "Monnify skipped: Monnify's login answer has no access token." in notes
+    answers = {**ANSWERS, MONNIFY_LOGIN: {"responseBody": {}}}
+    _, notes = collect(FakeClient(answers), {k: v for k, v in SETTINGS.items() if k.endswith("_4")})
+    assert notes == ["list 4 skipped: The login for the list set in NIP_INSTITUTIONS_URL_4 returned no token."]
 
 
 def test_report_lists_missing_disagreeing_and_confirmed_codes():
@@ -105,20 +117,19 @@ def test_report_lists_missing_disagreeing_and_confirmed_codes():
         bank("quiet-mfb", "Quiet Microfinance Bank", "090998"),
     ]
     codes = [
-        ProviderCode("paystack", "Kuda Bank", "50211", "090267"),
-        ProviderCode("monnify", "KUDA MFB", "090267", "090267"),  # the NIBSS code itself: not a CBN code
-        ProviderCode("paystack", "Accion Microfinance Bank", "602", "090134"),
-        ProviderCode("monnify", "New MFB", "51999", "090999"),
-        ProviderCode("flutterwave", "New Microfinance Bank", "51999"),  # matched by name, no NIBSS code
-        ProviderCode("flutterwave", "Optimus Bank", "00107"),  # padded 3-digit code, for a bank not in the list
+        ProviderCode("list 3", "Kuda Bank", "50211", "090267"),
+        ProviderCode("list 4", "KUDA MFB", "090267", "090267"),  # the NIBSS code itself: not a CBN code
+        ProviderCode("list 3", "Accion Microfinance Bank", "602", "090134"),
+        ProviderCode("list 4", "New MFB", "51999", "090999"),
+        ProviderCode("list 5", "New Microfinance Bank", "51999"),  # matched by name, no NIBSS code
+        ProviderCode("list 5", "Optimus Bank", "00107"),  # padded 3-digit code, for a bank not in the list
     ]
-    lines = report(banks, codes)
-    assert lines == [
-        "1 institutions without a reviewed CBN bank code that a provider gives a code:",
-        "  090999 New Microfinance Bank: 51999 (flutterwave, monnify)",
-        "1 reviewed codes a provider disagrees with (3-digit codes are often legacy NIBSS codes):",
-        "  090134 Accion Microfinance Bank Limited: reviewed 50009; 602 (paystack)",
-        "1 reviewed codes every provider that lists the bank confirms.",
+    assert report(banks, codes) == [
+        "1 institutions without a reviewed CBN bank code that a list gives a code:",
+        "  090999 New Microfinance Bank: 51999 (list 4, list 5)",
+        "1 reviewed codes a list disagrees with (3-digit codes are often legacy NIBSS codes):",
+        "  090134 Accion Microfinance Bank Limited: reviewed 50009; 602 (list 3)",
+        "1 reviewed codes every list that names the bank confirms.",
     ]
 
 
@@ -141,10 +152,8 @@ def test_main_prints_the_report(tmp_path, monkeypatch, capsys):
     )
     monkeypatch.setattr(sources, "SourceClient", lambda: FakeClient(ANSWERS))
     monkeypatch.setattr(sources, "ENV_FILE", tmp_path / "no.env")
-    for name in CREDENTIALS:
-        monkeypatch.delenv(name, raising=False)
+    monkeypatch.setenv(nip.ENV_URL + "_3", PAYSTACK)
     assert sources.main(["--data-dir", str(data_dir)]) == 0
     out = capsys.readouterr().out
-    assert "Paystack lists 1 institutions." in out
-    assert "Monnify skipped" in out
-    assert "  090267 KUDA MFB: 50211 (paystack)" in out
+    assert "list 3 (NIP_INSTITUTIONS_URL_3) names 1 institutions." in out
+    assert "  090267 KUDA MFB: 50211 (list 3)" in out

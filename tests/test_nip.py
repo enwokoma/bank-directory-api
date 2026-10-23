@@ -29,6 +29,16 @@ class RecordingClient:
             raise self.error
         return self.body
 
+    def post_json(self, url, data=None, headers=None):
+        self.calls.append(("POST " + url, headers))
+        return self.login_answer
+
+
+class LoginClient(RecordingClient):
+    def __init__(self, body, login_answer):
+        super().__init__(body)
+        self.login_answer = login_answer
+
 
 @pytest.mark.parametrize(
     "body",
@@ -95,6 +105,25 @@ def test_empty_or_unexpected_responses_stop_the_refresh(body):
         nip.parse_nip_institutions(body)
 
 
+def test_a_list_without_nibss_codes_reads_as_empty_for_nip_but_keeps_its_codes():
+    """Flutterwave's list gives CBN bank codes only; the refresh gets nothing from it, the bank-code report does."""
+    body = {
+        "status": "success",
+        "data": [{"id": 1, "code": "044", "name": "Access Bank"}, {"id": 2, "code": "50211", "name": "Kuda"}],
+    }
+    assert nip.parse_nip_institutions(body) == []
+    assert nip.read_institution_list(body) == [
+        nip.ListedInstitution("Access Bank", "044", None),
+        nip.ListedInstitution("Kuda", "50211", None),
+    ]
+
+
+def test_reads_monnify_rows_with_the_nip_code_next_to_the_providers_code():
+    body = {"responseBody": [{"name": "KUDA MFB", "code": "50211", "nipBankCode": "090267", "ussdTemplate": None}]}
+    assert nip.read_institution_list(body) == [nip.ListedInstitution("KUDA MFB", "50211", "090267")]
+    assert nip.parse_nip_institutions(body) == [nip.NipInstitution("090267", "KUDA MFB")]
+
+
 class TestSettings:
     def test_not_configured_without_a_url(self):
         assert nip.settings_from_env({}) == []
@@ -103,6 +132,19 @@ class TestSettings:
     def test_reads_url_key_and_default_header(self):
         settings = nip.settings_from_env({nip.ENV_URL: "https://example.test/banks", nip.ENV_API_KEY: "secret"})
         assert settings == [nip.NipSettings("https://example.test/banks", "secret", "X-API-Key")]
+
+    def test_reads_a_login_url_and_labels_lists(self):
+        settings = nip.settings_from_env(
+            {
+                nip.ENV_URL: "https://one.example.test/",
+                nip.ENV_URL + "_4": "https://four.example.test/banks",
+                nip.ENV_LOGIN_URL + "_4": "https://four.example.test/login",
+                nip.ENV_API_KEY + "_4": "key:secret",
+            }
+        )
+        assert settings[0].login_url is None
+        assert settings[1].login_url == "https://four.example.test/login"
+        assert [setting.label for setting in settings] == ["list 1", "list 4"]
 
     def test_header_can_be_changed(self):
         settings = nip.settings_from_env(
@@ -135,6 +177,31 @@ def test_fetch_sends_the_key_in_the_configured_header():
     assert client.calls == [("https://example.test/banks", {"X-API-Key": "secret"})]
 
 
+def test_fetch_logs_in_first_when_the_list_has_a_login_url():
+    client = LoginClient(ROWS, {"requestSuccessful": True, "responseBody": {"accessToken": "tok-123"}})
+    settings = nip.NipSettings(
+        "https://m.example.test/banks", "key:secret", "X-API-Key", "NIP_INSTITUTIONS_URL_4", "https://m.example.test/login"
+    )
+    assert nip.fetch_nip_institutions(client, settings) == EXPECTED
+    assert client.calls == [
+        ("POST https://m.example.test/login", {"Authorization": "Basic a2V5OnNlY3JldA=="}),
+        ("https://m.example.test/banks", {"Authorization": "Bearer tok-123"}),
+    ]
+
+
+def test_a_login_needs_a_key_pair_and_a_token_in_the_answer():
+    settings = nip.NipSettings(
+        "https://m.example.test/banks", "lonely-key", "X-API-Key", "NIP_INSTITUTIONS_URL_4", "https://m.example.test/login"
+    )
+    with pytest.raises(ValueError, match="NIP_INSTITUTIONS_URL_4 needs a login, so its key must be 'api key:secret key'"):
+        nip.fetch_nip_institutions(LoginClient(ROWS, {}), settings)
+    paired = nip.NipSettings(
+        "https://m.example.test/banks", "key:secret", "X-API-Key", "NIP_INSTITUTIONS_URL_4", "https://m.example.test/login"
+    )
+    with pytest.raises(ValueError, match="login for the list set in NIP_INSTITUTIONS_URL_4 returned no token"):
+        nip.fetch_nip_institutions(LoginClient(ROWS, {"responseBody": {"accessToken": ""}}), settings=paired)
+
+
 def test_fetch_without_a_key_sends_no_header():
     client = RecordingClient(ROWS)
     nip.fetch_nip_institutions(client, nip.NipSettings("https://example.test/banks", None, "X-API-Key"))
@@ -165,5 +232,5 @@ def test_errors_name_the_setting_not_the_endpoint(error, message):
 
 def test_an_unreadable_list_names_the_setting():
     settings = nip.NipSettings("https://secret.example.test/banks", None, "X-API-Key", "NIP_INSTITUTIONS_URL_2")
-    with pytest.raises(ValueError, match="set in NIP_INSTITUTIONS_URL_2: The NIP institution list response has no"):
+    with pytest.raises(ValueError, match="set in NIP_INSTITUTIONS_URL_2: The institution list response has no"):
         nip.fetch_nip_institutions(RecordingClient({"message": "Unauthorized"}), settings)
