@@ -184,6 +184,14 @@ Four files under `src/countries/nigeria/` hold what the sources cannot say, and 
 
 Run the refresh after editing the first three, and the tests after editing any of them: the tests check that every entry names a bank in the data file.
 
+To calibrate `account_detection.json` from your own name-enquiry logs, export them as a CSV with an `account_number` column and a `nibss_code` or `bank_id` column, one row per enquiry that resolved, and run:
+
+```bash
+python -m src.evaluate_detection enquiries.csv
+```
+
+It reports how often the right institution came first, in the first three or in the recommended block, and prints suggested shares, leading digits and phone-number fractions from the rows. Add `--apply` to write them into the file, then review the diff, run the tests and commit. It never prints an account number. [Getting to a near-certain answer](#getting-to-a-near-certain-answer) has the details.
+
 ### 7. Run it with Docker
 
 Without installing Python, run the published image or build your clone:
@@ -266,6 +274,7 @@ bank-directory-api/
                           Reviewed names banks trade under where the register has an older one
     refresh.py            `python -m src.refresh` command
     keys_admin.py         `python -m src.keys_admin`: list, issue and revoke API keys
+    evaluate_detection.py `python -m src.evaluate_detection`: measures bank detection against name-enquiry results and suggests settings
   Dockerfile              The API's image, served by gunicorn (gunicorn.conf.py)
   compose.yaml            Runs the API on your own machine with Docker Compose
   deploy/                 Docker Compose with Redis (and optionally Caddy), a Caddy block and example settings for a public server
@@ -690,7 +699,7 @@ The number alone cannot single out one of 400 institutions: it carries one digit
 1. Send the whole text the number was copied from as `hint`. Copied bank details usually name the bank, and a named institution goes first.
 2. Run your payment provider's name enquiry on the `recommended` candidates in order, and stop at the first that resolves; raise `coverage` to try more before giving up. The ranking exists to make the first try the likely one and to keep the number of tries small.
 3. Remember what resolved. An account number together with the institution it resolved at is the best evidence there is: check your own record before calling this endpoint, and put that institution first when you have one.
-4. Calibrate the reviewed file. `src/countries/nigeria/account_detection.json` holds, per bank id, the `share` of transfers the institution receives (on any scale), the fraction of its accounts that are phone numbers (`phone_number_accounts`), the leading digits its account numbers are known to use (`account_prefixes`) and the names people call it (`aliases`), with a default share per bank type for the rest. The shares and leading digits are estimates; your own name-enquiry logs will give better ones, and changing the file needs no code change.
+4. Calibrate the reviewed file. `src/countries/nigeria/account_detection.json` holds, per bank id, the `share` of transfers the institution receives (on any scale), the fraction of its accounts that are phone numbers (`phone_number_accounts`), the leading digits its account numbers are known to use (`account_prefixes`) and the names people call it (`aliases`), with a default share per bank type for the rest. The shares and leading digits are estimates; your own name-enquiry logs will give better ones, and changing the file needs no code change. `python -m src.evaluate_detection enquiries.csv` measures and suggests: give it a CSV of name enquiries that resolved, with an `account_number` column and a `nibss_code` or `bank_id` column (other columns are ignored; rows naming an institution the data file does not have, or whose number cannot be read, are counted and skipped), and it runs detection on every row and reports how often the right institution came first, in the first three and in the `recommended` block at the default coverage, and its mean rank, overall and per institution with at least 20 rows. It then prints suggested settings as JSON to paste into the file: a `share` per institution proportional to its rows (as a percentage of all rows, the scale the file uses), the leading digits that cover 95% of its rows as `account_prefixes` for institutions with at least 50 rows, and the fraction of mobile-shaped numbers as `phone_number_accounts` for institutions the file already marks as issuing phone numbers. With `--apply` it writes them into the file and keeps the aliases, other codes and every institution the rows say nothing about, so `git diff` shows the change for review before you run the tests and commit. Account numbers are personal data: the command never prints one, only counts, rates and bank ids. The suggested shares are only as representative as the rows, so use logs from the flow you are calibrating for; a few thousand rows is plenty.
 
 The CBN bank codes the check digit is computed with come from a reviewed file too (see [CBN bank codes](#cbn-bank-codes)). An institution whose code is not in it is tested with its NIBSS code instead, which may be wrong, so such an institution can be missing from the list when it should be there. Adding its code to the file fixes that.
 
