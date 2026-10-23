@@ -1,10 +1,18 @@
 name: Release image
 
-# Publishes the API's image to the GitHub Container Registry when a signed
-# release tag vX.Y.Z is pushed. The tag must be signed, as GitHub verifies it,
-# and match the version in src/__init__.py. Each architecture is built natively
-# on its own runner, so nothing is emulated and no third-party action runs;
-# the two are then joined under the version, its minor version and latest.
+# Makes a release when a signed release tag vX.Y.Z is pushed. The tag must be
+# signed, as GitHub verifies it, match the version in src/__init__.py and have
+# its section in CHANGELOG.md. Then, in parallel:
+#
+# - The GitHub release is created with that changelog section as its notes,
+#   and every country's data file, as it is at the tag, is attached with a
+#   SHA256SUMS file (scripts/create-release.sh). A release that already exists
+#   keeps its notes and only gets the files.
+# - The API's image is published to the GitHub Container Registry. Each
+#   architecture is built natively on its own runner, so nothing is emulated
+#   and no third-party action runs; the two are then joined under the version,
+#   its minor version and latest, and GitHub attests the joined image's build
+#   provenance (docs/deploy.md says how to verify it).
 #
 # Then, when the repository has the COOLIFY_WEBHOOK_URL and COOLIFY_API_TOKEN
 # secrets, the public instance is redeployed through Coolify's deploy webhook,
@@ -12,9 +20,10 @@ name: Release image
 # answers with the new version. Without them the image is only published.
 #
 # Running the workflow by hand (gh workflow run release-image.yml) builds
-# nothing: it redeploys the latest published image and checks that the site
-# answers with the version on main, which is the latest release's. That
-# repeats a deployment that did not happen, or tests the deployment itself.
+# nothing and creates no release: it redeploys the latest published image and
+# checks that the site answers with the version on main, which is the latest
+# release's. That repeats a deployment that did not happen, or tests the
+# deployment itself.
 on:
   push:
     tags: ['v*']
@@ -42,7 +51,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Check that the tag is signed and matches the version
+      - name: Check that the tag is signed, matches the version and has its changelog section
         id: version
         env:
           GH_TOKEN: ${{ github.token }}
@@ -64,6 +73,10 @@ jobs:
             echo "::error::$TAG does not match src/__init__.py, which says $expected"
             exit 1
           fi
+          if ! awk -v heading="## $version - " 'index($0, heading) == 1 { found = 1 } END { exit !found }' CHANGELOG.md; then
+            echo "::error::CHANGELOG.md has no '## $version - <date>' section, which the release notes come from"
+            exit 1
+          fi
           read -r type sha < <(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" --jq '.object.type + " " + .object.sha')
           if [ "$type" != tag ]; then
             echo "::error::$TAG is a lightweight tag; push an annotated, signed one (git tag -s)"
@@ -74,6 +87,26 @@ jobs:
             exit 1
           fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  release:
+    name: Create the GitHub release
+    needs: check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Create the release from its changelog section and attach the data files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: scripts/create-release.sh "$TAG"
 
   build:
     name: Build ${{ matrix.arch }}
@@ -116,10 +149,13 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
     env:
       VERSION: ${{ needs.check.outputs.version }}
     steps:
       - name: Join both architectures under the version, its minor version and latest
+        id: join
         env:
           TOKEN: ${{ github.token }}
           ACTOR: ${{ github.actor }}
@@ -139,6 +175,16 @@ jobs:
             sleep $((attempt * 10))
           done
           docker buildx imagetools inspect "$IMAGE:$VERSION"
+          echo "digest=$(docker buildx imagetools inspect "$IMAGE:$VERSION" --format '{{.Manifest.Digest}}')" >> "$GITHUB_OUTPUT"
+
+      - name: Attest the joined image's build provenance
+        # Signs a statement that this workflow run built the image index, kept by GitHub and
+        # pushed to the registry next to the image; gh attestation verify checks it.
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-name: ${{ env.IMAGE }}
+          subject-digest: ${{ steps.join.outputs.digest }}
+          push-to-registry: true
 
   deploy:
     name: Deploy to the public instance

@@ -7,6 +7,12 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 ### Added
 
 - The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
+- The release workflow creates the GitHub release itself when a signed tag is pushed, with the tag's section of this changelog as the notes and every country's data file attached as it is at the tag, with a `SHA256SUMS` file; a release that already exists keeps its notes and only gets the files. Pushing the signed tag is now the only manual step of a release. The workflow checks that the changelog has the tag's `## X.Y.Z - date` section before building anything.
+- The published image carries GitHub's build provenance attestation, which `gh attestation verify oci://ghcr.io/enwokoma/bank-directory-api:X.Y.Z --repo enwokoma/bank-directory-api` checks; [docs/deploy.md](docs/deploy.md#verifying-the-image) explains it.
+
+### Changed
+
+- `scripts/upload-release-assets.sh` is now `scripts/create-release.sh`, which also creates the release from the changelog when it does not exist yet. The release workflow runs it, so it is only run by hand when that job failed.
 
 ## 0.6.0 - 2026-10-22
 
