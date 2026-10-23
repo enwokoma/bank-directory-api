@@ -21,9 +21,10 @@ the data file.
 Payment providers' lists carry the code the provider takes for each
 institution next to the NIBSS code, which for most institutions is the CBN's
 (see `cbn_bank_codes.py`); `read_institution_list` keeps both, for the
-bank-code report in `bank_code_sources.py`. A list that carries no NIBSS codes
-at all, such as Flutterwave's, adds nothing to the refresh and only serves
-that report.
+bank-code report in `bank_code_sources.py`. A list whose own codes are the
+6-digit NIBSS codes, as Flutterwave's are for most institutions, is a relay
+like the others; one that carries no NIBSS codes at all adds nothing to the
+refresh and only serves that report.
 """
 
 from __future__ import annotations
