@@ -201,7 +201,7 @@ A public server needs rate limits, API keys and HTTPS. Turn them on with the set
 
 ### 9. Release
 
-Set the version in `src/__init__.py`, date the changelog, merge, tag, create the release and attach the data files: see [Releases](#releases). The tag publishes the image and, once Coolify's webhook is configured, deploys it to the public instance.
+Set the version in `src/__init__.py`, date the changelog, merge, and push a signed tag: see [Releases](#releases). The tag's workflow publishes the image, creates the GitHub release with the changelog section as its notes and the data files attached, and, once Coolify's webhook is configured, deploys it to the public instance.
 
 ### 10. Keep it healthy
 
@@ -273,13 +273,13 @@ bank-directory-api/
     coolify/docker-compose.yml  The API as a Coolify service, using the published image
   docs/deploy.md          How to run it as a public service on AWS: on its own, or managed by Coolify
   scripts/
-    upload-release-assets.sh  Attaches each country's data file to a GitHub release
+    create-release.sh     Creates a release from its changelog section and attaches each country's data file; the tag workflow runs it
   tests/                  Tests, with saved samples of real source responses in fixtures/
   .env.example            Settings for refreshing NIBSS codes (copy to .env)
   .github/workflows/
     python-test.yml       Formatting, lint, types and tests on every push, then gunicorn and Docker checks
     data-check.yml        Monday check that the data files match their sources; opens a pull request with the refresh when they do not
-    release-image.yml     Publishes the image to ghcr.io/enwokoma/bank-directory-api on each release tag
+    release-image.yml     Publishes the image, creates the GitHub release and deploys the public instance on each release tag
   CHANGELOG.md            What each release added or changed
 ```
 
@@ -826,15 +826,15 @@ The version in `src/__init__.py`, which every release tag carries, says what may
 
 ## Releases
 
-Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md) and every country's data file attached, and its image is published as `ghcr.io/enwokoma/bank-directory-api:X.Y.Z` for amd64 and arm64, also tagged `X.Y` and `latest`. The version lives in `src/__init__.py`.
+Each release is tagged `vX.Y.Z` on GitHub, with its changes in [CHANGELOG.md](CHANGELOG.md) and every country's data file attached, and its image is published as `ghcr.io/enwokoma/bank-directory-api:X.Y.Z` for amd64 and arm64, also tagged `X.Y` and `latest`, with GitHub's attestation of where it was built (see [Verifying the image](docs/deploy.md#verifying-the-image)). The version lives in `src/__init__.py`.
 
 To publish a release:
 
-1. In a pull request, set the version in `src/__init__.py` and date the release in the changelog.
-2. After merging, tag the merge commit and push the tag: `git tag -s vX.Y.Z -m "vX.Y.Z"`, then `git push origin vX.Y.Z`. The tag starts the image build.
-3. Create the release: `gh release create vX.Y.Z --verify-tag --notes-file <notes>`.
-4. Attach the data files as they were at the tag: `scripts/upload-release-assets.sh vX.Y.Z`.
-5. The workflow then deploys it to the public instance through Coolify, once the repository has the secrets described in [docs/deploy.md](docs/deploy.md#deploying-releases-automatically), and checks that `/api-docs` shows the new version. Without them, deploy it by hand in Coolify.
+1. In a pull request, set the version in `src/__init__.py` and date the release's section in the changelog, `## X.Y.Z - YYYY-MM-DD`.
+2. After merging, tag the merge commit and push the tag: `git tag -s vX.Y.Z -m "vX.Y.Z"`, then `git push origin vX.Y.Z`.
+3. Done. The tag's workflow checks that the tag is signed, matches the version and has its changelog section, then builds and publishes the image, creates the GitHub release with that changelog section as its notes and the data files attached, and deploys it to the public instance through Coolify once the repository has the secrets described in [docs/deploy.md](docs/deploy.md#deploying-releases-automatically), checking that `/api-docs` shows the new version. Without them, deploy it by hand in Coolify.
+
+The notes can be edited on GitHub afterwards. If the workflow's **Create the GitHub release** job failed, `scripts/create-release.sh vX.Y.Z` does its work from your machine: it creates the release unless it already exists, and attaches the data files as they were at the tag.
 
 ## Disclaimer
 
