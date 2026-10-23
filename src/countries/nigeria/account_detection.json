@@ -563,6 +563,9 @@
       "share": 0.03,
       "aliases": [
         "letshego"
+      ],
+      "other_bank_codes": [
+        "216"
       ]
     },
     "sls-mfb": {
