@@ -5,4 +5,4 @@ python-dotenv==1.2.4
 requests>=2.32,<3
 # Hosted mode: rate limits shared through Redis, and sign-up emails through Amazon SES.
 Flask-Limiter[redis]==4.1.1
-boto3==1.43.114
+boto3==1.43.115
