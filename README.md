@@ -169,7 +169,7 @@ python -m src.refresh NGA --verbose
 git diff data/countries/NGA.json
 ```
 
-Review the diff and the report the command prints, then commit the file. Without `.env`, the NIBSS codes already in the file are kept. [Refreshing data](#refreshing-data) has the details, including how to combine several relayed NIP lists.
+Review the diff and the report the command prints, then commit the file. Without `.env`, the NIBSS codes already in the file are kept. [Refreshing data](#refreshing-data) has the details, including how to combine several relayed NIP lists. Every Monday a workflow runs the same refresh and opens a pull request when a source changed, so most refreshes need only a review (see [Scheduled refreshes](#scheduled-refreshes)).
 
 ### 6. Maintain the reviewed files
 
@@ -205,7 +205,7 @@ Set the version in `src/__init__.py`, date the changelog, merge, tag, create the
 
 ### 10. Keep it healthy
 
-Every push runs the checks and the Docker setups in CI, and a workflow compares the data files with their sources every Monday (see [How the data works](#how-the-data-works)). `main` is protected: changes land through pull requests whose checks pass, and nothing is force-pushed or deleted, so a release is always cut from a state CI has run.
+Every push runs the checks and the Docker setups in CI, and a workflow compares the data files with their sources every Monday and opens a pull request with the refreshed data when they changed (see [Scheduled refreshes](#scheduled-refreshes)). `main` is protected: changes land through pull requests whose checks pass, and nothing is force-pushed or deleted, so a release is always cut from a state CI has run.
 
 ## How the data works
 
@@ -217,7 +217,7 @@ Serving the API needs no API keys, keeps working when a regulator's website is d
 
 Most sources are public web pages. Nigeria's transfer codes are the exception: NIBSS serves its institution list only to connected institutions, so refreshing the codes needs access to an API that relays it (see [Nigeria's NIBSS codes](#nigerias-nibss-codes)).
 
-A scheduled workflow compares the committed files with their sources every Monday. When it fails, a source has changed and the country needs a refresh (see [Refreshing data](#refreshing-data)). It checks Nigeria's NIBSS codes only when the repository has the NIP list settings as secrets.
+A scheduled workflow compares the committed files with their sources every Monday. When a source has changed, it refreshes the country's file and opens a pull request with the result and the refresh's report, so the change needs only a review (see [Scheduled refreshes](#scheduled-refreshes)). It checks Nigeria's NIBSS codes only when the repository has the NIP list settings as secrets.
 
 ## Project structure
 
@@ -275,7 +275,7 @@ bank-directory-api/
   .env.example            Settings for refreshing NIBSS codes (copy to .env)
   .github/workflows/
     python-test.yml       Formatting, lint, types and tests on every push, then gunicorn and Docker checks
-    data-check.yml        Monday check that the data files match their sources
+    data-check.yml        Monday check that the data files match their sources; opens a pull request with the refresh when they do not
     release-image.yml     Publishes the image to ghcr.io/enwokoma/bank-directory-api on each release tag
   CHANGELOG.md            What each release added or changed
 ```
@@ -729,7 +729,18 @@ The command prints which banks were added, delisted, listed again or otherwise c
 | `--verbose` | Also print details for reviewing, such as every NIBSS code match |
 | `--data-dir PATH` | Read and write data files somewhere other than `data/countries/` |
 
-The scheduled workflow runs `python -m src.refresh all --check`.
+### Scheduled refreshes
+
+Every Monday the Data Freshness workflow (`.github/workflows/data-check.yml`) runs `python -m src.refresh all --check`. When a data file no longer matches its sources, the workflow runs the refresh itself, runs the checks CI runs (`ruff format --check .`, `ruff check .`, `mypy` and `pytest`) on the result, commits the data files on a branch named `data/refresh-YYYY-MM-DD` and opens a pull request against `main` whose description is the refresh's report: the banks added, delisted, listed again or changed, and any warning about the reviewed files. Bringing the data up to date then means reviewing the diff, fixing on that branch what the warnings point at, and merging. While such a pull request is open, the next Monday's run pushes a new refresh to its branch when the sources changed again, and posts the report as a comment, rather than opening a second one.
+
+Running the workflow by hand from the Actions tab only reports, as before: a run that finds a difference fails. Tick "Open or update a refresh pull request" to get the pull request without waiting for Monday, and run it on `main`, since the branch is cut from the ref the workflow runs on.
+
+The pull request is opened with the workflow's own `GITHUB_TOKEN` unless the repository has a `DATA_REFRESH_TOKEN` secret. The two differ in what has to happen by hand:
+
+- With `GITHUB_TOKEN`, the repository must allow it to open pull requests: under Settings > Actions > General > Workflow permissions, tick "Allow GitHub Actions to create and approve pull requests". Otherwise the run fails at that step, after pushing the branch, which the next run replaces. Pushes and pull requests made with this token also start no other workflow, so the Python Tests checks that `main` requires do not run on their own. The refresh job runs the same checks before committing, and the description says so, but to get the required checks you push a commit to the branch (an empty one will do: `git commit --allow-empty -m "ci: run the checks"`) or close and reopen the pull request.
+- With a fine-grained personal access token stored as the `DATA_REFRESH_TOKEN` repository secret, the workflow pushes and opens the pull request as the token's owner, so the Python Tests workflow runs as for any pull request and the Actions setting above is not needed. Create the token under your GitHub settings (Developer settings > Personal access tokens > Fine-grained tokens) for this repository only, with the repository permissions Contents: Read and write and Pull requests: Read and write, and note its expiry: once it expires, the run fails at the push until the secret is replaced.
+
+The workflow refreshes the NIBSS codes only when the repository has the NIP list settings as secrets, as the next section describes; without them the codes already in the file are kept, as locally. It never prints the endpoints or keys, and the report in the pull request names only banks, institutions and the settings' names.
 
 ### Nigeria's NIBSS codes
 
@@ -746,7 +757,7 @@ Without these settings, the refresh keeps the codes already in the file and upda
 
 With them, the command also prints a review report: every match with the institution's name in the NIP list (with `--verbose`), banks still without a code, and NIP institutions that matched no bank. A bank gets a code automatically only when its name matches exactly one NIP institution of a plausible type, and no other bank claims it. When the lists spell a name differently, add the bank's name exactly as the CBN publishes it, with its code, to `src/countries/nigeria/nibss_code_matches.json`, check that the code really belongs to that bank, and run the refresh again. A name mapped to `null` stays without a code. No code may belong to two banks; a data file where one does fails validation.
 
-The scheduled check compares the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` and `_3` versions for more lists. GitHub masks secret values in the logs.
+The scheduled check and refresh use the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`), plus the `_2` and `_3` versions for more lists. GitHub masks secret values in the logs.
 
 ### Trading names
 

@@ -1,12 +1,30 @@
 name: Data Freshness
 
 # Compares every committed country file with its official source. A failed run
-# means a regulator's list changed: refresh the country locally with
-# `python -m src.refresh <CODE>`, review the diff, and commit it.
+# means a regulator's list changed.
+#
+# On the weekly schedule, out-of-date data is refreshed here and opened as a
+# pull request on a branch named data/refresh-YYYY-MM-DD, with the refresh's
+# report as its description, so bringing the data up to date needs only a
+# review. While such a pull request is still open, the next refresh is pushed
+# to its branch instead of opening another. A manual run only reports, as a
+# pull request's checks would, unless "Open or update a refresh pull request"
+# is ticked; run it on main, since the branch is cut from the ref it runs on.
+#
+# The pull request is opened with the workflow's own token unless the
+# repository has a DATA_REFRESH_TOKEN secret, a fine-grained personal access
+# token with write access to contents and pull requests. The README's
+# "Refreshing data" section explains the difference: only with the personal
+# token do the pull request's checks start on their own.
 on:
   schedule:
     - cron: '0 6 * * 1'
   workflow_dispatch:
+    inputs:
+      open_pr:
+        description: Open or update a refresh pull request when the data is out of date
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -14,6 +32,8 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    outputs:
+      outdated: ${{ steps.compare.outputs.outdated }}
 
     steps:
     - uses: actions/checkout@v6
@@ -29,6 +49,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Compare data files with their sources
+      id: compare
       env:
         # Optional repository secrets for the NIP institution list. Without
         # them, NIBSS codes are not checked and the CBN lists still are.
@@ -41,4 +62,181 @@ jobs:
         NIP_INSTITUTIONS_URL_3: ${{ secrets.NIP_INSTITUTIONS_URL_3 }}
         NIP_INSTITUTIONS_API_KEY_3: ${{ secrets.NIP_INSTITUTIONS_API_KEY_3 }}
         NIP_INSTITUTIONS_KEY_HEADER_3: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER_3 }}
-      run: python -m src.refresh all --check
+        REFRESH_FOLLOWS: ${{ github.event_name == 'schedule' || inputs.open_pr == true }}
+      run: |
+        if python -m src.refresh all --check; then
+          echo "outdated=false" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+        echo "outdated=true" >> "$GITHUB_OUTPUT"
+        if [ "$REFRESH_FOLLOWS" = true ]; then
+          echo "::notice::The data is out of date; the refresh job opens or updates a pull request with the result."
+          exit 0
+        fi
+        echo "::error::The data is out of date. Refresh it locally with python -m src.refresh <CODE> and open a pull request, or run this workflow on main with 'Open or update a refresh pull request' ticked."
+        exit 1
+
+  refresh:
+    name: Refresh the data and open a pull request
+    needs: check
+    if: needs.check.outputs.outdated == 'true' && (github.event_name == 'schedule' || inputs.open_pr == true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Only this job writes anything: it pushes the refreshed data and opens the pull request.
+    permissions:
+      contents: write
+      pull-requests: write
+    # Two runs at once (the schedule and a manual one) would push to the same branch.
+    concurrency:
+      group: data-refresh
+      cancel-in-progress: false
+    defaults:
+      run:
+        shell: bash
+    env:
+      GH_TOKEN: ${{ secrets.DATA_REFRESH_TOKEN || github.token }}
+      OWN_TOKEN: ${{ secrets.DATA_REFRESH_TOKEN == '' }}
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        # The same token pushes the branch: with the personal token the push starts the
+        # test workflow, as a maintainer's would; with the workflow's own token it does not.
+        token: ${{ secrets.DATA_REFRESH_TOKEN || github.token }}
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+
+    - name: Pick the branch
+      id: branch
+      run: |
+        date=$(date -u +%Y-%m-%d)
+        # A refresh pull request still open from an earlier run gets this refresh too.
+        existing=$(gh pr list --state open --base main --json number,headRefName,url \
+          --jq '[.[] | select(.headRefName | startswith("data/refresh-"))] | sort_by(.number) | last // empty')
+        if [ -n "$existing" ]; then
+          number=$(jq -r .number <<<"$existing")
+          branch=$(jq -r .headRefName <<<"$existing")
+          echo "Pull request #$number ($(jq -r .url <<<"$existing")) is still open, so the refresh goes to its branch, $branch."
+          git checkout --track "origin/$branch"
+        else
+          number=
+          branch="data/refresh-$date"
+          git checkout -b "$branch"
+        fi
+        {
+          echo "date=$date"
+          echo "number=$number"
+          echo "branch=$branch"
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Refresh the data
+      id: refresh
+      env:
+        NUMBER: ${{ steps.branch.outputs.number }}
+        NIP_INSTITUTIONS_URL: ${{ secrets.NIP_INSTITUTIONS_URL }}
+        NIP_INSTITUTIONS_API_KEY: ${{ secrets.NIP_INSTITUTIONS_API_KEY }}
+        NIP_INSTITUTIONS_KEY_HEADER: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER }}
+        NIP_INSTITUTIONS_URL_2: ${{ secrets.NIP_INSTITUTIONS_URL_2 }}
+        NIP_INSTITUTIONS_API_KEY_2: ${{ secrets.NIP_INSTITUTIONS_API_KEY_2 }}
+        NIP_INSTITUTIONS_KEY_HEADER_2: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER_2 }}
+        NIP_INSTITUTIONS_URL_3: ${{ secrets.NIP_INSTITUTIONS_URL_3 }}
+        NIP_INSTITUTIONS_API_KEY_3: ${{ secrets.NIP_INSTITUTIONS_API_KEY_3 }}
+        NIP_INSTITUTIONS_KEY_HEADER_3: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER_3 }}
+      run: |
+        # On an open pull request's branch, first see whether the sources changed since its last refresh.
+        if [ -n "$NUMBER" ] && python -m src.refresh all --check; then
+          echo "::notice::Pull request #$NUMBER already holds data matching the sources, so there is nothing to push."
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+        # The report names banks, institutions and settings, never the NIP endpoints or keys, so
+        # it can go into the pull request. A failed refresh stops the job here, before anything
+        # is committed or published.
+        python -m src.refresh all 2>&1 | tee "$RUNNER_TEMP/report.txt"
+        if [ -z "$(git status --porcelain -- data/countries)" ]; then
+          echo "::notice::The refresh left every data file as it was, so there is nothing to push."
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Run the checks the test workflow runs
+      # A pull request opened with the workflow's own token does not start that workflow.
+      if: steps.refresh.outputs.changed == 'true'
+      run: |
+        ruff format --check .
+        ruff check .
+        mypy
+        pytest -v --tb=short
+
+    - name: Commit and push the refreshed data
+      if: steps.refresh.outputs.changed == 'true'
+      env:
+        DATE: ${{ steps.branch.outputs.date }}
+        NUMBER: ${{ steps.branch.outputs.number }}
+        BRANCH: ${{ steps.branch.outputs.branch }}
+        RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add data/countries
+        git commit --quiet \
+          --message "data: refresh from the official sources ($DATE)" \
+          --message "Generated by the Data Freshness workflow: $RUN_URL"
+        if [ -z "$NUMBER" ] && git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null; then
+          echo "::warning::Branch $BRANCH exists without an open pull request, left by a run that could not open one or by a closed one; it is replaced."
+          git push --force --set-upstream origin "$BRANCH"
+        else
+          git push --set-upstream origin "$BRANCH"
+        fi
+
+    - name: Open the pull request, or report the push on the open one
+      if: steps.refresh.outputs.changed == 'true'
+      env:
+        DATE: ${{ steps.branch.outputs.date }}
+        NUMBER: ${{ steps.branch.outputs.number }}
+        BRANCH: ${{ steps.branch.outputs.branch }}
+        RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      run: |
+        report="$RUNNER_TEMP/report.txt"
+        # A pull request body holds 65,536 characters.
+        if [ "$(wc -c < "$report")" -gt 60000 ]; then
+          head -c 60000 "$report" > "$report.cut"
+          printf '\n[The report is cut here; the whole of it is in the workflow run log.]\n' >> "$report.cut"
+          report="$report.cut"
+        fi
+        {
+          if [ -n "$NUMBER" ]; then
+            echo "The sources changed again, so the [Data Freshness workflow]($RUN_URL) ran \`python -m src.refresh all\` on $DATE and pushed the result to this branch. Its report:"
+          else
+            echo "The weekly data check found the committed data out of date, so the [Data Freshness workflow]($RUN_URL) ran \`python -m src.refresh all\` on $DATE and committed the result for review. Its report:"
+          fi
+          echo
+          echo '```text'
+          cat "$report"
+          echo '```'
+          echo
+          echo "Before merging, review the diff of the data files. A warning above about a reviewed file (\`nibss_code_matches.json\`, \`trading_names.json\` or \`cbn_bank_codes.json\` under \`src/countries/nigeria/\`) is fixed on this branch by editing the file and running the refresh again, as the README's \"Refreshing data\" section describes."
+          if [ "$OWN_TOKEN" = true ]; then
+            echo
+            echo "The refresh job ran \`ruff format --check .\`, \`ruff check .\`, \`mypy\` and \`pytest\` on this data before committing it, and they passed. The commit was pushed with the workflow's own token, which starts no workflow, so the Python Tests checks that \`main\` requires have not run here: push a commit to this branch (an empty one will do), or close and reopen the pull request, to start them."
+          fi
+        } > "$RUNNER_TEMP/body.md"
+        if [ -n "$NUMBER" ]; then
+          gh pr comment "$NUMBER" --body-file "$RUNNER_TEMP/body.md"
+          exit 0
+        fi
+        if ! gh pr create --base main --head "$BRANCH" \
+            --title "data: refresh from the official sources ($DATE)" --body-file "$RUNNER_TEMP/body.md"; then
+          echo "::error::The pull request could not be opened, though branch $BRANCH was pushed (the next run replaces it). With the workflow's own token, the repository must allow GitHub Actions to create pull requests (Settings > Actions > General > Workflow permissions); otherwise store a fine-grained personal access token as the DATA_REFRESH_TOKEN secret. The README's 'Refreshing data' section describes both."
+          exit 1
+        fi

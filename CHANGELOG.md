@@ -6,6 +6,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ### Added
 
+- The Monday data check opens a pull request when a data file no longer matches its sources: it runs the refresh, the formatting, lint, type and test checks, commits the data on a `data/refresh-YYYY-MM-DD` branch and puts the refresh's report in the description; a refresh pull request still open gets the next refresh pushed to its branch instead. A manual run only reports unless "Open or update a refresh pull request" is ticked. With the workflow's own token the pull request's checks must be started by a push or by closing and reopening it; a fine-grained personal access token in the `DATA_REFRESH_TOKEN` secret makes them start on their own. The README's "Scheduled refreshes" section describes both.
 - The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
 
 ## 0.6.0 - 2026-10-22
