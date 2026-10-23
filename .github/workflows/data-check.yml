@@ -36,7 +36,7 @@ jobs:
       needs_refresh: ${{ steps.compare.outputs.needs_refresh }}
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Set up Python
       uses: actions/setup-python@v6
@@ -100,7 +100,7 @@ jobs:
       OWN_TOKEN: ${{ secrets.DATA_REFRESH_TOKEN == '' }}
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
       with:
         # The same token pushes the branch: with the personal token the push starts the
         # test workflow, as a maintainer's would; with the workflow's own token it does not.
