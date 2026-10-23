@@ -13,7 +13,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+# pip is only needed to install the packages and is removed afterwards: the API
+# does not use it at run time, and the image scan in CI would otherwise flag the
+# copies of urllib3, msgpack and pkg_resources that pip vendors.
+RUN pip install -r requirements.txt \
+    && pip uninstall --yes pip
 
 COPY app.py gunicorn.conf.py ./
 COPY src ./src

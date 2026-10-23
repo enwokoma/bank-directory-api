@@ -152,6 +152,15 @@ jobs:
         if docker compose logs api | grep -F '[ERROR]'; then echo "The API logged an error."; exit 1; fi
         docker compose down
 
+    - name: Scan the image for known vulnerabilities
+      # Trivy runs from its own image and reads bank-directory-api:local, which the
+      # step above built, through the Docker socket. A high or critical vulnerability
+      # with a fix, in a system or a Python package, fails the job; one without a fix
+      # yet is left out. The README's development checks show how to run it locally.
+      run: |
+        docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock \
+          aquasec/trivy:0.76.1 image --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 bank-directory-api:local
+
     - name: Show the container logs
       if: failure()
       run: |

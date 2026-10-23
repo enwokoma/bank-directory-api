@@ -6,6 +6,8 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ### Added
 
+- The Swagger spec at `/apispec_1.json` describes every response with a schema, under `definitions` (`Bank`, `BankList`, `CountryDetail`, `Detection`, `DetectionCandidate`, `Recommended`, `Error` and the rest), and an example taken from the README, so typed clients can be generated from it and Swagger UI shows a real answer for each route. Fields that can be null carry `x-nullable`.
+- The Monday data check opens a pull request when a data file no longer matches its sources: it runs the refresh, the formatting, lint, type and test checks, commits the data on a `data/refresh-YYYY-MM-DD` branch and puts the refresh's report in the description; a refresh pull request still open gets the next refresh pushed to its branch instead. A manual run only reports unless "Open or update a refresh pull request" is ticked. With the workflow's own token the pull request's checks must be started by a push or by closing and reopening it; a fine-grained personal access token in the `DATA_REFRESH_TOKEN` secret makes them start on their own. The README's "Scheduled refreshes" section describes both.
 - `python -m src.countries.nigeria.bank_code_sources` reads Paystack's, Monnify's and Flutterwave's bank lists and reports the CBN bank codes the reviewed file lacks or the providers disagree on; Monnify's and Flutterwave's credentials go in `.env`. `SourceClient` gained `post_json` for their logins.
 - Nigeria: CBN bank codes for Advancly (`50134`, Biztrust's licence), AMML (`51047`), Letshego (`50296`, FBN Microfinance Bank's licence, with its legacy NIBSS code `216` as an `other_bank_codes` entry) and University of Benin MFB (`51271`): 598 of 880 institutions, 311 of the 417 on NIP.
 - The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
@@ -15,6 +17,12 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 ### Changed
 
 - `scripts/upload-release-assets.sh` is now `scripts/create-release.sh`, which also creates the release from the changelog when it does not exist yet. The release workflow runs it, so it is only run by hand when that job failed.
+- Dependabot checks the Python packages, the workflows' actions and the Dockerfile's base image every Monday; minor and patch updates of Python packages come together in one pull request.
+- CodeQL scans the Python code and the workflows on every change to `main`, on pull requests and once a week, with its findings under the repository's Security tab.
+- CI scans the built image with Trivy: a high or critical vulnerability that has a fix fails the run. The README's development checks show how to run the scan locally.
+- An hourly workflow fetches the public instance's `/` and `/apispec_1.json` and, when either does not answer 200 within 20 seconds, opens an issue titled "Public instance is down" or adds the details to the open one. It needs the `PUBLIC_SITE_URL` variable and is a coarse check; the README names external monitors for alerting.
+- The README has an "API stability" section: responses only gain fields within a minor version, nothing is removed or renamed without a major version, bank ids are stable, the data file's shape is part of the API, and breaking changes are announced under a "Breaking changes" heading.
+- The image no longer carries pip. The API does not use it at run time, and the image scan flagged the copies of urllib3, msgpack and pkg_resources that pip vendors, which no `pip install` can update.
 
 ## 0.6.0 - 2026-10-22
 

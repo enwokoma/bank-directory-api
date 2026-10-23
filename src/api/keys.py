@@ -33,8 +33,12 @@ def describe_key():
     responses:
       200:
         description: The key's prefix, email, dates and rate limit
+        schema:
+          $ref: '#/definitions/ApiKeyLookup'
       401:
         description: No key, or an unknown or revoked key
+        schema:
+          $ref: '#/definitions/Error'
     """
     key = current_caller().key
     if key is None:
