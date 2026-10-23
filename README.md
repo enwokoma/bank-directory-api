@@ -207,6 +207,8 @@ Set the version in `src/__init__.py`, date the changelog, merge, tag, create the
 
 Every push runs the checks and the Docker setups in CI, and a workflow compares the data files with their sources every Monday (see [How the data works](#how-the-data-works)). `main` is protected: changes land through pull requests whose checks pass, and nothing is force-pushed or deleted, so a release is always cut from a state CI has run.
 
+CI also scans the built image for known vulnerabilities, CodeQL scans the code on every change to `main`, and Dependabot proposes dependency updates every Monday (see [Development checks](#development-checks)). Once the repository has the `PUBLIC_SITE_URL` variable (see [docs/deploy.md](docs/deploy.md#deploying-releases-automatically)), a workflow fetches the public instance's `/` and `/apispec_1.json` every hour and, when either does not answer 200 within 20 seconds, opens an issue titled "Public instance is down", or adds the details to the open one; close it once the site is back. That is a coarse check: one request an hour from GitHub's runners, which can start a scheduled run late. For alerting, point an external monitor such as [UptimeRobot](https://uptimerobot.com) or [Better Stack](https://betterstack.com/uptime) at `/` as well; it checks every few minutes and notifies you at once.
+
 ## How the data works
 
 Bank data is not fetched when a request comes in. Each country has a JSON file in `data/countries/` (for example `data/countries/NGA.json`) that is generated from its sources, reviewed as an ordinary git diff, and committed. The API loads every file at startup and refuses to start if one fails validation: unknown bank types, malformed or duplicated codes, and unsorted banks are all rejected.
@@ -779,6 +781,16 @@ pytest
 
 CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serves the app with gunicorn and queries it. `main` only takes pull requests whose checks have passed. It also builds the image and runs each Docker setup: the public one with a real Redis, checking rate limits, keys, logs and that nothing logs an error; the same with Caddy in front; the Coolify Compose file; and the local `compose.yaml`. Tests never read your `.env`, call a real NIP list or send email.
 
+CI then scans the image that `compose.yaml` built with [Trivy](https://trivy.dev) for known vulnerabilities in its system and Python packages. A high or critical one that has a fix fails the run; one without a fix yet is left out. To run the scan yourself, build the image and point Trivy's own image at it through the Docker socket:
+
+```bash
+docker compose build
+docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock \
+  aquasec/trivy:0.76.1 image --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 bank-directory-api:local
+```
+
+The first run downloads Trivy's vulnerability database, which takes a minute. [CodeQL](https://codeql.github.com) scans the Python code and the workflows on every change to `main` and once a week, with its findings under the repository's Security tab, and [Dependabot](.github/dependabot.yml) proposes new versions of the Python packages, the actions and the base image every Monday, minor and patch updates of Python packages together in one pull request.
+
 ## Notes on Nigeria's data
 
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
@@ -789,6 +801,16 @@ CI runs the same checks on Python 3.11, 3.12 and 3.13 for every push, then serve
 - Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank, Abeg Technologies, OSCT and Visual ICT hold the codes NIP lists as FBNQuest Merchant Bank, Pocket App, Oscotech MFB and TagPay.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
 - The register also has a per-bank detail endpoint with licence tier and website, but it fails for many banks and its websites are out of date, so it is not used.
+
+## API stability
+
+The version in `src/__init__.py`, which every release tag carries, says what may have changed between two releases:
+
+- Within a minor version, responses only gain fields. Code that reads the API or the data file should ignore fields it does not know, and never reject a record for having one.
+- Nothing is removed or renamed, in a response or in the data file, without a new major version and a notice in the changelog.
+- Bank ids are stable. A bank keeps its id across refreshes and releases, and stays in the data as `delisted` when the regulator stops listing it, so the ids and codes you have stored keep resolving.
+- The data file's shape, `data/countries/<CODE>.json` as the API serves it, is part of the API and follows the same rules.
+- Breaking changes, including behaviour that changes without a field being removed, are announced under a **Breaking changes** heading at the top of the release's changelog entry and release notes, as the notes for release 0.4.0 did when the bank list began returning only active banks by default.
 
 ## Releases
 
