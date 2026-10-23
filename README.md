@@ -733,7 +733,7 @@ The command prints which banks were added, delisted, listed again or otherwise c
 
 Every Monday the Data Freshness workflow (`.github/workflows/data-check.yml`) runs `python -m src.refresh all --check`. When a data file no longer matches its sources, the workflow runs the refresh itself, runs the checks CI runs (`ruff format --check .`, `ruff check .`, `mypy` and `pytest`) on the result, commits the data files on a branch named `data/refresh-YYYY-MM-DD` and opens a pull request against `main` whose description is the refresh's report: the banks added, delisted, listed again or changed, and any warning about the reviewed files. Bringing the data up to date then means reviewing the diff, fixing on that branch what the warnings point at, and merging. While such a pull request is open, the next Monday's run pushes a new refresh to its branch when the sources changed again, and posts the report as a comment, rather than opening a second one.
 
-Running the workflow by hand from the Actions tab only reports, as before: a run that finds a difference fails. Tick "Open or update a refresh pull request" to get the pull request without waiting for Monday, and run it on `main`, since the branch is cut from the ref the workflow runs on.
+Running the workflow by hand from the Actions tab only reports, as before: a run that finds a difference, or cannot read a source, fails. Tick "Open or update a refresh pull request" to get the pull request without waiting for Monday, and run it on `main`, since the branch is cut from the ref the workflow runs on.
 
 The pull request is opened with the workflow's own `GITHUB_TOKEN` unless the repository has a `DATA_REFRESH_TOKEN` secret. The two differ in what has to happen by hand:
 

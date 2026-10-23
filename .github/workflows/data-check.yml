@@ -33,7 +33,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     outputs:
-      outdated: ${{ steps.compare.outputs.outdated }}
+      needs_refresh: ${{ steps.compare.outputs.needs_refresh }}
 
     steps:
     - uses: actions/checkout@v6
@@ -64,22 +64,24 @@ jobs:
         NIP_INSTITUTIONS_KEY_HEADER_3: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER_3 }}
         REFRESH_FOLLOWS: ${{ github.event_name == 'schedule' || inputs.open_pr == true }}
       run: |
+        # The check exits with 1 both when a file is out of date and when a source could not be
+        # read; its last lines say which. The refresh job tells them apart by trying the refresh.
         if python -m src.refresh all --check; then
-          echo "outdated=false" >> "$GITHUB_OUTPUT"
+          echo "needs_refresh=false" >> "$GITHUB_OUTPUT"
           exit 0
         fi
-        echo "outdated=true" >> "$GITHUB_OUTPUT"
+        echo "needs_refresh=true" >> "$GITHUB_OUTPUT"
         if [ "$REFRESH_FOLLOWS" = true ]; then
-          echo "::notice::The data is out of date; the refresh job opens or updates a pull request with the result."
+          echo "::notice::The check did not pass, so the refresh job follows: it opens or updates a pull request with the refreshed data, or fails if a source cannot be read."
           exit 0
         fi
-        echo "::error::The data is out of date. Refresh it locally with python -m src.refresh <CODE> and open a pull request, or run this workflow on main with 'Open or update a refresh pull request' ticked."
+        echo "::error::The check did not pass: a data file is out of date, or a source could not be read (see the lines above). Refresh the data locally with python -m src.refresh <CODE> and open a pull request, or run this workflow on main with 'Open or update a refresh pull request' ticked."
         exit 1
 
   refresh:
     name: Refresh the data and open a pull request
     needs: check
-    if: needs.check.outputs.outdated == 'true' && (github.event_name == 'schedule' || inputs.open_pr == true)
+    if: needs.check.outputs.needs_refresh == 'true' && (github.event_name == 'schedule' || inputs.open_pr == true)
     runs-on: ubuntu-latest
     timeout-minutes: 30
     # Only this job writes anything: it pushes the refreshed data and opens the pull request.
