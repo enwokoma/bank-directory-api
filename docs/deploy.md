@@ -60,9 +60,9 @@ With the service tracking `latest`, as `deploy/coolify/docker-compose.yml` does,
 1. In Coolify, under **Keys & Tokens > API tokens**, create a token for the workflow with the **deploy** permission only, and copy it. Coolify's API must be enabled under **Settings > API**; leave its IP allowlist empty, since GitHub's runners have no fixed addresses.
 2. Open the service, then its **Webhooks** tab, and copy the **Deploy Webhook** URL. It looks like `https://coolify.example.com/api/v1/deploy?uuid=<service>&force=false`.
 3. In the service's compose editor, make sure the api service reads `image: ghcr.io/enwokoma/bank-directory-api:latest` with `pull_policy: always`, as in the repository's file, and redeploy once by hand.
-4. In the GitHub repository, under **Settings > Secrets and variables > Actions**, add the secrets `COOLIFY_WEBHOOK_URL` (the URL from step 2) and `COOLIFY_API_TOKEN` (the token from step 1), and the variable `PUBLIC_SITE_URL` with the site's address, such as `https://banks.example.com`.
+4. In the GitHub repository, under **Settings > Secrets and variables > Actions**, add the secrets `COOLIFY_WEBHOOK_URL` (the URL from step 2) and `COOLIFY_API_TOKEN` (the token from step 1), and the variable `PUBLIC_SITE_URL` with the site's address, such as `https://banks.example.com`. The same variable tells the hourly uptime check which site to watch (see the README's [Keep it healthy](../README.md#10-keep-it-healthy)).
 
-From then on, every release deploys itself; the workflow's **Deploy to the public instance** job shows what happened. Without the secrets the job does nothing, and the image is only published. To deploy the latest release again, or to test the setup, run the workflow by hand; it builds nothing, redeploys the latest published image, and checks that the site answers with the version on `main`:
+From then on, every release deploys itself; the workflow's **Deploy to the public instance** job shows what happened. Without the secrets the job does nothing, and the image is only published. To deploy the latest release again, or to test the setup, run the workflow by hand; it builds nothing and creates no release, redeploys the latest published image, and checks that the site answers with the version on `main`:
 
 ```bash
 gh workflow run release-image.yml
@@ -71,6 +71,16 @@ gh workflow run release-image.yml
 To hold the site at one release while newer ones are published, pin the image in Coolify to that release's tag and digest instead of `latest`; the digest is on the `Digest:` line of `docker buildx imagetools inspect ghcr.io/enwokoma/bank-directory-api:0.6.0`. Deployments the workflow triggers then keep that release until the pin is removed.
 
 Manage keys from the service's **Terminal** in Coolify with `python -m src.keys_admin`.
+
+## Verifying the image
+
+The release workflow attests each image's build provenance: a statement, signed through GitHub's Sigstore instance, that the image index published as `ghcr.io/enwokoma/bank-directory-api:X.Y.Z` was built by this repository's release workflow from the release's tag. GitHub keeps the attestation, and it is also pushed to the registry next to the image. To check an image before deploying it, with the GitHub CLI signed in:
+
+```bash
+gh attestation verify oci://ghcr.io/enwokoma/bank-directory-api:0.7.0 --repo enwokoma/bank-directory-api
+```
+
+It reads the image's digest from the registry, finds the attestation GitHub holds for that digest, verifies the signature and prints the workflow and tag that built it; `--format json` shows the whole statement. The check fails for an image that was built elsewhere, altered or re-tagged. Any tag works, `latest` and `0.7` included, as does a digest, `oci://ghcr.io/enwokoma/bank-directory-api@sha256:<digest>`. Releases up to 0.6.0 were published before the workflow attested images, so they have no attestation to verify.
 
 ## Dedicated instance, from AWS CloudShell
 

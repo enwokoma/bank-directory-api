@@ -1,0 +1,106 @@
+name: Uptime
+
+# Checks once an hour that the public instance answers: its health check at /
+# and its OpenAPI document at /apispec_1.json must both return 200 within 20
+# seconds. When one does not, the run fails and an issue titled "Public
+# instance is down" is opened with the details, or the details are added to
+# the open one. The site's address is the repository variable PUBLIC_SITE_URL;
+# without it there is nothing to check and the run says so.
+#
+# This is a coarse check: one request an hour, from GitHub's runners, which
+# can start a scheduled run late. For alerting, point an external monitor at
+# the site as well (see the README's "Keep it healthy").
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check the public instance
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      details: ${{ steps.fetch.outputs.details }}
+    env:
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+    steps:
+      - name: Fetch the health check and the OpenAPI document
+        id: fetch
+        run: |
+          if [ -z "$PUBLIC_SITE_URL" ]; then
+            echo "::notice::PUBLIC_SITE_URL is not set, so there is no public instance to check."
+            exit 0
+          fi
+          site="${PUBLIC_SITE_URL%/}"
+          failed=0
+          {
+            echo "Checked at $(date -u '+%Y-%m-%d %H:%M UTC') by run $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
+            echo
+            echo "| URL | Status | Time | Result |"
+            echo "|---|---|---|---|"
+          } > details.md
+          for path in / /apispec_1.json; do
+            url="$site$path"
+            # Without --fail, a refused or timed-out connection still reports its status, 000.
+            read -r status seconds < <(curl --silent --output /dev/null --max-time 20 \
+              --write-out '%{http_code} %{time_total}\n' "$url" || true)
+            case "$status" in
+              200) result="ok" ;;
+              000) result="no answer: the connection failed or took over 20 seconds"; failed=1 ;;
+              *) result="not 200"; failed=1 ;;
+            esac
+            # One decimal is enough, cut without arithmetic: 0.365289 becomes 0.3, and 20 stays 20.
+            whole="${seconds%%.*}"
+            fraction="${seconds#"$whole"}"
+            printf '| %s | %s | %s%ss | %s |\n' "$url" "$status" "$whole" "${fraction:0:2}" "$result" >> details.md
+          done
+          cat details.md >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "details<<DETAILS_END"
+            cat details.md
+            echo "DETAILS_END"
+          } >> "$GITHUB_OUTPUT"
+          if [ "$failed" = 1 ]; then
+            echo "::error::$site did not answer 200 on every URL; see the run's summary."
+            exit 1
+          fi
+          echo "$site answers."
+
+  report:
+    name: Open or update the issue
+    needs: check
+    if: ${{ !cancelled() && needs.check.result == 'failure' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TITLE: Public instance is down
+      DETAILS: ${{ needs.check.outputs.details }}
+    steps:
+      - name: Open the issue, or add the details to the open one
+        run: |
+          {
+            echo "The hourly uptime check found the public instance not answering."
+            echo
+            if [ -n "$DETAILS" ]; then
+              printf '%s\n' "$DETAILS"
+            else
+              echo "The details did not reach this job; see the run $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
+            fi
+            echo
+            echo "Check the service and its proxy on the instance (docs/deploy.md). Close this issue once the site answers again; while it stays open, every failed check adds a comment here instead of opening another issue."
+          } > body.md
+          number=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title \"$TITLE\"" \
+            --json number,title --jq "map(select(.title == \"$TITLE\")) | .[0].number // empty")
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --repo "$GITHUB_REPOSITORY" --body-file body.md
+            echo "Added the details to issue #$number."
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body-file body.md
+          fi
