@@ -1,10 +1,11 @@
 """Flask application entrypoint.
 
 `create_app()` builds the web server: it loads every country's bank data,
-wires the route blueprint into Flask, and enables Swagger UI. Settings come
-from environment variables (see `src/core/settings.py`); with none set, the
-API serves its data openly. Bank data loading and validation live in
-`src/core/dataset.py`; country details live under `src/countries/`.
+wires the route blueprint into Flask, and enables Swagger UI, whose spec
+describes every response with the definitions in `src/api/schemas.py`.
+Settings come from environment variables (see `src/core/settings.py`); with
+none set, the API serves its data openly. Bank data loading and validation
+live in `src/core/dataset.py`; country details live under `src/countries/`.
 """
 
 from flasgger import Swagger
@@ -15,6 +16,7 @@ from src import __version__
 from src.api.access import install_access_control
 from src.api.keys import keys_bp
 from src.api.routes import banks_bp
+from src.api.schemas import DEFINITIONS
 from src.api.signup import signup_bp
 from src.core.dataset import load_datasets
 from src.core.email import SesEmailSender
@@ -66,7 +68,7 @@ def create_app(settings: Settings | None = None) -> Flask:
             "Countries are added gradually; GET /api/countries lists the ones available."
         ),
     }
-    Swagger(app, config=SWAGGER_CONFIG)
+    Swagger(app, config=SWAGGER_CONFIG, template={"definitions": DEFINITIONS})
 
     install_access_control(app, settings, limited=[banks_bp, keys_bp], signup=[signup_bp])
     app.extensions["bank_email_sender"] = (
