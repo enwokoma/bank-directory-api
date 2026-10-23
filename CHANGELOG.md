@@ -6,6 +6,8 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ### Added
 
+- `python -m src.countries.nigeria.bank_code_sources` reads Paystack's, Monnify's and Flutterwave's bank lists and reports the CBN bank codes the reviewed file lacks or the providers disagree on; Monnify's and Flutterwave's credentials go in `.env`. `SourceClient` gained `post_json` for their logins.
+- Nigeria: CBN bank codes for Advancly (`50134`, Biztrust's licence), AMML (`51047`), Letshego (`50296`, FBN Microfinance Bank's licence, with its legacy NIBSS code `216` as an `other_bank_codes` entry) and University of Benin MFB (`51271`): 598 of 880 institutions, 311 of the 417 on NIP.
 - The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
 - Dependabot checks the Python packages, the workflows' actions and the Dockerfile's base image every Monday; minor and patch updates of Python packages come together in one pull request.
 - CodeQL scans the Python code and the workflows on every change to `main`, on pull requests and once a week, with its findings under the repository's Security tab.

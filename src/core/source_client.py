@@ -59,16 +59,22 @@ class SourceClient:
     def get_json(self, url: str, params: dict[str, str] | None = None, headers: dict[str, str] | None = None) -> Any:
         """Return the decoded JSON body of a GET request, retrying transient failures."""
         # An HTML challenge page instead of JSON makes response.json() raise a ValueError, which is retried.
-        return self._get(url, params, headers, lambda response: response.json())
+        return self._request("GET", url, params, None, headers, lambda response: response.json())
 
     def get_text(self, url: str, params: dict[str, str] | None = None, headers: dict[str, str] | None = None) -> str:
         """Return the body of a GET request as text, such as an HTML page, retrying transient failures."""
-        return self._get(url, params, headers, lambda response: response.text)
+        return self._request("GET", url, params, None, headers, lambda response: response.text)
 
-    def _get(
+    def post_json(self, url: str, data: dict[str, str] | None = None, headers: dict[str, str] | None = None) -> Any:
+        """Return the decoded JSON body of a POST request with form fields, such as a login, retrying transient failures."""
+        return self._request("POST", url, None, data, headers, lambda response: response.json())
+
+    def _request(
         self,
+        method: str,
         url: str,
         params: dict[str, str] | None,
+        data: dict[str, str] | None,
         headers: dict[str, str] | None,
         read: Callable[[requests.Response], Any],
     ) -> Any:
@@ -76,7 +82,10 @@ class SourceClient:
         for attempt in range(1, self.attempts + 1):
             self._wait_turn()
             try:
-                response = self.session.get(url, params=params, headers=headers, timeout=self.timeout_seconds)
+                if method == "POST":
+                    response = self.session.post(url, data=data, headers=headers, timeout=self.timeout_seconds)
+                else:
+                    response = self.session.get(url, params=params, headers=headers, timeout=self.timeout_seconds)
                 if response.status_code in _RETRY_STATUSES:
                     raise _TransientResponse(f"HTTP {response.status_code}")
                 response.raise_for_status()
