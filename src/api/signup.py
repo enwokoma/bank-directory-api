@@ -69,12 +69,20 @@ def signup():
     responses:
       202:
         description: A link to get the key is emailed, if the address can receive it
+        schema:
+          $ref: '#/definitions/SignupReceipt'
       400:
         description: The email address is missing or invalid
+        schema:
+          $ref: '#/definitions/Error'
       429:
         description: Too many sign-ups from this IP address
+        schema:
+          $ref: '#/definitions/Error'
       503:
         description: The email could not be sent
+        schema:
+          $ref: '#/definitions/Error'
     """
     email = normalize_email(_field("email"))
     if email is None:
@@ -146,8 +154,12 @@ def verify():
     responses:
       200:
         description: The new API key, shown once
+        schema:
+          $ref: '#/definitions/IssuedApiKey'
       400:
         description: The token is unknown, already used or expired
+        schema:
+          $ref: '#/definitions/Error'
     """
     browser = not request.is_json
     email = _store().redeem_signup_token(str(_field("token") or ""))

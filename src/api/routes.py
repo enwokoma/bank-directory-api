@@ -14,6 +14,7 @@ from typing import Any
 from flasgger import swag_from
 from flask import Blueprint, current_app, jsonify, request
 
+from src.api.schemas import ref
 from src.core.dataset import STATUSES, CountryDataset, search_text
 from src.core.detection import DEFAULT_COVERAGE, MAX_RECOMMENDED, Candidate, get_detector, recommended_count
 from src.countries.profile import CountryProfile
@@ -38,6 +39,8 @@ def list_countries():
     responses:
       200:
         description: Every country with bank data, with its bank count and data date
+        schema:
+          $ref: '#/definitions/CountryList'
     """
     datasets = sorted(_datasets().values(), key=lambda dataset: dataset.profile.name)
     return jsonify({"success": True, "countries": [_country_summary(dataset) for dataset in datasets]}), 200
@@ -58,8 +61,12 @@ def get_country(country_code: str):
     responses:
       200:
         description: The country's bank types, identifier schemes and data sources
+        schema:
+          $ref: '#/definitions/CountryLookup'
       404:
         description: The country is not supported yet
+        schema:
+          $ref: '#/definitions/Error'
     """
     dataset = _find_dataset(country_code)
     if dataset is None:
@@ -126,10 +133,16 @@ def list_banks(country_code: str):
     responses:
       200:
         description: Matching banks sorted by name
+        schema:
+          $ref: '#/definitions/BankList'
       400:
         description: An invalid type, status, limit or offset
+        schema:
+          $ref: '#/definitions/Error'
       404:
         description: The country is not supported yet
+        schema:
+          $ref: '#/definitions/Error'
     """
     dataset = _find_dataset(country_code)
     if dataset is None:
@@ -194,8 +207,12 @@ def get_bank(country_code: str, bank_id: str):
     responses:
       200:
         description: The bank, whether active or delisted
+        schema:
+          $ref: '#/definitions/BankLookup'
       404:
         description: The country is not supported, or it has no bank with this id
+        schema:
+          $ref: '#/definitions/Error'
     """
     dataset = _find_dataset(country_code)
     if dataset is None:
@@ -300,10 +317,14 @@ def _detection_spec(*, country_in_path: bool, post: bool) -> dict[str, Any]:
         "responses": {
             "200": {
                 "description": "The candidates, most likely first, each with its confidence and the evidence for it, "
-                "and the recommended ones to try first"
+                "and the recommended ones to try first",
+                "schema": ref("Detection"),
             },
-            "400": {"description": "A missing or malformed account number, or an invalid hint, type, limit or coverage"},
-            "404": {"description": "The country is not supported, or has no bank detection"},
+            "400": {
+                "description": "A missing or malformed account number, or an invalid hint, type, limit or coverage",
+                "schema": ref("Error"),
+            },
+            "404": {"description": "The country is not supported, or has no bank detection", "schema": ref("Error")},
         },
     }
     if post:
