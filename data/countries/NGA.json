@@ -302,7 +302,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "10018",
-        "nibss_code": "090759"
+        "nibss_code": "090759",
+        "cbn_bank_code": "50134"
       }
     },
     {
@@ -708,7 +709,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3243",
-        "nibss_code": "090116"
+        "nibss_code": "090116",
+        "cbn_bank_code": "51047"
       }
     },
     {
@@ -5284,7 +5286,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3671",
-        "nibss_code": "090420"
+        "nibss_code": "090420",
+        "cbn_bank_code": "50296"
       }
     },
     {
@@ -9299,7 +9302,8 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4027",
-        "nibss_code": "090266"
+        "nibss_code": "090266",
+        "cbn_bank_code": "51271"
       }
     },
     {
