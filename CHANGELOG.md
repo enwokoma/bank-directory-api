@@ -7,6 +7,11 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 ### Added
 
 - The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
+- Dependabot checks the Python packages, the workflows' actions and the Dockerfile's base image every Monday; minor and patch updates of Python packages come together in one pull request.
+- CodeQL scans the Python code and the workflows on every change to `main`, on pull requests and once a week, with its findings under the repository's Security tab.
+- CI scans the built image with Trivy: a high or critical vulnerability that has a fix fails the run. The README's development checks show how to run the scan locally.
+- An hourly workflow fetches the public instance's `/` and `/apispec_1.json` and, when either does not answer 200 within 20 seconds, opens an issue titled "Public instance is down" or adds the details to the open one. It needs the `PUBLIC_SITE_URL` variable and is a coarse check; the README names external monitors for alerting.
+- The README has an "API stability" section: responses only gain fields within a minor version, nothing is removed or renamed without a major version, bank ids are stable, the data file's shape is part of the API, and breaking changes are announced under a "Breaking changes" heading.
 
 ## 0.6.0 - 2026-10-22
 

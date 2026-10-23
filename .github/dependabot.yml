@@ -1,0 +1,36 @@
+# Dependabot opens pull requests for new versions of what the repository pins:
+# the Python packages in requirements.txt and requirements-dev.txt, the actions
+# the workflows use, and the image the Dockerfile starts from. Each is checked
+# on Monday. Minor and patch updates of Python packages come together in one
+# pull request a week; a major update gets its own, since it may need code
+# changes. Security updates are separate and arrive when an advisory is
+# published. Every pull request runs the full CI, including the image scan.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      python-packages:
+        patterns: ['*']
+        update-types: [minor, patch]
+    commit-message:
+      prefix: deps
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: ci
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: docker
