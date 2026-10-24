@@ -2,14 +2,15 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
-## Unreleased
+## 0.7.0 - 2026-10-24
 
 ### Added
 
 - The Swagger spec at `/apispec_1.json` describes every response with a schema, under `definitions` (`Bank`, `BankList`, `CountryDetail`, `Detection`, `DetectionCandidate`, `Recommended`, `Error` and the rest), and an example taken from the README, so typed clients can be generated from it and Swagger UI shows a real answer for each route. Fields that can be null carry `x-nullable`.
 - The Monday data check opens a pull request when a data file no longer matches its sources: it runs the refresh, the formatting, lint, type and test checks, commits the data on a `data/refresh-YYYY-MM-DD` branch and puts the refresh's report in the description; a refresh pull request still open gets the next refresh pushed to its branch instead. A manual run only reports unless "Open or update a refresh pull request" is ticked. With the workflow's own token the pull request's checks must be started by a push or by closing and reopening it; a fine-grained personal access token in the `DATA_REFRESH_TOKEN` secret makes them start on their own. The README's "Scheduled refreshes" section describes both.
 - `python -m src.countries.nigeria.bank_code_sources` reads the institution lists configured for the refresh and reports the CBN bank codes the reviewed file lacks or the lists disagree on. An institution list can now need a login first (`NIP_INSTITUTIONS_LOGIN_URL_n`, with the key written as `api key:secret key`), as Monnify's does, and a list without NIBSS codes is read for its bank codes only; Flutterwave's v3 list gives NIBSS codes as its own codes for most institutions, so it relays them too. `SourceClient` gained `post_json` for logins.
-- Nigeria: CBN bank codes for Advancly (`50134`, Biztrust's licence), AMML (`51047`), Letshego (`50296`, FBN Microfinance Bank's licence, with its legacy NIBSS code `216` as an `other_bank_codes` entry) and University of Benin MFB (`51271`): 598 of 880 institutions, 311 of the 417 on NIP.
+- Nigeria: CBN bank codes for Advancly (`50134`, Biztrust's licence), AMML (`51047`), Letshego (`50296`, FBN Microfinance Bank's licence, with its legacy NIBSS code `216` as an `other_bank_codes` entry) and University of Benin MFB (`51271`): 598 of 880 institutions, 393 of the 547 on NIP.
+- Nigeria: 130 more institutions have NIBSS codes, 547 of 880 (up from 417), relayed by Monnify's and Flutterwave's lists, read as the fourth and fifth NIP lists. A reviewed match keeps Ikire MFB on `090279`, which four lists agree on, where Monnify also lists the bank under Meridian MFB's code.
 - The release image workflow deploys each release to the public instance through Coolify's deploy webhook, waits for the deployment, and checks that the site answers with the new version, when the repository has the `COOLIFY_WEBHOOK_URL` and `COOLIFY_API_TOKEN` secrets and the `PUBLIC_SITE_URL` variable. Run by hand, it builds nothing and redeploys the latest published image. `deploy/coolify/docker-compose.yml` tracks the `latest` image and pulls it on every deploy.
 - The release workflow creates the GitHub release itself when a signed tag is pushed, with the tag's section of this changelog as the notes and every country's data file attached as it is at the tag, with a `SHA256SUMS` file; a release that already exists keeps its notes and only gets the files. Pushing the signed tag is now the only manual step of a release. The workflow checks that the changelog has the tag's `## X.Y.Z - date` section before building anything.
 - The published image carries GitHub's build provenance attestation, which `gh attestation verify oci://ghcr.io/enwokoma/bank-directory-api:X.Y.Z --repo enwokoma/bank-directory-api` checks; [docs/deploy.md](docs/deploy.md#verifying-the-image) explains it.
@@ -23,6 +24,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 ### Changed
 
 - `scripts/upload-release-assets.sh` is now `scripts/create-release.sh`, which also creates the release from the changelog when it does not exist yet. The release workflow runs it, so it is only run by hand when that job failed.
+- Nigeria's data was retrieved on 2026-10-24: 130 institutions gain a `nibss_code`; nothing is removed or renamed.
 - The image no longer carries pip. The API does not use it at run time, and the image scan flagged the copies of urllib3, msgpack and pkg_resources that pip vendors, which no `pip install` can update.
 
 ## 0.6.0 - 2026-10-22
