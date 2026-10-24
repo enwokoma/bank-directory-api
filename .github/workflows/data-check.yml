@@ -6,10 +6,13 @@ name: Data Freshness
 # On the weekly schedule, out-of-date data is refreshed here and opened as a
 # pull request on a branch named data/refresh-YYYY-MM-DD, with the refresh's
 # report as its description, so bringing the data up to date needs only a
-# review. While such a pull request is still open, the next refresh is pushed
-# to its branch instead of opening another. A manual run only reports, as a
-# pull request's checks would, unless "Open or update a refresh pull request"
-# is ticked; run it on main, since the branch is cut from the ref it runs on.
+# review. The refresh job always builds from main, whichever ref the workflow
+# runs on: while such a pull request is still open, each run rebuilds its
+# branch from main and the current sources instead of opening another, and
+# replaces the branch's commit when the data differs, so a matcher, reviewed
+# file or source fix merged to main reaches the pull request on the next run.
+# A manual run only reports, as a pull request's checks would, unless "Open or
+# update a refresh pull request" is ticked.
 #
 # The pull request is opened with the workflow's own token unless the
 # repository has a DATA_REFRESH_TOKEN secret, a fine-grained personal access
@@ -109,6 +112,12 @@ jobs:
     steps:
     - uses: actions/checkout@v7
       with:
+        # The refresh is built from main, the branch the pull request targets, whichever ref
+        # this run was started on, and never from an open refresh pull request's branch: that
+        # branch holds main as it was when it was cut, so a fix merged to main since (a matcher,
+        # a reviewed file, a source) would be ignored and the data would not be what main's code
+        # gives. The branch to push to is picked below.
+        ref: main
         # The same token pushes the branch: with the personal token the push starts the
         # test workflow, as a maintainer's would; with the workflow's own token it does not.
         token: ${{ secrets.DATA_REFRESH_TOKEN || github.token }}
@@ -128,29 +137,41 @@ jobs:
       id: branch
       run: |
         date=$(date -u +%Y-%m-%d)
-        # A refresh pull request still open from an earlier run gets this refresh too.
+        # A refresh pull request still open from an earlier run is rebuilt rather than added to.
         existing=$(gh pr list --state open --base main --json number,headRefName,url \
           --jq '[.[] | select(.headRefName | startswith("data/refresh-"))] | sort_by(.number) | last // empty')
+        edited=false
         if [ -n "$existing" ]; then
           number=$(jq -r .number <<<"$existing")
           branch=$(jq -r .headRefName <<<"$existing")
-          echo "Pull request #$number ($(jq -r .url <<<"$existing")) is still open, so the refresh goes to its branch, $branch."
-          git checkout --track "origin/$branch"
+          url=$(jq -r .url <<<"$existing")
+          # This job's branch changes nothing outside the data files. One that does was edited by
+          # hand (a fix made on the branch instead of on main); rebuilding it would lose that work.
+          if git diff --quiet "$(git merge-base origin/main "origin/$branch")" "origin/$branch" -- . ':(exclude)data/countries'; then
+            echo "Pull request #$number ($url) is still open, so this refresh is built from main again and replaces its branch, $branch, if the data differs."
+          else
+            edited=true
+            echo "::warning::Pull request #$number ($url) is still open and its branch, $branch, changes more than the data files, so it was edited by hand and is left as it is: merge it, or move the fix to main and close it, and the next run refreshes again."
+          fi
         else
           number=
           branch="data/refresh-$date"
-          git checkout -b "$branch"
         fi
+        # Always from main (see the checkout above), whether the branch is new or an open pull request's.
+        git checkout -B "$branch" origin/main
         {
           echo "date=$date"
           echo "number=$number"
           echo "branch=$branch"
+          echo "edited=$edited"
         } >> "$GITHUB_OUTPUT"
 
     - name: Refresh the data
       id: refresh
       env:
         NUMBER: ${{ steps.branch.outputs.number }}
+        BRANCH: ${{ steps.branch.outputs.branch }}
+        EDITED: ${{ steps.branch.outputs.edited }}
         NIP_INSTITUTIONS_URL: ${{ secrets.NIP_INSTITUTIONS_URL }}
         NIP_INSTITUTIONS_API_KEY: ${{ secrets.NIP_INSTITUTIONS_API_KEY }}
         NIP_INSTITUTIONS_KEY_HEADER: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER }}
@@ -168,9 +189,8 @@ jobs:
         NIP_INSTITUTIONS_API_KEY_5: ${{ secrets.NIP_INSTITUTIONS_API_KEY_5 }}
         NIP_INSTITUTIONS_KEY_HEADER_5: ${{ secrets.NIP_INSTITUTIONS_KEY_HEADER_5 }}
       run: |
-        # On an open pull request's branch, first see whether the sources changed since its last refresh.
-        if [ -n "$NUMBER" ] && python -m src.refresh all --check; then
-          echo "::notice::Pull request #$NUMBER already holds data matching the sources, so there is nothing to push."
+        if [ "$EDITED" = true ]; then
+          echo "The open pull request's branch was edited by hand (see the step above), so the data is not refreshed here."
           echo "changed=false" >> "$GITHUB_OUTPUT"
           exit 0
         fi
@@ -178,8 +198,13 @@ jobs:
         # it can go into the pull request. A failed refresh stops the job here, before anything
         # is committed or published.
         python -m src.refresh all 2>&1 | tee "$RUNNER_TEMP/report.txt"
-        if [ -z "$(git status --porcelain -- data/countries)" ]; then
+        git add data/countries
+        if git diff --quiet --cached HEAD -- data/countries; then
           echo "::notice::The refresh left every data file as it was, so there is nothing to push."
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+        elif [ -n "$NUMBER" ] && git diff --quiet --cached "origin/$BRANCH" -- data/countries; then
+          # Built from main again, the data came out as the open pull request already has it.
+          echo "::notice::Pull request #$NUMBER already holds the data that main's code and the sources give today, so there is nothing to push."
           echo "changed=false" >> "$GITHUB_OUTPUT"
         else
           echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -208,7 +233,12 @@ jobs:
         git commit --quiet \
           --message "data: refresh from the official sources ($DATE)" \
           --message "Generated by the Data Freshness workflow: $RUN_URL"
-        if [ -z "$NUMBER" ] && git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null; then
+        if [ -n "$NUMBER" ]; then
+          # The open pull request's branch holds only this job's data commit, rebuilt from main on
+          # every run (a branch edited by hand is left alone, see "Pick the branch"), so replacing
+          # it loses nothing. The lease refuses the push if the branch moved since this job fetched it.
+          git push --force-with-lease --set-upstream origin "$BRANCH"
+        elif git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null; then
           echo "::warning::Branch $BRANCH exists without an open pull request, left by a run that could not open one or by a closed one; it is replaced."
           git push --force --set-upstream origin "$BRANCH"
         else
@@ -232,7 +262,7 @@ jobs:
         fi
         {
           if [ -n "$NUMBER" ]; then
-            echo "The sources changed again, so the [Data Freshness workflow]($RUN_URL) ran \`python -m src.refresh all\` on $DATE and pushed the result to this branch. Its report:"
+            echo "The sources or \`main\` changed since this branch was last built, so the [Data Freshness workflow]($RUN_URL) ran \`python -m src.refresh all\` on \`main\` on $DATE and rebuilt this branch with the result: its single commit replaces the earlier one. Its report:"
           else
             echo "The weekly data check found the committed data out of date, so the [Data Freshness workflow]($RUN_URL) ran \`python -m src.refresh all\` on $DATE and committed the result for review. Its report:"
           fi
@@ -241,7 +271,7 @@ jobs:
           cat "$report"
           echo '```'
           echo
-          echo "Before merging, review the diff of the data files. A warning above about a reviewed file (\`nibss_code_matches.json\`, \`trading_names.json\` or \`cbn_bank_codes.json\` under \`src/countries/nigeria/\`) is fixed on this branch by editing the file and running the refresh again, as the README's \"Refreshing data\" section describes."
+          echo "Before merging, review the diff of the data files. A warning above about a reviewed file (\`nibss_code_matches.json\`, \`trading_names.json\` or \`cbn_bank_codes.json\` under \`src/countries/nigeria/\`) is fixed on \`main\`, through a pull request of its own; the next run of the workflow (or one started by hand with \"Open or update a refresh pull request\" ticked) then rebuilds this branch from \`main\`. A fix pushed to this branch instead is kept, but the branch is then no longer rebuilt until it is merged or closed. The README's \"Scheduled refreshes\" section describes this."
           if [ "$OWN_TOKEN" = true ]; then
             echo
             echo "The refresh job ran \`ruff format --check .\`, \`ruff check .\`, \`mypy\` and \`pytest\` on this data before committing it, and they passed. The commit was pushed with the workflow's own token, which starts no workflow, so the Python Tests checks that \`main\` requires have not run here: push a commit to this branch (an empty one will do), or close and reopen the pull request, to start them."
