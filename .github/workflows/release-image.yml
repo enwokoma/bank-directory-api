@@ -15,9 +15,11 @@ name: Release image
 #   provenance (docs/deploy.md says how to verify it).
 #
 # Then, when the repository has the COOLIFY_WEBHOOK_URL and COOLIFY_API_TOKEN
-# secrets, the public instance is redeployed through Coolify's deploy webhook,
-# and when it has the PUBLIC_SITE_URL variable, the job waits until the site
-# answers with the new version. Without them the image is only published.
+# secrets, the public instance's service is restarted through Coolify's API
+# with a pull of the latest images (the deploy webhook alone recreates a
+# Docker Compose service from the images already on the server), and when it
+# has the PUBLIC_SITE_URL variable, the job waits until the site answers with
+# the new version. Without them the image is only published.
 #
 # Running the workflow by hand (gh workflow run release-image.yml) builds
 # nothing and creates no release: it redeploys the latest published image and
@@ -199,17 +201,32 @@ jobs:
       COOLIFY_API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
       PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
     steps:
-      - name: Ask Coolify to redeploy the service, and wait for it
+      - name: Ask Coolify to restart the service with the latest images, and wait for it
         run: |
           if [ -z "$COOLIFY_WEBHOOK_URL" ] || [ -z "$COOLIFY_API_TOKEN" ]; then
             echo "::notice::COOLIFY_WEBHOOK_URL and COOLIFY_API_TOKEN are not set, so the public instance is not deployed."
             exit 0
           fi
-          # The webhook queues a deployment of the service, which pulls the image its compose file
-          # names: latest, which the publish job has just moved to this release. Coolify answers
-          # 405 to GET on this endpoint, so it is called with POST.
-          response=$(curl --silent --show-error --fail --request POST "$COOLIFY_WEBHOOK_URL" \
-            --header "Authorization: Bearer $COOLIFY_API_TOKEN" --header "Accept: application/json")
+          auth=(--header "Authorization: Bearer $COOLIFY_API_TOKEN" --header "Accept: application/json")
+          base="${COOLIFY_WEBHOOK_URL%%/api/v1/*}"
+          uuid=$(printf '%s' "$COOLIFY_WEBHOOK_URL" | sed -n 's/.*[?&]uuid=\([^&]*\).*/\1/p')
+          # For a Docker Compose service, Coolify's deploy webhook only recreates the containers from
+          # the images already on the server: it starts the service without pulling, so a release
+          # would never reach the site. The service's restart endpoint pulls the latest images first
+          # when asked to, under the same deploy permission; the webhook URL's uuid names the service.
+          # It answers with a message only, so the next step then watches the site.
+          if [ -n "$uuid" ]; then
+            if response=$(curl --silent --show-error --fail --request POST "${auth[@]}" \
+                "$base/api/v1/services/$uuid/restart?latest=true"); then
+              printf '%s\n' "$response" | jq -r '.message'
+              exit 0
+            fi
+            echo "::warning::Coolify did not restart $uuid as a service, so the deploy webhook is tried instead."
+          fi
+          # The webhook queues a deployment of the resource: for an application, one that pulls or
+          # builds and can be followed. Coolify answers 405 to GET on this endpoint, so it is called
+          # with POST.
+          response=$(curl --silent --show-error --fail --request POST "${auth[@]}" "$COOLIFY_WEBHOOK_URL")
           resource=$(printf '%s' "$response" | jq -r '.deployments[0].resource_uuid // empty')
           if [ -z "$resource" ]; then
             echo "::error::Coolify did not start a deployment: $response"
@@ -225,8 +242,7 @@ jobs:
           echo "Coolify queued deployment $deployment."
           api="${COOLIFY_WEBHOOK_URL%%/api/v1/deploy*}/api/v1/deployments/$deployment"
           for attempt in $(seq 1 60); do
-            status=$(curl --silent --show-error --fail --header "Authorization: Bearer $COOLIFY_API_TOKEN" \
-              --header "Accept: application/json" "$api" | jq -r '.status // empty')
+            status=$(curl --silent --show-error --fail "${auth[@]}" "$api" | jq -r '.status // empty')
             case "$status" in
               finished) echo "Deployment finished."; exit 0 ;;
               failed|cancelled*) echo "::error::Deployment $status; see the deployment's log in Coolify."; exit 1 ;;
