@@ -4,9 +4,9 @@
 #     so Coolify's proxy serves it over HTTPS and forwards to the API;
 #   - Environment Variables: set PUBLIC_BASE_URL, SIGNUP_EMAIL_FROM and
 #     AWS_REGION; the limits are optional.
-# The api service tracks the latest release and pulls it on every deploy, so
-# the release workflow can redeploy it through Coolify's webhook as soon as a
-# release's image is published (see docs/deploy.md). To hold a deployment at
+# The api service tracks the latest release, and the release workflow restarts
+# the service through Coolify's API with a pull of the latest images as soon as
+# a release's image is published (see docs/deploy.md). To hold a deployment at
 # one release instead, pin the image to that release's tag and digest.
 # SES uses the server's instance role. See docs/deploy.md.
 services:
