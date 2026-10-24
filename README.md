@@ -8,7 +8,7 @@ A public instance runs at [banks.globbapay.com](https://banks.globbapay.com/api-
 
 | Country | Codes | Institutions | Bank types | Transfer codes | Sources |
 | --- | --- | --- | --- | --- | --- |
-| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 417 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
+| Nigeria | `NG` / `NGA` | 880 | commercial, merchant, non-interest, payment service, microfinance, primary mortgage, mobile money | 6-digit NIBSS (NIP) codes for 547 of them | [CBN: Financial Institutions](https://www.cbn.gov.ng/supervision/finstitutions.html), [CBN: Payment Service Providers](https://www.cbn.gov.ng/PaymentsSystem/PSPs.html), [NIBSS Instant Payment](https://nibss-plc.com.ng/nibss-instant-payment/) institution list |
 
 `GET /api/countries` always shows the current list with each country's bank count and the date its data was retrieved. See [Notes on Nigeria's data](#notes-on-nigerias-data) for which banks have transfer codes. For Nigeria, `POST /api/detect-bank` also tells which banks a 10-digit account number can belong to, most likely first: see [Detect the bank from an account number](#detect-the-bank-from-an-account-number).
 
@@ -549,7 +549,7 @@ curl "http://localhost:5006/api/countries/NG/banks?type=commercial&q=zenith"
 
 `total` counts every match; `banks` holds the requested page. Banks are sorted by name.
 
-A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (417 today), which includes mobile money operators such as OPay and PalmPay:
+A bank transfer dropdown for Nigeria needs only the institutions with a NIBSS code (547 today), which includes mobile money operators such as OPay and PalmPay:
 
 ```bash
 curl "http://localhost:5006/api/countries/NG/banks?has=nibss_code"
@@ -677,7 +677,7 @@ A `GET` answer is cached like the other data, since it depends only on the input
 
 #### What the check digit can and cannot tell apart
 
-Only the weighted sum of an institution's code modulo 10 matters, so the 417 institutions on NIP fall into ten groups of about 40, and a number valid for one member of a group is valid for all of them. The best-known institutions fall as follows:
+Only the weighted sum of an institution's code modulo 10 matters, so the 547 institutions on NIP fall into ten groups of about 55, and a number valid for one member of a group is valid for all of them. The best-known institutions fall as follows:
 
 | Group | Institutions |
 | --- | --- |
@@ -816,8 +816,8 @@ The first run downloads Trivy's vulnerability database, which takes a minute. [C
 
 - The banks come from the JSON endpoints behind the CBN's Financial Institutions pages: one per licence category.
 - Mobile money operators come from the CBN's Payment Service Providers page, which lists 17. The register's own mobile money list is shorter and leaves out OPay. Each operator's NIBSS code is the one its wallets use on NIP.
-- 417 of the 880 institutions have a NIBSS code: all 28 commercial banks, all 5 payment service banks, 5 of 6 non-interest banks, all 5 merchant banks, 24 of 33 primary mortgage banks, all 17 mobile money operators and 333 of 786 microfinance banks. Mint Microfinance Bank has none because it now trades as Mint - Finex MFB, whose code the register's FINEX MFB holds, and most microfinance banks without a code are not on NIP at all.
-- 598 of the 880 institutions have a CBN bank code, 311 of the 417 on NIP: all 28 commercial banks, 4 of 5 merchant banks, all 5 non-interest banks, 16 of 24 primary mortgage banks, and 545 of 786 microfinance banks (258 of the 333 on NIP), whose codes come from the CBN's own list of microfinance bank codes, with a few confirmed through payment providers' lists where a licence changed hands (Advancly holds Biztrust's code, Letshego FBN Microfinance Bank's). The payment service banks and mobile money operators have none, since neither source gives one; bank detection tests those with their NIBSS code.
+- 547 of the 880 institutions have a NIBSS code: all 28 commercial banks, all 5 payment service banks, 5 of 6 non-interest banks, all 5 merchant banks, 25 of 33 primary mortgage banks, all 17 mobile money operators and 462 of 786 microfinance banks. Mint Microfinance Bank has none because it now trades as Mint - Finex MFB, whose code the register's FINEX MFB holds, and most microfinance banks without a code are not on NIP at all.
+- 598 of the 880 institutions have a CBN bank code, 393 of the 547 on NIP: all 28 commercial banks, 4 of 5 merchant banks, all 5 non-interest banks, 16 of 24 primary mortgage banks, and 545 of 786 microfinance banks (340 of the 462 on NIP), whose codes come from the CBN's own list of microfinance bank codes, with a few confirmed through payment providers' lists where a licence changed hands (Advancly holds Biztrust's code, Letshego FBN Microfinance Bank's). The payment service banks and mobile money operators have none, since neither source gives one; bank detection tests those with their NIBSS code.
 - Four early microfinance banks on NIP, Accion, Bosak, Chikum and FUT Minna, issued account numbers under 3-digit NIBSS codes (602, 650, 312 and 832) before the CBN's 5-digit ones, and payment providers such as Paystack still list them under those. Their `cbn_bank_code` is the CBN's; bank detection tests both codes, through `other_bank_codes` in `account_detection.json`.
 - Names are matched to codes, not codes to names, so a bank renamed in one list but not the other keeps its code through a reviewed match. For example, the register's Amucha, Flourish and Amegy microfinance banks hold the codes NIP lists under their new names, Nombank, Aella and 9japay, and Quest Merchant Bank, Abeg Technologies, OSCT and Visual ICT hold the codes NIP lists as FBNQuest Merchant Bank, Pocket App, Oscotech MFB and TagPay.
 - The CBN register lists a few microfinance banks twice under different record IDs, with the same name, town and licence date. Each name is kept once, with its lowest record ID.
