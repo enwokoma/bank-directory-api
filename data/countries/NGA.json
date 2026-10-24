@@ -1,6 +1,6 @@
 {
   "country": "NGA",
-  "retrieved_on": "2026-10-21",
+  "retrieved_on": "2026-10-24",
   "sources": [
     {
       "name": "Central Bank of Nigeria: Financial Institutions",
@@ -426,6 +426,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3220",
+        "nibss_code": "090698",
         "cbn_bank_code": "50046"
       }
     },
@@ -458,6 +459,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3222",
+        "nibss_code": "090608",
         "cbn_bank_code": "50050"
       }
     },
@@ -812,6 +814,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3254",
+        "nibss_code": "090737",
         "cbn_bank_code": "50080"
       }
     },
@@ -869,6 +872,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3260",
+        "nibss_code": "090544",
         "cbn_bank_code": "50090"
       }
     },
@@ -937,7 +941,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "4135"
+        "cbn_institution_id": "4135",
+        "nibss_code": "090600"
       }
     },
     {
@@ -1056,6 +1061,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3277",
+        "nibss_code": "090729",
         "cbn_bank_code": "51044"
       }
     },
@@ -1100,6 +1106,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3280",
+        "nibss_code": "090563",
         "cbn_bank_code": "50111"
       }
     },
@@ -1135,6 +1142,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3283",
+        "nibss_code": "090651",
         "cbn_bank_code": "50115"
       }
     },
@@ -1157,7 +1165,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10024"
+        "cbn_institution_id": "10024",
+        "nibss_code": "090789"
       }
     },
     {
@@ -1180,6 +1189,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3288",
+        "nibss_code": "090783",
         "cbn_bank_code": "50118"
       }
     },
@@ -1324,6 +1334,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3302",
+        "nibss_code": "090683",
         "cbn_bank_code": "50125"
       }
     },
@@ -1387,7 +1398,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "9881"
+        "cbn_institution_id": "9881",
+        "nibss_code": "090743"
       }
     },
     {
@@ -1465,6 +1477,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3319",
+        "nibss_code": "090703",
         "cbn_bank_code": "50561"
       }
     },
@@ -1584,6 +1597,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3329",
+        "nibss_code": "090804",
         "cbn_bank_code": "50146"
       }
     },
@@ -1629,6 +1643,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3336",
+        "nibss_code": "090568",
         "cbn_bank_code": "50151"
       }
     },
@@ -1782,7 +1797,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3351"
+        "cbn_institution_id": "3351",
+        "nibss_code": "090649"
       }
     },
     {
@@ -1838,6 +1854,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3355",
+        "nibss_code": "090562",
         "cbn_bank_code": "50168"
       }
     },
@@ -1903,7 +1920,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10033"
+        "cbn_institution_id": "10033",
+        "nibss_code": "090815"
       }
     },
     {
@@ -2120,6 +2138,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3377",
+        "nibss_code": "090530",
         "cbn_bank_code": "50197"
       }
     },
@@ -2130,7 +2149,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3379"
+        "cbn_institution_id": "3379",
+        "nibss_code": "090553"
       }
     },
     {
@@ -2259,6 +2279,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3394",
+        "nibss_code": "090686",
         "cbn_bank_code": "50218"
       }
     },
@@ -2280,7 +2301,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10035"
+        "cbn_institution_id": "10035",
+        "nibss_code": "090802"
       }
     },
     {
@@ -2301,6 +2323,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3399",
+        "nibss_code": "090596",
         "cbn_bank_code": "51094"
       }
     },
@@ -2401,6 +2424,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3409",
+        "nibss_code": "090723",
         "cbn_bank_code": "50233"
       }
     },
@@ -2455,7 +2479,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10037"
+        "cbn_institution_id": "10037",
+        "nibss_code": "090821"
       }
     },
     {
@@ -2521,6 +2546,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3417",
+        "nibss_code": "090674",
         "cbn_bank_code": "51112"
       }
     },
@@ -2543,6 +2569,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3419",
+        "nibss_code": "090707",
         "cbn_bank_code": "50246"
       }
     },
@@ -2652,7 +2679,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3431"
+        "cbn_institution_id": "3431",
+        "nibss_code": "090556"
       }
     },
     {
@@ -2672,7 +2700,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3434"
+        "cbn_institution_id": "3434",
+        "nibss_code": "090694"
       }
     },
     {
@@ -2793,7 +2822,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3446"
+        "cbn_institution_id": "3446",
+        "nibss_code": "090539"
       }
     },
     {
@@ -2804,6 +2834,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3448",
+        "nibss_code": "090872",
         "cbn_bank_code": "50275"
       }
     },
@@ -2859,6 +2890,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3455",
+        "nibss_code": "090572",
         "cbn_bank_code": "50287"
       }
     },
@@ -3170,6 +3202,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3483",
+        "nibss_code": "090868",
         "cbn_bank_code": "50311"
       }
     },
@@ -3464,6 +3497,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3506",
+        "nibss_code": "090579",
         "cbn_bank_code": "50340"
       }
     },
@@ -3486,6 +3520,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3509",
+        "nibss_code": "090621",
         "cbn_bank_code": "50342"
       }
     },
@@ -3622,6 +3657,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3521",
+        "nibss_code": "090586",
         "cbn_bank_code": "50357"
       }
     },
@@ -3691,7 +3727,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "9905"
+        "cbn_institution_id": "9905",
+        "nibss_code": "090857"
       }
     },
     {
@@ -3702,6 +3739,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3528",
+        "nibss_code": "090599",
         "cbn_bank_code": "50362"
       }
     },
@@ -3713,6 +3751,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3529",
+        "nibss_code": "090550",
         "cbn_bank_code": "50993"
       }
     },
@@ -3872,7 +3911,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3544"
+        "cbn_institution_id": "3544",
+        "nibss_code": "090980"
       }
     },
     {
@@ -4069,6 +4109,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3558",
+        "nibss_code": "090488",
         "cbn_bank_code": "50403"
       }
     },
@@ -4135,6 +4176,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3571",
+        "nibss_code": "090803",
         "cbn_bank_code": "50420"
       }
     },
@@ -4157,6 +4199,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3573",
+        "nibss_code": "090725",
         "cbn_bank_code": "50424"
       }
     },
@@ -4168,6 +4211,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3575",
+        "nibss_code": "090730",
         "cbn_bank_code": "50428"
       }
     },
@@ -4179,6 +4223,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3576",
+        "nibss_code": "090546",
         "cbn_bank_code": "50429"
       }
     },
@@ -4201,7 +4246,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10045"
+        "cbn_institution_id": "10045",
+        "nibss_code": "090799"
       }
     },
     {
@@ -4235,6 +4281,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3580",
+        "nibss_code": "090681",
         "cbn_bank_code": "50438"
       }
     },
@@ -4418,6 +4465,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3595",
+        "nibss_code": "090670",
         "cbn_bank_code": "50456"
       }
     },
@@ -4564,6 +4612,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3608",
+        "nibss_code": "090849",
         "cbn_bank_code": "51089"
       }
     },
@@ -4575,6 +4624,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3609",
+        "nibss_code": "090584",
         "cbn_bank_code": "50476"
       }
     },
@@ -4585,7 +4635,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3611"
+        "cbn_institution_id": "3611",
+        "nibss_code": "090701"
       }
     },
     {
@@ -4639,6 +4690,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3616",
+        "nibss_code": "090570",
         "cbn_bank_code": "50488"
       }
     },
@@ -4650,6 +4702,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3618",
+        "nibss_code": "090337",
         "cbn_bank_code": "50490"
       }
     },
@@ -4784,6 +4837,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3632",
+        "nibss_code": "090669",
         "cbn_bank_code": "50503"
       }
     },
@@ -4794,7 +4848,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10047"
+        "cbn_institution_id": "10047",
+        "nibss_code": "090800"
       }
     },
     {
@@ -4867,7 +4922,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3639"
+        "cbn_institution_id": "3639",
+        "nibss_code": "090549"
       }
     },
     {
@@ -4900,6 +4956,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3642",
+        "nibss_code": "090602",
         "cbn_bank_code": "50513"
       }
     },
@@ -4955,7 +5012,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3647"
+        "cbn_institution_id": "3647",
+        "nibss_code": "090606"
       }
     },
     {
@@ -4976,7 +5034,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10049"
+        "cbn_institution_id": "10049",
+        "nibss_code": "090865"
       }
     },
     {
@@ -5230,6 +5289,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3666",
+        "nibss_code": "090724",
         "cbn_bank_code": "50981"
       }
     },
@@ -5298,6 +5358,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3672",
+        "nibss_code": "090731",
         "cbn_bank_code": "50545"
       }
     },
@@ -5309,6 +5370,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3673",
+        "nibss_code": "090557",
         "cbn_bank_code": "50546"
       }
     },
@@ -5331,7 +5393,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10052"
+        "cbn_institution_id": "10052",
+        "nibss_code": "090807"
       }
     },
     {
@@ -5364,7 +5427,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3677"
+        "cbn_institution_id": "3677",
+        "nibss_code": "090537"
       }
     },
     {
@@ -5399,6 +5463,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3679",
+        "nibss_code": "090685",
         "cbn_bank_code": "50553"
       }
     },
@@ -5409,7 +5474,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3680"
+        "cbn_institution_id": "3680",
+        "nibss_code": "090623"
       }
     },
     {
@@ -5420,6 +5486,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3682",
+        "nibss_code": "090603",
         "cbn_bank_code": "50555"
       }
     },
@@ -5442,6 +5509,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3684",
+        "nibss_code": "090605",
         "cbn_bank_code": "51066"
       }
     },
@@ -5564,6 +5632,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3699",
+        "nibss_code": "090843",
         "cbn_bank_code": "50562"
       }
     },
@@ -5644,7 +5713,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3705"
+        "cbn_institution_id": "3705",
+        "nibss_code": "090867"
       }
     },
     {
@@ -5678,6 +5748,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3711",
+        "nibss_code": "090528",
         "cbn_bank_code": "50574"
       }
     },
@@ -5698,7 +5769,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10054"
+        "cbn_institution_id": "10054",
+        "nibss_code": "090859"
       }
     },
     {
@@ -5752,7 +5824,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3719"
+        "cbn_institution_id": "3719",
+        "nibss_code": "090455"
       }
     },
     {
@@ -5784,6 +5857,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3720",
+        "nibss_code": "090775",
         "cbn_bank_code": "50580"
       }
     },
@@ -5851,7 +5925,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3724"
+        "cbn_institution_id": "3724",
+        "nibss_code": "090692"
       }
     },
     {
@@ -5884,7 +5959,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10057"
+        "cbn_institution_id": "10057",
+        "nibss_code": "090979"
       }
     },
     {
@@ -5938,7 +6014,8 @@
       "type": "mortgage",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "4103"
+        "cbn_institution_id": "4103",
+        "nibss_code": "070028"
       }
     },
     {
@@ -6127,7 +6204,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10059"
+        "cbn_institution_id": "10059",
+        "nibss_code": "090818"
       }
     },
     {
@@ -6239,6 +6317,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3765",
+        "nibss_code": "090535",
         "cbn_bank_code": "50622"
       }
     },
@@ -6271,7 +6350,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3768"
+        "cbn_institution_id": "3768",
+        "nibss_code": "090736"
       }
     },
     {
@@ -6281,7 +6361,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3772"
+        "cbn_institution_id": "3772",
+        "nibss_code": "090822"
       }
     },
     {
@@ -6304,6 +6385,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3773",
+        "nibss_code": "090863",
         "cbn_bank_code": "50628"
       }
     },
@@ -6393,7 +6475,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "4133"
+        "cbn_institution_id": "4133",
+        "nibss_code": "090676"
       }
     },
     {
@@ -6461,6 +6544,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3789",
+        "nibss_code": "090981",
         "cbn_bank_code": "50641"
       }
     },
@@ -6516,6 +6600,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3794",
+        "nibss_code": "090810",
         "cbn_bank_code": "50647"
       }
     },
@@ -6550,6 +6635,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3798",
+        "nibss_code": "090576",
         "cbn_bank_code": "50651"
       }
     },
@@ -6593,6 +6679,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3804",
+        "nibss_code": "090738",
         "cbn_bank_code": "50657"
       }
     },
@@ -6626,6 +6713,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3807",
+        "nibss_code": "090739",
         "cbn_bank_code": "50662"
       }
     },
@@ -6692,7 +6780,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3839"
+        "cbn_institution_id": "3839",
+        "nibss_code": "090565"
       }
     },
     {
@@ -6714,6 +6803,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3815",
+        "nibss_code": "090646",
         "cbn_bank_code": "50676"
       }
     },
@@ -6770,6 +6860,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3820",
+        "nibss_code": "090566",
         "cbn_bank_code": "50684"
       }
     },
@@ -6814,6 +6905,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3825",
+        "nibss_code": "090696",
         "cbn_bank_code": "50690"
       }
     },
@@ -7002,6 +7094,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3841",
+        "nibss_code": "090588",
         "cbn_bank_code": "50715"
       }
     },
@@ -7079,6 +7172,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3852",
+        "nibss_code": "090715",
         "cbn_bank_code": "50726"
       }
     },
@@ -7113,6 +7207,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3856",
+        "nibss_code": "090542",
         "cbn_bank_code": "50731"
       }
     },
@@ -7124,6 +7219,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3857",
+        "nibss_code": "090346",
         "cbn_bank_code": "50953"
       }
     },
@@ -7299,7 +7395,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10066"
+        "cbn_institution_id": "10066",
+        "nibss_code": "090823"
       }
     },
     {
@@ -7509,7 +7606,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10069"
+        "cbn_institution_id": "10069",
+        "nibss_code": "090779"
       }
     },
     {
@@ -7576,6 +7674,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3889",
+        "nibss_code": "090689",
         "cbn_bank_code": "50754"
       }
     },
@@ -7587,6 +7686,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3890",
+        "nibss_code": "090642",
         "cbn_bank_code": "50755"
       }
     },
@@ -7609,7 +7709,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "4136"
+        "cbn_institution_id": "4136",
+        "nibss_code": "090690"
       }
     },
     {
@@ -7620,6 +7721,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3893",
+        "nibss_code": "090657",
         "cbn_bank_code": "50757"
       }
     },
@@ -7630,7 +7732,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3894"
+        "cbn_institution_id": "3894",
+        "nibss_code": "090569"
       }
     },
     {
@@ -7810,6 +7913,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3908",
+        "nibss_code": "090720",
         "cbn_bank_code": "50763"
       }
     },
@@ -8184,6 +8288,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3943",
+        "nibss_code": "090558",
         "cbn_bank_code": "50792"
       }
     },
@@ -8217,6 +8322,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3944",
+        "nibss_code": "090339",
         "cbn_bank_code": "50795"
       }
     },
@@ -8261,6 +8367,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3947",
+        "nibss_code": "090573",
         "cbn_bank_code": "50797"
       }
     },
@@ -8315,7 +8422,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10075"
+        "cbn_institution_id": "10075",
+        "nibss_code": "090836"
       }
     },
     {
@@ -8325,7 +8433,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "9869"
+        "cbn_institution_id": "9869",
+        "nibss_code": "090641"
       }
     },
     {
@@ -8565,7 +8674,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3972"
+        "cbn_institution_id": "3972",
+        "nibss_code": "090728"
       }
     },
     {
@@ -8632,6 +8742,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3977",
+        "nibss_code": "090593",
         "cbn_bank_code": "50818"
       }
     },
@@ -8742,7 +8853,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "3984"
+        "cbn_institution_id": "3984",
+        "nibss_code": "090801"
       }
     },
     {
@@ -8796,7 +8908,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10084"
+        "cbn_institution_id": "10084",
+        "nibss_code": "090708"
       }
     },
     {
@@ -8807,6 +8920,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3988",
+        "nibss_code": "090663",
         "cbn_bank_code": "50832"
       }
     },
@@ -8943,6 +9057,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3999",
+        "nibss_code": "090403",
         "cbn_bank_code": "50845"
       }
     },
@@ -8975,6 +9090,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4001",
+        "nibss_code": "090782",
         "cbn_bank_code": "50849"
       }
     },
@@ -9009,6 +9125,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4004",
+        "nibss_code": "090820",
         "cbn_bank_code": "50854"
       }
     },
@@ -9030,6 +9147,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4007",
+        "nibss_code": "090776",
         "cbn_bank_code": "50857"
       }
     },
@@ -9053,6 +9171,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4009",
+        "nibss_code": "090609",
         "cbn_bank_code": "50859"
       }
     },
@@ -9087,6 +9206,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4012",
+        "nibss_code": "090632",
         "cbn_bank_code": "50863"
       }
     },
@@ -9109,7 +9229,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10088"
+        "cbn_institution_id": "10088",
+        "nibss_code": "090808"
       }
     },
     {
@@ -9120,6 +9241,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4015",
+        "nibss_code": "090814",
         "cbn_bank_code": "50868"
       }
     },
@@ -9326,6 +9448,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4029",
+        "nibss_code": "090719",
         "cbn_bank_code": "51107"
       }
     },
@@ -9348,6 +9471,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4031",
+        "nibss_code": "090619",
         "cbn_bank_code": "50885"
       }
     },
@@ -9483,7 +9607,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "10092"
+        "cbn_institution_id": "10092",
+        "nibss_code": "090787"
       }
     },
     {
@@ -9524,7 +9649,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "9879"
+        "cbn_institution_id": "9879",
+        "nibss_code": "090805"
       }
     },
     {
@@ -9546,7 +9672,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "9911"
+        "cbn_institution_id": "9911",
+        "nibss_code": "090989"
       }
     },
     {
@@ -9633,7 +9760,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "4052"
+        "cbn_institution_id": "4052",
+        "nibss_code": "090631"
       }
     },
     {
@@ -9644,6 +9772,7 @@
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "4053",
+        "nibss_code": "090253",
         "cbn_bank_code": "50909"
       }
     },
@@ -9752,7 +9881,8 @@
       "type": "microfinance",
       "status": "active",
       "identifiers": {
-        "cbn_institution_id": "4066"
+        "cbn_institution_id": "4066",
+        "nibss_code": "090747"
       }
     },
     {
