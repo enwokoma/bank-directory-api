@@ -1,5 +1,5 @@
 # The Bank Directory API, served by gunicorn. See docs/deploy.md.
-FROM python:3.13-slim
+FROM python:3.14-slim
 
 LABEL org.opencontainers.image.source="https://github.com/enwokoma/bank-directory-api" \
       org.opencontainers.image.description="Licensed banks by country, with NIBSS transfer codes for Nigeria" \
