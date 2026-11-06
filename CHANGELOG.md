@@ -4,6 +4,10 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ## Unreleased
 
+### Changed
+
+- Nigeria: the register's KKU Microfinance has the trading name Turbo Microfinance Bank and the CBN bank code `51134`, both confirmed by the bank; its id stays `kku-microfinance` and its NIBSS code `090606`.
+
 ### Fixed
 
 - The release workflow's deploy job restarts the public instance's service through Coolify's API with a pull of the latest images. Coolify's deploy webhook, which it called before, recreates a Docker Compose service from the images already on the server without pulling, so release 0.7.0 was published but did not reach the site until the service was restarted with a pull. The webhook URL stays the setting: the job takes the Coolify instance and the service's uuid from it.
