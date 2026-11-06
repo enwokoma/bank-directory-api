@@ -5008,12 +5008,13 @@
     {
       "id": "kku-microfinance",
       "name": "KKU Microfinance",
-      "trading_name": "KKU Microfinance",
+      "trading_name": "Turbo Microfinance Bank",
       "type": "microfinance",
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3647",
-        "nibss_code": "090606"
+        "nibss_code": "090606",
+        "cbn_bank_code": "51134"
       }
     },
     {
