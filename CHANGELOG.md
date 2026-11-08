@@ -2,6 +2,12 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
+## Unreleased
+
+### Changed
+
+- Nigeria: a reviewed match keeps CINTRUST MFB on its NIBSS code `090480`. NIP now lists the code under the bank's new name, Kolomoni Microfinance Bank, approved by the CBN in 2024, which the register has not caught up with, so the name match had stopped finding it.
+
 ## 0.7.1 - 2026-11-08
 
 ### Added
