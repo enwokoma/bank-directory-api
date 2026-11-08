@@ -771,6 +771,71 @@ With them, the command also prints a review report: every match with the institu
 
 The scheduled check and refresh use the codes too when the repository has the same settings as secrets: `NIP_INSTITUTIONS_URL` and `NIP_INSTITUTIONS_API_KEY` (and `NIP_INSTITUTIONS_KEY_HEADER` if the header is not `X-API-Key`, and `NIP_INSTITUTIONS_LOGIN_URL` for an endpoint that needs a login), plus the `_2` to `_5` versions for more lists. GitHub masks secret values in the logs.
 
+### Sources that accept only approved IP addresses
+
+Some providers relay their institution list only to requests from IP addresses the customer has approved with them. GitHub's runners have no fixed address, so the scheduled check and refresh can reach such a source through an EC2 instance whose Elastic IP the provider approved, such as the one `deploy/aws/provision.sh` creates. The Data Freshness workflow signs in to AWS through GitHub's OIDC provider, so no AWS keys are stored in GitHub, and opens a Session Manager port forward to the source through the instance, which needs no inbound port for it. The source's host name resolves to the runner, so the refresh calls the source's usual URL and checks its certificate, and the key never leaves GitHub, while the connection to the source is opened from the instance.
+
+It takes these repository secrets (secrets rather than variables, because the workflow's logs are public):
+
+| Secret | Value |
+| --- | --- |
+| `SOURCE_TUNNEL_HOST` | The source's host name, served over HTTPS on port 443, for example `api.example.com` |
+| `SOURCE_TUNNEL_INSTANCE_ID` | The instance, for example `i-0123456789abcdef0` |
+| `SOURCE_TUNNEL_REGION` | The instance's region |
+| `SOURCE_TUNNEL_ROLE_ARN` | The IAM role the workflow assumes |
+| `SOURCE_TUNNEL_DOCUMENT` | The Session Manager document that forwards the port; optional, `AWS-StartPortForwardingSessionToRemoteHost` when not set |
+
+Without `SOURCE_TUNNEL_HOST`, every source is called directly. On the AWS side:
+
+1. The instance runs the SSM agent with the `AmazonSSMManagedInstanceCore` policy, as the one from `provision.sh` does.
+2. The account has GitHub's OIDC provider, added once under IAM > Identity providers: `https://token.actions.githubusercontent.com`, audience `sts.amazonaws.com`.
+3. A Session Manager document forwards only to the source. AWS's own `AWS-StartPortForwardingSessionToRemoteHost` forwards to any host the instance can reach, its metadata service and the instance role's credentials included, so copy it and give its `host` parameter `"allowedValues": ["api.example.com"]` and its `portNumber` parameter `"allowedValues": ["443"]`:
+
+   ```bash
+   aws ssm get-document --name AWS-StartPortForwardingSessionToRemoteHost --query Content --output text > source-tunnel.json
+   # Edit the two parameters in source-tunnel.json, then:
+   aws ssm create-document --name source-tunnel --document-type Session --document-format JSON \
+     --content file://source-tunnel.json
+   ```
+
+4. The role trusts only this repository's `main` branch, and may only start that session. GitHub's subject claim names the repository as `repo:OWNER/REPO`, or as `repo:OWNER@OWNER_ID/REPO@REPO_ID` when the repository uses immutable subjects, which `gh api repos/OWNER/REPO/actions/oidc/customization/sub` shows. The trust policy:
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [{
+       "Effect": "Allow",
+       "Principal": {"Federated": "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/token.actions.githubusercontent.com"},
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {"StringEquals": {
+         "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+         "token.actions.githubusercontent.com:sub": "repo:<OWNER>/<REPO>:ref:refs/heads/main"
+       }}
+     }]
+   }
+   ```
+
+   Its permissions:
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [{
+       "Effect": "Allow",
+       "Action": "ssm:StartSession",
+       "Resource": [
+         "arn:aws:ec2:<REGION>:<ACCOUNT_ID>:instance/<INSTANCE_ID>",
+         "arn:aws:ssm:<REGION>:<ACCOUNT_ID>:document/source-tunnel"
+       ],
+       "Condition": {"BoolIfExists": {"ssm:SessionDocumentAccessCheck": "true"}}
+     }]
+   }
+   ```
+
+5. Once the provider has approved the instance's Elastic IP, run the workflow by hand on `main`. The step "Reach the source that accepts only approved addresses" says when requests leave from the instance; a source that still refuses the address fails the check with HTTP 403.
+
+The trust policy refuses a run on any other branch, so a change to the workflow is tested on `main`, or with the branch's subject added to the policy while you test. A local refresh is held to the same rule: run it from a machine whose address the provider approved.
+
 ### Trading names
 
 Registers are slow to record renames, so a bank's `name` can be one it no longer uses. To give it the name it trades under, add the bank's name exactly as the register publishes it, with its trading name, to `src/countries/nigeria/trading_names.json` and run the refresh again. The refresh warns about an entry that names no bank in the register, and about one whose trading name the register now uses itself; remove such entries.
