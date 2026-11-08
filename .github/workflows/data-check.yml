@@ -19,6 +19,12 @@ name: Data Freshness
 # token with write access to contents and pull requests. The README's
 # "Refreshing data" section explains the difference: only with the personal
 # token do the pull request's checks start on their own.
+#
+# A source that accepts requests only from approved IP addresses is reached
+# through an EC2 instance whose address it approved, when the repository has
+# the SOURCE_TUNNEL_* secrets: GitHub's runners have no fixed address. The
+# README's "Sources that accept only approved IP addresses" section describes
+# the AWS side.
 on:
   schedule:
     - cron: '0 6 * * 1'
@@ -35,6 +41,10 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Signs in to AWS for the source tunnel, through GitHub's OIDC provider.
+      id-token: write
     outputs:
       needs_refresh: ${{ steps.compare.outputs.needs_refresh }}
 
@@ -50,6 +60,15 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: Reach the source that accepts only approved addresses
+      uses: ./.github/actions/source-tunnel
+      with:
+        role-arn: ${{ secrets.SOURCE_TUNNEL_ROLE_ARN }}
+        region: ${{ secrets.SOURCE_TUNNEL_REGION }}
+        instance-id: ${{ secrets.SOURCE_TUNNEL_INSTANCE_ID }}
+        host: ${{ secrets.SOURCE_TUNNEL_HOST }}
+        document: ${{ secrets.SOURCE_TUNNEL_DOCUMENT }}
 
     - name: Compare data files with their sources
       id: compare
@@ -98,6 +117,8 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      # Signs in to AWS for the source tunnel; it writes nothing.
+      id-token: write
     # Two runs at once (the schedule and a manual one) would push to the same branch.
     concurrency:
       group: data-refresh
@@ -165,6 +186,16 @@ jobs:
           echo "branch=$branch"
           echo "edited=$edited"
         } >> "$GITHUB_OUTPUT"
+
+    - name: Reach the source that accepts only approved addresses
+      if: steps.branch.outputs.edited != 'true'
+      uses: ./.github/actions/source-tunnel
+      with:
+        role-arn: ${{ secrets.SOURCE_TUNNEL_ROLE_ARN }}
+        region: ${{ secrets.SOURCE_TUNNEL_REGION }}
+        instance-id: ${{ secrets.SOURCE_TUNNEL_INSTANCE_ID }}
+        host: ${{ secrets.SOURCE_TUNNEL_HOST }}
+        document: ${{ secrets.SOURCE_TUNNEL_DOCUMENT }}
 
     - name: Refresh the data
       id: refresh

@@ -1,0 +1,71 @@
+name: Source tunnel
+description: >-
+  Reaches a source that accepts requests only from approved IP addresses through an EC2 instance
+  whose address it approved, with Session Manager port forwarding: the steps that follow connect
+  to the source's usual URL, and their requests leave from the instance. Does nothing when the
+  host is not set. The README's "Sources that accept only approved IP addresses" section describes
+  the AWS side.
+
+inputs:
+  role-arn:
+    description: IAM role the job assumes through GitHub's OIDC provider, allowed only to start the session
+    required: false
+  region:
+    description: The instance's AWS region
+    required: false
+  instance-id:
+    description: The EC2 instance the requests leave from
+    required: false
+  host:
+    description: The source's host name, served over HTTPS on port 443
+    required: false
+  document:
+    description: >-
+      The Session Manager document that forwards the port; AWS-StartPortForwardingSessionToRemoteHost
+      when empty. A document of your own that allows only this host and port 443 keeps the role
+      from reaching anything else through the instance.
+    required: false
+
+runs:
+  using: composite
+  steps:
+  - name: Sign in to AWS
+    if: inputs.host != ''
+    uses: aws-actions/configure-aws-credentials@v6
+    with:
+      role-to-assume: ${{ inputs.role-arn }}
+      aws-region: ${{ inputs.region }}
+      mask-aws-account-id: true
+
+  - name: Open the tunnel
+    if: inputs.host != ''
+    shell: bash
+    env:
+      REGION: ${{ inputs.region }}
+      INSTANCE_ID: ${{ inputs.instance-id }}
+      HOST: ${{ inputs.host }}
+      DOCUMENT: ${{ inputs.document || 'AWS-StartPortForwardingSessionToRemoteHost' }}
+      PLUGIN_VERSION: 1.2.896.0
+    run: |
+      curl -fsSL -o "$RUNNER_TEMP/session-manager-plugin.deb" \
+        "https://s3.amazonaws.com/session-manager-downloads/plugin/$PLUGIN_VERSION/ubuntu_64bit/session-manager-plugin.deb"
+      sudo dpkg -i "$RUNNER_TEMP/session-manager-plugin.deb" > /dev/null
+      # The host name resolves to this machine, where the tunnel listens on port 443, so the refresh
+      # connects to the source's usual URL and checks its own certificate, while the connection
+      # itself is opened from the instance.
+      sudo sysctl --quiet --write net.ipv4.ip_unprivileged_port_start=443
+      echo "127.0.0.1 $HOST" | sudo tee --append /etc/hosts > /dev/null
+      log="$RUNNER_TEMP/source-tunnel.log"
+      nohup aws ssm start-session --region "$REGION" --target "$INSTANCE_ID" --document-name "$DOCUMENT" \
+        --parameters "{\"host\":[\"$HOST\"],\"portNumber\":[\"443\"],\"localPortNumber\":[\"443\"]}" \
+        > "$log" 2>&1 &
+      for _ in $(seq 30); do
+        if grep --quiet "Waiting for connections" "$log"; then
+          echo "Requests to the source now leave from the instance."
+          exit 0
+        fi
+        sleep 1
+      done
+      cat "$log"
+      echo "::error::The tunnel to the source did not open within 30 seconds (see the lines above)."
+      exit 1
