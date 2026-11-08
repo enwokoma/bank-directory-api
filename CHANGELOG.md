@@ -7,6 +7,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 ### Changed
 
 - Nigeria: reviewed matches keep three microfinance banks on their NIBSS codes now that NIP lists them under the names they trade as, which the register has not caught up with, so the name match had stopped finding them: CINTRUST MFB on `090480` (Kolomoni Microfinance Bank, a renaming the CBN approved in 2024), CHANGAN RTS MFB on `090470` (Dot Microfinance Bank) and SLS MFB on `090449` (Rex Microfinance Bank). The account detection settings already gave each the newer name as an alias.
+- Nigeria: UMUCHUKWU MFB's NIBSS code is `090652`, from a reviewed match; `090632`, which it had, belonged to Giginyan Microfinance Bank, which is defunct, and a relayed NIP list still gives it under Umuchukwu's name.
 
 ## 0.7.1 - 2026-11-08
 
