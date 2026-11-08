@@ -4,13 +4,18 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ## Unreleased
 
+### Changed
+
+- Nigeria: reviewed matches keep three microfinance banks on their NIBSS codes now that NIP lists them under the names they trade as, which the register has not caught up with, so the name match had stopped finding them: CINTRUST MFB on `090480` (Kolomoni Microfinance Bank, a renaming the CBN approved in 2024), CHANGAN RTS MFB on `090470` (Dot Microfinance Bank) and SLS MFB on `090449` (Rex Microfinance Bank). The account detection settings already gave each the newer name as an alias.
+
+## 0.7.1 - 2026-11-08
+
 ### Added
 
 - The Data Freshness workflow reaches a source that accepts requests only from approved IP addresses through an EC2 instance whose Elastic IP the source approved, when the repository has the `SOURCE_TUNNEL_*` secrets: it signs in to AWS through GitHub's OIDC provider and forwards the source's port through the instance with Session Manager, so no AWS keys are stored in GitHub and the source's key never leaves it. Without the secrets, every source is called directly. The README's "Sources that accept only approved IP addresses" section describes the AWS side.
 
 ### Changed
 
-- Nigeria: reviewed matches keep three microfinance banks on their NIBSS codes now that NIP lists them under the names they trade as, which the register has not caught up with, so the name match had stopped finding them: CINTRUST MFB on `090480` (Kolomoni Microfinance Bank, a renaming the CBN approved in 2024), CHANGAN RTS MFB on `090470` (Dot Microfinance Bank) and SLS MFB on `090449` (Rex Microfinance Bank). The account detection settings already gave each the newer name as an alias.
 - Nigeria: the register's KKU Microfinance has the trading name Turbo Microfinance Bank and the CBN bank code `51134`, both confirmed by the bank; its id stays `kku-microfinance` and its NIBSS code `090606`.
 - Nigeria's data was retrieved on 2026-11-06: the register now lists Greenwich Merchant Bank (record 3184) as GREENWICH BANK LIMITED, a commercial bank, so there are 29 commercial banks and 4 merchant banks. Its id stays `greenwich-merchant-bank`, and reviewed entries keep its NIBSS code `060004`, which NIP still lists as Greenwich Merchant Bank, and its CBN bank code `562`, which Paystack still lists for it.
 
