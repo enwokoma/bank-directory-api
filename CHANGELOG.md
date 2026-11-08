@@ -4,6 +4,10 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ## Unreleased
 
+### Added
+
+- The Data Freshness workflow reaches a source that accepts requests only from approved IP addresses through an EC2 instance whose Elastic IP the source approved, when the repository has the `SOURCE_TUNNEL_*` secrets: it signs in to AWS through GitHub's OIDC provider and forwards the source's port through the instance with Session Manager, so no AWS keys are stored in GitHub and the source's key never leaves it. Without the secrets, every source is called directly. The README's "Sources that accept only approved IP addresses" section describes the AWS side.
+
 ### Changed
 
 - Nigeria: the register's KKU Microfinance has the trading name Turbo Microfinance Bank and the CBN bank code `51134`, both confirmed by the bank; its id stays `kku-microfinance` and its NIBSS code `090606`.
@@ -12,6 +16,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 ### Fixed
 
 - The release workflow's deploy job restarts the public instance's service through Coolify's API with a pull of the latest images. Coolify's deploy webhook, which it called before, recreates a Docker Compose service from the images already on the server without pulling, so release 0.7.0 was published but did not reach the site until the service was restarted with a pull. The webhook URL stays the setting: the job takes the Coolify instance and the service's uuid from it.
+- The image installs Debian's security update of zlib (`zlib1g` 1:1.3.dfsg+really1.3.1-1+deb13u1), which fixes CVE-2026-76844 and CVE-2026-85091. `python:3.13-slim` does not carry it yet, and the image scan in CI failed on both high vulnerabilities.
 
 ## 0.7.0 - 2026-10-24
 
