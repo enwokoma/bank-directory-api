@@ -2,10 +2,11 @@
 
 Each release adds countries or refreshes existing ones. Data refreshes that only change bank lists are listed with the date the data was retrieved.
 
-## Unreleased
+## 0.7.2 - 2026-11-08
 
 ### Changed
 
+- Nigeria's data was retrieved on 2026-11-08: 575 of 880 institutions have NIBSS codes, up from 547. Finecore's NIP list, the first, which the Data Freshness workflow reaches again through its fixed-address route, now relays 569 institutions, up from 421, so 28 more banks get a code: 27 microfinance banks and a primary mortgage bank.
 - Nigeria: reviewed matches keep three microfinance banks on their NIBSS codes now that NIP lists them under the names they trade as, which the register has not caught up with, so the name match had stopped finding them: CINTRUST MFB on `090480` (Kolomoni Microfinance Bank, a renaming the CBN approved in 2024), CHANGAN RTS MFB on `090470` (Dot Microfinance Bank) and SLS MFB on `090449` (Rex Microfinance Bank). The account detection settings already gave each the newer name as an alias.
 - Nigeria: UMUCHUKWU MFB's NIBSS code is `090652`, from a reviewed match; `090632`, which it had, belonged to Giginyan Microfinance Bank, which is defunct, and a relayed NIP list still gives it under Umuchukwu's name.
 
