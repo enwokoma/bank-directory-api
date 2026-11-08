@@ -12,6 +12,13 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
+# Debian's security update of zlib (1:1.3.dfsg+really1.3.1-1+deb13u1) fixes two
+# high vulnerabilities the image scan in CI flags, and the base image does not
+# carry it yet. Once python:3.13-slim ships it, this upgrades nothing and can go.
+RUN apt-get update \
+    && apt-get install --yes --only-upgrade zlib1g \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 # pip is only needed to install the packages and is removed afterwards: the API
 # does not use it at run time, and the image scan in CI would otherwise flag the
