@@ -1,6 +1,6 @@
 {
   "country": "NGA",
-  "retrieved_on": "2026-10-24",
+  "retrieved_on": "2026-11-06",
   "sources": [
     {
       "name": "Central Bank of Nigeria: Financial Institutions",
@@ -3780,9 +3780,9 @@
     },
     {
       "id": "greenwich-merchant-bank",
-      "name": "GREENWICH MERCHANT BANK",
-      "trading_name": "GREENWICH MERCHANT BANK",
-      "type": "merchant",
+      "name": "GREENWICH BANK LIMITED",
+      "trading_name": "GREENWICH BANK LIMITED",
+      "type": "commercial",
       "status": "active",
       "identifiers": {
         "cbn_institution_id": "3184",
