@@ -10,7 +10,7 @@ Each release adds countries or refreshes existing ones. Data refreshes that only
 
 ### Changed
 
-- Nigeria: a reviewed match keeps CINTRUST MFB on its NIBSS code `090480`. NIP now lists the code under the bank's new name, Kolomoni Microfinance Bank, approved by the CBN in 2024, which the register has not caught up with, so the name match had stopped finding it.
+- Nigeria: reviewed matches keep three microfinance banks on their NIBSS codes now that NIP lists them under the names they trade as, which the register has not caught up with, so the name match had stopped finding them: CINTRUST MFB on `090480` (Kolomoni Microfinance Bank, a renaming the CBN approved in 2024), CHANGAN RTS MFB on `090470` (Dot Microfinance Bank) and SLS MFB on `090449` (Rex Microfinance Bank). The account detection settings already gave each the newer name as an alias.
 - Nigeria: the register's KKU Microfinance has the trading name Turbo Microfinance Bank and the CBN bank code `51134`, both confirmed by the bank; its id stays `kku-microfinance` and its NIBSS code `090606`.
 - Nigeria's data was retrieved on 2026-11-06: the register now lists Greenwich Merchant Bank (record 3184) as GREENWICH BANK LIMITED, a commercial bank, so there are 29 commercial banks and 4 merchant banks. Its id stays `greenwich-merchant-bank`, and reviewed entries keep its NIBSS code `060004`, which NIP still lists as Greenwich Merchant Bank, and its CBN bank code `562`, which Paystack still lists for it.
 
